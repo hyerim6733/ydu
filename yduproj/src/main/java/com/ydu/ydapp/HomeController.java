@@ -35,11 +35,5 @@ public class HomeController {
 		
 		return "/main/home";
 	}
-	@RequestMapping("/main")
-	public String main(Model model)
-	{
-		//dao
-		model.addAttribute("username", "songsong");
-		return "main";
-	}
+	
 }
