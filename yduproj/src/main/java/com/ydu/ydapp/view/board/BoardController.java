@@ -14,7 +14,7 @@ import com.ydu.ydapp.biz.board.BoardVO;
 @Controller
 public class BoardController {
 	
-	@Autowired
+	@Autowired    
 	BoardService boardService;
 	
 	//등록 formPage
