@@ -19,5 +19,5 @@
 <!--     <mappers>
         <mapper resource="mappings/board-mapping.xml"/>
     </mappers>    -->
-    
+     
 </configuration>
