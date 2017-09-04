@@ -11,8 +11,10 @@
         <typeAlias alias="users" type="com.springbook.biz.users.UserVO"/>
     </typeAliases>
  -->
-	
-  
+     <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>  
+    </settings>
+    
     <!-- Sql Mapper 설정 -->
 <!--     <mappers>
         <mapper resource="mappings/board-mapping.xml"/>
