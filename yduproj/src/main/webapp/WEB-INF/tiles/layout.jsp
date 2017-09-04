@@ -55,7 +55,7 @@ pageEncoding="UTF-8" %>
 	<div class="container-fluid expanded-panel">
 		<div class="row">
 			<div id="logo" class="col-xs-12 col-sm-2">
-				<a href="index.html">예담대학교</a>
+				<a href="home">예담대학교</a>
 			</div>
 			<div id="top-panel" class="col-xs-12 col-sm-10">
 				<div class="row">
@@ -152,50 +152,50 @@ pageEncoding="UTF-8" %>
 		<div id="sidebar-left" class="col-xs-2 col-sm-2">
 			<ul class="nav main-menu">
 				<li>
-					<a href="ajax/dashboard.html" class="active ajax-link">
+					<a href="home">
 						<i class="fa fa-dashboard"></i>
-						<span class="hidden-xs">Dashboard</span>
+						<span class="hidden-xs"> 메인화면 </span>
 					</a>
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle">
 						<i class="fa fa-bar-chart-o"></i>
-						<span class="hidden-xs">Charts</span>
+						<span class="hidden-xs">게시판2s</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="ajax/charts_xcharts.html">xCharts</a></li>
-						<li><a class="ajax-link" href="ajax/charts_flot.html">Flot Charts</a></li>
-						<li><a class="ajax-link" href="ajax/charts_google.html">Google Charts</a></li>
-						<li><a class="ajax-link" href="ajax/charts_morris.html">Morris Charts</a></li>
-						<li><a class="ajax-link" href="ajax/charts_coindesk.html">CoinDesk realtime</a></li>
+						<li><a href="../WEB_INF/test">내부 게시판1</a></li>
+						<li><a href="">내부 게시판2</a></li>
+						<li><a href="">내부 게시판13</a></li>
+						<li><a href="">내부 게시판4</a></li>
+						<li><a href="">내부 게시판5</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle">
 						<i class="fa fa-table"></i>
-						 <span class="hidden-xs">Tables</span>
+						 <span class="hidden-xs">게시판3</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="ajax/tables_simple.html">Simple Tables</a></li>
-						<li><a class="ajax-link" href="ajax/tables_datatables.html">Data Tables</a></li>
-						<li><a class="ajax-link" href="ajax/tables_beauty.html">Beauty Tables</a></li>
+						<li><a class="ajax-link" href="ajax/tables_simple.html">게시판3-1</a></li>
+						<li><a class="ajax-link" href="ajax/tables_datatables.html">게시판3-2</a></li>
+						<li><a class="ajax-link" href="ajax/tables_beauty.html">내부 게시판3-3</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle">
 						<i class="fa fa-pencil-square-o"></i>
-						 <span class="hidden-xs">Forms</span>
+						 <span class="hidden-xs">게시판4</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="ajax/forms_elements.html">Elements</a></li>
-						<li><a class="ajax-link" href="ajax/forms_layouts.html">Layouts</a></li>
-						<li><a class="ajax-link" href="ajax/forms_file_uploader.html">File Uploader</a></li>
+						<li><a class="ajax-link" href="ajax/forms_elements.html">내부 게시판11</a></li>
+						<li><a class="ajax-link" href="ajax/forms_layouts.html">내부 게시판12</a></li>
+						<li><a class="ajax-link" href="ajax/forms_file_uploader.html">내부 게시판13</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle">
 						<i class="fa fa-desktop"></i>
-						 <span class="hidden-xs">UI Elements</span>
+						 <span class="hidden-xs">게시판5</span>
 					</a>
 					<ul class="dropdown-menu">
 						<li><a class="ajax-link" href="ajax/ui_grid.html">Grid</a></li>
@@ -208,7 +208,7 @@ pageEncoding="UTF-8" %>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle">
 						<i class="fa fa-list"></i>
-						 <span class="hidden-xs">Pages</span>
+						 <span class="hidden-xs">게시판6</span>
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="ajax/page_login.html">Login</a></li>
@@ -227,7 +227,7 @@ pageEncoding="UTF-8" %>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle">
 						<i class="fa fa-map-marker"></i>
-						<span class="hidden-xs">Maps</span>
+						<span class="hidden-xs">게시판7</span>
 					</a>
 					<ul class="dropdown-menu">
 						<li><a class="ajax-link" href="ajax/maps.html">OpenStreetMap</a></li>
@@ -237,86 +237,26 @@ pageEncoding="UTF-8" %>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle">
 						<i class="fa fa-picture-o"></i>
-						 <span class="hidden-xs">Gallery</span>
+						 <span class="hidden-xs">게시판8</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="ajax/gallery_simple.html">Simple Gallery</a></li>
-						<li><a class="ajax-link" href="ajax/gallery_flickr.html">Flickr Gallery</a></li>
+						<li><a class="ajax-link" href="ajax/gallery_simple.html">게시판12</a></li>
+						<li><a class="ajax-link" href="ajax/gallery_flickr.html">게시판1</a></li>
 					</ul>
 				</li>
 				<li>
 					 <a class="ajax-link" href="ajax/typography.html">
 						 <i class="fa fa-font"></i>
-						 <span class="hidden-xs">Typography</span>
+						 <span class="hidden-xs">게시판9</span>
 					</a>
 				</li>
 				 <li>
 					<a class="ajax-link" href="ajax/calendar.html">
 						 <i class="fa fa-calendar"></i>
-						 <span class="hidden-xs">Calendar</span>
+						 <span class="hidden-xs">게시판10</span>
 					</a>
 				 </li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-picture-o"></i>
-						 <span class="hidden-xs">Multilevel menu</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="#">First level menu</a></li>
-						<li><a href="#">First level menu</a></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle">
-								<i class="fa fa-plus-square"></i>
-								<span class="hidden-xs">Second level menu group</span>
-							</a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Second level menu</a></li>
-								<li><a href="#">Second level menu</a></li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle">
-										<i class="fa fa-plus-square"></i>
-										<span class="hidden-xs">Three level menu group</span>
-									</a>
-									<ul class="dropdown-menu">
-										<li><a href="#">Three level menu</a></li>
-										<li><a href="#">Three level menu</a></li>
-										<li class="dropdown">
-											<a href="#" class="dropdown-toggle">
-												<i class="fa fa-plus-square"></i>
-												<span class="hidden-xs">Four level menu group</span>
-											</a>
-											<ul class="dropdown-menu">
-												<li><a href="#">Four level menu</a></li>
-												<li><a href="#">Four level menu</a></li>
-												<li class="dropdown">
-													<a href="#" class="dropdown-toggle">
-														<i class="fa fa-plus-square"></i>
-														<span class="hidden-xs">Five level menu group</span>
-													</a>
-													<ul class="dropdown-menu">
-														<li><a href="#">Five level menu</a></li>
-														<li><a href="#">Five level menu</a></li>
-														<li class="dropdown">
-															<a href="#" class="dropdown-toggle">
-																<i class="fa fa-plus-square"></i>
-																<span class="hidden-xs">Six level menu group</span>
-															</a>
-															<ul class="dropdown-menu">
-																<li><a href="#">Six level menu</a></li>
-																<li><a href="#">Six level menu</a></li>
-															</ul>
-														</li>
-													</ul>
-												</li>
-											</ul>
-										</li>
-										<li><a href="#">Three level menu</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
+				
 			</ul>
 		</div>
 		<!--Start Content-->
