@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+                        
+<mapper namespace="com.ydu.biz.cbt.impl.CBTMapper"> 
+	<resultMap id="cbtResult" type="cbt">
+		<id property="studentCode" column="STUDENT_CODE"/>
+		<id property="cbtCode" column="CBT_CODE"/>
+		<result property="socre" column="SCORE"/>
+		<result property="testDate" column="TEST_DATE"/>
+	</resultMap>
+	<resultMap id="listResult" type="list">
+		<id property="cbtCode" column="CBT_CODE"/>
+		<result property="classCode" column="CLASS_CODE"/>
+		<result property="professorCode" column="PROFESSOR_CODE"/>
+		<result property="cbtTitle" column="CBT_TITLE"/>
+		<result property="finalDate" column="FINAL_DATE"/>
+	</resultMap>
+	<resultMap id="subjectResult" type="subject">
+		<id property="cbtCode" column="CBT_CODE"/>
+		<result property="cbtNo" column="CBT_NO"/>
+		<result property="question" column="QUESTION"/>
+		<result property="rightAnswer" column="RIGHT_ANSWER"/>
+		<result property="ex1" column="EX1"/>
+		<result property="ex2" column="EX2"/>
+		<result property="ex3" column="EX3"/>
+		<result property="ex4" column="EX4"/>
+	</resultMap>
+	<resultMap id="class_status" type="">
+		<id></id>
+		<result></result>
+	</resultMap>
+	
+	
+	<select id="getBoard" resultType="board">
+        <![CDATA[
+        SELECT * 
+        FROM BOARD
+        WHERE SEQ = #{seq}
+        ]]>
+    </select>
+	
+	<select id="getAllCBT" resultType="" parameterType="">
+		SELECT *
+		FROM CBT_LIST
+		ORDER BY CBT_CODE
+	</select>
+	
+	<select id="getMyCBT" resultType="map" >
+		SELECT student_code as "studentCode",  
+		FROM CBT_LIST
+		WHERE 
+	</select>
+	
+</mapper>
