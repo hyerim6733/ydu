@@ -1,4 +1,4 @@
-package com.ydu.ydapp.view.board;
+package com.ydu.view.board;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ydu.ydapp.biz.board.BoardSearchVO;
-import com.ydu.ydapp.biz.board.BoardService;
-import com.ydu.ydapp.biz.board.BoardVO;
+import com.ydu.biz.board.BoardSearchVO;
+import com.ydu.biz.board.BoardService;
+import com.ydu.biz.board.BoardVO;
 
 @Controller
 public class BoardController {

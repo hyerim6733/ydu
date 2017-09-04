@@ -1,4 +1,4 @@
-package com.ydu.ydapp.biz.board;
+package com.ydu.biz.board;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.ydu.ydapp.biz.board;
+package com.ydu.biz.board;
 
 public class BoardSearchVO {
 	//private Integer[] seqList; //다건 삭제 배열 추가
