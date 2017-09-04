@@ -12,7 +12,7 @@
     </typeAliases>
  -->
      <settings>
-        <setting name="mapUnderscoreToCamelCase" value="true"/>  
+        <setting name="mapUnderscoreToCamelCase" value="true"/>      
     </settings>
     
     <!-- Sql Mapper 설정 -->
