@@ -19,6 +19,10 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	@RequestMapping(value = "/main/index", method = RequestMethod.GET)
+	public String main(Locale locale, Model model) {
+		return "/tiles/layout";
+	}
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */

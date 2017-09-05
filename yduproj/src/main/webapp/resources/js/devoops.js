@@ -2299,8 +2299,9 @@ $(document).ready(function () {
 		setTimeout(MessagesMenuWidth, 250);
 	});
 	var ajax_url = location.hash.replace(/^#/, '');
+	console.log("=============="+ajax_url);
 	if (ajax_url.length < 1) {
-		ajax_url = 'ajax/dashboard.html';
+		ajax_url = '../main/home';
 	}
 	LoadAjaxContent(ajax_url);
 	$('.main-menu').on('click', 'a', function (e) {

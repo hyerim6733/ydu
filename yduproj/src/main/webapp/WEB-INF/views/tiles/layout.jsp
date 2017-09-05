@@ -55,7 +55,7 @@ pageEncoding="UTF-8" %>
 	<div class="container-fluid expanded-panel">
 		<div class="row">
 			<div id="logo" class="col-xs-12 col-sm-2">
-				<a href="home">예담대학교</a>
+				<a href="../main/index">예담대학교</a>
 			</div>
 			<div id="top-panel" class="col-xs-12 col-sm-10">
 				<div class="row">
@@ -152,7 +152,7 @@ pageEncoding="UTF-8" %>
 		<div id="sidebar-left" class="col-xs-2 col-sm-2">
 			<ul class="nav main-menu">
 				<li>
-					<a href="home">
+					<a class="ajax-link" href="../main/home">
 						<i class="fa fa-dashboard"></i>
 						<span class="hidden-xs"> 메인화면 </span>
 					</a>
@@ -176,7 +176,7 @@ pageEncoding="UTF-8" %>
 						 <span class="hidden-xs">게시판3</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="ajax/tables_simple.html">게시판3-1</a></li>
+						<li><a class="ajax-link" href="../ajax/test3-1.jsp">게시판3-1</a></li>
 						<li><a class="ajax-link" href="ajax/tables_datatables.html">게시판3-2</a></li>
 						<li><a class="ajax-link" href="ajax/tables_beauty.html">내부 게시판3-3</a></li>
 					</ul>
@@ -261,15 +261,14 @@ pageEncoding="UTF-8" %>
 		</div>
 		<!--Start Content-->
 		<div id="content" class="col-xs-12 col-sm-10">
-<!-- 	<div class="preloader">
+	<div class="preloader">
 			<img src="../resources/img/devoops_getdata.gif" class="devoops-getdata" alt="preloader"/>
 			</div>
-			<div id="ajax-content"></div> -->
+			<div id="ajax-content"></div> 
 			
 			<!-- 위의 코드 ajax 로 메뉴클릭시 보여주도록 함 -->
 			
-			<!-- content부분 -->
-			<tiles:insertAttribute name="content" />
+	
 			
 		</div>
 		<!--End Content-->
