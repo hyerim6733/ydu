@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+	//홈화면
 	@RequestMapping(value = "/main/index", method = RequestMethod.GET)
 	public String main(Locale locale, Model model) {
 		return "/tiles/layout";
@@ -26,6 +26,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	//메인화면 클릭시
 	@RequestMapping(value = "/main/home", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);

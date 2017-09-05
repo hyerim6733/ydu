@@ -3,18 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>fleaMarket.jsp</title>
 <style>
 </style>
 <script>
 </script>
 </head>
 <body>
-
-<hr>
-<h3>게시판 3</h3><br>
-3-1 입니다.
-<hr>
+<h1>벼룩시장 만들꺼예용 홍홍홍</h1>
 
 </body>
 </html>

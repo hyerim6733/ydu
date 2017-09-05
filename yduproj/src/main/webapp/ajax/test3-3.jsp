@@ -10,11 +10,9 @@
 </script>
 </head>
 <body>
-
 <hr>
 <h3>게시판 3</h3><br>
-3-1 입니다.
+3-3 입니다.
 <hr>
-
 </body>
 </html>

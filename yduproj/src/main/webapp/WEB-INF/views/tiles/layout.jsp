@@ -177,8 +177,8 @@ pageEncoding="UTF-8" %>
 					</a>
 					<ul class="dropdown-menu">
 						<li><a class="ajax-link" href="../ajax/test3-1.jsp">게시판3-1</a></li>
-						<li><a class="ajax-link" href="ajax/tables_datatables.html">게시판3-2</a></li>
-						<li><a class="ajax-link" href="ajax/tables_beauty.html">내부 게시판3-3</a></li>
+						<li><a class="ajax-link" href="../ajax/test3-2.jsp">게시판3-2</a></li>
+						<li><a class="ajax-link" href="../ajax/test3-3.jsp">게시판3-3</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -237,23 +237,23 @@ pageEncoding="UTF-8" %>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle">
 						<i class="fa fa-picture-o"></i>
-						 <span class="hidden-xs">게시판8</span>
+						 <span class="hidden-xs">벼룩&자유</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="ajax/gallery_simple.html">게시판12</a></li>
-						<li><a class="ajax-link" href="ajax/gallery_flickr.html">게시판1</a></li>
+						<li><a class="ajax-link" href="../ajax/fleaMarket.jsp">벼룩시장</a></li>
+						<li><a class="ajax-link" href="../ajax/freeBoard.jsp">자유게시판</a></li>
 					</ul>
 				</li>
 				<li>
-					 <a class="ajax-link" href="ajax/typography.html">
+					 <a class="ajax-link" href="../ajax/faq.jsp">
 						 <i class="fa fa-font"></i>
-						 <span class="hidden-xs">게시판9</span>
+						 <span class="hidden-xs">FAQ</span>
 					</a>
 				</li>
 				 <li>
 					<a class="ajax-link" href="ajax/calendar.html">
 						 <i class="fa fa-calendar"></i>
-						 <span class="hidden-xs">게시판10</span>
+						 <span class="hidden-xs">미정 메뉴</span>
 					</a>
 				 </li>
 				

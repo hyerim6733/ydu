@@ -3,18 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>freeBoard.jsp</title>
 <style>
 </style>
 <script>
 </script>
 </head>
 <body>
-
-<hr>
-<h3>게시판 3</h3><br>
-3-1 입니다.
-<hr>
-
+<h1>자유게시판 만들껍니다(단호)</h1>
 </body>
 </html>
