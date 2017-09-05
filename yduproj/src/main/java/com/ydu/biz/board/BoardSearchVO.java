@@ -1,5 +1,10 @@
 package com.ydu.biz.board;
 
+
+
+
+//BoardSearchVO  검색(조회)
+
 public class BoardSearchVO {
 	//private Integer[] seqList; //다건 삭제 배열 추가
 	//board-mapping.xml ->getBoardList 에서 사용한거 사용

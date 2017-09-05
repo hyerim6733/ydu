@@ -261,10 +261,16 @@ pageEncoding="UTF-8" %>
 		</div>
 		<!--Start Content-->
 		<div id="content" class="col-xs-12 col-sm-10">
-			<div class="preloader">
-				<img src="../resources/img/devoops_getdata.gif" class="devoops-getdata" alt="preloader"/>
+<!-- 	<div class="preloader">
+			<img src="../resources/img/devoops_getdata.gif" class="devoops-getdata" alt="preloader"/>
 			</div>
-			<div id="ajax-content"></div>
+			<div id="ajax-content"></div> -->
+			
+			<!-- 위의 코드 ajax 로 메뉴클릭시 보여주도록 함 -->
+			
+			<!-- content부분 -->
+			<tiles:insertAttribute name="content" />
+			
 		</div>
 		<!--End Content-->
 	</div>

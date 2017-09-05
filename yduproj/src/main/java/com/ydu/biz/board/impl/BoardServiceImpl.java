@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ydu.biz.board.impl.BoardMapper;
 import com.ydu.biz.board.BoardSearchVO;
 import com.ydu.biz.board.BoardService;
 import com.ydu.biz.board.BoardVO;

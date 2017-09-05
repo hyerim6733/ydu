@@ -2,7 +2,7 @@ package com.ydu.biz.board;
 
 import java.util.List;
 
-
+//BoardService
 public interface BoardService {
 	//등록
 	void insertBoard(BoardVO vo);
