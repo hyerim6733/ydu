@@ -20,10 +20,17 @@
 		ORDER BY CBT_CODE
 	</select>
 	
+	<!-- 시험 리스트 조회 : 학생 : 내가 수강한 것만 조회 -->
 	<select id="getMyCBT" resultType="map" >
-		SELECT student_code as "studentCode" 
+		SELECT cbt_code as "cbtCode", class_code as "classCode", professor_code as "professorCode",
+				cbt_title as "cbtTitle", final_date as "finalDate"
 		FROM CBT_LIST
-		WHERE 
+		WHERE classCode in (
+			SELECT class_code
+			FROM CLASS_STATUS
+			WHERE student_code = '2017000101'
+		)
+		
 	</select>
 	
 </mapper>

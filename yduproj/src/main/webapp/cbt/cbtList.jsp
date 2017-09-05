@@ -2,13 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>예다미대학교</title>
+<title>Insert title here</title>
 <style>
 </style>
 <script>
 </script>
 </head>
 <body>
-Yedam Test Main Page
+<hr>
+cbt List page
+<hr>
 </body>
 </html>
