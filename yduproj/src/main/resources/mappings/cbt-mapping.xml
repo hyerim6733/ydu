@@ -13,6 +13,7 @@
         ]]>
     </select>
 	
+	<!-- 시험 리스트 조회 : 교수 : 모두 조회 -->
 	<select id="getAllCBT" resultType="" parameterType="">
 		SELECT *
 		FROM CBT_LIST
