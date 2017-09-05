@@ -2,8 +2,6 @@ package com.ydu.biz.board;
 
 import java.util.List;
 
-import com.ydu.ydapp.biz.board.BoardSearchVO;
-import com.ydu.ydapp.biz.board.BoardVO;
 
 public interface BoardMapper {
 	//등록
