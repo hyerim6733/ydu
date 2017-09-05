@@ -67,7 +67,7 @@
   
 	<!-- MapperConfigurer setup for MyBatis Database Layer with @Mapper("deptMapper") in DeptMapper Interface -->
  	<beans:bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<beans:property name="basePackage" value= "com.ydu.ydapp.mapper"/>
+		<beans:property name="basePackage" value= "com.ydu.mapper"/>
 	</beans:bean>
 	
 	
