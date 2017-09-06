@@ -55,11 +55,11 @@
 			</div>
 		</div>
 		<div>
-			
+			<input type="button" id="Add" value="상담신청" onclick=""/>
 		</div>
 	</div>
 	
-	<div class="col-sm-9">
+	<div class="col-sm-9" id="cal">
 		<div id="calendar"></div>
 	</div>
 </div>
@@ -80,7 +80,34 @@ $(document).ready(function() {
 	SetMinBlockHeight($('#calendar'));
 	// Create Calendar
 	DrawFullCalendar();
+	
+	
+	// 상담신청 클릭 (일정추가)
+	$("#Add").click(doSomething);
+	function doSomething(){
+		var data = {};
+		
+		var b = $(".fc-event-inner").closest("td");
+		console.log(b);
+		
+	}
+	
+	// 일정 변경 이벤트
+	$("#calendar").change(function() {
+		// 달력 일정 정보 저장
+		/* var param = {userid : $(this).val()}; */
+		var param = [{data:"temp"}]
+		console.log(param.data);
+		alert("temp가 제대로 들어갔나요 ? ");
+/* 		
+ 		$.get("/submitCal.do", param, function(data,status,xhr) {
+			/* alert(data+":"+status);
+			console.log(xhr); 
+		}); */
+	});
 });
+
+
 </script>
 </body>
 </html>

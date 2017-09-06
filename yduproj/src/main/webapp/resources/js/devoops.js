@@ -273,14 +273,20 @@ function WinMove(){
 		.droppable({
 			tolerance: 'pointer',
 			drop: function( event, ui ) {
+				
+				console.log("------------------------");
 				var draggable = ui.draggable;
 				var droppable = $(this);
+				console.log(this);
 				var dragPos = draggable.position();
 				var dropPos = droppable.position();
 				draggable.swap(droppable);
 				setTimeout(function() {
 					var dropmap = droppable.find('[id^=map-]');
+					console.log(dropmap);
+					
 					var dragmap = draggable.find('[id^=map-]');
+					console.log(dragmap);
 					if (dragmap.length > 0 || dropmap.length > 0){
 						dragmap.resize();
 						dropmap.resize();
@@ -2208,6 +2214,7 @@ function DrawCalendar(){
 				// if so, remove the element from the "Draggable Events" list
 				$(this).remove();
 			}
+			alert($('#draggable1'));
 		},
 		eventRender: function (event, element, icon) {
 			if (event.description != "") {
