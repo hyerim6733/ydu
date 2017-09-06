@@ -169,7 +169,7 @@ pageEncoding="UTF-8" %>
 						 <span class="hidden-xs">게시판3</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="../ajax/test3-1.jsp">게시판3-1</a></li>
+						<li><a class="ajax-link" href="../prevNotice.do">게시판3-1</a></li>
 						<li><a class="ajax-link" href="../ajax/test3-2.jsp">게시판3-2</a></li>
 						<li><a class="ajax-link" href="../ajax/test3-3.jsp">게시판3-3</a></li>
 					</ul>

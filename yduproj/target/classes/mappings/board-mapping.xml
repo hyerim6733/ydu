@@ -11,16 +11,22 @@
 </resultMap>
 
 <!-- 공지사항 미리보기 5개 -->
+
 	<select id="prevNotice" resultType="board" >
         <![CDATA[
       
         SELECT * 
         FROM BOARD
-          WHERE BOARD_ID = #{boardId}
-    
+    	WHERE BOARD_CODE = #{boardCode}
         ]]>
 	</select>
+<!-- 공지사항 전체보기 -->
 
+
+
+
+
+          <!-- WHERE BOARD_ID = #{boardId} -->
  <!--  SELECT B.* FROM( SELECT ROWNUM RN, A.* FROM (
 	<select id="getBoardList" resultType="board"
 		parameterType="com.ydu.biz.board.BoardSearchVO">

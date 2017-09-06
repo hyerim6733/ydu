@@ -6,6 +6,8 @@ package com.ydu.biz.board;
 //BoardSearchVO  검색(조회)
 
 public class BoardSearchVO {
+	
+	private String boardCode;//게시판 구분  
 	//private Integer[] seqList; //다건 삭제 배열 추가
 	//board-mapping.xml ->getBoardList 에서 사용한거 사용
 	private String searchCondition;
@@ -17,6 +19,14 @@ public class BoardSearchVO {
 	private Integer first;
 	private Integer last;
 	
+	
+	
+	public String getBoardCode() {
+		return boardCode;
+	}
+	public void setBoardCode(String boardCode) {
+		this.boardCode = boardCode;
+	}
 	public String getSearchCondition() {
 		return searchCondition;
 	}
