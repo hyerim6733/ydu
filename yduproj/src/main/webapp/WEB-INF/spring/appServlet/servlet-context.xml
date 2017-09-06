@@ -47,7 +47,7 @@
 	    
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<beans:property name="driverClassName" value="${jdbc.driver}" />
-		<beans:property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<beans:property name="url" value="${jdbc.url}" />
 		<beans:property name="username" value="${jdbc.username}" />
 		<beans:property name="password" value="${jdbc.password}" />
 	</beans:bean>
@@ -68,14 +68,18 @@
 		<aop:advisor pointcut-ref="txPointCut" advice-ref="txAdvice"/>
 	</aop:config> -->
 	
-	<!-- 필요하면쓰고 없으면 지우고 --> 
-	<!-- <beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<!-- 필요한거 -->
+	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="configLocation" value="classpath:sql-map-config.xml" />
 		<beans:property name="mapperLocations" value="classpath:/mappings/*.xml" />
-	</beans:bean> -->
+	</beans:bean>
   
 	<!-- MapperConfigurer setup for MyBatis Database Layer with @Mapper("deptMapper") in DeptMapper Interface -->
 
+	<beans:bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<beans:property name="basePackage" value="com.ydu.biz.*.impl" />
+	</beans:bean>
+	
 
 </beans:beans>
