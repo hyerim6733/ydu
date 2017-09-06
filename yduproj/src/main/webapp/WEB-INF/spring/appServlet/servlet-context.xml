@@ -40,6 +40,7 @@
 	
 	<context:component-scan base-package="com.ydu.ydapp" />
 	<context:component-scan base-package="package com.ydu.view.main" />
+	<context:component-scan base-package="package com.ydu.view.main.*" />
 	
 	    
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
