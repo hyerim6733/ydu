@@ -22,6 +22,19 @@
 	</select>
 
  <!--  SELECT B.* FROM( SELECT ROWNUM RN, A.* FROM (
+	<select id="getBoardList" resultType="board"
+		parameterType="com.ydu.biz.board.BoardSearchVO">
+		SELECT *
+		FROM BOARD
+		WHERE 1 = 1
+		<if test="searchCondition == 'TITLE'">
+			AND TITLE LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'CONTENT'">
+			AND CONTENT LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		ORDER BY BOARD_ID DESC
+	</select>
 
    ) A) B WHERE RN BETWEEN ? AND ?   
  -->

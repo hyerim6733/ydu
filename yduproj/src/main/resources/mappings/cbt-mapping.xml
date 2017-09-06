@@ -5,16 +5,8 @@
                         
 <mapper namespace="com.ydu.biz.cbt.impl.CBTMapper"> 
 
-	<select id="getBoard" resultType="cbtList">
-        <![CDATA[
-        SELECT * 
-        FROM BOARD
-        WHERE SEQ = #{seq}
-        ]]>
-    </select>
-	
 	<!-- 시험 리스트 조회 : 교수 : 모두 조회 -->
-	<select id="getAllCBT" resultType="" parameterType="">
+	<select id="getAllCBT" resultType="cbtList" parameterType="cbtList">
 		SELECT *
 		FROM CBT_LIST
 		ORDER BY CBT_CODE
