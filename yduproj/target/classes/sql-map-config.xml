@@ -21,15 +21,20 @@
         <typeAlias alias="code" type="com.ydu.biz.main.CodeVO"/>
         <typeAlias alias="interview" type="com.ydu.biz.main.InterviewVO"/>
         <typeAlias alias="login" type="com.ydu.biz.main.LoginVO"/>
-        <typeAlias alias="newClass" type="com.ydu.biz.classes.NewClassVO"/>
+        <!-- <typeAlias alias="newClass" type="com.ydu.biz.classes.NewClassVO"/> -->
         <typeAlias alias="professor" type="com.ydu.biz.main.ProfessorVO"/>
         <typeAlias alias="student" type="com.ydu.biz.main.StudentVO"/>
         
     </typeAliases>
 
     <!-- Sql Mapper 설정 -->
-<!--     <mappers>
+     <mappers>
         <mapper resource="mappings/board-mapping.xml"/>
+<<<<<<< HEAD
+    </mappers>    
+    
+=======
     </mappers>    -->
      
+>>>>>>> branch 'master' of https://github.com/hyerim6733/ydu
 </configuration>

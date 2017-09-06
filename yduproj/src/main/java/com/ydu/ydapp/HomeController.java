@@ -21,6 +21,7 @@ public class HomeController {
 	//홈화면
 	@RequestMapping(value = "/main/index", method = RequestMethod.GET)
 	public String main(Locale locale, Model model) {
+		System.out.println("홈화면 접속 하셨습니다.");
 		return "/tiles/layout";
 	}
 	/**
@@ -31,6 +32,7 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
+		System.out.println("메인화면 클릭 하셨습니다.");
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		

@@ -6,21 +6,9 @@ import com.ydu.biz.board.BoardSearchVO;
 import com.ydu.biz.board.BoardVO;
 
 public interface BoardMapper {
-	// 등록
-	void insertBoard(BoardVO vo);
-
-	// 수정
-	void updateBoard(BoardVO vo);
-
-	// 삭제
-	void deleteBoard(BoardVO vo);
-
-	// 상세조회
-	BoardVO getBoard(BoardVO vo);
-
-	// 목록조회
-	List<BoardVO> getBoardList(BoardSearchVO vo);
 	
-	//다건삭제
-	//void deleteBoardList(BoardSearchVO vo);
-}
+	//메인에서 보여줄 미리보기 5개 공지사항 조회
+	List<BoardVO> prevNotice(BoardSearchVO vo);
+	
+	
+	}

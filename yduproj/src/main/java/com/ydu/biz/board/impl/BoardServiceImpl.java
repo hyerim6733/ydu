@@ -17,37 +17,14 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	BoardMapper boardDAO;
 	
+	
+	//미리보기 5개 공지사항
 	@Override
-	public void insertBoard(BoardVO vo) {
-		boardDAO.insertBoard(vo);
-		System.out.println("등록 : " + vo.getBoardId());//확인용
-	}
-
-	@Override
-	public void updateBoard(BoardVO vo) {
-		boardDAO.updateBoard(vo);
-		System.out.println("업데이트");//확인용
-	}
-
-	@Override
-	public void deleteBoard(BoardVO vo) {
-		boardDAO.deleteBoard(vo);
-		System.out.println("삭제");//확인용
+	public List<BoardVO> prevNotice(BoardSearchVO vo) {
+		System.out.println("<<<<<<<<미리보기 5개  공지사항  조회성공");//확인용
+		return boardDAO.prevNotice(vo);
 		
 	}
-
-	@Override
-	public BoardVO getBoard(BoardVO vo) {
-		System.out.println("조회성공");//확인용
-		return boardDAO.getBoard(vo);
-		
-	}
-
-	@Override
-	public List<BoardVO> getBoardList(BoardSearchVO vo) {
-		System.out.println("리스트 조회성공");//확인용
-		return boardDAO.getBoardList(vo);
-		
-	}
+	
 
 }

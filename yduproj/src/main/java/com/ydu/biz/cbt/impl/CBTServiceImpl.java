@@ -3,6 +3,7 @@ package com.ydu.biz.cbt.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.ydu.biz.cbt.CBTListVO;
@@ -11,10 +12,14 @@ import com.ydu.biz.cbt.CBTSubjectVO;
 import com.ydu.biz.cbt.CBTVO;
 
 @Service("cbtService")
-public class CBTServiceImpl implements CBTService, CBTMapper{
+public class CBTServiceImpl implements CBTService {   
 
 	@Autowired
 	CBTMapper cbtDAO;
+	
+	public CBTServiceImpl() {
+		System.out.println("cbt service impl 연결" );
+	}
 	
 	/* 
 	 * table 
@@ -24,8 +29,8 @@ public class CBTServiceImpl implements CBTService, CBTMapper{
 	 */
 	@Override
 	public List<CBTListVO> getAllCBT() {
-		
-		return null;
+		System.out.println("impl get all cbt");
+		return cbtDAO.getAllCBT();
 	}
 
 	/* (non-Javadoc)

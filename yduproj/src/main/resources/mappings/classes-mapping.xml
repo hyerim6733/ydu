@@ -5,6 +5,7 @@
 <mapper namespace="com.ydu.biz.classes.impl.ClassMapper">
 
 
+
 	<insert id="insertClass" parameterType="classStatus">
 		<selectKey keyProperty="classNo" resultType="int" order="BEFORE">
 			SELECT NVL(MAX(CLASS_NO),0) + 1 FROM CLASSES
@@ -21,5 +22,6 @@
 		WHERE CLASS_NO = #{classNo}
 	]]>
 	</delete>
+
 
 </mapper>
