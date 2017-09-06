@@ -17,33 +17,7 @@ public class BoardController {
 	@Autowired    
 	BoardService boardService;
 	
-	//등록 formPage
-	@RequestMapping("/boradInsertForm.do")
-	public String boardInsertForm(){
-		return "/boradInsertForm";
-	}
 	
-	//insert
-	@RequestMapping("/boardInsert.do")
-	public String boardInsert(BoardVO vo){
-		boardService.insertBoard(vo);
-		return "redirect:/board/boardInsert";
-	}
-	
-	//boardList
-	@RequestMapping(value="getBoardList.do")
-	public String getBoardList(Model model, BoardSearchVO vo ){
-		List<BoardVO> list = boardService.getBoardList(vo);
-		model.addAttribute("boardList",list);
-		return "/board/getBoardList";
-	}
-	
-	//detail
-	@RequestMapping("/getBoard.do")
-	public String getBoard(Model model, BoardVO vo){
-		model.addAttribute("board", boardService.getBoard(vo));
-		return "/board/getBoard";
-	}
 	
 	
 }

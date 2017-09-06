@@ -1,19 +1,20 @@
 package com.ydu.biz.board;
 
+import java.util.ArrayList;
 import java.util.List;
+
+
 
 //BoardService
 public interface BoardService {
-	//등록
-	void insertBoard(BoardVO vo);
-	//수정
-	void updateBoard(BoardVO vo);
-	//삭제
-	void deleteBoard(BoardVO vo);
-	//상세조회
-	BoardVO getBoard(BoardVO vo);
-	//목록조회
-	List<BoardVO> getBoardList(BoardSearchVO vo);
+	
+	//메인에서 보여줄 미리보기 5개 공지사항 조회
+	List<BoardVO> prevNotice(BoardSearchVO vo);
+	
+	//학사안내 조회 :게시판
+	
+	//학사일정 조회: 달력
+	
 	//다건 삭제
 	//void deleteBoardList(BoardSearchVO vo);
 }

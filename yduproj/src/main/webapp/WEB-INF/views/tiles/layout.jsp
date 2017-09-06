@@ -244,9 +244,9 @@ pageEncoding="UTF-8" %>
 					</a>
 				</li>
 				 <li>
-					<a class="ajax-link" href="ajax/calendar.html">
+					<a class="ajax-link" href="../ajax/academicCalendar.jsp">
 						 <i class="fa fa-calendar"></i>
-						 <span class="hidden-xs">미정 메뉴</span>
+						 <span class="hidden-xs">학사일정</span>
 					</a>
 				 </li>
 				
