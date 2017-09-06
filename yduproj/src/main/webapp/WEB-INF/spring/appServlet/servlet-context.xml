@@ -17,6 +17,7 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
+	
 
  	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
 		<beans:property name="prefix" value="/WEB-INF/views/" /> 
@@ -38,6 +39,7 @@
 	
 	
 	<context:component-scan base-package="com.ydu.ydapp" />
+	<context:component-scan base-package="package com.ydu.view.main" />
 	
 	    
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
