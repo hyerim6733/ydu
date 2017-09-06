@@ -39,7 +39,7 @@
         ]]>
 	</select>
 
-	<select id="getBoardList" resultMap="boardResult"
+	<select id="getBoardList" resultType="board"
 		parameterType="com.ydu.biz.board.BoardSearchVO">
 		SELECT *
 		FROM BOARD

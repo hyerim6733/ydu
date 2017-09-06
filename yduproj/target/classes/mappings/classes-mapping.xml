@@ -5,9 +5,11 @@
 <mapper namespace="com.ydu.ydapp.biz.classes.impl.ClassesMapper">
 
 
-<insert id="insertClasses" parameterType="Classes">
+<insert id="insertClasses">
 <![CDATA[
 	INSERT INTO CLASSS_TATUS( CLASS_NO, STUDENT_CODE, OPEN_CLASS, REPEAT, CLASS_GRADE) 
 	VALUES(
 ]]>
 </insert>
+
+</mapper>

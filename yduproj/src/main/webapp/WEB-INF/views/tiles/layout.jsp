@@ -158,7 +158,7 @@ pageEncoding="UTF-8" %>
 					</a>
 				</li>
 				<li>
-					<a href="../cbt/cbtMain.jsp">
+					<a href="../cbtMain.do">
 						<i class="fa fa-bar-chart-o"></i>
 						<span class="hidden-xs"> CBT </span>
 					</a>
