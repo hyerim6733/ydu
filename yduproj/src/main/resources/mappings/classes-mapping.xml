@@ -16,7 +16,7 @@
 	]]>
 	</insert>
 	
-	<delete id="deleteClass" parameterType="classes">
+	<delete id="deleteClass" parameterType="classStatus">
 	<![CDATA[
 		DELETE CLASSES
 		WHERE CLASS_NO = #{classNo}
