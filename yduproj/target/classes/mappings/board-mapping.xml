@@ -14,7 +14,7 @@
 
 	<select id="prevNotice" resultType="board" >
         <![CDATA[
-      
+           
         SELECT * 
         FROM BOARD
     	WHERE BOARD_CODE = #{boardCode}
