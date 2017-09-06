@@ -158,7 +158,7 @@ pageEncoding="UTF-8" %>
 					</a>
 				</li>
 				<li>
-					<a href="../cbt/cbtMain.jsp">
+					<a href="../cbtMain.do">
 						<i class="fa fa-bar-chart-o"></i>
 						<span class="hidden-xs"> CBT </span>
 					</a>
@@ -185,18 +185,11 @@ pageEncoding="UTF-8" %>
 						<li><a class="ajax-link" href="ajax/forms_file_uploader.html">내부 게시판13</a></li>
 					</ul>
 				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-desktop"></i>
-						 <span class="hidden-xs">게시판5</span>
+				<li>
+					<a href="../classMain.do">
+						<i class="fa fa-bar-chart-o"></i>
+						<span class="hidden-xs"> 수강신청 </span>
 					</a>
-					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="ajax/ui_grid.html">Grid</a></li>
-						<li><a class="ajax-link" href="ajax/ui_buttons.html">Buttons</a></li>
-						<li><a class="ajax-link" href="ajax/ui_progressbars.html">Progress Bars</a></li>
-						<li><a class="ajax-link" href="ajax/ui_jquery-ui.html">Jquery UI</a></li>
-						<li><a class="ajax-link" href="ajax/ui_icons.html">Icons</a></li>
-					</ul>
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle">
@@ -244,9 +237,9 @@ pageEncoding="UTF-8" %>
 					</a>
 				</li>
 				 <li>
-					<a class="ajax-link" href="ajax/calendar.html">
+					<a class="ajax-link" href="../ajax/academicCalendar.jsp">
 						 <i class="fa fa-calendar"></i>
-						 <span class="hidden-xs">미정 메뉴</span>
+						 <span class="hidden-xs">학사일정</span>
 					</a>
 				 </li>
 				

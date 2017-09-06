@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ydu.biz.classes.impl.ClassMapper">
+
+
+
+	<insert id="insertClass" parameterType="classStatus">
+		<selectKey keyProperty="classNo" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(CLASS_NO),0) + 1 FROM CLASSES
+		</selectKey>
+	<![CDATA[
+		INSERT INTO CLASSS_STATUS( CLASS_NO, STUDENT_CODE, OPEN_CLASS, REPEAT, CLASS_GRADE) 
+		VALUES(#{classNo}, #{studentCode}, #{openClass}, #{repeat}, #{classGrade})
+	]]>
+	</insert>
+	
+	<delete id="deleteClass" parameterType="classStatus">
+	<![CDATA[
+		DELETE CLASSES
+		WHERE CLASS_NO = #{classNo}
+	]]>
+	</delete>
+
+
+</mapper>

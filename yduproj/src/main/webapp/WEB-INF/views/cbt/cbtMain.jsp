@@ -11,16 +11,16 @@ pageEncoding="UTF-8" %>
 		<meta name="description" content="description">
 		<meta name="author" content="DevOOPS">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="../resources/plugins/bootstrap/bootstrap.css" rel="stylesheet">
-		<link href="../resources/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+		<link href="resources/plugins/bootstrap/bootstrap.css" rel="stylesheet">
+		<link href="resources/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
-		<link href="../resources/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
-		<link href="../resources/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
-		<link href="../resources/plugins/xcharts/xcharts.min.css" rel="stylesheet">
-		<link href="../resources/plugins/select2/select2.css" rel="stylesheet">
-		<link href="../resources/tiles/css/style.css"  rel="stylesheet">
-		<link href="../resources/css/style.css" rel="stylesheet">
+		<link href="resources/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
+		<link href="resources/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
+		<link href="resources/plugins/xcharts/xcharts.min.css" rel="stylesheet">
+		<link href="resources/plugins/select2/select2.css" rel="stylesheet">
+		<link href="resources/css/style.css" rel="stylesheet">
+		<!-- ydapp/resources/.... -->
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 				<script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
@@ -55,7 +55,7 @@ pageEncoding="UTF-8" %>
 	<div class="container-fluid expanded-panel">
 		<div class="row">
 			<div id="logo" class="col-xs-12 col-sm-2">
-				<a href="../main/index">예담대학교 - CBT</a>
+				<a href="<%=request.getContextPath()%>/main/index">예담대학교 - CBT</a>
 			</div>
 			<div id="top-panel" class="col-xs-12 col-sm-10">
 				<div class="row">
@@ -91,7 +91,7 @@ pageEncoding="UTF-8" %>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle account" data-toggle="dropdown">
 									<div class="avatar">
-										<img src="img/avatar.jpg" class="img-rounded" alt="avatar" />
+										<img src="#" class="img-rounded" alt="avatar" />
 									</div>
 									<i class="fa fa-angle-down pull-right"></i>
 									<div class="user-mini pull-right">
@@ -152,14 +152,14 @@ pageEncoding="UTF-8" %>
 		<div id="sidebar-left" class="col-xs-2 col-sm-2">
 			<ul class="nav main-menu">
 				<li>
-					<a class="ajax-link" href="../main/home">
+					<a class="ajax-link" href="/ydapp/main/home">
 						<i class="fa fa-dashboard"></i>
 						<span class="hidden-xs"> CBT 1 메뉴 </span>
 					</a>
 				</li>
 				<li>
 					
-					<a class="ajax-link" href="cbtList.jsp">
+					<a class="ajax-link" href="getAllCBT.do">
 						<i class="fa fa-bar-chart-o"></i>
 						<span class="hidden-xs"> CBT 2 메뉴</span>
 					</a>
@@ -169,10 +169,10 @@ pageEncoding="UTF-8" %>
 		</div>
 		<!--Start Content-->
 		<div id="content" class="col-xs-12 col-sm-10">
-	<div class="preloader">
-			<img src="../resources/img/devoops_getdata.gif" class="devoops-getdata" alt="preloader"/>
+			<div class="preloader">
+				ddddddddddddddddddddddddddd
 			</div>
-			<div id="ajax-content"></div> 
+		<div id="ajax-content"></div> 
 			
 			<!-- 위의 코드 ajax 로 메뉴클릭시 보여주도록 함 -->
 			
@@ -185,14 +185,14 @@ pageEncoding="UTF-8" %>
 <!--End Container-->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!--<script src="http://code.jquery.com/jquery.js"></script>-->
-<script src="../resources/plugins/jquery/jquery-2.1.0.min.js"></script>
-<script src="../resources/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="resources/plugins/jquery/jquery-2.1.0.min.js"></script>
+<script src="resources/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../resources/plugins/bootstrap/bootstrap.min.js"></script>
-<script src="../resources/plugins/justified-gallery/jquery.justifiedgallery.min.js"></script>
-<script src="../resources/plugins/tinymce/tinymce.min.js"></script>
-<script src="../resources/plugins/tinymce/jquery.tinymce.min.js"></script>
+<script src="resources/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="resources/plugins/justified-gallery/jquery.justifiedgallery.min.js"></script>
+<script src="resources/plugins/tinymce/tinymce.min.js"></script>
+<script src="resources/plugins/tinymce/jquery.tinymce.min.js"></script>
 <!-- All functions for this theme + document.ready processing -->
-<script src="../resources/js/devoops.js"></script>
+<script src="resources/js/devoops.js"></script>
 </body>
 </html>
