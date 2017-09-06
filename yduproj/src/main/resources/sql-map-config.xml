@@ -27,14 +27,4 @@
         
     </typeAliases>
 
-    <!-- Sql Mapper 설정 -->
-     <mappers>
-        <mapper resource="mappings/board-mapping.xml"/>
-<<<<<<< HEAD
-    </mappers>    
-    
-=======
-    </mappers>    -->
-     
->>>>>>> branch 'master' of https://github.com/hyerim6733/ydu
 </configuration>
