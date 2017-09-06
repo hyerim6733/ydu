@@ -1,6 +1,6 @@
 package com.ydu.biz.classes;
 
-public class ClassesSearchVO {
+public class ClassSearchVO {
 	
 	private String searchCondition;
 	private String searchKeyword;
