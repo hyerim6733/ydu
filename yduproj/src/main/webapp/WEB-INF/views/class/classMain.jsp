@@ -11,16 +11,16 @@ pageEncoding="UTF-8" %>
 		<meta name="description" content="description">
 		<meta name="author" content="DevOOPS">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="../resources/plugins/bootstrap/bootstrap.css" rel="stylesheet">
-		<link href="../resources/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+		<link href="resources/plugins/bootstrap/bootstrap.css" rel="stylesheet">
+		<link href="resources/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
-		<link href="../resources/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
-		<link href="../resources/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
-		<link href="../resources/plugins/xcharts/xcharts.min.css" rel="stylesheet">
-		<link href="../resources/plugins/select2/select2.css" rel="stylesheet">
-		<link href="../resources/tiles/css/style.css"  rel="stylesheet">
-		<link href="../resources/css/style.css" rel="stylesheet">
+		<link href="resources/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
+		<link href="resources/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
+		<link href="resources/plugins/xcharts/xcharts.min.css" rel="stylesheet">
+		<link href="resources/plugins/select2/select2.css" rel="stylesheet">
+		<link href="resources/tiles/css/style.css"  rel="stylesheet">
+		<link href="resources/css/style.css" rel="stylesheet">
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 				<script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
@@ -55,7 +55,7 @@ pageEncoding="UTF-8" %>
 	<div class="container-fluid expanded-panel">
 		<div class="row">
 			<div id="logo" class="col-xs-12 col-sm-2">
-				<a href="../main/index">예담대학교 - 수강신청</a>
+				<a href="<%=request.getContextPath()%>/main/index">예담대학교 - 수강신청</a>
 			</div>
 			<div id="top-panel" class="col-xs-12 col-sm-10">
 				<div class="row">
@@ -153,7 +153,7 @@ pageEncoding="UTF-8" %>
 			<ul class="nav main-menu">
 				
 				<li>
-					<a class="ajax-link" href="../main/home">
+					<a class="ajax-link" href="<%=request.getContextPath()%>/main/home">
 						<i class="fa fa-dashboard"></i>
 						<span class="hidden-xs"> 메인 </span>
 					</a>
@@ -200,14 +200,14 @@ pageEncoding="UTF-8" %>
 <!--End Container-->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!--<script src="http://code.jquery.com/jquery.js"></script>-->
-<script src="../resources/plugins/jquery/jquery-2.1.0.min.js"></script>
-<script src="../resources/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="resources/plugins/jquery/jquery-2.1.0.min.js"></script>
+<script src="resources/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../resources/plugins/bootstrap/bootstrap.min.js"></script>
-<script src="../resources/plugins/justified-gallery/jquery.justifiedgallery.min.js"></script>
-<script src="../resources/plugins/tinymce/tinymce.min.js"></script>
-<script src="../resources/plugins/tinymce/jquery.tinymce.min.js"></script>
+<script src="resources/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="resources/plugins/justified-gallery/jquery.justifiedgallery.min.js"></script>
+<script src="resources/plugins/tinymce/tinymce.min.js"></script>
+<script src="resources/plugins/tinymce/jquery.tinymce.min.js"></script>
 <!-- All functions for this theme + document.ready processing -->
-<script src="../resources/js/devoops.js"></script>
+<script src="resources/js/devoops.js"></script>
 </body>
 </html>

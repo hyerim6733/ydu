@@ -5,12 +5,12 @@
 <mapper namespace="com.ydu.biz.classes.impl.ClassMapper">
 
 
-	<insert id="insertClass" parameterType="classes">
+	<insert id="insertClass" parameterType="classStatus">
 		<selectKey keyProperty="classNo" resultType="int" order="BEFORE">
 			SELECT NVL(MAX(CLASS_NO),0) + 1 FROM CLASSES
 		</selectKey>
 	<![CDATA[
-		INSERT INTO CLASSS_TATUS( CLASS_NO, STUDENT_CODE, OPEN_CLASS, REPEAT, CLASS_GRADE) 
+		INSERT INTO CLASSS_STATUS( CLASS_NO, STUDENT_CODE, OPEN_CLASS, REPEAT, CLASS_GRADE) 
 		VALUES(#{classNo}, #{studentCode}, #{openClass}, #{repeat}, #{classGrade})
 	]]>
 	</insert>

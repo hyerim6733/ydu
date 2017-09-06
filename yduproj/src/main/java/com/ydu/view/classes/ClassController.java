@@ -1,14 +1,16 @@
 package com.ydu.view.classes;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ydu.biz.classes.ClassService;
 
+@Controller
 public class ClassController {
 
-	@Autowired ClassService classService;
+	//@Autowired ClassService classService;
 	
 		//메인
 		@RequestMapping(value="/classMain.do")
