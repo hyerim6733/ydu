@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"   
+                               "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- properties 파일 설정  -->
+    
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>  
+    </settings>
+  
+      <!-- Alias 설정 -->
+    <typeAliases>
+        <typeAlias alias="board" type="com.ydu.biz.board.BoardVO"/>
+        <typeAlias alias="cbtCheck" type="com.ydu.biz.cbt.CBTVO"/>
+        <typeAlias alias="cbtList" type="com.ydu.biz.cbt.CBTListVO"/>
+        <typeAlias alias="cbtSubject" type="com.ydu.biz.cbt.CBTSubjectVO"/>
+        <typeAlias alias="classList" type="com.ydu.biz.classes.ClassListVO"/>
+        <typeAlias alias="classPlan" type="com.ydu.biz.classes.ClassPlanVO"/>
+        <typeAlias alias="classStatus" type="com.ydu.biz.classes.ClassStatusVO"/>
+        <typeAlias alias="code" type="com.ydu.biz.main.CodeVO"/>
+        <typeAlias alias="interview" type="com.ydu.biz.main.InterviewVO"/>
+        <typeAlias alias="login" type="com.ydu.biz.main.LoginVO"/>
+        <typeAlias alias="newClass" type="com.ydu.biz.classes.NewClassVO"/>
+        <typeAlias alias="professor" type="com.ydu.biz.main.ProfessorVO"/>
+        <typeAlias alias="student" type="com.ydu.biz.main.StudentVO"/>
+        
+    </typeAliases>
+    
+  
+  
+    <!-- Sql Mapper 설정 -->
+<!--     <mappers>
+        <mapper resource="mappings/board-mapping.xml"/>
+    </mappers>    -->
+    
+</configuration>
