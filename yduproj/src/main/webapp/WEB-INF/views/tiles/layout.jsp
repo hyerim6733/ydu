@@ -163,17 +163,8 @@ pageEncoding="UTF-8" %>
 						<span class="hidden-xs"> CBT </span>
 					</a>
 				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-table"></i>
-						 <span class="hidden-xs">게시판3</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="../prevNotice.do">게시판3-1</a></li>
-						<li><a class="ajax-link" href="../ajax/test3-2.jsp">게시판3-2</a></li>
-						<li><a class="ajax-link" href="../ajax/test3-3.jsp">게시판3-3</a></li>
-					</ul>
-				</li>
+				
+				
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle">
 						<i class="fa fa-pencil-square-o"></i>
@@ -220,26 +211,54 @@ pageEncoding="UTF-8" %>
 						<li><a class="ajax-link" href="ajax/map_fullscreen.html">Fullscreen map</a></li>
 					</ul>
 				</li>
+<!-- 공지&학사안내 -->				
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-table"></i>
+						 <span class="hidden-xs">공지&학사안내</span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a class="ajax-link" href="../notice.do">공지사항</a></li>
+						<li><a class="ajax-link" href="../literature.do">학사안내</a></li>
+						<li><a class="ajax-link" href="../ajax/test3-3.jsp">미정</a></li>
+					</ul>
+				</li>
+
+<!-- 대학/대학원/부속교육기관 -->				
+				<li>
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-bar-chart-o"></i>
+						<span class="hidden-xs">대학/대학원/부속교육기관</span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a class="ajax-link" href="../academics1.do">대학</a></li>
+						<li><a class="ajax-link" href="../academics2.do">대학원</a></li>
+						<li><a class="ajax-link" href="../academics3.do">부속교육기관</a></li>
+					</ul>
+				</li>
+				
+<!-- 벼룩&자유 -->
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle">
 						<i class="fa fa-picture-o"></i>
 						 <span class="hidden-xs">벼룩&자유</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="../ajax/fleaMarket.jsp">벼룩시장</a></li>
-						<li><a class="ajax-link" href="../ajax/freeBoard.jsp">자유게시판</a></li>
+						<li><a class="ajax-link" href="../fleaMarket.do">벼룩시장</a></li>
+						<li><a class="ajax-link" href="../freeBoard.do">자유게시판</a></li>
 					</ul>
 				</li>
+<!-- FAQ -->				
 				<li>
-					 <a class="ajax-link" href="../ajax/faq.jsp">
+					 <a class="ajax-link" href="../faq.do">
 						 <i class="fa fa-font"></i>
 						 <span class="hidden-xs">FAQ</span>
 					</a>
 				</li>
 				 <li>
-					<a class="ajax-link" href="../ajax/academicCalendar.jsp">
+					<a class="ajax-link" href="../academicCalendar.do">
 						 <i class="fa fa-calendar"></i>
-						 <span class="hidden-xs">학사일정</span>
+						 <span class="hidden-xs">학교일정</span>
 					</a>
 				 </li>
 				
