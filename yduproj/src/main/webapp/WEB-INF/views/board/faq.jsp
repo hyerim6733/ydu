@@ -10,6 +10,17 @@
 </script>
 </head>
 <body>
+<!-- 검색기능 추가 -->
+<form name="frm" action="<%=request.getContextPath()%>/faq.do" method="post">	
+	
+	<table>
+		<tr>
+			<td>
+			<input type="text" name="searchKeyword" /> 
+			<input type="submit" value="검색" />
+			</td>
+		</tr>
+	</table>
 
 <!--  카테고리 별 보기  -->
 <div class="">
@@ -28,9 +39,9 @@
 		<li id=""><a href="">졸업</a></li>
 		<li id=""><a href="">휴복학</a></li>
 		<li id=""><a href="">기타</a></li>
-		</ul>
-	</div>	
-</div>
+	</ul>
+</div>	
+
 
 </body>
 </html>

@@ -5,8 +5,8 @@
 <mapper namespace="com.ydu.biz.board.impl.BoardMapper">
 
 <!-- 공지사항 미리보기 5개 -->
-
-	<select id="prevNotice" resultType="board" >
+<!-- 
+	<select id="prevNotice" resultType="board">
         <![CDATA[
            
         SELECT * 
@@ -14,29 +14,34 @@
     	WHERE BOARD_CODE = #{boardCode}
         ]]>
 	</select>
+	 -->
+	
 <!-- 공지사항 전체보기 -->
-
-
-
-
-
-          <!-- WHERE BOARD_ID = #{boardId} -->
- <!--  SELECT B.* FROM( SELECT ROWNUM RN, A.* FROM (
-	<select id="getBoardList" resultType="board"
-		parameterType="com.ydu.biz.board.BoardSearchVO">
-		SELECT *
-		FROM BOARD
-		WHERE 1 = 1
-		<if test="searchCondition == 'TITLE'">
-			AND TITLE LIKE '%'||#{searchKeyword}||'%'
-		</if>
-		<if test="searchCondition == 'CONTENT'">
-			AND CONTENT LIKE '%'||#{searchKeyword}||'%'
-		</if>
-		ORDER BY BOARD_ID DESC
+	<select id="notice" resultType="board">
+        <![CDATA[
+        SELECT * 
+        FROM BOARD
+    	WHERE BOARD_CODE = #{boardCode}
+        ]]>
 	</select>
 
-   ) A) B WHERE RN BETWEEN ? AND ?   
- -->
+<!-- 학사안내 전체보기 -->
+	<select id="literature" resultType="board">
+        <![CDATA[
+        SELECT * 
+        FROM BOARD
+    	WHERE BOARD_CODE = #{boardCode}
+        ]]>
+	</select>
+
+
+
+	<!-- WHERE BOARD_ID = #{boardId} -->
+ <!-- SELECT B.* FROM( SELECT ROWNUM RN, A.* FROM ( <select id="getBoardList" 
+		resultType="board" parameterType="com.ydu.biz.board.BoardSearchVO"> SELECT 
+		* FROM BOARD WHERE 1 = 1 <if test="searchCondition == 'TITLE'"> AND TITLE 
+		LIKE '%'||#{searchKeyword}||'%' </if> <if test="searchCondition == 'CONTENT'"> 
+		AND CONTENT LIKE '%'||#{searchKeyword}||'%' </if> ORDER BY BOARD_ID DESC 
+		</select> ) A) B WHERE RN BETWEEN ? AND ? -->
 
 </mapper>                    
