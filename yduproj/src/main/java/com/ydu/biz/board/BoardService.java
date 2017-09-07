@@ -35,13 +35,16 @@ public interface BoardService {
 	
 	
 	//벼룩시장
-	BoardVO fleaMarket(BoardVO vo);
+	List<BoardVO> fleaMarket(BoardSearchVO vo);
 	//자유게시판
 	BoardVO freeBoard(BoardVO vo);
 	
 	
 	//FAQ
 	BoardVO faq(BoardVO vo);
+	
+	//academicCalendar
+	BoardVO academicCalendar(BoardVO vo);
 	
 	
 	//다건 삭제

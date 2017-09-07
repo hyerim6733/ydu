@@ -33,7 +33,14 @@
     	WHERE BOARD_CODE = #{boardCode}
         ]]>
 	</select>
-
+<!-- 벼룩시장 전체보기 -->
+	<select id="fleaMarket" resultType="board">
+        <![CDATA[
+        SELECT * 
+        FROM BOARD
+    	WHERE BOARD_CODE = #{boardCode}
+        ]]>
+	</select>
 
 
 	<!-- WHERE BOARD_ID = #{boardId} -->

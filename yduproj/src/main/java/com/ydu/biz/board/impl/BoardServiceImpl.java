@@ -52,10 +52,11 @@ public class BoardServiceImpl implements BoardService {
 	}
 	//벼룩시장&자유게시판
 	@Override
-	public BoardVO fleaMarket(BoardVO vo) {
+	public List<BoardVO> fleaMarket(BoardSearchVO vo) {
 		System.out.println("=====fleaMarket");//확인용
 		return boardDAO.fleaMarket(vo);
 	}
+	
 	@Override
 	public BoardVO freeBoard(BoardVO vo) {
 		System.out.println("=====freeBoard");//확인용
@@ -64,9 +65,16 @@ public class BoardServiceImpl implements BoardService {
 	//FAQ
 	@Override
 	public BoardVO faq(BoardVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("=====faq");//확인용
+		return boardDAO.faq(vo);
 	}
+	//학교일정
+	@Override
+	public BoardVO academicCalendar(BoardVO vo) {
+		System.out.println("=====academicCalendar");//확인용
+		return boardDAO.academicCalendar(vo);
+	}
+	
 	
 	
 	

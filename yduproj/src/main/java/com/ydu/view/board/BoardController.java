@@ -56,9 +56,13 @@ public class BoardController {
 	}
 	
 //벼룩시장&자유게시판
-	@RequestMapping("/fleaMarket.do")
-	public String fleaMarket() {
+	@RequestMapping(value="/fleaMarket.do")
+	public String fleaMarket(Model model,BoardSearchVO vo) {
+		vo.setBoardCode("40");//검색값 40 넘어감
+		List<BoardVO> list2 = boardService.fleaMarket(vo);
+		System.out.println(list2);
 		System.out.println("벼룩시장 클릭 접속==fleaMarket===");//확인용
+		model.addAttribute("fleaMarket",list2);
 		return "/board/fleaMarket";
 	}
 	@RequestMapping("/freeBoard.do")
@@ -74,7 +78,13 @@ public class BoardController {
 		System.out.println("FAQ 클릭 접속==faq===");//확인용
 		return "/board/faq";
 	}	
-	
+
+//학교일정:캘린더
+	@RequestMapping("/academicCalendar.do")
+	public String academicCalendar() {
+		System.out.println("학교일정 클릭 접속==academicCalendar===");//확인용
+		return "/board/academicCalendar";
+	}		
 	
 	
 	
