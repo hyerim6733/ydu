@@ -10,7 +10,6 @@ td {
 </style>
 <title>수강신청</title>
 <script>
-	
 </script>
 </head>
 <body>
