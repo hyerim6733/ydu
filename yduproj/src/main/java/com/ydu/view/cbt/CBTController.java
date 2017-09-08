@@ -23,26 +23,42 @@ public class CBTController {
 		return "/cbt/cbtMain";
 	}
 	
-	@RequestMapping(value ="/getAllCBT.do")
+	@RequestMapping(value= "/getAllCBT.do")
 	public String getAllCBT(Model model, CBTListVO vo) {
 		
-		System.out.println("======getAllCBT by con=====");
-		if(cbtService ==null){
-			System.out.println(" data null");
-		}
-		else {
-			System.out.println("success");
-			
-			List<CBTListVO> list = cbtService.getAllCBT();
-			System.out.println(list.get(0).getCbtTitle());
-			model.addAttribute("cbtList", list);
-		}
+		System.out.println("======getAllCBT by cbt_controller=====");
+		
+
+		List<CBTListVO> list = cbtService.getAllCBT();
+		System.out.println(list.get(0).getCbtTitle());
+		model.addAttribute("cbtList", list);
 		return "/cbt/cbtList";
 	}
 	
+	@RequestMapping(value= "/getMyCBT.do")
+	public String getMyCBT(Model model, CBTListVO vo) {
+		System.out.println("======getMyCBT by cbt_controller=====");
+		
+		List<CBTListVO> list = cbtService.getMyCBT(vo);
+		System.out.println(list.get(0).getCbtTitle());
+		model.addAttribute("cbtList", list);
+		return "/cbt/cbtList";
+	}
+	
+	
+	
+	/*test page*/
 	@RequestMapping(value="/test.do")
 	public void Test() {
 		System.out.println("test");
 	}
-
+	
+	@RequestMapping("/cbtBody.do")
+	public String cbtBody() {
+		return "/cbt/cbtBody";
+	}
+	@RequestMapping("/test11.do")
+	public String test1() {
+		return "/cbt/test1";
+	}
 }

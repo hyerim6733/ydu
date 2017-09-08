@@ -19,7 +19,6 @@ pageEncoding="UTF-8" %>
 		<link href="../resources/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
 		<link href="../resources/plugins/xcharts/xcharts.min.css" rel="stylesheet">
 		<link href="../resources/plugins/select2/select2.css" rel="stylesheet">
-		<link href="../resources/tiles/css/style.css"  rel="stylesheet">
 		<link href="../resources/css/style.css" rel="stylesheet">
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -91,7 +90,7 @@ pageEncoding="UTF-8" %>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle account" data-toggle="dropdown">
 									<div class="avatar">
-										<img src="img/avatar.jpg" class="img-rounded" alt="avatar" />
+										<img src="#" class="img-rounded" alt="avatar" />
 									</div>
 									<i class="fa fa-angle-down pull-right"></i>
 									<div class="user-mini pull-right">
@@ -149,115 +148,94 @@ pageEncoding="UTF-8" %>
 <!--Start Container-->
 <div id="main" class="container-fluid">
 	<div class="row">
-		<div id="sidebar-left" class="col-xs-2 col-sm-2">
-			<ul class="nav main-menu">
-				<li>
-					<a class="ajax-link" href="../main/home">
-						<i class="fa fa-dashboard"></i>
-						<span class="hidden-xs"> 메인화면 </span>
+			<div id="sidebar-left" class="col-xs-2 col-sm-2">
+				<ul class="nav main-menu">
+					<li><a class="ajax-link" href="../main/home"> <i
+							class="fa fa-dashboard"></i> <span class="hidden-xs"> 메인화면
+						</span>
+					</a></li>
+					<li><a href="../cbtMain.do#cbtBody.do"> <i
+							class="fa fa-bar-chart-o"></i> <span class="hidden-xs">
+								CBT </span>
+					</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle">
+							<i class="fa fa-table"></i> <span class="hidden-xs">게시판3</span>
 					</a>
-				</li>
-				<li>
-					<a href="../cbtMain.do">
-						<i class="fa fa-bar-chart-o"></i>
-						<span class="hidden-xs"> CBT </span>
+						<ul class="dropdown-menu">
+							<li><a class="ajax-link" href="../prevNotice.do">게시판3-1</a></li>
+							<li><a class="ajax-link" href="../ajax/test3-2.jsp">게시판3-2</a></li>
+							<li><a class="ajax-link" href="../ajax/test3-3.jsp">게시판3-3</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle">
+							<i class="fa fa-pencil-square-o"></i> <span class="hidden-xs">게시판4</span>
 					</a>
-				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-table"></i>
-						 <span class="hidden-xs">게시판3</span>
+						<ul class="dropdown-menu">
+							<li><a class="ajax-link" href="ajax/forms_elements.html">내부
+									게시판11</a></li>
+							<li><a class="ajax-link" href="ajax/forms_layouts.html">내부
+									게시판12</a></li>
+							<li><a class="ajax-link"
+								href="ajax/forms_file_uploader.html">내부 게시판13</a></li>
+						</ul></li>
+					<li><a href="../classMain.do"> <i
+							class="fa fa-bar-chart-o"></i> <span class="hidden-xs">
+								수강신청 </span>
+					</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle">
+							<i class="fa fa-list"></i> <span class="hidden-xs">게시판6</span>
 					</a>
-					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="../prevNotice.do">게시판3-1</a></li>
-						<li><a class="ajax-link" href="../ajax/test3-2.jsp">게시판3-2</a></li>
-						<li><a class="ajax-link" href="../ajax/test3-3.jsp">게시판3-3</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-pencil-square-o"></i>
-						 <span class="hidden-xs">게시판4</span>
+						<ul class="dropdown-menu">
+							<li><a href="ajax/page_login.html">Login</a></li>
+							<li><a href="ajax/page_register.html">Register</a></li>
+							<li><a id="locked-screen" class="submenu"
+								href="ajax/page_locked.html">Locked Screen</a></li>
+							<li><a class="ajax-link" href="ajax/page_contacts.html">Contacts</a></li>
+							<li><a class="ajax-link" href="ajax/page_feed.html">Feed</a></li>
+							<li><a class="ajax-link add-full"
+								href="ajax/page_messages.html">Messages</a></li>
+							<li><a class="ajax-link" href="ajax/page_pricing.html">Pricing</a></li>
+							<li><a class="ajax-link" href="ajax/page_invoice.html">Invoice</a></li>
+							<li><a class="ajax-link" href="ajax/page_search.html">Search
+									Results</a></li>
+							<li><a class="ajax-link" href="ajax/page_404.html">Error
+									404</a></li>
+							<li><a href="ajax/page_500.html">Error 500</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle">
+							<i class="fa fa-map-marker"></i> <span class="hidden-xs">게시판7</span>
 					</a>
-					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="ajax/forms_elements.html">내부 게시판11</a></li>
-						<li><a class="ajax-link" href="ajax/forms_layouts.html">내부 게시판12</a></li>
-						<li><a class="ajax-link" href="ajax/forms_file_uploader.html">내부 게시판13</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="../classMain.do">
-						<i class="fa fa-bar-chart-o"></i>
-						<span class="hidden-xs"> 수강신청 </span>
+						<ul class="dropdown-menu">
+							<li><a class="ajax-link" href="ajax/maps.html">OpenStreetMap</a></li>
+							<li><a class="ajax-link" href="ajax/map_fullscreen.html">Fullscreen
+									map</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle">
+							<i class="fa fa-picture-o"></i> <span class="hidden-xs">벼룩&자유</span>
 					</a>
-				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-list"></i>
-						 <span class="hidden-xs">게시판6</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="ajax/page_login.html">Login</a></li>
-						<li><a href="ajax/page_register.html">Register</a></li>
-						<li><a id="locked-screen" class="submenu" href="ajax/page_locked.html">Locked Screen</a></li>
-						<li><a class="ajax-link" href="ajax/page_contacts.html">Contacts</a></li>
-						<li><a class="ajax-link" href="ajax/page_feed.html">Feed</a></li>
-						<li><a class="ajax-link add-full" href="ajax/page_messages.html">Messages</a></li>
-						<li><a class="ajax-link" href="ajax/page_pricing.html">Pricing</a></li>
-						<li><a class="ajax-link" href="ajax/page_invoice.html">Invoice</a></li>
-						<li><a class="ajax-link" href="ajax/page_search.html">Search Results</a></li>
-						<li><a class="ajax-link" href="ajax/page_404.html">Error 404</a></li>
-						<li><a href="ajax/page_500.html">Error 500</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-map-marker"></i>
-						<span class="hidden-xs">게시판7</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="ajax/maps.html">OpenStreetMap</a></li>
-						<li><a class="ajax-link" href="ajax/map_fullscreen.html">Fullscreen map</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-picture-o"></i>
-						 <span class="hidden-xs">벼룩&자유</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="../ajax/fleaMarket.jsp">벼룩시장</a></li>
-						<li><a class="ajax-link" href="../ajax/freeBoard.jsp">자유게시판</a></li>
-					</ul>
-				</li>
-				<li>
-					 <a class="ajax-link" href="../ajax/faq.jsp">
-						 <i class="fa fa-font"></i>
-						 <span class="hidden-xs">FAQ</span>
-					</a>
-				</li>
-				 <li>
-					<a class="ajax-link" href="../ajax/academicCalendar.jsp">
-						 <i class="fa fa-calendar"></i>
-						 <span class="hidden-xs">학사일정</span>
-					</a>
-				 </li>
-				
-			</ul>
-		</div>
-		<!--Start Content-->
-		<div id="content" class="col-xs-12 col-sm-10">
-	<div class="preloader">
-			<img src="../resources/img/devoops_getdata.gif" class="devoops-getdata" alt="preloader"/>
+						<ul class="dropdown-menu">
+							<li><a class="ajax-link" href="../ajax/fleaMarket.jsp">벼룩시장</a></li>
+							<li><a class="ajax-link" href="../ajax/freeBoard.jsp">자유게시판</a></li>
+						</ul></li>
+					<li><a class="ajax-link" href="../ajax/faq.jsp"> <i
+							class="fa fa-font"></i> <span class="hidden-xs">FAQ</span>
+					</a></li>
+					<li><a class="ajax-link" href="../ajax/academicCalendar.jsp">
+							<i class="fa fa-calendar"></i> <span class="hidden-xs">학사일정</span>
+					</a></li>
+
+				</ul>
 			</div>
-			<div id="ajax-content"></div> 
-			
-			<!-- 위의 코드 ajax 로 메뉴클릭시 보여주도록 함 -->
-			
-	
-			
-		</div>
-		<!--End Content-->
+			<!--Start Content-->
+			<div id="content" class="col-xs-12 col-sm-10">
+				<div class="preloader"></div>
+				<div id="ajax-content"></div>
+
+				<!-- 위의 코드 ajax 로 메뉴클릭시 보여주도록 함 -->
+
+
+
+			</div>
+			<!--End Content-->
 	</div>
 </div>
 <!--End Container-->
