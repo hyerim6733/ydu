@@ -38,8 +38,7 @@ public class CBTServiceImpl implements CBTService {
 	 */
 	@Override
 	public List<CBTListVO> getMyCBT(CBTListVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return cbtDAO.getMyCBT(vo);
 	}
 
 	/* (non-Javadoc)
