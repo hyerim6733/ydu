@@ -42,9 +42,9 @@ public class ClassServiceImpl implements ClassService {
 	}
 
 	@Override
-	public List<ClassListVO> getClassesList(ClassSearchVO vo) {
-		System.out.println("수강 신청 목록 조회");
-		return classDAO.getClassesList(vo);
+	public List<ClassListVO> getClassesList() {
+		System.out.println("수강 전체 목록 조회");
+		return classDAO.getClassesList();
 	}
 
 	

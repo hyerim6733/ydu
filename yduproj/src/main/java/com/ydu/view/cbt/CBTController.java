@@ -34,7 +34,6 @@ public class CBTController {
 			System.out.println("success");
 			
 			List<CBTListVO> list = cbtService.getAllCBT();
-			System.out.println(list.get(0).getCbtTitle());
 			model.addAttribute("cbtList", list);
 		}
 		return "/cbt/cbtList";

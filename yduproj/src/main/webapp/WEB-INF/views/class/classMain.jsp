@@ -166,7 +166,7 @@ pageEncoding="UTF-8" %>
 				</li>
 				<li>
 					
-					<a class="ajax-link" href="enrollmentTime.do">
+					<a class="ajax-link" href="getClassesList.do">
 						<i class="fa fa-bar-chart-o"></i>
 						<span class="hidden-xs"> 수강신청</span>
 					</a>
