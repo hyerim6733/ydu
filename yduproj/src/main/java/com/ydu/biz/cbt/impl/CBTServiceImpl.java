@@ -3,13 +3,13 @@ package com.ydu.biz.cbt.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.ydu.biz.cbt.CBTExampackVO;
 import com.ydu.biz.cbt.CBTListVO;
+import com.ydu.biz.cbt.CBTResultVO;
 import com.ydu.biz.cbt.CBTService;
-import com.ydu.biz.cbt.CBTSubjectVO;
-import com.ydu.biz.cbt.CBTVO;
+
 
 @Service("cbtService")
 public class CBTServiceImpl implements CBTService {   
@@ -37,8 +37,8 @@ public class CBTServiceImpl implements CBTService {
 	 * @see com.ydu.biz.cbt.impl.CBTMapper#getMyCBT(com.ydu.biz.cbt.CBTListVO)
 	 */
 	@Override
-	public List<CBTListVO> getMyCBT(CBTListVO vo) {
-		return cbtDAO.getMyCBT(vo);
+	public List<CBTListVO> getMyCBT(String stu_code) {
+		return cbtDAO.getMyCBT(stu_code);
 	}
 
 	/* (non-Javadoc)
@@ -50,40 +50,27 @@ public class CBTServiceImpl implements CBTService {
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.ydu.biz.cbt.impl.CBTMapper#getAllGrades(com.ydu.biz.cbt.CBTVO)
-	 */
 	@Override
-	public List<CBTVO> getAllGrades(CBTVO vo) {
+	public List<CBTResultVO> getAllGrades(String vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.ydu.biz.cbt.impl.CBTMapper#getMyGrade(com.ydu.biz.cbt.CBTVO)
-	 */
 	@Override
-	public List<CBTVO> getMyGrade(CBTVO vo) {
+	public List<CBTResultVO> getMyGrade(String vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.ydu.biz.cbt.impl.CBTMapper#insertTest(com.ydu.biz.cbt.CBTSubjectVO)
-	 */
 	@Override
-	public void insertTest(CBTSubjectVO vo) {
+	public void insertTest(CBTExampackVO vo) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see com.ydu.biz.cbt.impl.CBTMapper#getTest(com.ydu.biz.cbt.CBTSubjectVO)
-	 */
 	@Override
-	public void getTest(CBTSubjectVO vo) {
-		// TODO Auto-generated method stub
-		
+	public List<CBTResultVO> getTest() {
+		return cbtDAO.getTest();
 	}
 
 }

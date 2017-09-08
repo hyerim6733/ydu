@@ -12,9 +12,9 @@
       <!-- Alias 설정 -->
     <typeAliases>
         <typeAlias alias="board" type="com.ydu.biz.board.BoardVO"/>
-        <typeAlias alias="cbtCheck" type="com.ydu.biz.cbt.CBTVO"/>
+        <typeAlias alias="cbtExampack" type="com.ydu.biz.cbt.CBTExampackVO"/>
         <typeAlias alias="cbtList" type="com.ydu.biz.cbt.CBTListVO"/>
-        <typeAlias alias="cbtSubject" type="com.ydu.biz.cbt.CBTSubjectVO"/>
+        <typeAlias alias="cbtResult" type="com.ydu.biz.cbt.CBTResultVO"/>
         <typeAlias alias="classList" type="com.ydu.biz.classes.ClassListVO"/>
         <typeAlias alias="classPlan" type="com.ydu.biz.classes.ClassPlanVO"/>
         <typeAlias alias="classStatus" type="com.ydu.biz.classes.ClassStatusVO"/>
