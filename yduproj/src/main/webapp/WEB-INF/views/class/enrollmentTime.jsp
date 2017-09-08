@@ -47,23 +47,24 @@ td {
 		</tr>
 		<tr>
 			<td>과목번호</td>
-			<td>분반</td>
 			<td>과목명</td>
 			<td>시간</td>
 			<td>강의실</td>
-			<td>학점</td>
+			<td>분류</td>
+			<td>수강정원</td>
 			<td>수강신청</td>
 		</tr>
+		<c:forEach var="list" items="${classList}"> 
 		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td>${list.openClass}</td>
+			<td>${list.classTitle}</td>
+			<td>${list.classTime}</td>
+			<td>${list.classRoom}</td>
+			<td>${list.major}</td>
+			<td>${list.studentLimit}</td>
+			<td><button>수강신청</button></td>
 		</tr>
-
+		</c:forEach>
 		<%-- <%
 		Connection con=null;
 		PreparedStatement pstmt=null;

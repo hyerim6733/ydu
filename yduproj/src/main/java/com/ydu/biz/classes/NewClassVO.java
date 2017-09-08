@@ -1,12 +1,40 @@
 package com.ydu.biz.classes;
 
 public class NewClassVO {
-	private String openClass;
-	private String openYear;
-	private String professorCode;
-	private String classTime;
-	private int studentLimit;
+	private String openClass; // 개설 과목 코드
+	private String openYear; // 개설 연도
+	private int profCode; // 교수 코드
+	private String classTime; // 강의 시간
+	private int studentLimit; // 수강 정원
+	private String openSemester; // 개설 학기
+	private String classRoom; // 강의실
+	private String classCode; //과목 코드
 	
+	
+	public int getProfCode() {
+		return profCode;
+	}
+	public void setProfCode(int profCode) {
+		this.profCode = profCode;
+	}
+	public String getOpenSemester() {
+		return openSemester;
+	}
+	public void setOpenSemester(String openSemester) {
+		this.openSemester = openSemester;
+	}
+	public String getClassRoom() {
+		return classRoom;
+	}
+	public void setClassRoom(String classRoom) {
+		this.classRoom = classRoom;
+	}
+	public String getClassCode() {
+		return classCode;
+	}
+	public void setClassCode(String classCode) {
+		this.classCode = classCode;
+	}
 	public String getOpenClass() {
 		return openClass;
 	}
@@ -18,12 +46,6 @@ public class NewClassVO {
 	}
 	public void setOpenYear(String openYear) {
 		this.openYear = openYear;
-	}
-	public String getProfessorCode() {
-		return professorCode;
-	}
-	public void setProfessorCode(String professorCode) {
-		this.professorCode = professorCode;
 	}
 	public String getClassTime() {
 		return classTime;

@@ -30,10 +30,12 @@ public class CBTController {
 	public String getAllCBT(Model model, CBTListVO vo) {
 		
 		System.out.println("[교수 목록 조회 페이지] by cbt_controller=====");
+
 		
 		
 		List<CBTListVO> list = cbtService.getAllCBT();
 		model.addAttribute("cbtList", list);
+
 		return "/cbt/cbtList";
 	}
 	
