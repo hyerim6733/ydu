@@ -158,6 +158,10 @@ pageEncoding="UTF-8" %>
 							class="fa fa-bar-chart-o"></i> <span class="hidden-xs">
 								CBT </span>
 					</a></li>
+					<li><a href="../classMain.do#classBody.do"> <i
+							class="fa fa-bar-chart-o"></i> <span class="hidden-xs">
+								수강신청 </span>
+					</a></li>
 
 				</li>
 				<li class="dropdown">

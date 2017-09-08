@@ -2,24 +2,24 @@ package com.ydu.biz.cbt.impl;
 
 import java.util.List;
 
+import com.ydu.biz.cbt.CBTExampackVO;
 import com.ydu.biz.cbt.CBTListVO;
-import com.ydu.biz.cbt.CBTSubjectVO;
-import com.ydu.biz.cbt.CBTVO;
+import com.ydu.biz.cbt.CBTResultVO;
 
 public interface CBTMapper {
 
 	List<CBTListVO> getAllCBT();
 
-	List<CBTListVO> getMyCBT(CBTListVO vo);
+	List<CBTListVO> getMyCBT(String stu_code);
 
 	CBTListVO getCBT(CBTListVO vo);
 
-	List<CBTVO> getAllGrades(CBTVO vo);
+	List<CBTResultVO> getAllGrades(String prof_code);
 
-	List<CBTVO> getMyGrade(CBTVO vo);
+	List<CBTResultVO> getMyGrade(String stu_code);
 
-	void insertTest(CBTSubjectVO vo);
+	void insertTest(CBTExampackVO vo);
 
-	void getTest(CBTSubjectVO vo);
+	List<CBTResultVO> getTest();
 
 }

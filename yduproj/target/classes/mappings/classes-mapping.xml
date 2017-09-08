@@ -22,6 +22,18 @@
 		WHERE CLASS_NO = #{classNo}
 	]]>
 	</delete>
+	
+	<select id="getClassesList" resultType="map">
+		SELECT 	n.openClass as "openClass",
+        c.class_title as "classTitle",
+        n.class_time as "classTime",
+        n.class_room as "classRoom",
+        c.major as "major",
+        n.student_limit as "studentLimit"
+		FROM CLASS_LIST c,
+		NEW_CLASS n
+		WHERE c.class_code = n.class_code;
+	</select>
 
 
 </mapper>

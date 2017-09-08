@@ -40,14 +40,12 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   </div>
  	 <div class="w3-bar-block" id="left-menu">
     <a href="#" class="ajax-link w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="cbtMain.do#cbtBody.do" class="w3-bar-item w3-button w3-padding w3-skyblue" onclick="page_reload()"><i class="fa fa-users fa-fw"></i> CBT 메인화면 </a>
-    <a href="cbtMain.do#getAllCBT.do" class="w3-bar-item w3-button w3-padding " onclick="page_reload()"><i class="fa fa-eye fa-fw"></i> 시험목록 </a>
-    <a href="cbtMain.do#test11.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-users fa-fw"></i> Q&A </a>
-    <a href="cbtMain.do#getMyCBT.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-diamond fa-fw"></i> 학생테스트</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-bell fa-fw "></i>  News</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-bank fa-fw"></i>  General</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-history fa-fw"></i>  History</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
+    <a href="#cbtBody.do" class="w3-bar-item w3-button w3-padding w3-skyblue" onclick="page_reload()"><i class="fa fa-users fa-fw"></i> CBT 메인화면 </a>
+    <a href="#getAllCBT.do" class="w3-bar-item w3-button w3-padding " onclick="page_reload()"><i class="fa fa-eye fa-fw"></i> 시험목록 </a>
+    <a href="#test11.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-users fa-fw"></i> Q&A </a>
+    <a href="#getMyCBT.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-diamond fa-fw"></i> 학생목록조회test</a>
+    <a href="#goTestPage.do" class="w3-bar-item w3-button w3-padding"  onclick="page_reload()"><i class="fa fa-bell fa-fw "></i> 문제목록보기test</a>
+    <a href="#goResult.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-bank fa-fw"></i> 결과보기 </a>
  
   </div>
 </nav>

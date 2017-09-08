@@ -153,7 +153,7 @@ pageEncoding="UTF-8" %>
 			<ul class="nav main-menu">
 				
 				<li>
-					<a class="ajax-link" href="<%=request.getContextPath()%>/main/home">
+					<a class="ajax-link" href="#classBody.do">
 						<i class="fa fa-dashboard"></i>
 						<span class="hidden-xs"> 메인 </span>
 					</a>
@@ -166,7 +166,7 @@ pageEncoding="UTF-8" %>
 				</li>
 				<li>
 					
-					<a class="ajax-link" href="enrollmentTime.do">
+					<a class="ajax-link" href="getClassesList.do">
 						<i class="fa fa-bar-chart-o"></i>
 						<span class="hidden-xs"> 수강신청</span>
 					</a>

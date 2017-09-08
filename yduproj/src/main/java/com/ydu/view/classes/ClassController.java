@@ -1,17 +1,28 @@
 package com.ydu.view.classes;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ydu.biz.classes.ClassListVO;
 import com.ydu.biz.classes.ClassService;
 
 @Controller
 public class ClassController {
 
-	//@Autowired ClassService classService;
+		@Autowired ClassService classService;
 	
+		@RequestMapping("/classBody.do")
+		public String classBody()
+		{
+			System.out.println("수강신청 body load");
+			return "/class/classBody";
+		}
+		
 		//메인
 		@RequestMapping(value="/classMain.do")
 		public String classMain() {
@@ -24,10 +35,18 @@ public class ClassController {
 			return "/class/classProgram";
 		}
 		
-		@RequestMapping(value="/enrollmentTime.do")
-		public String enrollmentTime() {
-			System.out.println("수강신청");
-			return "/class/enrollmentTime";
+		@RequestMapping(value="/getClassesList.do")
+		public String enrollmentTime(Model model, ClassListVO vo) {
+			System.out.println("수강신청조회");
+		if(classService == null){
+			System.out.println("수강 자료 없음");
+		}
+		else {
+			System.out.println("조회성공");
+			List<ClassListVO> list = classService.getClassesList();
+			model.addAttribute("classList",list);
+		}
+			return "/class/classList";
 		}
 		
 		@RequestMapping(value="/myPage.do")
