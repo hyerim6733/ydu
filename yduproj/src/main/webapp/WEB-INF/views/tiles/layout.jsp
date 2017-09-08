@@ -169,6 +169,7 @@ pageEncoding="UTF-8" %>
 					<li class="dropdown"><a href="#" class="dropdown-toggle">
 							<i class="fa fa-pencil-square-o"></i> <span class="hidden-xs">게시판4</span>
 					</a>
+
 						<ul class="dropdown-menu">
 							<li><a class="ajax-link" href="ajax/forms_elements.html">내부
 									게시판11</a></li>
@@ -203,6 +204,15 @@ pageEncoding="UTF-8" %>
 						</ul></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle">
 							<i class="fa fa-map-marker"></i> <span class="hidden-xs">게시판7</span>
+
+				</li>
+				
+				
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-pencil-square-o"></i>
+						 <span class="hidden-xs">게시판4</span>
+
 					</a>
 						<ul class="dropdown-menu">
 							<li><a class="ajax-link" href="ajax/maps.html">OpenStreetMap</a></li>
@@ -212,6 +222,7 @@ pageEncoding="UTF-8" %>
 					<li class="dropdown"><a href="#" class="dropdown-toggle">
 							<i class="fa fa-picture-o"></i> <span class="hidden-xs">벼룩&자유</span>
 					</a>
+
 						<ul class="dropdown-menu">
 							<li><a class="ajax-link" href="../ajax/fleaMarket.jsp">벼룩시장</a></li>
 							<li><a class="ajax-link" href="../ajax/freeBoard.jsp">자유게시판</a></li>
@@ -224,6 +235,94 @@ pageEncoding="UTF-8" %>
 					</a></li>
 
 				</ul>
+
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-list"></i>
+						 <span class="hidden-xs">게시판6</span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="ajax/page_login.html">Login</a></li>
+						<li><a href="ajax/page_register.html">Register</a></li>
+						<li><a id="locked-screen" class="submenu" href="ajax/page_locked.html">Locked Screen</a></li>
+						<li><a class="ajax-link" href="ajax/page_contacts.html">Contacts</a></li>
+						<li><a class="ajax-link" href="ajax/page_feed.html">Feed</a></li>
+						<li><a class="ajax-link add-full" href="ajax/page_messages.html">Messages</a></li>
+						<li><a class="ajax-link" href="ajax/page_pricing.html">Pricing</a></li>
+						<li><a class="ajax-link" href="ajax/page_invoice.html">Invoice</a></li>
+						<li><a class="ajax-link" href="ajax/page_search.html">Search Results</a></li>
+						<li><a class="ajax-link" href="ajax/page_404.html">Error 404</a></li>
+						<li><a href="ajax/page_500.html">Error 500</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-map-marker"></i>
+						<span class="hidden-xs">게시판7</span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a class="ajax-link" href="ajax/maps.html">OpenStreetMap</a></li>
+						<li><a class="ajax-link" href="ajax/map_fullscreen.html">Fullscreen map</a></li>
+					</ul>
+				</li>
+<!-- 공지&학사안내 -->				
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-table"></i>
+						 <span class="hidden-xs">공지&학사안내</span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a class="ajax-link" href="../notice.do">공지사항</a></li>
+						<li><a class="ajax-link" href="../literature.do">학사안내</a></li>
+						<li><a class="ajax-link" href="../ajax/test3-3.jsp">미정</a></li>
+					</ul>
+				</li>
+
+<!-- 대학/대학원/부속교육기관 -->				
+				<li>
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-bar-chart-o"></i>
+						<span class="hidden-xs">대학/대학원/부속교육기관</span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a class="ajax-link" href="../academics1.do">대학</a></li>
+						<li><a class="ajax-link" href="../academics2.do">대학원</a></li>
+						<li><a class="ajax-link" href="../academics3.do">부속교육기관</a></li>
+					</ul>
+				</li>
+				
+<!-- 벼룩&자유 -->
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle">
+						<i class="fa fa-picture-o"></i>
+						 <span class="hidden-xs">벼룩&자유</span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a class="ajax-link" href="../fleaMarket.do">벼룩시장</a></li>
+						<li><a class="ajax-link" href="../freeBoard.do">자유게시판</a></li>
+					</ul>
+				</li>
+<!-- FAQ -->				
+				<li>
+					 <a class="ajax-link" href="../faq.do">
+						 <i class="fa fa-font"></i>
+						 <span class="hidden-xs">FAQ</span>
+					</a>
+				</li>
+				 <li>
+					<a class="ajax-link" href="../academicCalendar.do">
+						 <i class="fa fa-calendar"></i>
+						 <span class="hidden-xs">학교일정</span>
+					</a>
+				 </li>
+				
+			</ul>
+		</div>
+		<!--Start Content-->
+		<div id="content" class="col-xs-12 col-sm-10">
+	<div class="preloader">
+			<img src="../resources/img/devoops_getdata.gif" class="devoops-getdata" alt="preloader"/>
 			</div>
 			<!--Start Content-->
 			<div id="content" class="col-xs-12 col-sm-10">

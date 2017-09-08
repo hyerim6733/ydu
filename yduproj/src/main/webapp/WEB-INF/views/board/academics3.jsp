@@ -10,9 +10,7 @@
 </script>
 </head>
 <body>
-<hr>
-<h3>게시판 3</h3><br>
-3-3 입니다.
-<hr>
+academics3.jsp
+테스트 3
 </body>
 </html>

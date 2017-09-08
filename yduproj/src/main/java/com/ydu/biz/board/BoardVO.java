@@ -1,9 +1,10 @@
 package com.ydu.biz.board;
 
 import java.util.Date;
+import java.util.List;
 
 /*-- 공지사항, 학교행사, 자유게시판, 벼룩시장*/
-public class BoardVO  {
+public class BoardVO {
 	
 	private int boardCode; //공지사항, 학교행사, 자유게시판, 벼룩시장
 	private int boardId; //게시판 글 등록순서

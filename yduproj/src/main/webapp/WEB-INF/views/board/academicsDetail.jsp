@@ -3,14 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>fleaMarket.jsp</title>
+<title>academicsDetail.jsp</title>
 <style>
 </style>
 <script>
 </script>
 </head>
 <body>
-<h1>벼룩시장 만들꺼예용 홍홍홍</h1>
-
+대학/대학원/부속기관
+소개 페이지 넣을꺼예용~
 </body>
 </html>
+
+

@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
-<title>test3-1.jsp</title>
+<title>notice.jsp</title>
 <style>
 </style>
 <script>
@@ -17,13 +19,11 @@ function setOrderColumn(orderColumn) {
 <body>
 
 	<hr>
-	<h3>게시판 목록조회 테스트</h3>
-	<br> 3-1 입니다.
+	<h3>공지사항 테스트</h3>
 	<hr>
 	
-	<!-- 검색기능 추가 -->
-게시판 전체 목록 테스트용 
-	<form name="frm" action="<%=request.getContextPath()%>/getBoardList.do" method="post">	
+<!-- 검색기능 추가 -->
+<form name="frm" action="<%=request.getContextPath()%>/notice.do" method="post">	
 	
 	<table>
 		<tr>
@@ -35,7 +35,7 @@ function setOrderColumn(orderColumn) {
 		</tr>
 	</table>
 
-	<!-- 게시판 목록 기본 -->
+<!-- 게시판 목록 기본 -->
 	<input type="button" value="삭제" onclick="selDel()" />
 	<table>
 		<tr>
@@ -52,15 +52,15 @@ function setOrderColumn(orderColumn) {
 		</tr>
 
 
-		<%-- <c:forEach var="board" items="${boardList}">
+	 <c:forEach var="board" items="${notice}">
 			<tr>
 			    <td><input type="checkbox" name="boardIdList" value="${board.boardId}"/>
 				<td>${board.boardId}</td>
-				<td><a href="getBoard.do?boardId=${board.boardId}">${board.title}</a></td>
+				<td><a href="notice.do?boardId=${board.boardId}">${board.title}</a></td>
 				
 			</tr>
 		</c:forEach>
-		 --%>
+	
 
 	</table>
 	</form>
