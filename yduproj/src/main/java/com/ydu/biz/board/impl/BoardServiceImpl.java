@@ -50,13 +50,23 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println("=====academics3");//확인용
 		return boardDAO.academics3(vo);
 	}
-	//벼룩시장&자유게시판
+	//벼룩시장
 	@Override
 	public List<BoardVO> fleaMarket(BoardSearchVO vo) {
-		System.out.println("=====fleaMarket");//확인용
+		System.out.println("==벼룩시장===fleaMarket");//확인용
 		return boardDAO.fleaMarket(vo);
 	}
-	
+	@Override
+	public BoardVO fleaMarDetail(BoardVO vo) {
+		System.out.println("==벼룩시장 상세===fleaMarDetail");//확인용
+		return boardDAO.fleaMarDetail(vo);
+	}
+	//자유게시판
+	@Override
+	public List<BoardVO> freeBoard(BoardSearchVO vo) {
+		System.out.println("==자유게시판===freeBoard");//확인용
+		return boardDAO.fleaMarket(vo);
+	}
 	@Override
 	public BoardVO freeBoard(BoardVO vo) {
 		System.out.println("=====freeBoard");//확인용
@@ -74,6 +84,7 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println("=====academicCalendar");//확인용
 		return boardDAO.academicCalendar(vo);
 	}
+	
 	
 	
 	

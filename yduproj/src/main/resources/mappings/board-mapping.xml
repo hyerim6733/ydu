@@ -4,6 +4,19 @@
 
 <mapper namespace="com.ydu.biz.board.impl.BoardMapper">
 
+<!--
+<resultMap id="boardResult" type="board">
+        <id property="boardId" column="BOARDID" />
+        <result property="title" column="TITLE" />
+        <result property="writeDate" column="WRITEDATE" />
+        <result property="editDate" column="EDITDATE" />
+        <result property="category" column="CATEGORY" />
+        <result property="writer" column="WRITER" />
+        <result property="content" column="CONTENT" />
+</resultMap>
+ -->
+
+
 <!-- 공지사항 미리보기 5개 -->
 <!-- 
 	<select id="prevNotice" resultType="board">
@@ -16,7 +29,7 @@
 	</select>
 	 -->
 	
-<!-- 공지사항 전체보기 -->
+<!-- 공지사항b1 전체보기 -->
 	<select id="notice" resultType="board">
         <![CDATA[
         SELECT * 
@@ -25,7 +38,7 @@
         ]]>
 	</select>
 
-<!-- 학사안내 전체보기 -->
+<!-- 학사안내b2 전체보기 -->
 	<select id="literature" resultType="board">
         <![CDATA[
         SELECT * 
@@ -33,7 +46,7 @@
     	WHERE BOARD_CODE = #{boardCode}
         ]]>
 	</select>
-<!-- 벼룩시장 전체보기 -->
+<!-- 벼룩시장b4 전체보기 -->
 	<select id="fleaMarket" resultType="board">
         <![CDATA[
         SELECT * 
@@ -41,7 +54,45 @@
     	WHERE BOARD_CODE = #{boardCode}
         ]]>
 	</select>
+<!-- 자유게시판b5 전체보기 -->
+	<select id="freeBoard" resultType="board">
+        <![CDATA[
+        SELECT * 
+        FROM BOARD
+    	WHERE BOARD_CODE = #{boardCode}
+        ]]>
+	</select>
+	
+	
+	
+<!-- 벼룩시장 상세보기 -->
+<!--
+<select id="fleaMarDetail" resultType="board">
+        <![CDATA[
+        SELECT * 
+        FROM BOARD
+        WHERE  = #{boardId}
+        ]]>
+    </select>
+-->
 
+
+<!-- 벼룩시장 검색 -->
+<!--
+    <select id="fleaMarDetail" resultMap="boardResult"
+    parameterType="com.ydu.biz.board.BoardSearchVO">
+	    SELECT * 
+	    FROM BOARD
+	    WHERE 1 = 1
+    	<if test="searchCondition == 'TITLE'">
+        AND TITLE LIKE '%'||#{searchKeyword}||'%' 
+    	</if>
+    	<if test="searchCondition == 'CONTENT'">
+        AND CONTENT LIKE '%'||#{searchKeyword}||'%' 
+    	</if>
+    	ORDER BY SEQ DESC
+	</select>
+-->
 
 	<!-- WHERE BOARD_ID = #{boardId} -->
  <!-- SELECT B.* FROM( SELECT ROWNUM RN, A.* FROM ( <select id="getBoardList" 
