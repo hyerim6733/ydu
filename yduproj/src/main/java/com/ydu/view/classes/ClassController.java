@@ -16,6 +16,13 @@ public class ClassController {
 
 		@Autowired ClassService classService;
 	
+		@RequestMapping("/classBody.do")
+		public String classBody()
+		{
+			System.out.println("수강신청 body load");
+			return "/class/classBody";
+		}
+		
 		//메인
 		@RequestMapping(value="/classMain.do")
 		public String classMain() {

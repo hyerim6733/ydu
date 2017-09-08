@@ -55,8 +55,13 @@ public class CBTController {
 	@RequestMapping(value= "/goTestPage.do")
 	public String takeAnExam(Model model, HttpSession session) {
 		System.out.println("[시험치는 페이지로넘어갑니다.] by cbt_controller=====");
-		List<CBTResultVO> list = cbtService.getTest();
+		
+		/*List<CBTResultVO> list = cbtService.getTest();
 		model.addAttribute("examList", list);
+		
+		*
+		* 나중에 오면 작업해야할 공간
+		*/
 		return "/cbt/cbtTestPage";
 	}
 	

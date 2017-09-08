@@ -153,7 +153,7 @@ pageEncoding="UTF-8" %>
 			<ul class="nav main-menu">
 				
 				<li>
-					<a class="ajax-link" href="<%=request.getContextPath()%>/main/home">
+					<a class="ajax-link" href="#classBody.do">
 						<i class="fa fa-dashboard"></i>
 						<span class="hidden-xs"> 메인 </span>
 					</a>
