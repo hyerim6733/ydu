@@ -6,13 +6,19 @@
 <mapper namespace="com.ydu.biz.cbt.impl.CBTMapper"> 
 
 	<!-- 시험 리스트 조회 : 교수 : 모두 조회 -->
-	<select id="getAllCBT" resultType="map" parameterType="cbtList">
-		SELECT cbt_code as "cbtCode", cbt_title as "cbtTitle",
-        class_title as "classTitle", name, final_date as "finalDate"
-		FROM CBT_LIST c , NEW_CLASS n , CLASS_LIST l, PROFESSOR p
+	<select id="getAllCBT" resultType="map">
+		SELECT  cbt_code as "cbtCode", 
+				cbt_title as "cbtTitle",
+        		class_title as "classTitle", 
+        		name, 
+        		final_date as "finalDate"
+		FROM CBT_LIST c , 
+			 NEW_CLASS n , 
+			 CLASS_LIST l, 
+			 PROFESSOR p
         WHERE c.open_class = n.open_class 
-        AND n.class_code = l.class_code
-        AND n.professor_code = p.professor_code
+          AND n.class_code = l.class_code
+          AND n.professor_code = p.professor_code
 	</select>
 	
 	<!-- 시험 리스트 조회 : 학생 : 내가 수강한 것만 조회 -->

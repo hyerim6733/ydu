@@ -7,28 +7,22 @@ package com.ydu.biz.cbt;
  */
 public class CBTListVO {
 	private String cbtCode;
-	private String classCode;
-	private int professorCode;
+	private String openClass;
 	private String cbtTitle;
 	private String finalDate;
 	
+	
+	public String getOpenClass() {
+		return openClass;
+	}
+	public void setOpenClass(String openClass) {
+		this.openClass = openClass;
+	}
 	public String getCbtCode() {
 		return cbtCode;
 	}
 	public void setCbtCode(String cbtCode) {
 		this.cbtCode = cbtCode;
-	}
-	public String getClassCode() {
-		return classCode;
-	}
-	public void setClassCode(String classCode) {
-		this.classCode = classCode;
-	}
-	public int getProfessorCode() {
-		return professorCode;
-	}
-	public void setProfessorCode(int professorCode) {
-		this.professorCode = professorCode;
 	}
 	public String getCbtTitle() {
 		return cbtTitle;
