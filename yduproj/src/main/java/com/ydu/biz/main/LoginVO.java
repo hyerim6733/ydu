@@ -1,27 +1,32 @@
 package com.ydu.biz.main;
 
 public class LoginVO {
-	private String id;
-	private String pw;
+	public String userid;
+	private String userpw;
 	private String separation;
-	public String getId() {
-		return id;
+	
+	public String getUserid() {
+		return userid;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
-	public String getPw() {
-		return pw;
+	public String getUserpw() {
+		return userpw;
 	}
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setUserpw(String userpw) {
+		this.userpw = userpw;
 	}
+	
 	public String getSeparation() {
 		return separation;
 	}
 	public void setSeparation(String separation) {
 		this.separation = separation;
 	}
-	
+	@Override
+	public String toString() {
+		return "LoginVO [userid=" + userid + ", userpw=" + userpw + ", separation=" + separation + "]";
+	}
 	
 }

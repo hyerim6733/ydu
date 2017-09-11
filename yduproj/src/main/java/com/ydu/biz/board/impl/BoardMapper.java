@@ -34,9 +34,11 @@ public interface BoardMapper {
 	
 	//벼룩시장
 	List<BoardVO> fleaMarket(BoardSearchVO vo);
+	BoardVO fleaMarDetail(BoardVO vo);
 	//자유게시판
+	List<BoardVO> freeBoard(BoardSearchVO vo);
 	BoardVO freeBoard(BoardVO vo);
-	
+		
 	
 	//FAQ
 	BoardVO faq(BoardVO vo);

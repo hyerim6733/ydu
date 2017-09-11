@@ -81,15 +81,79 @@ $(document).ready(function() {
 	// Create Calendar
 	DrawFullCalendar();
 	
+	var date = new Date();
+	var d = date.getDate();
+	var m = date.getMonth();
+	var y = date.getFullYear();
+	
+	var json = [{"allDay":"true",
+				"editable":"false",
+				"end":"2010-11-25",
+				"id":"1",
+				"start":"2010-11-21",
+				"title":"test2"}
+	];
+
+	$('#calendar').fullCalendar({
+	    dayClick: function(date, jsEvent, view) {
+
+	        alert('Clicked on: ' + date.format());
+
+	        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+
+	        alert('Current view: ' + view.name);
+
+	        // change the day's background color just for fun
+	        $(this).css('background-color', 'red');
+
+	    }
+	});
+/* 	
+	$('#calendar').fullCalendar({ 
+		event:function() {
+			$.ajax({
+				url:json,
+				dataType: 'json',
+				success : function(data, text, request) {
+					var event = eval(data.jsonTxt);
+					createCalendarDateResult(event);
+				}
+			});
+		}
+	});
+ */
+	function createCalendarDateResult(resp){  //제이슨으로 캘린더 이벤트 등록형식에 맞게 뿌리기
+		  var result = $.parseJSON(resp)  , eventData = [];
+		  if(result.success){
+		    var date = $.parseJSON(result.extra);
+		    alert(result.extra);
+		    for(var i = 0; i < date.length; i++)
+		    {
+		      eventData.push({
+		        title : date[i].title,
+		        start : date[i].start,
+		        end : date[i].end
+		      });
+		    }
+		  }
+		  calendarEvent( eventData );        //캘린더 메소드 호출
+	}
+		
+
 	
 	// 상담신청 클릭 (일정추가)
 	$("#Add").click(doSomething);
 	function doSomething(){
 		var data = {};
 		
-		var b = $(".fc-event-inner").closest("td");
-		console.log(b);
+	 	var b = $(".fc-event-inner").closest("td");
+		console.log(b); 
 		
+		var m = $.fullCalendar.moment.parseZone('2017-09-22');
+	    alert("Result : " + m.hasZone());
+	    
+	    var moment = $('#calendar').fullCalendar('getDate');
+	    alert("The current date of the calendar is " + moment.format());
 	}
 	
 	// 일정 변경 이벤트

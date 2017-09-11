@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>fleaMarInsert.do</title>
 
 <script src="../ckeditor/ckeditor.js"></script>
 <script>
@@ -34,7 +34,7 @@
 	<input type="hidden" name="action" value="insert">
 		글제목<input type="text" name="title"><br/>
 		작성자<input type="text" name="writer"><br/>
-		작성일<input type="text" name="" value="${todayFmt}"/><br/>  
+		작성일<input type="text" name="writeDate" value="${todayFmt}"/><br/>  
 		내용<textarea rows="10" cols="50" name="content" id="content"></textarea>
 		<script>
 			CKEDITOR.replace('content',{

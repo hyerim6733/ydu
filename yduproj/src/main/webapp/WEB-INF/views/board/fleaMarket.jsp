@@ -38,7 +38,7 @@ function setOrderColumn(orderColumn) {
 		</tr>
 	</table>
 <!-- 게시판 목록 기본 -->
-<a href="">등록(글쓰기)</a>
+<a href="fleaMarInsert.do">[등록]</a>
 	<table>
 		<tr>
 			<th>번호 <input type="button" value="▲" onclick="setOrderColumn('boardId')"></th>
@@ -51,16 +51,16 @@ function setOrderColumn(orderColumn) {
 
 	 <c:forEach var="board" items="${fleaMarket}">
 			<tr>
-			    <td><a href="fleaMarket.do?boardId=${board.boardId}">${board.boardId}</a></td>
-				<td><a href="fleaMarket.do?boardId=${board.boardId}">${board.title}</a></td>
-				<td><a href="fleaMarket.do?boardId=${board.boardId}">${board.content}</a></td>
-				<td><a href="fleaMarket.do?boardId=${board.boardId}">${board.writer}</a></td>
+			    <td><a href="fleaMarket.do?boardNo=${board.boardNo}">${board.boardNo}</a></td>
+				<td><a href="fleaMarket.do?boardNo=${board.boardNo}">${board.title}</a></td>
+				<td><a href="fleaMarket.do?boardNo=${board.boardNo}">${board.content}</a></td>
+				<td><a href="fleaMarket.do?boardNo=${board.boardNo}">${board.writer}</a></td>
 			</tr>
 		</c:forEach>
 	
 
 	</table>
-	<a href="">등록(글쓰기)</a>
+	<a href="fleaMarInsert.do">[등록]</a>
 </form>
 
 </body>

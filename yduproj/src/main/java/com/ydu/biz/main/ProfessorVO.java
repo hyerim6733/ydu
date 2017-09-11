@@ -1,19 +1,19 @@
 package com.ydu.biz.main;
 
 public class ProfessorVO {
-	private int professorCode;
-	private String id;
-	private String email;
-	private String name;
-	private String birth;
-	private String phone;
-	private String hireDate;
-	private String major;
-	public int getProfessorCode() {
-		return professorCode;
+	public String professor_code;
+	public String id;
+	public String email;
+	public String name;
+	public String birth;
+	public String phone;
+	public String hire_date;
+	public String major;
+	public String getProfessor_code() {
+		return professor_code;
 	}
-	public void setProfessorCode(int professorCode) {
-		this.professorCode = professorCode;
+	public void setProfessor_code(String professor_code) {
+		this.professor_code = professor_code;
 	}
 	public String getId() {
 		return id;
@@ -45,11 +45,11 @@ public class ProfessorVO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getHireDate() {
-		return hireDate;
+	public String getHire_date() {
+		return hire_date;
 	}
-	public void setHireDate(String hireDate) {
-		this.hireDate = hireDate;
+	public void setHire_date(String hire_date) {
+		this.hire_date = hire_date;
 	}
 	public String getMajor() {
 		return major;
@@ -57,6 +57,10 @@ public class ProfessorVO {
 	public void setMajor(String major) {
 		this.major = major;
 	}
-	
+	@Override
+	public String toString() {
+		return "ProfessorVO [professor_code=" + professor_code + ", id=" + id + ", name=" + name + ", major=" + major
+				+ "]";
+	}
 	
 }

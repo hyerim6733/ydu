@@ -36,7 +36,9 @@ public interface BoardService {
 	
 	//벼룩시장
 	List<BoardVO> fleaMarket(BoardSearchVO vo);
+	BoardVO fleaMarDetail(BoardVO vo);
 	//자유게시판
+	List<BoardVO> freeBoard(BoardSearchVO vo);
 	BoardVO freeBoard(BoardVO vo);
 	
 	
@@ -45,6 +47,7 @@ public interface BoardService {
 	
 	//academicCalendar
 	BoardVO academicCalendar(BoardVO vo);
+	
 	
 	
 	//다건 삭제

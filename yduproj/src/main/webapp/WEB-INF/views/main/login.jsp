@@ -8,26 +8,58 @@
 		<meta name="author" content="Evgeniya">
 		<meta name="keyword" content="keywords">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="../plugins/bootstrap/bootstrap.css" rel="stylesheet">
+		<link href="resources/plugins/bootstrap/bootstrap.css" rel="stylesheet">
 		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
-		<link href="../css/style.css" rel="stylesheet">
 		
-		<script src="../resources/plugins/jquery/jquery-2.1.0.min.js"></script>
-		<script src="../resources/plugins/jquery-ui/jquery-ui.min.js"></script>
+		<script src="resources/plugins/jquery/jquery-2.1.0.min.js"></script>
+		<script src="resources/plugins/jquery-ui/jquery-ui.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="../resources/plugins/bootstrap/bootstrap.min.js"></script>
-		<script src="../resources/plugins/justified-gallery/jquery.justifiedgallery.min.js"></script>
-		<script src="../resources/plugins/tinymce/tinymce.min.js"></script>
-		<script src="../resources/plugins/tinymce/jquery.tinymce.min.js"></script>
+		<script src="resources/plugins/bootstrap/bootstrap.min.js"></script>
+		<script src="resources/plugins/justified-gallery/jquery.justifiedgallery.min.js"></script>
+		<script src="resources/plugins/tinymce/tinymce.min.js"></script>
+		<script src="resources/plugins/tinymce/jquery.tinymce.min.js"></script>
 		<!-- All functions for this theme + document.ready processing -->
-		<script src="../resources/js/devoops.js"></script>
+		<!-- <script src="resources/js/devoops.js"></script>  -->
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 				<script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
 				<script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
 		<![endif]-->
+	<script>
+		$(function() {
+			//id 중복체크
+			$("#check1").click(function() {
+				var userId = $("#username").val();
+				var userPw = $("#password").val();
+				console.log(userId);
+				console.log(userPw);
+				var userInfo ={ "userid": userId, "userpw": userPw };
+				
+				$.ajax({
+					url : "./getParam.do",
+					data : userInfo,
+					method : "post",
+					type : "json",
+			//		contentType : "application/json",
+					success : function(data) {
+						if(data=="success")
+						{
+							alert(data);
+							$(location).attr('href',"main/index");
+						}else {
+							alert("failed");
+						}
+					},
+					error : function(request, status, error) {
+						alert(error);
+					}
+				}); 
+			});
+		});
+	</script>
 	</head>
+	
 <body>
 <div class="container-fluid">
 	<div id="page-login" class="row">
@@ -42,14 +74,15 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label">Username</label>
-						<input type="text" class="form-control" name="username" />
+						<input type="text" class="form-control" name="username" id="username"/>
 					</div>
 					<div class="form-group">
 						<label class="control-label">Password</label>
-						<input type="password" class="form-control" name="password" />
+						<input type="password" class="form-control" name="password" id="password"/>
 					</div>
 					<div class="text-center">
-						<a href="../index.html" class="btn btn-primary">Sign in</a>
+						<input type="button" value="check" id="check1"/>
+						<a href="../index.html" class="btn btn-primary" id="signIn">Sign in</a>
 					</div>
 				</div>
 			</div>
