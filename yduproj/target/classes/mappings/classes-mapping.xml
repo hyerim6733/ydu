@@ -35,15 +35,14 @@
 		WHERE c.class_code = n.class_code;
 	</select>
 
-	<select id="getSelStuClassesList" resultType="classStatus">
-		SELECT 	c.CLASS_NO as "classNo",
-        c.ST_CODE as "stCode",
-        c.OPEN_CLASS as "openClass",
-        c.REPEAT as "repeat",
-        c.CLASS_GRADE as "classGrade"
-		FROM CLASS_STATUS c,
-		STUDENT s
-		WHERE c.ST_CODE = s.ST_CODE;
+	<select id="getSelStuClassesList" parameterType="classStatus" resultType="map">
+		SELECT 	CLASS_NO as "classNo",
+        ST_CODE as "stCode",
+        OPEN_CLASS as "openClass",
+        REPEAT as "repeat",
+        CLASS_GRADE as "classGrade"
+		FROM CLASS_STATUS
+		WHERE ST_CODE = #{student_code}
 	</select>
 
 </mapper>

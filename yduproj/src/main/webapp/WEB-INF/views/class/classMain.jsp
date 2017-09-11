@@ -180,6 +180,14 @@ pageEncoding="UTF-8" %>
 					</a>
 					
 				</li>
+				<li>
+					
+					<a class="ajax-link" href="classStatus.do">
+						<i class="fa fa-bar-chart-o"></i>
+						<span class="hidden-xs"> 개인시간표조회</span>
+					</a>
+					
+				</li>
 			</ul>
 		</div>
 		<!--Start Content-->

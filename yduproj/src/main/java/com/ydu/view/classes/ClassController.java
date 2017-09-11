@@ -62,6 +62,15 @@ public class ClassController {
 			List<ClassStatusVO> list = classService.getSelStuClassesList(vo);
 			model.addAttribute("SelClassList", list);
 			System.out.println("selected student classStatusList method excute!!");
+			System.out.println(list);
 			return "/newPage"; // new page setting
+		}		
+		
+		//classStatus
+		@RequestMapping(value="/classStatus.do")
+		public String classStatusView() {
+			System.out.println("留덉씠�럹�씠吏�");
+			return "/class/classStatus";
 		}
+		
 }
