@@ -24,15 +24,20 @@
 	</delete>
 	
 	<select id="getClassesList" resultType="map">
-		SELECT 	n.openClass as "openClass",
+		SELECT 	n.open_class as "openClass",
         c.class_title as "classTitle",
+        p.name as "name",
         n.class_time as "classTime",
         n.class_room as "classRoom",
-        c.major as "major",
+        d.small_codename as "smallCodename",
         n.student_limit as "studentLimit"
 		FROM CLASS_LIST c,
-		NEW_CLASS n
-		WHERE c.class_code = n.class_code;
+		NEW_CLASS n,
+		PROFESSOR p,
+		CODE d
+		WHERE c.class_code = n.class_code and
+		n.prof_code = p.prof_code and
+		c.major = d.small_code
 	</select>
 
 	<select id="getSelStuClassesList" parameterType="classStatus" resultType="map">

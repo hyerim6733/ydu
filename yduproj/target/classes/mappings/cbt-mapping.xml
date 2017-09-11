@@ -5,13 +5,20 @@
                         
 <mapper namespace="com.ydu.biz.cbt.impl.CBTMapper"> 
 
+	<!-- 나중에 result Map 지우세염 -->
+	<resultMap id="getTestResult" type="HashMap">
+		<result property="cbtCode" column="CBT_CODE"/>
+		<result property="question" column="QUESTION" jdbcType="CLOB" javaType="java.lang.String"/>
+		<result property="rightAnswer" column="RIGHT_ANSWER"/>
+		<result property="ex1" column="EX1" jdbcType="CLOB" javaType="java.lang.String"/>
+		<result property="ex2" column="EX2" jdbcType="CLOB" javaType="java.lang.String"/>
+		<result property="ex3" column="EX3" jdbcType="CLOB" javaType="java.lang.String"/>
+		<result property="ex4" column="EX4" jdbcType="CLOB" javaType="java.lang.String"/>
+	</resultMap>
+
 	<!-- 시험 리스트 조회 : 교수 : 다른 교수가 제출한 시험도 모두 조회 -->
 	<select id="getAllCBT" resultType="map">
 		SELECT  cbt_code as "cbtCode", 
-					cbt_title as "cbtTitle",
-	        		final_date as "finalDate"
-			FROM CBT_LIST
-		<!-- SELECT  cbt_code as "cbtCode", 
 				cbt_title as "cbtTitle",
         		class_title as "classTitle", 
         		name as "name", 
@@ -22,22 +29,13 @@
 			 PROFESSOR p
         WHERE c.open_class = n.open_class 
           AND n.class_code = l.class_code
-          AND n.professor_code = p.professor_code
-          AND c.open_class in (
-							SELECT open_class
-							FROM CLASS_STATUS
-							WHERE prof_code = #{code} controller의 session 값이 자동으로 넘어옴.
-							)
-		ORDER BY cbt_code -->
+          AND n.prof_code = p.prof_code
+		ORDER BY cbt_code
 	</select>
 	
 	<!-- 시험 리스트 조회 : 교수 : 내가 제출한 시험만 모두 조회 -->
 	<select id="getProfessorCBT" resultType="map">
-		SELECT  cbt_code as "cbtCode", 
-					cbt_title as "cbtTitle",
-	        		final_date as "finalDate"
-			FROM CBT_LIST
-		<!-- SELECT  c.cbt_code as "cbtCode", 
+		SELECT  c.cbt_code as "cbtCode", 
 				c.cbt_title as "cbtTitle",
         		l.class_title as "classTitle", 
         		p.name as "name", 
@@ -48,23 +46,18 @@
 			 PROFESSOR p
         WHERE c.open_class = n.open_class 
           AND n.class_code = l.class_code
-          AND n.professor_code = p.professor_code
+          AND n.prof_code = p.prof_code
           AND c.open_class in (
 							SELECT open_class
 							FROM CLASS_STATUS
-							WHERE prof_code = #{code} controller의 session 값이 자동으로 넘어옴.
+							WHERE prof_code = #{code} <!-- controller의 session 값이 자동으로 넘어옴. -->
 							)
-        ORDER BY cbt_code -->
+        ORDER BY cbt_code
 	</select>
 	
-	<!-- 시험 리스트 조회 : 학생 : 내가 수강한 것만 조회 -->
+	<!-- 시험 리스트 조회 : 학생 : 내가 수강한 시험 목록 조회 -->
 	<select id="getMyCBT" resultType="map">
 	SELECT  cbt_code as "cbtCode", 
-					cbt_title as "cbtTitle",
-	        		final_date as "finalDate"
-			FROM CBT_LIST
-			WHERE cbt_code = #{code}
-		<!-- SELECT  cbt_code as "cbtCode", 
 				cbt_title as "cbtTitle",
         		class_title as "classTitle", 
         		name as "name", 
@@ -75,14 +68,39 @@
 			 PROFESSOR p
         WHERE c.open_class = n.open_class 
           AND n.class_code = l.class_code
-          AND n.professor_code = p.professor_code
+          AND n.prof_code = p.prof_code
           AND c.open_class in (
 							SELECT open_class
 							FROM CLASS_STATUS
-							WHERE st_code = #{code} controller의 session 값이 자동으로 넘어옴.
+							WHERE st_code = #{code} <!-- controller의 session 값이 자동으로 넘어옴. -->
 							)
-		ORDER BY cbt_code -->
+		ORDER BY cbt_code
 	</select>
+	
+	<!-- 학생이 시험을 클릭했을 때, 보여줄 정보들. -->
+	<select id="getCBTInfo" resultType="map">
+
+	SELECT  cbt_code as "cbtCode", 
+				cbt_title as "cbtTitle",
+        		class_title as "classTitle", 
+        		name as "name", 
+        		final_date as "finalDate",
+        		note as "note",
+        		limit_time as "limitTime"
+		FROM CBT_LIST c , 
+			 NEW_CLASS n , 
+			 CLASS_LIST l, 
+			 PROFESSOR p
+        WHERE c.open_class = n.open_class 
+          AND n.class_code = l.class_code
+          AND n.prof_code = p.prof_code
+          AND c.cbt_code = 3 <!-- #{code} -->
+
+	</select>
+	
+	
+	
+	
 	
 	<!-- 교수 : 내가 출제한 시험에서, 수강학생들의 점수를 조회가능 -->
 	<select id="getAllGrades" resultType="map">
@@ -105,18 +123,27 @@
 		INSERT INTO cbt_exampack (CBT_CODE, QUESTION, RIGHT_ANSWER, ex1, ex2, ex3, ex4)
 		VALUES (#{cbtCode}, #{question}, #{rightAnswer}, #{ex1}, #{ex2},#{ex3},#{ex4})
 	</insert>
-	<!--  학생 : 시험응시 -->
-	<select id="getTest" resultType="map">
+	<!--  학생 : 시험응시 / 시험목록테스트중-->
+	<select id="getTest" resultType="map" resultMap="getTestResult">
+	<!-- SELECT  rownum , a.* FROM (
+	SELECT *
+	FROM cbt_exampack
+	WHERE CBT_CODE = 3) a -->
+
 		SELECT  CBT_CODE as "cbtCode", 
-				QUESTION as "question", 
+				QUESTION as "question" , 
 				RIGHT_ANSWER as "rightAnswer", 
 				ex1 as "ex1", 
 				ex2 as "ex2", 
 				ex3 as "ex3", 
-				ex4 as "ex4"
+				ex4 as "ex4",
+				mark as "mark"
 		FROM cbt_exampack
-		WHERE CBT_CODE = #{code}
+		WHERE CBT_CODE = 3
 	</select>
+	
+	
+	
 
 	
 </mapper>

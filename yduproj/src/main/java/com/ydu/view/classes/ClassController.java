@@ -1,6 +1,7 @@
 package com.ydu.view.classes;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,21 +40,21 @@ public class ClassController {
 		
 		@RequestMapping(value="/getClassesList.do")
 		public String enrollmentTime(Model model, ClassListVO vo) {
-			System.out.println("�닔媛뺤떊泥�議고쉶");
+			System.out.println("수강신청조회");
 		if(classService == null){
-			System.out.println("�닔媛� �옄猷� �뾾�쓬");
-		}
+			System.out.println("수강 자료 없음");
+		} 
 		else {
-			System.out.println("議고쉶�꽦怨�");
-			List<ClassListVO> list = classService.getClassesList();
+			System.out.println("조회성공");
+			List<Map<String, Object>> list = classService.getClassesList();
 			model.addAttribute("classList",list);
 		}
-			return "/class/classList";
+			return "/class/enrollmentTime";
 		}
 		
 		@RequestMapping(value="/myPage.do")
 		public String myPage() {
-			System.out.println("留덉씠�럹�씠吏�");
+			System.out.println("마이페이지");
 			return "/class/myPage";
 		}
 	
