@@ -22,9 +22,6 @@ public interface ClassMapper {
 
 				// 수강 신청 목록 조회
 				List<Map<String, Object>> getClassesList();
-
-				// �닔媛� �떊泥� 紐⑸줉 議고쉶
-				List<ClassListVO> getClassesList();
 				
 				List<ClassStatusVO> getSelStuClassesList(StudentVO vo);
 
