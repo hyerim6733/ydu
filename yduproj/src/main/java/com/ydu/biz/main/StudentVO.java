@@ -1,21 +1,21 @@
 package com.ydu.biz.main;
 
 public class StudentVO {
-	private String studentCode;
-	private String birth;
-	private String name;
-	private String major;
-	private String phone;
-	private String entranceDate;
-	private String currentCredit;
-	private int grade;
-	private int totalCredit;
-	private String id;
-	public String getStudentCode() {
-		return studentCode;
+	public String student_code;
+	public String birth;
+	public String name;
+	public String major;
+	public String phone;
+	public String entrance_date;
+	public String current_credit;
+	public String grade;
+	public String total_credit;
+	public String id;
+	public String getStudent_code() {
+		return student_code;
 	}
-	public void setStudentCode(String studentCode) {
-		this.studentCode = studentCode;
+	public void setStudent_code(String student_code) {
+		this.student_code = student_code;
 	}
 	public String getBirth() {
 		return birth;
@@ -41,29 +41,29 @@ public class StudentVO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getEntranceDate() {
-		return entranceDate;
+	public String getEntrance_date() {
+		return entrance_date;
 	}
-	public void setEntranceDate(String entranceDate) {
-		this.entranceDate = entranceDate;
+	public void setEntrance_date(String entrance_date) {
+		this.entrance_date = entrance_date;
 	}
-	public String getCurrentCredit() {
-		return currentCredit;
+	public String getCurrent_credit() {
+		return current_credit;
 	}
-	public void setCurrentCredit(String currentCredit) {
-		this.currentCredit = currentCredit;
+	public void setCurrent_credit(String current_credit) {
+		this.current_credit = current_credit;
 	}
-	public int getGrade() {
+	public String getGrade() {
 		return grade;
 	}
-	public void setGrade(int grade) {
+	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-	public int getTotalCredit() {
-		return totalCredit;
+	public String getTotal_credit() {
+		return total_credit;
 	}
-	public void setTotalCredit(int totalCredit) {
-		this.totalCredit = totalCredit;
+	public void setTotal_credit(String total_credit) {
+		this.total_credit = total_credit;
 	}
 	public String getId() {
 		return id;
@@ -71,6 +71,9 @@ public class StudentVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+	@Override
+	public String toString() {
+		return "StudentVO [student_code=" + student_code + ", name=" + name + ", major=" + major + ", id=" + id + "]";
+	}
 	
 }

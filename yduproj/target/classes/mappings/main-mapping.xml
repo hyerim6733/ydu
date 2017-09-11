@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ydu.biz.main.impl.LoginMapper">
+<resultMap type="login" id="loginMap">
+	<id property="userid" column="id"/>
+	<result property="userpw" column="pw"/>
+	<result property="separation" column="separation"/>
+</resultMap>
+
+
+
+<!-- login -->
+
+	<select id="getUser" resultMap="loginMap" >
+        <![CDATA[  
+	        SELECT ID, PW, SEPARATION
+	        FROM LOGIN
+	    	WHERE ID = #{userid}
+        ]]>
+	</select>
+
+	
+
+
+
+
+          <!-- WHERE BOARD_ID = #{boardId} -->
+ <!--  SELECT B.* FROM( SELECT ROWNUM RN, A.* FROM (
+	<select id="getBoardList" resultType="board"
+		parameterType="com.ydu.biz.board.BoardSearchVO">
+		SELECT *
+		FROM BOARD
+		WHERE 1 = 1
+		<if test="searchCondition == 'TITLE'">
+			AND TITLE LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'CONTENT'">
+			AND CONTENT LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		ORDER BY BOARD_ID DESC
+	</select>
+
+   ) A) B WHERE RN BETWEEN ? AND ?   
+ -->
+
+</mapper>                    
