@@ -24,11 +24,7 @@ public class MainController {
 	@Autowired LoginService
 	userService;
 	
-	// interview calendar
-	@RequestMapping("/interview/calendar")
-	public String calendar(){
-		return "/interview/calendar";
-	}
+	// 로그인 폼
 	@RequestMapping("/login.do")
 	public String login(){
 		return "/main/login";

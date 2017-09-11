@@ -238,7 +238,7 @@ pageEncoding="UTF-8" %>
 					</a>
 				</li>
 				 <li>
-					<a class="ajax-link" href="../academicCalendar.do">
+					<a class="ajax-link" href="../interview/calendar.do">
 						 <i class="fa fa-calendar"></i>
 						 <span class="hidden-xs">학교일정</span>
 					</a>
