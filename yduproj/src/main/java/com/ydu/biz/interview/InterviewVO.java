@@ -1,4 +1,4 @@
-package com.ydu.biz.main;
+package com.ydu.biz.interview;
 
 public class InterviewVO {
 

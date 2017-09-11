@@ -19,7 +19,8 @@
         <typeAlias alias="classPlan" type="com.ydu.biz.classes.ClassPlanVO"/>
         <typeAlias alias="classStatus" type="com.ydu.biz.classes.ClassStatusVO"/>
         <typeAlias alias="code" type="com.ydu.biz.main.CodeVO"/>
-        <typeAlias alias="interview" type="com.ydu.biz.main.InterviewVO"/>
+        <typeAlias alias="interview" type="com.ydu.biz.interview.InterviewVO"/>
+        <typeAlias alias="interStatus" type="com.ydu.biz.interview.InterStatusVO"/>
         <typeAlias alias="login" type="com.ydu.biz.main.LoginVO"/>
         <typeAlias alias="newClass" type="com.ydu.biz.classes.NewClassVO"/>
         <typeAlias alias="professor" type="com.ydu.biz.main.ProfessorVO"/>
