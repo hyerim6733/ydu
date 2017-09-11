@@ -1,2 +1,10 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/ydu/biz/classes/ClassService.java=UTF-8
+encoding//src/main/java/com/ydu/biz/classes/impl/ClassMapper.java=UTF-8
+encoding//src/main/java/com/ydu/biz/classes/impl/ClassServiceImpl.java=UTF-8
+encoding//src/main/java/com/ydu/biz/interview/InterviewService.java=UTF-8
+encoding//src/main/java/com/ydu/biz/interview/impl/InterviewMapper.java=UTF-8
+encoding//src/main/java/com/ydu/biz/interview/impl/InterviewServiceImpl.java=UTF-8
+encoding//src/main/java/com/ydu/view/classes/ClassController.java=UTF-8
+encoding//src/main/java/com/ydu/view/interview/InterviewController.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/main/home.jsp=UTF-8

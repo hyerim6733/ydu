@@ -1,6 +1,7 @@
 package com.ydu.biz.cbt;
 
 import java.util.List;
+import java.util.Map;
 
 import com.ydu.biz.main.StudentVO;
 
@@ -15,7 +16,7 @@ public interface CBTService {
 	 */
 	
 	//1.교수
-	List<CBTListVO> getAllCBT( /*LoginVO vo */ );
+	List<Map<String, Object>> getAllCBT( /*LoginVO vo */ );
 	
 	//2.학생
 	List<CBTListVO> getMyCBT(String stu_code);
@@ -47,7 +48,11 @@ public interface CBTService {
 	void insertTest(CBTExampackVO vo);
 	
 	//2. 학생
-	List<CBTResultVO> getTest();
+	List<CBTExampackVO> getTest();
+
+	
+	//3. 시험제목 눌렀을 때, 중간화면. 시험안내 페이지.
+	List<CBTListVO> getCBTInfo(CBTListVO vo);
 	
 	
 }

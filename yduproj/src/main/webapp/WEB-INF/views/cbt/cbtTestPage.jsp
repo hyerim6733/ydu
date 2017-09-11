@@ -22,31 +22,40 @@ th {
 	color: white;
 }
 </style>
-<header class="w3-container"
-	style="padding-top: 22px; padding-left: 30px">
-	<h5>
-		<b><i class="fa fa-pagelines"></i> &nbsp; &nbsp; &nbsp; 시험치세요~ </b>
-	</h5>
-</header>
+<form action="cbtMain.do#goResult.do" method="post">
+	<div align="center">
+		<br> <b>시험</b> <br />
+		<br />
+		<br />
+		<br />
 
-<table>
-	<tr>
-		<th align="center">번호</th>
-		<th>문제</th>
-		<th>1</th>
-		<th>2</th>
-		<th>3</th>
-		<th>4</th>
-	</tr>
-	<c:forEach var="list" items="${examList}">
-		<tr>
-			<td>1123</td>
-			<td>${list.question }</td>
-			<td>${list.ex1 }</td>
-			<td>${list.ex2 }</td>
-			<td>${list.ex3 }</td>
-			<td>${list.ex4 }</td>
-		</tr>
-	</c:forEach>
+		<table>
+			<tr>
+				<th align="center">번호</th>
+				<th>문제</th>
+				<th>1</th>
+				<th>2</th>
+				<th>3</th>
+				<th>4</th>
+			</tr>
+			<c:forEach var="list" items="${examList}" varStatus="status">
+				<tr>
+					<td>[ ${status.count} ]</td>
+					<td>${list.question }</td>
+					<td><input type="checkbox" name="test"
+						value="${status.count}1"> ${list.ex1 }</td>
+					<td><input type="checkbox" name="test"
+						value="${status.count}2"> ${list.ex2 }</td>
+					<td><input type="checkbox" name="test"
+						value="${status.count}3"> ${list.ex3 }</td>
+					<td><input type="checkbox" name="test"
+						value="${status.count}4"> ${list.ex4 }</td>
+				</tr>
 
-</table>
+			</c:forEach>
+
+		</table>
+		<br />
+		<br /> <input type="submit" value="제출">
+	</div>
+</form>

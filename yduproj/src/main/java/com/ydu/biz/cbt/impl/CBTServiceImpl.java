@@ -1,6 +1,7 @@
 package com.ydu.biz.cbt.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class CBTServiceImpl implements CBTService {
 	 * 3. cbt_subject
 	 */
 	@Override
-	public List<CBTListVO> getAllCBT() {
+	public List<Map<String, Object>> getAllCBT() {
 		System.out.println("impl get all cbt");
 		return cbtDAO.getAllCBT();
 	}
@@ -69,8 +70,13 @@ public class CBTServiceImpl implements CBTService {
 	}
 
 	@Override
-	public List<CBTResultVO> getTest() {
+	public List<CBTExampackVO> getTest() {
 		return cbtDAO.getTest();
+	}
+
+	@Override
+	public List<CBTListVO> getCBTInfo(CBTListVO vo) {
+		return cbtDAO.getCBTInfo(vo);
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.ydu.biz.cbt.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.ydu.biz.cbt.CBTExampackVO;
 import com.ydu.biz.cbt.CBTListVO;
@@ -8,7 +9,7 @@ import com.ydu.biz.cbt.CBTResultVO;
 
 public interface CBTMapper {
 
-	List<CBTListVO> getAllCBT();
+	List<Map<String, Object>> getAllCBT();
 
 	List<CBTListVO> getMyCBT(String stu_code);
 
@@ -20,6 +21,8 @@ public interface CBTMapper {
 
 	void insertTest(CBTExampackVO vo);
 
-	List<CBTResultVO> getTest();
+	List<CBTExampackVO> getTest();
+	
+	List<CBTListVO> getCBTInfo(CBTListVO vo);
 
 }

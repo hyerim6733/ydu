@@ -5,19 +5,27 @@ import java.util.Map;
 
 import com.ydu.biz.classes.ClassSearchVO;
 import com.ydu.biz.classes.ClassStatusVO;
+import com.ydu.biz.main.StudentVO;
 import com.ydu.biz.classes.ClassListVO;
 
 public interface ClassMapper {
 
-				// 수강신청
+				// �닔媛뺤떊泥�
 				void insertClass(ClassStatusVO vo);
-				
-				// 수강 취소(삭제)
+				 
+				// �닔媛� 痍⑥냼(�궘�젣)
 				void deleteClass(ClassStatusVO vo);
 				
-				// 수강과목 상세 조회
+				// �닔媛뺢낵紐� �긽�꽭 議고쉶
 				ClassListVO getClasses(ClassListVO vo);
 				
+
 				// 수강 신청 목록 조회
 				List<Map<String, Object>> getClassesList();
+
+				// �닔媛� �떊泥� 紐⑸줉 議고쉶
+				List<ClassListVO> getClassesList();
+				
+				List<ClassStatusVO> getSelStuClassesList(StudentVO vo);
+
 }

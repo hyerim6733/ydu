@@ -21,6 +21,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <span class="w3-bar-item w3-right"><a href="<%=request.getContextPath()%>/main/index">Yedam home</a></span>
 </div>
 
+
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
   <div class="w3-container w3-row">
@@ -58,6 +59,166 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 
   <!-- Header -->
+
+<div id="modalbox">
+	<div class="devoops-modal">
+		<div class="devoops-modal-header">
+			<div class="modal-header-name">
+				<span>Basic table</span>
+			</div>
+			<div class="box-icons">
+				<a class="close-link">
+					<i class="fa fa-times"></i>
+				</a>
+			</div>
+		</div>
+		<div class="devoops-modal-inner">
+		</div>
+		<div class="devoops-modal-bottom">
+		</div>
+	</div>
+</div>
+<header class="navbar">
+	<div class="container-fluid expanded-panel">
+		<div class="row">
+			<div id="logo" class="col-xs-12 col-sm-2">
+				<a href="<%=request.getContextPath()%>/main/index">예담대학교 - 수강신청</a>
+			</div>
+			<div id="top-panel" class="col-xs-12 col-sm-10">
+				<div class="row">
+					<div class="col-xs-8 col-sm-4">
+						<a href="#" class="show-sidebar">
+						  <i class="fa fa-bars"></i>
+						</a>
+						<div id="search">
+							<input type="text" placeholder="search"/>
+							<i class="fa fa-search"></i>
+						</div>
+					</div>
+					<div class="col-xs-4 col-sm-8 top-panel-right">
+						<ul class="nav navbar-nav pull-right panel-menu">
+							<li class="hidden-xs">
+								<a href="index.html" class="modal-link">
+									<i class="fa fa-bell"></i>
+									<span class="badge">7</span>
+								</a>
+							</li>
+							<li class="hidden-xs">
+								<a class="ajax-link" href="ajax/calendar.html">
+									<i class="fa fa-calendar"></i>
+									<span class="badge">7</span>
+								</a>
+							</li>
+							<li class="hidden-xs">
+								<a href="ajax/page_messages.html" class="ajax-link">
+									<i class="fa fa-envelope"></i>
+									<span class="badge">7</span>
+								</a>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle account" data-toggle="dropdown">
+									<div class="avatar">
+										<img src="img/avatar.jpg" class="img-rounded" alt="avatar" />
+									</div>
+									<i class="fa fa-angle-down pull-right"></i>
+									<div class="user-mini pull-right">
+										<span class="welcome">Welcome,</span>
+										<span>Yedam Student</span>
+									</div>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="#">
+											<i class="fa fa-user"></i>
+											<span class="hidden-sm text">Profile</span>
+										</a>
+									</li>
+									<li>
+										<a href="ajax/page_messages.html" class="ajax-link">
+											<i class="fa fa-envelope"></i>
+											<span class="hidden-sm text">Messages</span>
+										</a>
+									</li>
+									<li>
+										<a href="ajax/gallery_simple.html" class="ajax-link">
+											<i class="fa fa-picture-o"></i>
+											<span class="hidden-sm text">Albums</span>
+										</a>
+									</li>
+									<li>
+										<a href="ajax/calendar.html" class="ajax-link">
+											<i class="fa fa-tasks"></i>
+											<span class="hidden-sm text">Tasks</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="fa fa-cog"></i>
+											<span class="hidden-sm text">Settings</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<i class="fa fa-power-off"></i>
+											<span class="hidden-sm text">Logout</span>
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<!--End Header-->
+<!--Start Container-->
+<div id="main" class="container-fluid">
+	<div class="row">
+		<div id="sidebar-left" class="col-xs-2 col-sm-2">
+			<ul class="nav main-menu">
+				
+				<li>
+					<a class="ajax-link" href="#classBody.do">
+						<i class="fa fa-dashboard"></i>
+						<span class="hidden-xs"> 메인 </span>
+					</a>
+				</li>
+				<li>
+					<a class="ajax-link" href="classProgram.do">
+						<i class="fa fa-bar-chart-o"></i>
+						<span class="hidden-xs"> 강의 계획서 </span>
+					</a>
+				</li>
+				<li>
+					
+					<a class="ajax-link" href="getClassesList.do">
+						<i class="fa fa-bar-chart-o"></i>
+						<span class="hidden-xs"> 수강신청</span>
+					</a>
+					
+				</li>
+				<li>
+					
+					<a class="ajax-link" href="myPage.do">
+						<i class="fa fa-bar-chart-o"></i>
+						<span class="hidden-xs"> 마이페이지</span>
+					</a>
+					
+				</li>
+				<li>
+					
+					<a class="ajax-link" href="classStatus.do">
+						<i class="fa fa-bar-chart-o"></i>
+						<span class="hidden-xs"> 개인시간표조회</span>
+					</a>
+					
+				</li>
+			</ul>
+		</div>
+		<!--Start Content-->
+>>>>>>> branch 'master' of https://github.com/hyerim6733/ydu.git
 		<div id="content" class="col-xs-12 col-sm-10">
 			<div class="preloader"></div>
 			<div id="ajax-content"></div>

@@ -8,7 +8,14 @@ public class CBTExampackVO {
 	private String ex2;
 	private String ex3;
 	private String ex4;
+	private int mark;
 	
+	public int getMark() {
+		return mark;
+	}
+	public void setMark(int mark) {
+		this.mark = mark;
+	}
 	public int getCbtCode() {
 		return cbtCode;
 	}
