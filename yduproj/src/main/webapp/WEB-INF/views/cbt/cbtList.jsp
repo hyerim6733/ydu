@@ -34,9 +34,9 @@ th {
 <c:forEach var="list" items="${cbtList}">
 <tr>
 	<td>${list.cbtCode }</td>
-	<td>${list.cbtTitle }</td>
-	<td><!-- ${list.classTitle } -->과정명표시</td>
-	<td><!-- ${list.name }--> 이름표시</td>
+	<td><a href="goTestInfo.do">${list.cbtTitle }</a></td>
+	<td>${list.classTitle } </td>
+	<td>${list.name }</td>
 	<td>${list.finalDate }</td>
 </tr>
 </c:forEach>

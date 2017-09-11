@@ -1,6 +1,7 @@
 package com.ydu.view.cbt;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
 
+import com.ydu.biz.cbt.CBTExampackVO;
 import com.ydu.biz.cbt.CBTListVO;
 import com.ydu.biz.cbt.CBTResultVO;
 import com.ydu.biz.cbt.CBTService;
@@ -31,37 +35,44 @@ public class CBTController {
 		
 		System.out.println("[교수 목록 조회 페이지] by cbt_controller=====");
 
-		
-		
-		List<CBTListVO> list = cbtService.getAllCBT();
+		List<Map<String, Object>> list = cbtService.getAllCBT();
 		model.addAttribute("cbtList", list);
-
+		
 		return "/cbt/cbtList";
 	}
-	
+
 	//[학생 cbt 조회]학생은 수강신청한 cbt의 목록만 조회가능합니다.
 	@RequestMapping(value= "/getMyCBT.do")
 	public String getMyCBT(Model model, HttpSession session) {
 		System.out.println("[학생 목록 조회 페이지] by cbt_controller=====");
 		
-		String stu_code = "1";//(String)session.getAttribute("abc");
+		String stu_code = "201711400";//(String)session.getAttribute("stCode");
 		
 		List<CBTListVO> list = cbtService.getMyCBT(stu_code);
 		model.addAttribute("cbtList", list);
 		return "/cbt/cbtList";
 	}
 	
-	//[시험]
+	//[시험을 클릭했을 때, 시험시작 전 준비화면]
+	@RequestMapping(value= "/goTestInfo.do")
+	public String getTestInfo(Model model, CBTListVO vo) {
+		System.out.println("[Test Main] by cbt_controller=====");
+		
+		model.addAttribute("test", cbtService.getCBTInfo(vo));
+
+		return "/cbt/cbtTestMain";
+	}
+	
+	
+	//[시험ㄱㄱ하는 페이지]
 	@RequestMapping(value= "/goTestPage.do")
 	public String takeAnExam(Model model, HttpSession session) {
 		System.out.println("[시험치는 페이지로넘어갑니다.] by cbt_controller=====");
 		
-		/*List<CBTResultVO> list = cbtService.getTest();
+		//String exam_code = "3"; //(String)session.getAttribute("cbtCode");
+		List<CBTExampackVO> list = cbtService.getTest();
 		model.addAttribute("examList", list);
 		
-		*
-		* 나중에 오면 작업해야할 공간
-		*/
 		return "/cbt/cbtTestPage";
 	}
 	
@@ -69,6 +80,7 @@ public class CBTController {
 	@RequestMapping(value= "/goResult.do")
 	public String getExamResult(Model model, HttpSession session) {
 		System.out.println("[결과 페이지로넘어갑니다.] by cbt_controller=====");
+		
 		
 		return "/cbt/cbtResult";
 	}

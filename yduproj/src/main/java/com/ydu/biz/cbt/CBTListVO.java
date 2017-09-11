@@ -10,8 +10,21 @@ public class CBTListVO {
 	private String openClass;
 	private String cbtTitle;
 	private String finalDate;
+	private String note;
+	private int limitTime;
 	
-	
+	public String getNote() {
+		return note;
+	}
+	public void setNote(String note) {
+		this.note = note;
+	}
+	public int getLimitTime() {
+		return limitTime;
+	}
+	public void setLimitTime(int limitTime) {
+		this.limitTime = limitTime;
+	}
 	public String getOpenClass() {
 		return openClass;
 	}
