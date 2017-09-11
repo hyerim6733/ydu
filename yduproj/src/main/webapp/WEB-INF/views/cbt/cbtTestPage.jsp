@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <style>
 table {
@@ -20,24 +21,25 @@ th {
 }
 </style>
 <header class="w3-container" style="padding-top:22px; padding-left:30px">
-    <h5><b><i class="fa fa-pagelines"></i> &nbsp; &nbsp; &nbsp; 목록 </b></h5>
+    <h5><b><i class="fa fa-pagelines"></i> &nbsp; &nbsp; &nbsp; 시험치세요~ </b></h5>
 </header>
-<table>
 
 <tr>
-	<th align="center">고유번호</th>
-	<th>시험명</th>
-	<th>전공</th>
-	<th>교수</th>
-	<th>제출기한</th>
+	<th align="center">번호</th>
+	<th>문제</th>
+	<th>1 </th>
+	<th>2</th>
+	<th>3</th>
+	<th>4</th>
 </tr>
-<c:forEach var="list" items="${cbtList}">
+<c:forEach var="list" items="${examList}">
 <tr>
-	<td>${list.cbtCode }</td>
-	<td>${list.cbtTitle }</td>
-	<td><!-- ${list.classTitle } -->과정명표시</td>
-	<td><!-- ${list.name }--> 이름표시</td>
-	<td>${list.finalDate }</td>
+	<td>1123</td>
+	<td>${list.question }</td>
+	<td>${list.ex1 }</td>
+	<td>${list.ex2 } </td>
+	<td>${list.ex3 }</td>
+	<td>${list.ex4 }</td>
 </tr>
 </c:forEach>
 

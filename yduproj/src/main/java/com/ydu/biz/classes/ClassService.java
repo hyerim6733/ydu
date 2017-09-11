@@ -25,7 +25,9 @@ public interface ClassService {
 		ClassListVO getClasses(ClassListVO vo);
 		
 		// 수강 신청 목록 조회
-		List<ClassListVO> getClassesList(ClassSearchVO vo);
+		List<ClassListVO> getClassesList(/*ClassListVO vo*/);
+
+		
 
 		
 		

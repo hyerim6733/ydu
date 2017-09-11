@@ -5,24 +5,118 @@
                         
 <mapper namespace="com.ydu.biz.cbt.impl.CBTMapper"> 
 
-	<!-- 시험 리스트 조회 : 교수 : 모두 조회 -->
-	<select id="getAllCBT" resultType="cbtList" parameterType="cbtList">
-		SELECT *
-		FROM CBT_LIST
-		ORDER BY CBT_CODE
+	<!-- 시험 리스트 조회 : 교수 : 다른 교수가 제출한 시험도 모두 조회 -->
+	<select id="getAllCBT" resultType="map">
+		SELECT  cbt_code as "cbtCode", 
+					cbt_title as "cbtTitle",
+	        		final_date as "finalDate"
+			FROM CBT_LIST
+		<!-- SELECT  cbt_code as "cbtCode", 
+				cbt_title as "cbtTitle",
+        		class_title as "classTitle", 
+        		name as "name", 
+        		final_date as "finalDate"
+		FROM CBT_LIST c , 
+			 NEW_CLASS n , 
+			 CLASS_LIST l, 
+			 PROFESSOR p
+        WHERE c.open_class = n.open_class 
+          AND n.class_code = l.class_code
+          AND n.professor_code = p.professor_code
+          AND c.open_class in (
+							SELECT open_class
+							FROM CLASS_STATUS
+							WHERE prof_code = #{code} controller의 session 값이 자동으로 넘어옴.
+							)
+		ORDER BY cbt_code -->
+	</select>
+	
+	<!-- 시험 리스트 조회 : 교수 : 내가 제출한 시험만 모두 조회 -->
+	<select id="getProfessorCBT" resultType="map">
+		SELECT  cbt_code as "cbtCode", 
+					cbt_title as "cbtTitle",
+	        		final_date as "finalDate"
+			FROM CBT_LIST
+		<!-- SELECT  c.cbt_code as "cbtCode", 
+				c.cbt_title as "cbtTitle",
+        		l.class_title as "classTitle", 
+        		p.name as "name", 
+        		c.final_date as "finalDate"
+		FROM CBT_LIST c , 
+			 NEW_CLASS n , 
+			 CLASS_LIST l, 
+			 PROFESSOR p
+        WHERE c.open_class = n.open_class 
+          AND n.class_code = l.class_code
+          AND n.professor_code = p.professor_code
+          AND c.open_class in (
+							SELECT open_class
+							FROM CLASS_STATUS
+							WHERE prof_code = #{code} controller의 session 값이 자동으로 넘어옴.
+							)
+        ORDER BY cbt_code -->
 	</select>
 	
 	<!-- 시험 리스트 조회 : 학생 : 내가 수강한 것만 조회 -->
-	<select id="getMyCBT" resultType="map" >
-		SELECT cbt_code as "cbtCode", class_code as "classCode", professor_code as "professorCode",
-				cbt_title as "cbtTitle", final_date as "finalDate"
-		FROM CBT_LIST
-		WHERE classCode in (
-			SELECT class_code
-			FROM CLASS_STATUS
-			WHERE student_code = '2017000101'
-		)
-		
+	<select id="getMyCBT" resultType="map">
+	SELECT  cbt_code as "cbtCode", 
+					cbt_title as "cbtTitle",
+	        		final_date as "finalDate"
+			FROM CBT_LIST
+			WHERE cbt_code = #{code}
+		<!-- SELECT  cbt_code as "cbtCode", 
+				cbt_title as "cbtTitle",
+        		class_title as "classTitle", 
+        		name as "name", 
+        		final_date as "finalDate"
+		FROM CBT_LIST c , 
+			 NEW_CLASS n , 
+			 CLASS_LIST l, 
+			 PROFESSOR p
+        WHERE c.open_class = n.open_class 
+          AND n.class_code = l.class_code
+          AND n.professor_code = p.professor_code
+          AND c.open_class in (
+							SELECT open_class
+							FROM CLASS_STATUS
+							WHERE st_code = #{code} controller의 session 값이 자동으로 넘어옴.
+							)
+		ORDER BY cbt_code -->
 	</select>
+	
+	<!-- 교수 : 내가 출제한 시험에서, 수강학생들의 점수를 조회가능 -->
+	<select id="getAllGrades" resultType="map">
+		SELECT CBT_CODE, OPEN_CLASS, CBT_TITLE, FINAL_DATE, NOTE
+		FROM CBT_LIST
+	</select>
+	
+	<!-- 학생 : 개인 점수만 조회가능 -->
+	<select id="getMyGrades" resultType="map">
+		SELECT CBT_CODE, OPEN_CLASS, CBT_TITLE, FINAL_DATE, NOTE
+		FROM CBT_LIST
+		WHERE open_class in (
+							SELECT open_class
+							FROM CLASS_STATUS
+							WHERE student_code = #{code} controller의 session 값이 자동으로 넘어옴.
+							)
+	</select>
+	<!-- 교수 : 시험문제 제출 -->
+	<insert id="insertTest" parameterType="cbtExampack">
+		INSERT INTO cbt_exampack (CBT_CODE, QUESTION, RIGHT_ANSWER, ex1, ex2, ex3, ex4)
+		VALUES (#{cbtCode}, #{question}, #{rightAnswer}, #{ex1}, #{ex2},#{ex3},#{ex4})
+	</insert>
+	<!--  학생 : 시험응시 -->
+	<select id="getTest" resultType="map">
+		SELECT  CBT_CODE as "cbtCode", 
+				QUESTION as "question", 
+				RIGHT_ANSWER as "rightAnswer", 
+				ex1 as "ex1", 
+				ex2 as "ex2", 
+				ex3 as "ex3", 
+				ex4 as "ex4"
+		FROM cbt_exampack
+		WHERE CBT_CODE = #{code}
+	</select>
+
 	
 </mapper>

@@ -2,6 +2,8 @@ package com.ydu.biz.cbt;
 
 import java.util.List;
 
+import com.ydu.biz.main.StudentVO;
+
 public interface CBTService {
 
 	/**
@@ -16,7 +18,7 @@ public interface CBTService {
 	List<CBTListVO> getAllCBT( /*LoginVO vo */ );
 	
 	//2.학생
-	List<CBTListVO> getMyCBT(CBTListVO vo);
+	List<CBTListVO> getMyCBT(String stu_code);
 	
 	//3.공통 상세 조회
 	CBTListVO getCBT(CBTListVO vo);
@@ -29,10 +31,10 @@ public interface CBTService {
 	 *
 	 */
 	//1. 교수
-	List<CBTVO> getAllGrades(CBTVO vo);
+	List<CBTResultVO> getAllGrades(String prof_code);
 	
 	//2. 학생
-	List<CBTVO> getMyGrade(CBTVO vo);
+	List<CBTResultVO> getMyGrade(String stu_code);
 	
 	
 	
@@ -42,10 +44,10 @@ public interface CBTService {
 	 * 2. 학생 : 시험응시
 	 */
 	//1. 교수
-	void insertTest(CBTSubjectVO vo);
+	void insertTest(CBTExampackVO vo);
 	
 	//2. 학생
-	void getTest(CBTSubjectVO vo);
+	List<CBTResultVO> getTest();
 	
 	
 }

@@ -19,7 +19,6 @@ pageEncoding="UTF-8" %>
 		<link href="../resources/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
 		<link href="../resources/plugins/xcharts/xcharts.min.css" rel="stylesheet">
 		<link href="../resources/plugins/select2/select2.css" rel="stylesheet">
-		<link href="../resources/tiles/css/style.css"  rel="stylesheet">
 		<link href="../resources/css/style.css" rel="stylesheet">
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -91,7 +90,7 @@ pageEncoding="UTF-8" %>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle account" data-toggle="dropdown">
 									<div class="avatar">
-										<img src="img/avatar.jpg" class="img-rounded" alt="avatar" />
+										<img src="#" class="img-rounded" alt="avatar" />
 									</div>
 									<i class="fa fa-angle-down pull-right"></i>
 									<div class="user-mini pull-right">
@@ -149,38 +148,21 @@ pageEncoding="UTF-8" %>
 <!--Start Container-->
 <div id="main" class="container-fluid">
 	<div class="row">
-		<div id="sidebar-left" class="col-xs-2 col-sm-2">
-			<ul class="nav main-menu">
-				<li>
-					<a class="ajax-link" href="../main/home">
-						<i class="fa fa-dashboard"></i>
-						<span class="hidden-xs"> 메인화면 </span>
-					</a>
-				</li>
-				<li>
-					<a href="../cbtMain.do">
-						<i class="fa fa-bar-chart-o"></i>
-						<span class="hidden-xs"> CBT </span>
-					</a>
-				</li>
-				
-				
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-pencil-square-o"></i>
-						 <span class="hidden-xs">게시판4</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="ajax/forms_elements.html">내부 게시판11</a></li>
-						<li><a class="ajax-link" href="ajax/forms_layouts.html">내부 게시판12</a></li>
-						<li><a class="ajax-link" href="ajax/forms_file_uploader.html">내부 게시판13</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="../classMain.do">
-						<i class="fa fa-bar-chart-o"></i>
-						<span class="hidden-xs"> 수강신청 </span>
-					</a>
+			<div id="sidebar-left" class="col-xs-2 col-sm-2">
+				<ul class="nav main-menu">
+					<li><a class="ajax-link" href="../main/home"> <i
+							class="fa fa-dashboard"></i> <span class="hidden-xs"> 메인화면
+						</span>
+					</a></li>
+					<li><a href="../cbtMain.do#cbtBody.do"> <i
+							class="fa fa-bar-chart-o"></i> <span class="hidden-xs">
+								CBT </span>
+					</a></li>
+					<li><a href="../classMain.do#classBody.do"> <i
+							class="fa fa-bar-chart-o"></i> <span class="hidden-xs">
+								수강신청 </span>
+					</a></li>
+
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle">
@@ -269,14 +251,17 @@ pageEncoding="UTF-8" %>
 	<div class="preloader">
 			<img src="../resources/img/devoops_getdata.gif" class="devoops-getdata" alt="preloader"/>
 			</div>
-			<div id="ajax-content"></div> 
-			
-			<!-- 위의 코드 ajax 로 메뉴클릭시 보여주도록 함 -->
-			
-	
-			
-		</div>
-		<!--End Content-->
+			<!--Start Content-->
+			<div id="content" class="col-xs-12 col-sm-10">
+				<div class="preloader"></div>
+				<div id="ajax-content"></div>
+
+				<!-- 위의 코드 ajax 로 메뉴클릭시 보여주도록 함 -->
+
+
+
+			</div>
+			<!--End Content-->
 	</div>
 </div>
 <!--End Container-->

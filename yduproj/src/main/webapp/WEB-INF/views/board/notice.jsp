@@ -54,9 +54,9 @@ function setOrderColumn(orderColumn) {
 
 	 <c:forEach var="board" items="${notice}">
 			<tr>
-			    <td><input type="checkbox" name="boardIdList" value="${board.boardId}"/>
-				<td>${board.boardId}</td>
-				<td><a href="notice.do?boardId=${board.boardId}">${board.title}</a></td>
+			    <td><input type="checkbox" name="boardIdList" value="${board.boardNo}"/>
+				<td>${board.boardNo}</td>
+				<td><a href="notice.do?boardNo=${board.boardNo}">${board.title}</a></td>
 				
 			</tr>
 		</c:forEach>
