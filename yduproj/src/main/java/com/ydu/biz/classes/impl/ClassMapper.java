@@ -1,6 +1,7 @@
 package com.ydu.biz.classes.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.ydu.biz.classes.ClassSearchVO;
 import com.ydu.biz.classes.ClassStatusVO;
@@ -18,5 +19,5 @@ public interface ClassMapper {
 				ClassListVO getClasses(ClassListVO vo);
 				
 				// 수강 신청 목록 조회
-				List<ClassListVO> getClassesList();
+				List<Map<String, Object>> getClassesList();
 }

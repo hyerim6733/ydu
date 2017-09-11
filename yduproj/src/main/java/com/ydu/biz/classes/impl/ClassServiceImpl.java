@@ -1,6 +1,7 @@
 package com.ydu.biz.classes.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,7 @@ public class ClassServiceImpl implements ClassService {
 	}
 
 	@Override
-	public List<ClassListVO> getClassesList() {
+	public List<Map<String, Object>> getClassesList() {
 		System.out.println("수강 전체 목록 조회");
 		return classDAO.getClassesList();
 	}
