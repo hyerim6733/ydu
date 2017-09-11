@@ -50,8 +50,8 @@ public class ClassServiceImpl implements ClassService {
 
 	@Override
 	public List<ClassStatusVO> getSelStuClassesList(StudentVO vo) {
-		
-		System.out.println("해당학생의 목록을 불러왔습니다.");
+		vo.setStudent_code("201711400");
+		System.out.println("해당학생의 시간표 목록을 불러왔습니다.");
 		return classDAO.getSelStuClassesList(vo);
 	}
 

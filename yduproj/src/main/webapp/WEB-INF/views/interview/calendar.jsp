@@ -65,15 +65,6 @@
 </div>
 
 
-<script src="../resources/plugins/jquery/jquery-2.1.0.min.js"></script>
-<script src="../resources/plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../resources/plugins/bootstrap/bootstrap.min.js"></script>
-<script src="../resources/plugins/justified-gallery/jquery.justifiedgallery.min.js"></script>
-<script src="../resources/plugins/tinymce/tinymce.min.js"></script>
-<script src="../resources/plugins/tinymce/jquery.tinymce.min.js"></script>
-<!-- All functions for this theme + document.ready processing -->
-<script src="../resources/js/devoops.js"></script>
 <script>
 $(document).ready(function() {
 	// Set Block Height
@@ -93,44 +84,6 @@ $(document).ready(function() {
 				"start":"2010-11-21",
 				"title":"test2"}
 	];
-	$('#calendar').fullCalendar({
-	    defaultView: 'agendaDay',
-	    events: [
-	    	 {
-	    	      title: 'All Day Event',
-	    	      start: '2017-09-01'
-	    	     },
-	    	     {
-	    	      title: 'Long Event',
-	    	      start: '2017-09-07',
-	    	      end: '2017-09-10'
-	    	     },
-	    	     {
-	    	      id: 999,
-	    	      title: 'Repeating Event',
-	    	      start: '2017-09-09T16:00:00'
-	    	     },
-	    	     {
-	    	      id: 999,
-	    	      title: 'Repeating Event',
-	    	      start: '2017-09-16T16:00:00'
-	    	     },
-	    	     {
-	    	      title: 'Conference',
-	    	      start: '2017-09-11',
-	    	      end: '2017-09-13'
-	    	     },
-	    	     {
-	    	      title: 'Meeting',
-	    	      start: '2017-09-12T10:30:00',
-	    	      end: '2017-09-12T12:30:00'
-	    	     }
-	        // events go here
-	    ]
-	    // other options go here...
-	}); 
-	/* ('changeView', 'agendaDay', '2017-09-02'); */
-	
 /* 	
 	$('#calendar').fullCalendar({ 
 		event:function() {

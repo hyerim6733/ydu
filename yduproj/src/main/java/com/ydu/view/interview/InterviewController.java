@@ -9,11 +9,11 @@ import com.ydu.biz.interview.InterviewService;
 @Controller
 public class InterviewController {
 	@Autowired InterviewService interviewService;
-		
-/*	@RequestMapping("/classBody.do")
-	public String classBody()
-	{
-		System.out.println("body load");
-		return "/class/classBody";
-	}*/
+
+	// interview calendar
+	@RequestMapping("/interview/calendar.do")
+	public String calendar(){
+		return "/interview/calendar";
+	}
+	
 }
