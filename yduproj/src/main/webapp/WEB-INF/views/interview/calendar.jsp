@@ -93,21 +93,44 @@ $(document).ready(function() {
 				"start":"2010-11-21",
 				"title":"test2"}
 	];
-
 	$('#calendar').fullCalendar({
-	    dayClick: function(date, jsEvent, view) {
-
-	        alert('Clicked on: ' + date.format());
-
-	        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-
-	        alert('Current view: ' + view.name);
-
-	        // change the day's background color just for fun
-	        $(this).css('background-color', 'red');
-
-	    }
-	});
+	    defaultView: 'agendaDay',
+	    events: [
+	    	 {
+	    	      title: 'All Day Event',
+	    	      start: '2017-09-01'
+	    	     },
+	    	     {
+	    	      title: 'Long Event',
+	    	      start: '2017-09-07',
+	    	      end: '2017-09-10'
+	    	     },
+	    	     {
+	    	      id: 999,
+	    	      title: 'Repeating Event',
+	    	      start: '2017-09-09T16:00:00'
+	    	     },
+	    	     {
+	    	      id: 999,
+	    	      title: 'Repeating Event',
+	    	      start: '2017-09-16T16:00:00'
+	    	     },
+	    	     {
+	    	      title: 'Conference',
+	    	      start: '2017-09-11',
+	    	      end: '2017-09-13'
+	    	     },
+	    	     {
+	    	      title: 'Meeting',
+	    	      start: '2017-09-12T10:30:00',
+	    	      end: '2017-09-12T12:30:00'
+	    	     }
+	        // events go here
+	    ]
+	    // other options go here...
+	}); 
+	/* ('changeView', 'agendaDay', '2017-09-02'); */
+	
 /* 	
 	$('#calendar').fullCalendar({ 
 		event:function() {
