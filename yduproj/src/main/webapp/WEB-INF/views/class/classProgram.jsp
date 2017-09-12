@@ -7,7 +7,11 @@ td {
 	text-align: center;
 }
 </style>
-
+<script>
+function page_reload() {
+	location.reload();
+}
+</script>
 	<br>
 	<br>
 	<br>
@@ -65,7 +69,7 @@ td {
 			<td>${list.classRoom}</td>
 			<td>${list.smallCodename}</td>
 			<td>${list.studentLimit}</td>
-			<td><button>조회</button></td>
+			<td><a href="classMain.do#getClassDetail.do?openClass=${list.openClass}" onclick="page_reload()">조회</a></td>
 		</tr>
 		</c:forEach>
 		<%-- <%
@@ -85,6 +89,4 @@ td {
 				Timestamp regdate = rs.getTimestamp("regdate");
 
 %> --%>
-
-
 	</table>

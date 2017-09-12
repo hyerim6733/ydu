@@ -4,13 +4,19 @@
 	<head>
 		<meta charset="utf-8">
 		<title>DevOOPS</title>
-		<meta name="description" content="description">
-		<meta name="author" content="Evgeniya">
-		<meta name="keyword" content="keywords">
+		<meta name="description" content="description"> 
+		<meta name="author" content="DevOOPS">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="resources/plugins/bootstrap/bootstrap.css" rel="stylesheet">
+		<link href="resources/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+		<link href="resources/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
+		<link href="resources/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
+		<link href="resources/plugins/xcharts/xcharts.min.css" rel="stylesheet">
+		<link href="resources/plugins/select2/select2.css" rel="stylesheet">
+		<link href="resources/tiles/css/style.css"  rel="stylesheet">
+		<link href="resources/css/style.css" rel="stylesheet">
 		
 		<script src="resources/plugins/jquery/jquery-2.1.0.min.js"></script>
 		<script src="resources/plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -28,7 +34,7 @@
 		<![endif]-->
 	<script>
 		$(function() {
-			//id 중복체크
+			// login
 			$("#check1").click(function() {
 				var userId = $("#username").val();
 				var userPw = $("#password").val();
@@ -37,7 +43,7 @@
 				var userInfo ={ "userid": userId, "userpw": userPw };
 				
 				$.ajax({
-					url : "./getParam.do",
+					url : "../login.do",
 					data : userInfo,
 					method : "post",
 					type : "json",
@@ -46,7 +52,7 @@
 						if(data=="success")
 						{
 							alert(data);
-							$(location).attr('href',"main/index");
+							$(location).attr('href',"index"); 
 						}else {
 							alert("failed");
 						}

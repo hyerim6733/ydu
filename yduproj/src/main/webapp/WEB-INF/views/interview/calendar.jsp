@@ -16,7 +16,7 @@
 		<link href="../resources/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
 		<link href="../resources/plugins/xcharts/xcharts.min.css" rel="stylesheet">
 		<link href="../resources/plugins/select2/select2.css" rel="stylesheet">
-		<link href="../resources/tiles/css/style.css"  rel="stylesheet">
+		<!-- <link href="../resources/tiles/css/style.css"  rel="stylesheet"> -->
 		<link href="../resources/css/style.css" rel="stylesheet">
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -64,29 +64,103 @@
 	</div>
 </div>
 
+<!-- All functions for this theme + document.ready processing -->
 
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
 <script>
 $(document).ready(function() {
 	// Set Block Height
 	SetMinBlockHeight($('#calendar'));
 	// Create Calendar
-	DrawFullCalendar();
-	
+	/*
 	var date = new Date();
 	var d = date.getDate();
 	var m = date.getMonth();
 	var y = date.getFullYear();
-	
+	*/
+	/*
 	var json = [{"allDay":"true",
 				"editable":"false",
 				"end":"2010-11-25",
 				"id":"1",
 				"start":"2010-11-21",
 				"title":"test2"}
-	];
+	];*/
+	$('#calendar').fullCalendar({
+		header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,agendaWeek,agendaDay'
+		},
+		defaultDate: '2017-09-12',
+		defaultView: 'month',
+		editable: true,
+		events: [
+			{
+				title: 'All Day Event',
+				start: '2017-09-01'
+			},
+			{
+				title: 'Long Event',
+				start: '2017-09-07',
+				end: '2017-09-10'
+			},
+			{
+				id: 999,
+				title: 'Repeating Event',
+				start: '2017-09-09T16:00:00'
+			},
+			{
+				id: 999,
+				title: 'Repeating Event',
+				start: '2017-09-16T16:00:00'
+			},
+			{
+				title: 'Meeting',
+				start: '2017-09-12T10:30:00',
+				end: '2017-09-12T12:30:00'
+			},
+			{
+				title: 'Lunch',
+				start: '2017-09-12T12:00:00'
+			},
+			{
+				title: 'Birthday Party',
+				start: '2017-09-13T07:00:00'
+			},
+			{
+				title: 'Click for Google',
+				url: 'http://google.com/',
+				start: '2017-09-28'
+			}
+		]
+	});
+
+	DrawFullCalendar();
+	
+/*
+	$('#calendar').fullCalendar({
+		events: [
+		    {
+		        title  : 'event1',
+		        start  : '2017-09-01'
+		    },
+		    {
+		        title  : 'event2',
+		        start  : '2017-09-05',
+		        end    : '2017-09-07'
+		    },
+		    {
+		        title  : 'event3',
+		        start  : '2017-09-09T12:30:00',
+		        allDay : false // will make the time show
+		    }
+		]
+	});*/
 /* 	
 	$('#calendar').fullCalendar({ 
-		event:function() {
+		events:function() {
 			$.ajax({
 				url:json,
 				dataType: 'json',
@@ -98,6 +172,7 @@ $(document).ready(function() {
 		}
 	});
  */
+ /*
 	function createCalendarDateResult(resp){  //제이슨으로 캘린더 이벤트 등록형식에 맞게 뿌리기
 		  var result = $.parseJSON(resp)  , eventData = [];
 		  if(result.success){
@@ -113,12 +188,12 @@ $(document).ready(function() {
 		    }
 		  }
 		  calendarEvent( eventData );        //캘린더 메소드 호출
-	}
+	}*/
 		
 
 	
 	// 상담신청 클릭 (일정추가)
-	$("#Add").click(doSomething);
+	/*$("#Add").click(doSomething);
 	function doSomething(){
 		var data = {};
 		
@@ -130,21 +205,16 @@ $(document).ready(function() {
 	    
 	    var moment = $('#calendar').fullCalendar('getDate');
 	    alert("The current date of the calendar is " + moment.format());
-	}
-	
+	}*/
+	/*
 	// 일정 변경 이벤트
 	$("#calendar").change(function() {
 		// 달력 일정 정보 저장
-		/* var param = {userid : $(this).val()}; */
+		// var param = {userid : $(this).val()}; 
 		var param = [{data:"temp"}]
 		console.log(param.data);
-		alert("temp가 제대로 들어갔나요 ? ");
-/* 		
- 		$.get("/submitCal.do", param, function(data,status,xhr) {
-			/* alert(data+":"+status);
-			console.log(xhr); 
-		}); */
-	});
+
+	});*/
 });
 
 

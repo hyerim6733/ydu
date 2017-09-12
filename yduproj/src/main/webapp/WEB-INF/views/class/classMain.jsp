@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Yedam Univ. CBT</title>
+<title>Yedam Univ. 수강신청</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -27,7 +27,7 @@ html, body, h1, h2, h3, h4, h5 {
 			onclick="w3_open();">
 			<i class="fa fa-bars"></i>  Menu
 		</button>
-		<span class="w3-bar-item w3-right"><a
+		<span class="w3-bar-item w3-left"><a
 			href="<%=request.getContextPath()%>/main/index">Yedam home</a></span>
 	</div>
 
@@ -53,10 +53,10 @@ html, body, h1, h2, h3, h4, h5 {
 		</div>
 		<div class="w3-bar-block" id="left-menu">
 			    <a href="#" class="ajax-link w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="#classBody.do" class="w3-bar-item w3-button w3-padding w3-skyblue" onclick="page_reload()"><i class="fa fa-users fa-fw"></i> 수강신청 메인화면 </a>
+    <a href="#classBody.do" class="w3-bar-item w3-button w3-padding w3-skyblue" onclick="page_reload()"><i class="fa fa-diamond fa-fw"></i> 수강신청 메인화면 </a>
     <a href="#classProgram.do" class="w3-bar-item w3-button w3-padding " onclick="page_reload()"><i class="fa fa-eye fa-fw"></i> 강의계획서 </a>
     <a href="#getClassesList.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-users fa-fw"></i> 수강신청 </a>
-    <a href="#myPage.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-diamond fa-fw"></i> 마이페이지</a>
+    <a href="#myPage.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-user fa-fw"></i> 마이페이지</a>
 
 		</div>
 	</nav>
