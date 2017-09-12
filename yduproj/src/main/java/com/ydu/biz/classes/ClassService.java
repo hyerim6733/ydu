@@ -1,6 +1,9 @@
 package com.ydu.biz.classes;
 
 import java.util.List;
+import java.util.Map;
+
+
 
 import com.ydu.biz.main.StudentVO;
 
@@ -26,8 +29,12 @@ public interface ClassService {
 		// �닔媛뺢낵紐� �긽�꽭 議고쉶
 		ClassListVO getClasses(ClassListVO vo);
 		
-		// �닔媛� �떊泥� 紐⑸줉 議고쉶
-		List<ClassListVO> getClassesList(/*ClassListVO vo*/);
+
+		// 수강 신청 목록 조회
+		List<Map<String, Object>> getClassesList(/*ClassListVO vo*/);
+
+		
+
 
 		
 		List<ClassStatusVO> getSelStuClassesList(StudentVO vo);

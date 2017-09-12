@@ -1,18 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
+	<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+
 <style>
 td {
 	text-align: center;
 }
 </style>
-<title>수강신청</title>
-<script>
-</script>
-</head>
-<body>
+
 	<br>
 	<br>
 	<br>
@@ -43,11 +38,13 @@ td {
 			</select></th>
 			<th></th>
 			<th></th>
+			<th></th>
 			<th><button>조회하기</button></th>
 		</tr>
 		<tr>
 			<td>과목번호</td>
 			<td>과목명</td>
+			<td>담당교수</td>
 			<td>시간</td>
 			<td>강의실</td>
 			<td>분류</td>
@@ -58,9 +55,10 @@ td {
 		<tr>
 			<td>${list.openClass}</td>
 			<td>${list.classTitle}</td>
+			<td>${list.name }</td>
 			<td>${list.classTime}</td>
 			<td>${list.classRoom}</td>
-			<td>${list.major}</td>
+			<td>${list.smallCodename}</td>
 			<td>${list.studentLimit}</td>
 			<td><button>수강신청</button></td>
 		</tr>
@@ -85,5 +83,3 @@ td {
 
 
 	</table>
-</body>
-</html>

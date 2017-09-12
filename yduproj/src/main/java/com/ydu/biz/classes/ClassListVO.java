@@ -5,7 +5,7 @@ public class ClassListVO {
 	private String classCode; // 과목 번호
 	private String classTitle; // 과목 명 
 	private String property; // 과목 속성
-	private String classCredit; // 과목 학점
+	private int classCredit; // 과목 학점
 	private String major; // 전공
 	public String getClassCode() {
 		return classCode;
@@ -25,10 +25,10 @@ public class ClassListVO {
 	public void setProperty(String property) {
 		this.property = property;
 	}
-	public String getClassCredit() {
+	public int getClassCredit() {
 		return classCredit;
 	}
-	public void setClassCredit(String classCredit) {
+	public void setClassCredit(int classCredit) {
 		this.classCredit = classCredit;
 	}
 	public String getMajor() {

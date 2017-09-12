@@ -221,7 +221,7 @@ pageEncoding="UTF-8" %>
 				
 <!-- 벼룩&자유 -->
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
+					<a href="../fleaMarket.do" class="dropdown-toggle ajax-link">
 						<i class="fa fa-picture-o"></i>
 						 <span class="hidden-xs">벼룩&자유</span>
 					</a>
