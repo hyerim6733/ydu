@@ -48,11 +48,11 @@ public interface CBTService {
 	void insertTest(CBTExampackVO vo);
 	
 	//2. 학생
-	List<CBTExampackVO> getTest();
+	List<CBTExampackVO> getTest(int cbt_code);
 
 	
 	//3. 시험제목 눌렀을 때, 중간화면. 시험안내 페이지.
-	List<CBTListVO> getCBTInfo(CBTListVO vo);
+	List<CBTListVO> getCBTInfo(int cbt_code);
 	
 	
 }

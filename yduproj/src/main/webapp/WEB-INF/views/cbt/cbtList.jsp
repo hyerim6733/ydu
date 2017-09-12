@@ -19,7 +19,7 @@ th {
     color: white;
 }
 </style>
-<header class="w3-container" style="padding-top:22px; padding-left:30px">
+<header class="w3-container" style="padding-top:22px; padding-left:30px; padding-left:30px; padding-bottom:22px ">
     <h5><b><i class="fa fa-pagelines"></i> &nbsp; &nbsp; &nbsp; 목록 </b></h5>
 </header>
 <table>
@@ -34,7 +34,7 @@ th {
 <c:forEach var="list" items="${cbtList}">
 <tr>
 	<td>${list.cbtCode }</td>
-	<td><a href="goTestInfo.do">${list.cbtTitle }</a></td>
+	<td><a href="goTestInfo.do?cbtCode=${list.cbtCode }">${list.cbtTitle }</a></td>
 	<td>${list.classTitle } </td>
 	<td>${list.name }</td>
 	<td>${list.finalDate }</td>

@@ -90,13 +90,21 @@ pageEncoding="UTF-8" %>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle account" data-toggle="dropdown">
 									<div class="avatar">
-										<img src="#" class="img-rounded" alt="avatar" />
+										<img src="#" class="img-rounded" alt="user" />
 									</div>
 									<i class="fa fa-angle-down pull-right"></i>
-									<div class="user-mini pull-right">
-										<span class="welcome">Welcome,</span>
-										<span>Yedam Student</span>
-									</div>
+									<% if(session.getAttribute("userId") == null) { %>
+										/cbtMain.do#cbtBody.do
+										<div class="user-mini pull-right">
+											<span class="welcome"><a class="ajax-link" href="../loginForm.do">login</a></span>
+										</div>
+									<% }else { %>
+										<div class="user-mini pull-right">
+											<span class="welcome">Welcome! <br/>${userId.separation}</span>
+											<span>${userId.userid }</span>
+										</div>
+									<% } %>
+									
 								</a>
 								<ul class="dropdown-menu">
 									<li>
@@ -132,7 +140,7 @@ pageEncoding="UTF-8" %>
 									<li>
 										<a href="#">
 											<i class="fa fa-power-off"></i>
-											<span class="hidden-sm text">Logout</span>
+											<span class="hidden-sm text" class="ajax-link" OnClick="location.href='../logout.do'">Logout</span>
 										</a>
 									</li>
 								</ul>
@@ -287,5 +295,11 @@ pageEncoding="UTF-8" %>
 <script src="../resources/plugins/tinymce/jquery.tinymce.min.js"></script>
 <!-- All functions for this theme + document.ready processing -->
 <script src="../resources/js/devoops.js"></script>
+
+
+<link rel='stylesheet' href='https://fullcalendar.io/js/fullcalendar-3.5.1/fullcalendar.css' />
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
+<script src='https://fullcalendar.io/js/fullcalendar-3.5.1/fullcalendar.min.js'></script>
+
 </body>
 </html>

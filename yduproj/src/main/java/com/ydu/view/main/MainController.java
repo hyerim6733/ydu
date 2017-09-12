@@ -24,63 +24,64 @@ public class MainController {
 	@Autowired LoginService
 	userService;
 	
-	// 로그인 폼
-	@RequestMapping("/login.do")
-	public String login(){
-		return "/main/login";
+	// 濡쒓렇�씤 �뤌
+	@RequestMapping("/loginForm.do")
+	public String loginForm(){
+		return "./main/login";
 	}
 	
-	// 로그인
-	@RequestMapping("/getParam.do")
+	// 濡쒓렇�씤
+	@RequestMapping("/login.do")
 	@ResponseBody 
-	public String getParam(LoginVO vo, HttpSession session) {
+	public String login(LoginVO vo, HttpSession session) {
 		LoginVO result = userService.getUser(vo);
-		System.out.println("----result값 : "+result);
+		System.out.println("----result媛� : "+result);
 		
 		if( vo.getUserpw().equals(result.getUserpw()) ) {
-			session.setAttribute("login", result.getUserid());
+			session.setAttribute("userId", result);
 			return "success";
 		}else {
 			return null;
 		}
 	}
 
-	//로그아웃
+	//濡쒓렇�븘�썐
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session) {
-		session.invalidate(); //세션 무효화
-		return "redirect:/main/index"; //메인홈
+		session.invalidate(); //�꽭�뀡 臾댄슚�솕
+		System.out.println("logout call!");
+		return "redirect:/main/index"; //硫붿씤�솃
 	}
 	/*
-	//상담신청내역보기
+	//�긽�떞�떊泥��궡�뿭蹂닿린
 	@RequestMapping("/selectSchedule.do")
 	public String selectSchedule1(InterStausVO vo, Model model) {
 		InterStausVO result = interviewService.selectSchedule();
 		System.out.println(result);
 		model.addAttribute("result", result);
-		return "/interview/calendar"; //메인홈
+		return "/interview/calendar"; //硫붿씤�솃
 	}
 	*/
 	
 	/*
-	// 테스트
+	// �뀒�뒪�듃
 	@RequestMapping("/test.do")
 	@ResponseBody 
 	public String getParam(LoginVO vo) {
 		LoginVO result = userService.getUser(vo);
-		System.out.println("----result값 : "+result);
+		System.out.println("----result媛� : "+result);
 		if(result==null){
-			System.out.println("-----------로그인 실패");
+			System.out.println("-----------濡쒓렇�씤 �떎�뙣");
 			return "/main/login";
 		}
 		
 		return "redirect:/main/index";
 		
-		//로그인이 안된 경우
+		//濡쒓렇�씤�씠 �븞�맂 寃쎌슦
 		if(result == null) {
 			return "/main/login";
 		} else {
-			//세션에 저장
+			//�꽭�뀡�뿉 ���옣
 			session.setAttribute("login", result.getUserid());
 			return "redirect:/main/index";	//home
 		}

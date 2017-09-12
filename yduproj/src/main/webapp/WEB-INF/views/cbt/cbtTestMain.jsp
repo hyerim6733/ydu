@@ -27,14 +27,13 @@ th {
 </script>
 </head>
 <body>
-
  
  <div align="center">
 <br>
-시험정보, 시험시간, 교수명, 강의명 출력 등..
+<img src="image/logo.png">
+<c:forEach items="${test}" var="t">
 <table>
 
-<c:forEach items="${ test}" var="t">
 <tr>
 	<th>시험명</th><td>${t.cbtTitle }</td>
 	</tr><tr>
@@ -48,11 +47,12 @@ th {
 	</tr><tr>
 	<th>제한시간</th><td>${t.limitTime }분</td>
 </tr>
-</c:forEach>
 
 </table>
 <br/><br/>
-<a href="goTestPage.do">시험시작</a>
+<a href="goTestPage.do?cbtCode=${t.cbtCode }">시험시작</a>
+</c:forEach>
+
 </div>
 
 </body>
