@@ -5,7 +5,7 @@
                         
 <mapper namespace="com.ydu.biz.cbt.impl.CBTMapper"> 
 
-	<!-- 나중에 result Map 지우세염 -->
+	<!-- 나중에 130줄에서 resultMap을 안쓰게 되면  아래의 result Map 지우세요 -->
 	<resultMap id="getTestResult" type="HashMap">
 		<result property="cbtCode" column="CBT_CODE"/>
 		<result property="question" column="QUESTION" jdbcType="CLOB" javaType="java.lang.String"/>
@@ -18,11 +18,12 @@
 
 	<!-- 시험 리스트 조회 : 교수 : 다른 교수가 제출한 시험도 모두 조회 -->
 	<select id="getAllCBT" resultType="map">
-		SELECT  cbt_code as "cbtCode", 
-				cbt_title as "cbtTitle",
-        		class_title as "classTitle", 
-        		name as "name", 
-        		final_date as "finalDate"
+		SELECT  c.cbt_code as "cbtCode", 
+				c.open_class as "openClass",
+				c.cbt_title as "cbtTitle",
+        		l.class_title as "classTitle", 
+        		p.name as "name", 
+        		c.final_date as "finalDate"
 		FROM CBT_LIST c , 
 			 NEW_CLASS n , 
 			 CLASS_LIST l, 
@@ -36,6 +37,7 @@
 	<!-- 시험 리스트 조회 : 교수 : 내가 제출한 시험만 모두 조회 -->
 	<select id="getProfessorCBT" resultType="map">
 		SELECT  c.cbt_code as "cbtCode", 
+				c.open_class as "openClass",
 				c.cbt_title as "cbtTitle",
         		l.class_title as "classTitle", 
         		p.name as "name", 
@@ -94,7 +96,7 @@
         WHERE c.open_class = n.open_class 
           AND n.class_code = l.class_code
           AND n.prof_code = p.prof_code
-          AND c.cbt_code = 3 <!-- #{code} -->
+          AND c.cbt_code = #{code}
 
 	</select>
 	
@@ -123,13 +125,9 @@
 		INSERT INTO cbt_exampack (CBT_CODE, QUESTION, RIGHT_ANSWER, ex1, ex2, ex3, ex4)
 		VALUES (#{cbtCode}, #{question}, #{rightAnswer}, #{ex1}, #{ex2},#{ex3},#{ex4})
 	</insert>
+	
 	<!--  학생 : 시험응시 / 시험목록테스트중-->
 	<select id="getTest" resultType="map" resultMap="getTestResult">
-	<!-- SELECT  rownum , a.* FROM (
-	SELECT *
-	FROM cbt_exampack
-	WHERE CBT_CODE = 3) a -->
-
 		SELECT  CBT_CODE as "cbtCode", 
 				QUESTION as "question" , 
 				RIGHT_ANSWER as "rightAnswer", 
@@ -137,13 +135,22 @@
 				ex2 as "ex2", 
 				ex3 as "ex3", 
 				ex4 as "ex4",
-				mark as "mark"
+				mark as "mark",
+				exam_id as "examId"
 		FROM cbt_exampack
-		WHERE CBT_CODE = 3
+		WHERE CBT_CODE = #{code}
+	</select>
+	
+	<!-- 채점 -->
+	<select id="" resultType="map" parameterType="cbtExampack">
+		SELECT mark as "mark"
+		FROM cbt_exampack
+		WHERE exam_id=#{cbtCode}
+		AND right_answer=#{rightAnswer}
 	</select>
 	
 	
+	<!-- 점수저장 -->
 	
-
 	
 </mapper>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<header class="w3-container" style="padding-top:22px; padding-left:30px">
+<header class="w3-container" style="padding-top:22px; padding-left:30px; padding-left:30px; padding-bottom:22px">
     <h5><b><i class="fa fa-pagelines"></i> &nbsp; &nbsp; &nbsp; 결과목록 </b></h5>
 </header>
 

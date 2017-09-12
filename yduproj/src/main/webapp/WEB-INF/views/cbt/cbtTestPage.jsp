@@ -31,31 +31,31 @@ th {
 
 		<table>
 			<tr>
-				<th align="center">번호</th>
-				<th>문제</th>
+				<th align="center">문제</th>
 				<th>1</th>
 				<th>2</th>
 				<th>3</th>
 				<th>4</th>
+				<th>배점</th>
 			</tr>
-			<c:forEach var="list" items="${examList}" varStatus="status">
+			
 				<tr>
-					<td>[ ${status.count} ]</td>
-					<td>${list.question }</td>
-					<td><input type="checkbox" name="test"
-						value="${status.count}1"> ${list.ex1 }</td>
-					<td><input type="checkbox" name="test"
-						value="${status.count}2"> ${list.ex2 }</td>
-					<td><input type="checkbox" name="test"
-						value="${status.count}3"> ${list.ex3 }</td>
-					<td><input type="checkbox" name="test"
-						value="${status.count}4"> ${list.ex4 }</td>
+						<td>${list.question }</td>
+						<td><input type="checkbox" name="test"
+							value="1"> ${list.ex1 }</td>
+						<td><input type="checkbox" name="test"
+							value="2"> ${list.ex2 }</td>
+						<td><input type="checkbox" name="test"
+							value="3"> ${list.ex3 }</td>
+						<td><input type="checkbox" name="test"
+							value="4"> ${list.ex4 }</td>
+						<td>${list.mark }</td>
+					
 				</tr>
-
-			</c:forEach>
 
 		</table>
 		<br />
+			<a href="goTestPage.do?cbtCode=${list.cbtCode }&examId=${list.examId }">다음</a><br/>
 		<br /> <input type="submit" value="제출">
 	</div>
 </form>

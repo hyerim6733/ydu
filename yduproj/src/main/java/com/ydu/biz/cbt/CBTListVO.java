@@ -6,7 +6,7 @@ package com.ydu.biz.cbt;
  *
  */
 public class CBTListVO {
-	private String cbtCode;
+	private int cbtCode;
 	private String openClass;
 	private String cbtTitle;
 	private String finalDate;
@@ -31,10 +31,10 @@ public class CBTListVO {
 	public void setOpenClass(String openClass) {
 		this.openClass = openClass;
 	}
-	public String getCbtCode() {
+	public int getCbtCode() {
 		return cbtCode;
 	}
-	public void setCbtCode(String cbtCode) {
+	public void setCbtCode(int cbtCode) {
 		this.cbtCode = cbtCode;
 	}
 	public String getCbtTitle() {
