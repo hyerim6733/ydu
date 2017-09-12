@@ -52,7 +52,7 @@
 						if(data=="success")
 						{
 							alert(data);
-							$(location).attr('href',"index");
+							$(location).attr('href',"index"); 
 						}else {
 							alert("failed");
 						}
