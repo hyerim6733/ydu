@@ -7,4 +7,7 @@ encoding//src/main/java/com/ydu/biz/interview/impl/InterviewMapper.java=UTF-8
 encoding//src/main/java/com/ydu/biz/interview/impl/InterviewServiceImpl.java=UTF-8
 encoding//src/main/java/com/ydu/view/classes/ClassController.java=UTF-8
 encoding//src/main/java/com/ydu/view/interview/InterviewController.java=UTF-8
+encoding//src/main/java/com/ydu/view/main/MainController.java=UTF-8
+encoding//src/main/webapp/WEB-INF/views/main=UTF-8
 encoding//src/main/webapp/WEB-INF/views/main/home.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/main/login.jsp=UTF-8
