@@ -40,6 +40,43 @@
 		c.major = d.small_code
 	</select>
 
+<select id="getClasses" resultType="map">
+		SELECT 	n.open_class as "openClass",
+        c.class_title as "classTitle",
+        p.name as "name",
+        n.class_time as "classTime",
+        n.class_room as "classRoom",
+        d.bic_codename as "bicCodename",
+        c.class_credit as "classCredit",
+        l.plan_week1 as "planWeek1",
+         l.plan_week2 as "planWeek2",
+          l.plan_week3 as "planWeek3",
+           l.plan_week4 as "planWeek4",
+            l.plan_week5 as "planWeek5",
+             l.plan_week6 as "planWeek6",
+              l.plan_week7 as "planWeek7",
+               l.plan_week8 as "planWeek8",
+                l.plan_week9 as "planWeek9",
+                 l.plan_week10 as "planWeek10",
+                  l.plan_week11 as "planWeek11",
+                   l.plan_week12 as "planWeek12",
+                    l.plan_week13 as "planWeek13",
+                     l.plan_week14 as "planWeek14",
+                      l.plan_week15 as "planWeek15",
+                       l.plan_week16 as "planWeek16"
+		FROM NEW_CLASS n,
+		PROFESSOR p,
+		CODE d,
+		CLASS_LIST c,
+		CLASS_PLAN l
+		WHERE c.class_code = n.class_code and
+		n.prof_code = p.prof_code and
+		c.property = d.bic_code and 
+		n.open_class = #{openClass}
+	</select>
+
+
+
 	<select id="getSelStuClassesList" parameterType="classStatus" resultType="map">
 		SELECT 	CLASS_NO as "classNo",
         ST_CODE as "stCode",
