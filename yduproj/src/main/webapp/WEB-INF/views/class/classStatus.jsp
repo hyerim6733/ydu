@@ -63,7 +63,17 @@ pageEncoding="UTF-8" %>
 			<div class="box-content no-padding">
 				<div class="bs-callout">
 					<button class="close" data-dismiss="alert">&times;</button>
-					<h4>Combine some classes to best view</h4>
+					<h4>개인 시간표조회를 조회합니다.</h4>
+					<p>
+						1교시 : 9:00 ~ 10:15 
+						2교시 : 10:15 ~ 11:30 
+						3교시 : 11:30 ~ 12:45 
+						4교시 : 12:45 ~ 2:00
+						<br/> 
+						5교시 : 2:00 ~ 3:15 
+						6교시 : 3:15 ~ 4:30
+						7교시 : 4:30 ~ 10:15 
+					</p>
 					<p><code>.table-striped</code>, <code>.table-bordered</code>, <code>.table-hover</code> and <code>.table-heading</code></p>
 					<p>Also you can use contextual classes to color table rows or individual cells</p>
 				</div>

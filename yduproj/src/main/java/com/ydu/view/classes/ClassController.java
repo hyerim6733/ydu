@@ -71,6 +71,25 @@ public class ClassController {
 		@RequestMapping(value="/classStatus.do")
 		public String classStatusView() {
 			System.out.println("留덉씠�럹�씠吏�");
+			String temp1 = "월:3~4/수:1~3";
+			String[] temp2 = temp1.split("/");
+			String[] str_main = null;
+			
+			for(String idx:temp2)
+			{
+				str_main = idx.split(":");
+				/*
+				for(String idx2:str_main) {
+					System.out.println(idx2);
+				}*/
+			}
+
+			System.out.println("str_main");
+			for(String idx2 : str_main) {
+				
+				System.out.println(idx2);
+			}
+			
 			return "/class/classStatus";
 		}
 		

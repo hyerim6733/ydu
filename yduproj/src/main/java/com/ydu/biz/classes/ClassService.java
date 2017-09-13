@@ -38,4 +38,5 @@ public interface ClassService {
 
 		
 		List<ClassStatusVO> getSelStuClassesList(StudentVO vo);
+		
 }

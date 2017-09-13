@@ -20,6 +20,7 @@ pageEncoding="UTF-8" %>
 		<link href="../resources/plugins/xcharts/xcharts.min.css" rel="stylesheet">
 		<link href="../resources/plugins/select2/select2.css" rel="stylesheet">
 		<link href="../resources/css/style.css" rel="stylesheet">
+		<link rel='stylesheet' href='https://fullcalendar.io/js/fullcalendar-3.5.1/fullcalendar.css' />
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 				<script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
@@ -286,9 +287,6 @@ pageEncoding="UTF-8" %>
 <script src="../resources/js/devoops.js"></script>
 
 
-<link rel='stylesheet' href='https://fullcalendar.io/js/fullcalendar-3.5.1/fullcalendar.css' />
-<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
-<script src='https://fullcalendar.io/js/fullcalendar-3.5.1/fullcalendar.min.js'></script>
 
 </body>
 </html>

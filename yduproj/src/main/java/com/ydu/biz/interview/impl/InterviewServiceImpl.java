@@ -1,6 +1,7 @@
 package com.ydu.biz.interview.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,11 +22,6 @@ public class InterviewServiceImpl implements InterviewService {
 	@Autowired
 	InterviewMapper interviewDAO;
 
-	@Override
-	public List<InterviewVO> getInterveiwList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void insertInterview(InterStatusVO vo) {
@@ -37,6 +33,11 @@ public class InterviewServiceImpl implements InterviewService {
 	public void deleteInterview(StudentVO vo) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Map<String, Object>> getInterveiwList() {
+		return interviewDAO.getInterveiwList();
 	}
 
 }

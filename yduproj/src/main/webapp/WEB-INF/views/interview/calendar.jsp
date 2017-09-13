@@ -18,6 +18,7 @@
 		<link href="../resources/plugins/select2/select2.css" rel="stylesheet">
 		<!-- <link href="../resources/tiles/css/style.css"  rel="stylesheet"> -->
 		<link href="../resources/css/style.css" rel="stylesheet">
+		<link rel='stylesheet' href="../resources/plugins/fullcalendar/fullcalendar.css" />
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 		<script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
@@ -66,6 +67,15 @@
 
 <!-- All functions for this theme + document.ready processing -->
 
+<script src="../resources/plugins/jquery/jquery-2.1.0.min.js"></script>
+<script src="../resources/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../resources/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="../resources/plugins/justified-gallery/jquery.justifiedgallery.min.js"></script>
+<script src="../resources/plugins/tinymce/tinymce.min.js"></script>
+<script src="../resources/plugins/tinymce/jquery.tinymce.min.js"></script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
+<script src="../resources/plugins/fullcalendar/fullcalendar.min.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script>
@@ -78,15 +88,20 @@ $(document).ready(function() {
 	var d = date.getDate();
 	var m = date.getMonth();
 	var y = date.getFullYear();
-	*/
-	/*
-	var json = [{"allDay":"true",
-				"editable":"false",
-				"end":"2010-11-25",
-				"id":"1",
-				"start":"2010-11-21",
-				"title":"test2"}
-	];*/
+	*///링크 걸기..
+	
+	/* interDate -> start
+		property ->title
+		*/
+	
+
+		/*
+		Calendar <check list>
+		 1. dupCheck
+		 2. insert (to session_user)
+		 3. delete (to adim / session_user)
+		 4. session apply
+		 */
 	$('#calendar').fullCalendar({
 		header: {
 			left: 'prev,next today',
@@ -96,48 +111,20 @@ $(document).ready(function() {
 		defaultDate: '2017-09-12',
 		defaultView: 'month',
 		editable: true,
-		events: [
-			{
-				title: 'All Day Event',
-				start: '2017-09-01'
-			},
-			{
-				title: 'Long Event',
-				start: '2017-09-07',
-				end: '2017-09-10'
-			},
-			{
-				id: 999,
-				title: 'Repeating Event',
-				start: '2017-09-09T16:00:00'
-			},
-			{
-				id: 999,
-				title: 'Repeating Event',
-				start: '2017-09-16T16:00:00'
-			},
-			{
-				title: 'Meeting',
-				start: '2017-09-12T10:30:00',
-				end: '2017-09-12T12:30:00'
-			},
-			{
-				title: 'Lunch',
-				start: '2017-09-12T12:00:00'
-			},
-			{
-				title: 'Birthday Party',
-				start: '2017-09-13T07:00:00'
-			},
-			{
-				title: 'Click for Google',
-				url: 'http://google.com/',
-				start: '2017-09-28'
-			}
-		]
+		events: function(start, end, timezone, callback) {
+			$.ajax({
+				url : "../setCalendar.do",
+				method : "post",
+				type : "json",
+				success : function(data) {
+					 callback(data);
+				},
+				error : function(request, status, error) {
+					alert(error);
+				}
+			});
+		}
 	});
-
-	DrawFullCalendar();
 	
 /*
 	$('#calendar').fullCalendar({

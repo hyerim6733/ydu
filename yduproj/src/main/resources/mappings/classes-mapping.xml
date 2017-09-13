@@ -50,4 +50,5 @@
 		WHERE ST_CODE = #{student_code}
 	</select>
 
+
 </mapper>

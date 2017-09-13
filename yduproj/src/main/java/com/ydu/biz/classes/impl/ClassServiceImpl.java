@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.ydu.biz.classes.ClassSearchVO;
 import com.ydu.biz.classes.ClassService;
 import com.ydu.biz.classes.ClassStatusVO;
+import com.ydu.biz.classes.ClassTimeVO;
 import com.ydu.biz.main.StudentVO;
 import com.ydu.biz.board.impl.BoardMapper;
 import com.ydu.biz.classes.ClassListVO;
@@ -56,7 +57,6 @@ public class ClassServiceImpl implements ClassService {
 		System.out.println("해당학생의 시간표 목록을 불러왔습니다.");
 		return classDAO.getSelStuClassesList(vo);
 	}
-
 	
 
 	
