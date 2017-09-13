@@ -29,8 +29,102 @@
 	</select>
 	 -->
 	
-<!-- 공지사항b1 전체보기 -->
-	<select id="notice" resultType="board">
+
+<!-- 공지사항b1-> 전체  보기 -->
+ 	<select id="notice" resultType="board">
+        <![CDATA[
+        SELECT * 
+        FROM BOARD
+    	WHERE BOARD_CODE = #{boardCode}
+        ]]>
+	</select>
+<!-- 공지사항b1->b10 General 보기 -->
+ 	<select id="noticeGen" resultType="board">
+        <![CDATA[
+        SELECT * 
+        FROM BOARD
+    	WHERE BOARD_CODE = #{boardCode}
+    	AND CATEGORY = #{category}
+        ]]>
+	</select>
+<!-- 공지사항b1->b11 Literature 보기 -->
+ 	<select id="noticeLit" resultType="board">
+        <![CDATA[
+        SELECT * 
+        FROM BOARD
+    	WHERE BOARD_CODE = #{boardCode}
+    	AND CATEGORY = #{category}
+        ]]>
+	</select>	
+<!-- 공지사항b1->b12  Employment 보기 -->
+ 	<select id="noticeEmp" resultType="board">
+        <![CDATA[
+        SELECT * 
+        FROM BOARD
+    	WHERE BOARD_CODE = #{boardCode}
+    	AND CATEGORY = #{category}
+        ]]>
+	</select>	
+<!-- 공지사항b1->b13 Schoolarship 보기 -->
+ 	<select id="noticeSch" resultType="board">
+        <![CDATA[
+        SELECT * 
+        FROM BOARD
+    	WHERE BOARD_CODE = #{boardCode}
+    	AND CATEGORY = #{category}
+        ]]>
+	</select>
+<!-- 공지사항b1->b14 Volunteer 보기 -->
+ 	<select id="noticeVol" resultType="board">
+        <![CDATA[
+        SELECT * 
+        FROM BOARD
+    	WHERE BOARD_CODE = #{boardCode}
+    	AND CATEGORY = #{category}
+        ]]>
+	</select>		
+<!-- 공지사항b1->b15 Event 보기 -->
+ 	<select id="noticeEve" resultType="board">
+        <![CDATA[
+        SELECT * 
+        FROM BOARD
+    	WHERE BOARD_CODE = #{boardCode}
+    	AND CATEGORY = #{category}
+        ]]>
+	</select>			
+	
+	
+	
+	
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+<!-- 학사안내b2 전체보기 -->
+	<select id="literature" resultType="board">
+        <![CDATA[
+        SELECT * 
+        FROM BOARD, abc
+    	WHERE BOARD_CODE = #{boardCode}
+        ]]>
+	</select>
+	
+	
+	
+	
+	
+<!-- 벼룩시장b4 전체보기 -->
+	<select id="fleaMarket" resultType="board">
         <![CDATA[
         SELECT * 
         FROM BOARD
@@ -38,20 +132,22 @@
         ]]>
 	</select>
 
-<!-- 학사안내b2 전체보기 -->
-	<select id="literature" resultType="board">
+<!-- 벼룩시장b4 [팝니다] b40 sell-->
+	<select id="fleaMarketSell" resultType="board">
         <![CDATA[
         SELECT * 
         FROM BOARD
     	WHERE BOARD_CODE = #{boardCode}
+    	AND CATEGORY = #{category}
         ]]>
-	</select>
-<!-- 벼룩시장b4 전체보기 -->
-	<select id="fleaMarket" resultType="board">
+	</select>		
+<!-- 벼룩시장b4 [삽니다] b41 buy -->
+	<select id="fleaMarketBuy" resultType="board">
         <![CDATA[
         SELECT * 
         FROM BOARD
     	WHERE BOARD_CODE = #{boardCode}
+    	AND CATEGORY = #{category}
         ]]>
 	</select>
 <!-- 자유게시판b5 전체보기 -->

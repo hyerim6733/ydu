@@ -201,24 +201,33 @@ pageEncoding="UTF-8" %>
 						<li><a class="ajax-link" href="ajax/map_fullscreen.html">Fullscreen map</a></li>
 					</ul>
 				</li>
-<!-- 공지&학사안내 -->				
+<!-- b1 공지사항 -->				
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-table"></i>
-						 <span class="hidden-xs">공지&학사안내</span>
-					</a>
+					<a href="../notice.do"class="ajax-link dropdown-toggle">
+					<i class="fa fa-table"></i>
+					<span class="hidden-xs">공지사항</span></a>
 					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="../notice.do">공지사항</a></li>
-						<li><a class="ajax-link" href="../literature.do">학사안내</a></li>
-						<li><a class="ajax-link" href="../ajax/test3-3.jsp">미정</a></li>
+						<li><a class="ajax-link" href="../noticeGen.do">공지-일반</a></li>
+						<li><a class="ajax-link" href="../noticeLit.do">공지-학사</a></li>
+						<li><a class="ajax-link" href="../noticeEmp.do">공지-취업</a></li>
+						<li><a class="ajax-link" href="../noticeSch.do">공지-장학</a></li>
+						<li><a class="ajax-link" href="../noticeVol.do">공지-봉사</a></li>
+						<li><a class="ajax-link" href="../noticeEve.do">학술/행사</a></li>
 					</ul>
 				</li>
-
-<!-- 대학/대학원/부속교육기관 -->				
+<!-- b2 학교일정 -->				
+				 <li>
+					<a class="ajax-link" href="../academicCalendar.do">
+						 <i class="fa fa-calendar"></i>
+						 <span class="hidden-xs">학교일정</span>
+					</a>
+				 </li>
+				
+<!-- b3학교안내  -->				
 				<li>
 					<a href="#" class="dropdown-toggle">
 						<i class="fa fa-bar-chart-o"></i>
-						<span class="hidden-xs">대학/대학원/부속교육기관</span>
+						<span class="hidden-xs">학교안내</span>
 					</a>
 					<ul class="dropdown-menu">
 						<li><a class="ajax-link" href="../academics1.do">대학</a></li>
@@ -226,31 +235,33 @@ pageEncoding="UTF-8" %>
 						<li><a class="ajax-link" href="../academics3.do">부속교육기관</a></li>
 					</ul>
 				</li>
-				
-<!-- 벼룩&자유 -->
+
+
+<!-- b4 벼룩시장 -->
 				<li class="dropdown">
-					<a href="../fleaMarket.do" class="dropdown-toggle ajax-link">
+					<a href="../fleaMarket.do" class="ajax-link dropdown-toggle ">
 						<i class="fa fa-picture-o"></i>
-						 <span class="hidden-xs">벼룩&자유</span>
+						 <span class="hidden-xs" >벼룩시장</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="../fleaMarket.do">벼룩시장</a></li>
-						<li><a class="ajax-link" href="../freeBoard.do">자유게시판</a></li>
+						<li><a class="ajax-link" href="../fleaMarketSell.do">벼룩시장-팝니다</a></li>
+						<li><a class="ajax-link" href="../fleaMarketBuy.do">벼룩시장-삽니다</a></li>
 					</ul>
 				</li>
-<!-- FAQ -->				
+<!-- b5 자유게시판 -->
 				<li>
-					 <a class="ajax-link" href="../faq.do">
-						 <i class="fa fa-font"></i>
-						 <span class="hidden-xs">FAQ</span>
-					</a>
+					<a class="ajax-link" href="../freeBoard.do"> 
+					<i class="fa fa-picture-o"></i>
+					<span class="hidden-xs">자유게시판</span></a>
 				</li>
-				 <li>
-					<a class="ajax-link" href="../interview/calendar.do">
-						 <i class="fa fa-calendar"></i>
-						 <span class="hidden-xs">학교일정</span>
-					</a>
-				 </li>
+<!-- b6 FAQ 추가 예정 -->				
+				<li>
+					<a class="ajax-link" href="../faq.do">
+					<i class="fa fa-font"></i>
+					<span class="hidden-xs">FAQ</span></a>
+				</li>
+				
+
 				
 			</ul>
 		</div>
