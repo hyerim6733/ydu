@@ -4,6 +4,7 @@
 <html>
 <head>
 <title> Yedam Univ. Exam </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <style>
 table {
 	padding-top:20px;
@@ -27,14 +28,13 @@ th {
 </script>
 </head>
 <body>
-
  
  <div align="center">
 <br>
-시험정보, 시험시간, 교수명, 강의명 출력 등..
+<img src="image/logo.png">
+<c:forEach items="${test}" var="t">
 <table>
 
-<c:forEach items="${ test}" var="t">
 <tr>
 	<th>시험명</th><td>${t.cbtTitle }</td>
 	</tr><tr>
@@ -48,12 +48,18 @@ th {
 	</tr><tr>
 	<th>제한시간</th><td>${t.limitTime }분</td>
 </tr>
-</c:forEach>
 
 </table>
 <br/><br/>
-<a href="goTestPage.do">시험시작</a>
+<form action="goTestPage.do" method="post">
+	<input type="hidden" name="cbtCode" value="${t.cbtCode }">
+	<input type="hidden" name="cnt" value=0>
+	<button class="btn">시험시작</button>
+</form>
+</c:forEach>
+
 </div>
+
 
 </body>
 </html>

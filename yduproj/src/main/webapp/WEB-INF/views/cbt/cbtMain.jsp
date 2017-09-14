@@ -9,8 +9,12 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+b { 
+	font-size:50px;
+}
 </style>
 </head>
 <body class="w3-light-grey">
@@ -42,11 +46,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <a href="#" class="ajax-link w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="#cbtBody.do" class="w3-bar-item w3-button w3-padding w3-skyblue" onclick="page_reload()"><i class="fa fa-users fa-fw"></i> CBT 메인화면 </a>
     <a href="#getAllCBT.do" class="w3-bar-item w3-button w3-padding " onclick="page_reload()"><i class="fa fa-eye fa-fw"></i> 시험목록 </a>
-    <a href="#test11.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-users fa-fw"></i> Q&A </a>
+    <a href="#boardQnA.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-users fa-fw"></i> Q&A </a>
     <a href="#getMyCBT.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-diamond fa-fw"></i> 학생목록조회test</a>
-    <a href="#goTestPage.do" class="w3-bar-item w3-button w3-padding"  onclick="page_reload()"><i class="fa fa-bell fa-fw "></i> 문제목록보기test</a>
     <a href="#goResult.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-bank fa-fw"></i> 결과보기 </a>
- 
+ 	<a href="#submitExamForm.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-bell fa-fw "></i> 시험문제제출 </a>
   </div>
 </nav>
 

@@ -18,7 +18,7 @@ public interface ClassMapper {
 				void deleteClass(ClassStatusVO vo);
 				
 				// �닔媛뺢낵紐� �긽�꽭 議고쉶
-				ClassListVO getClasses(ClassListVO vo);
+				Map<String, Object> getClasses(String code);
 				
 
 				// 수강 신청 목록 조회

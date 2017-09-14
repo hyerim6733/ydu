@@ -70,13 +70,18 @@ public class CBTServiceImpl implements CBTService {
 	}
 
 	@Override
-	public List<CBTExampackVO> getTest() {
-		return cbtDAO.getTest();
+	public List<Map<String, Object>> getTest(int cbt_code) {
+		return cbtDAO.getTest(cbt_code);
 	}
 
 	@Override
-	public List<CBTListVO> getCBTInfo(CBTListVO vo) {
-		return cbtDAO.getCBTInfo(vo);
+	public List<CBTListVO> getCBTInfo(int cbt_code) {
+		return cbtDAO.getCBTInfo(cbt_code);
+	}
+
+	@Override
+	public CBTExampackVO getMarkTest(CBTExampackVO vo) {
+		return cbtDAO.getMarkTest(vo);
 	}
 
 }

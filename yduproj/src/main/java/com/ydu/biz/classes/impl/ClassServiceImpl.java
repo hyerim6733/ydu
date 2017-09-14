@@ -38,11 +38,13 @@ public class ClassServiceImpl implements ClassService {
 
 
 	@Override
-	public ClassListVO getClasses(ClassListVO vo) {
+	public Map<String, Object> getClasses(String code) {
 		System.out.println("媛뺤쓽怨꾪쉷�꽌");
-		return classDAO.getClasses(vo);
+		return classDAO.getClasses(code);
 		
 	}
+	
+	
 
 	@Override
 

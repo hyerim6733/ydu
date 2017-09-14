@@ -9,7 +9,14 @@ public class CBTExampackVO {
 	private String ex3;
 	private String ex4;
 	private int mark;
+	private int examId; //primary key
 	
+	public int getExamId() {
+		return examId;
+	}
+	public void setExamId(int examId) {
+		this.examId = examId;
+	}
 	public int getMark() {
 		return mark;
 	}

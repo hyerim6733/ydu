@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <style>
 table {
 	padding-top: 20px;
@@ -22,7 +23,7 @@ th {
 	color: white;
 }
 </style>
-<form action="cbtMain.do#goResult.do" method="post">
+<form action="goTestPage.do" method="post">
 	<div align="center">
 		<br> <b>시험</b> <br />
 		<br />
@@ -31,31 +32,35 @@ th {
 
 		<table>
 			<tr>
-				<th align="center">번호</th>
-				<th>문제</th>
+				<th align="center">문제</th>
 				<th>1</th>
 				<th>2</th>
 				<th>3</th>
 				<th>4</th>
+				<th>배점</th>
 			</tr>
-			<c:forEach var="list" items="${examList}" varStatus="status">
+			
 				<tr>
-					<td>[ ${status.count} ]</td>
-					<td>${list.question }</td>
-					<td><input type="checkbox" name="test"
-						value="${status.count}1"> ${list.ex1 }</td>
-					<td><input type="checkbox" name="test"
-						value="${status.count}2"> ${list.ex2 }</td>
-					<td><input type="checkbox" name="test"
-						value="${status.count}3"> ${list.ex3 }</td>
-					<td><input type="checkbox" name="test"
-						value="${status.count}4"> ${list.ex4 }</td>
+						<td>${list.question }</td>
+						<td><input type="radio" name="rightAnswer"
+							value="1"> ${list.ex1 }</td>
+						<td><input type="radio" name="rightAnswer"
+							value="2"> ${list.ex2 }</td>
+						<td><input type="radio" name="rightAnswer"
+							value="3"> ${list.ex3 }</td>
+						<td><input type="radio" name="rightAnswer"
+							value="4"> ${list.ex4 }</td>
+						<td>${list.mark }</td>
+					
 				</tr>
-
-			</c:forEach>
 
 		</table>
 		<br />
-		<br /> <input type="submit" value="제출">
+			
+		<br /> 
+		<input type="hidden" name="cbtCode" value="${list.cbtCode }">
+		<input type="hidden" name="cnt" value=${cnt }>
+		<input type="hidden" name="examId" value="${list.examId }">
+		<button class="btn">다음</button>
 	</div>
 </form>

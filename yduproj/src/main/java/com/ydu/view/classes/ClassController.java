@@ -37,8 +37,16 @@ public class ClassController {
 			return "/class/classMain";
 		}
 		@RequestMapping(value="/classProgram.do")
-		public String classProgram() {
-			System.out.println("媛뺤쓽 怨꾪쉷�꽌");
+		public String classProgram(Model model, ClassListVO vo) {
+			System.out.println("강의계획서조회할거야");
+			if(classService == null){
+				System.out.println("수강 자료가 없네");
+			} 
+			else {
+				System.out.println("조회성공");
+				List<Map<String, Object>> list = classService.getClassesList();
+				model.addAttribute("classList",list);
+			}
 			return "/class/classProgram";
 		}
 		
@@ -54,6 +62,15 @@ public class ClassController {
 			model.addAttribute("classList",list);
 		}
 			return "/class/enrollmentTime";
+		}
+		
+		//강의 계획서 조회
+		@RequestMapping("/getClassDetail.do")
+		public String getClassDetail(Model model, ClassListVO vo) {
+			String code = "17CO1000";
+			model.addAttribute("detail", classService.getClasses(code));
+			//model.addAttribute("classList", classService.getClasses(vo));
+			return "/class/classDetail";
 		}
 		
 		@RequestMapping(value="/myPage.do")
