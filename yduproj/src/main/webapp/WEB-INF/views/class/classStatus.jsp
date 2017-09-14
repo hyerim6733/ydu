@@ -19,13 +19,19 @@ pageEncoding="UTF-8" %>
 		<link href="resources/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
 		<link href="resources/plugins/xcharts/xcharts.min.css" rel="stylesheet">
 		<link href="resources/plugins/select2/select2.css" rel="stylesheet">
-		<link href="resources/tiles/css/style.css"  rel="stylesheet">
 		<link href="resources/css/style.css" rel="stylesheet">
+		<script src="resources/scripts/jquery-3.2.1.min.js"></script>
+		<script src="resources/plugins/jquery/jquery-2.1.0.min.js"></script>
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 				<script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
 				<script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
 		<![endif]-->
+		<style>
+			td {
+				height: 50px;
+			}
+		</style>
 	</head>
 <body>
 
@@ -63,7 +69,7 @@ pageEncoding="UTF-8" %>
 			<div class="box-content no-padding">
 				<div class="bs-callout">
 					<button class="close" data-dismiss="alert">&times;</button>
-					<h4>개인 시간표조회를 조회합니다.</h4>
+					<h4><code>개인시간표</code> 조회합니다.</h4>
 					<p>
 						1교시 : 9:00 ~ 10:15 
 						2교시 : 10:15 ~ 11:30 
@@ -74,10 +80,18 @@ pageEncoding="UTF-8" %>
 						6교시 : 3:15 ~ 4:30
 						7교시 : 4:30 ~ 10:15 
 					</p>
-					<p><code>.table-striped</code>, <code>.table-bordered</code>, <code>.table-hover</code> and <code>.table-heading</code></p>
-					<p>Also you can use contextual classes to color table rows or individual cells</p>
+					
 				</div>
-				<table class="table table-striped table-bordered table-hover table-heading no-border-bottom">
+				<!-- 
+					color property 
+						active
+						primary
+						success
+						info
+						warning
+						danger
+				-->
+				<table class="table table-striped table-bordered table-hover table-heading no-border-bottom" id="table1">
 					<thead>
 						<tr>
 							<th>월</th>
@@ -89,53 +103,53 @@ pageEncoding="UTF-8" %>
 					</thead>
 					<tbody>
 						<tr>
-							<td>no</td>
-							<td>class</td>
-							<td>to</td>
-							<td>default</td>
-							<td>view</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
-						<tr class="active">
-							<td>class</td>
-							<td><code>active</code></td>
-							<td>to</td>
-							<td>color</td>
-							<td>row</td>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
-						<tr class="primary">
-							<td>class</td>
-							<td><code>primary</code></td>
-							<td>to</td>
-							<td>color</td>
-							<td>row</td>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
-						<tr class="success">
-							<td>class</td>
-							<td><code>success</code></td>
-							<td>to</td>
-							<td>color</td>
-							<td>row</td>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
-						<tr class="info">
-							<td>class</td>
-							<td><code>info</code></td>
-							<td>to</td>
-							<td>color</td>
-							<td>row</td>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
-						<tr class="warning">
-							<td>class</td>
-							<td><code>warning</code></td>
-							<td>to</td>
-							<td>color</td>
-							<td>row</td>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
-						<tr class="danger">
-							<td>class</td>
-							<td><code>danger</code></td>
-							<td>to</td>
-							<td>color</td>
-							<td>row</td>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr> 
 						<tr>
 							<td class="active"><code>active</code> class to color cell</td>
@@ -150,13 +164,64 @@ pageEncoding="UTF-8" %>
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-	// Drag-n-Drop feature
-	WinMove();
-});
-</script>
-
+<style>
+	.aaa {
+		color:blue;
+	}
+</style>
+<script>
+		$(document).ready(function() {
+			
+			
+			$.ajax({
+	            type:"POST",
+	            url:"./getClassTimeList.do", //link
+	            dataType:"json",
+	            success:function(data){
+	               /*  var list = data;
+	                var listLen = list.length;
+	                console.log("data : "+ data); */
+	                var idx;
+	    			var array = ["","월","화","수","목","금"];
+	                
+	                console.dir(data);
+	                for(var i=0; i<data.length; i++){
+	                	/* $("tr:first").each(function() {
+		    				idx = $("th:contains("+data[i].week+")").index();
+		    			} );
+	                	 */
+	                	 idx = array.indexOf(data[i].week);
+	                	 var temp = (data[i].end) - (data[i].start);
+	                	$("td:nth-child("+idx+")").filter(":gt("+(data[i].start-1)+"):lt("+temp+")").addClass("info"); //eq 사용해서 첫번째 칸에 텍스트 지정
+	                	$("td:nth-child("+idx+")").filter(":eq("+(data[i].start-1)+")").addClass("info");
+	                	$("td:nth-child("+idx+")").filter(":eq("+(data[i].start-1)+")").text(data[i].title);
+	                }
+	            },
+	            error : function(request, status, error) {
+					alert(error);
+				}
+	        })
+			
+			var json = [
+			    {
+			    	title : '컴퓨터개론',
+			        week  : '월',
+			        start  : '1',
+			        end  : '3'
+			    },
+		
+			    {
+			    	title : '소프트웨어공학',
+			        week  : '수',
+			        start  : '3',
+			        end  : '4'
+			    }
+			];
+			
+			
+			
+		});
+		</script>
 <!--End Container-->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 </body>
