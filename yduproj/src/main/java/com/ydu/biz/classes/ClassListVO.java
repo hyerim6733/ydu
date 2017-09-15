@@ -1,7 +1,10 @@
 package com.ydu.biz.classes;
 
+
+
 public class ClassListVO {
 	
+	private String openClass;
 	private String classCode; // 과목 번호
 	private String classTitle; // 과목 명 
 	private String property; // 과목 속성
@@ -37,6 +40,13 @@ public class ClassListVO {
 	public void setMajor(String major) {
 		this.major = major;
 	}
+	public String getOpenClass() {
+		return openClass;
+	}
+	public void setOpenClass(String openClass) {
+		this.openClass = openClass;
+	}
+	
 	
 	
 	

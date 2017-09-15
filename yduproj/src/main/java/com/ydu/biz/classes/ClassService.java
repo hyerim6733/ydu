@@ -27,12 +27,14 @@ public interface ClassService {
 		
 		
 		// 수강과목 상세 조회
-		Map<String, Object> getClasses(String code);
+		Map<String, Object> getClasses(ClassListVO vo);
 		
 
 		// 수강 신청 목록 조회
 		List<Map<String, Object>> getClassesList(/*ClassListVO vo*/);
 
+		//code
+		List<Map<String, Object>> getsmallList(String code);
 		
 
 
