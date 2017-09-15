@@ -7,7 +7,7 @@ pageEncoding="UTF-8" %>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>DevOOPS</title>
+		<title>예담대학교</title>
 		<meta name="description" content="description">
 		<meta name="author" content="DevOOPS">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -55,7 +55,7 @@ pageEncoding="UTF-8" %>
 	<div class="container-fluid expanded-panel">
 		<div class="row">
 			<div id="logo" class="col-xs-12 col-sm-2">
-				<a href="../main/index">예담대학교</a>
+				<a href="../main/index"><i class="fa fa-pagelines"></i> YeDam</a>
 			</div>
 			<div id="top-panel" class="col-xs-12 col-sm-10">
 				<div class="row">
@@ -95,7 +95,6 @@ pageEncoding="UTF-8" %>
 									</div>
 									<i class="fa fa-angle-down pull-right"></i>
 									<% if(session.getAttribute("userId") == null) { %>
-										/cbtMain.do#cbtBody.do
 										<div class="user-mini pull-right">
 											<span class="welcome"><a class="ajax-link" href="../loginForm.do">login</a></span>
 										</div>
@@ -160,8 +159,7 @@ pageEncoding="UTF-8" %>
 			<div id="sidebar-left" class="col-xs-2 col-sm-2">
 				<ul class="nav main-menu">
 					<li><a class="ajax-link" href="../main/home"> <i
-							class="fa fa-dashboard"></i> <span class="hidden-xs"> 메인화면
-						</span>
+							class="fa fa-dashboard"></i> <span class="hidden-xs"> 메인화면	</span>
 					</a></li>
 					<li><a href="../cbtMain.do#cbtBody.do"> <i
 							class="fa fa-bar-chart-o"></i> <span class="hidden-xs">
@@ -218,7 +216,7 @@ pageEncoding="UTF-8" %>
 				</li>
 <!-- b2 학교일정 -->				
 				 <li>
-					<a class="ajax-link" href="../academicCalendar.do">
+					<a class="ajax-link" href="../interview/calendar.do">
 						 <i class="fa fa-calendar"></i>
 						 <span class="hidden-xs">학교일정</span>
 					</a>

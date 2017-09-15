@@ -29,7 +29,7 @@ pageEncoding="UTF-8" %>
 		<![endif]-->
 		<style>
 			td {
-				height: 50px;
+				height: 70px;
 			}
 		</style>
 	</head>
@@ -150,13 +150,20 @@ pageEncoding="UTF-8" %>
 							<td></td>
 							<td></td>
 							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr> 
 						<tr>
-							<td class="active"><code>active</code> class to color cell</td>
-							<td class="success"><code>success</code> class to color cell</td>
-							<td class="info"><code>info</code> class to color cell</td>
-							<td class="warning"><code>warning</code> class to color cell</td>
-							<td class="danger"><code>danger</code> class to color cell</td>
+							<td class="active">과목별 Color <br/><code></code></td>
+							<td class="success">Color Property<br/><code>전공선택</code></td>
+							<td class="info">Color Property  <br/><code>균형교양</code></td>
+							<td class="warning">Color Property  <br/><code>일반교양</code></td>
+							<td class="danger">Color Property  <br/><code>전공필수</code></td>
 						</tr>
 					</tbody>
 				</table>
@@ -183,17 +190,27 @@ pageEncoding="UTF-8" %>
 	                console.log("data : "+ data); */
 	                var idx;
 	    			var array = ["","월","화","수","목","금"];
-	                
+	    			var property=null;
+	    			var backColor=null;
 	                console.dir(data);
 	                for(var i=0; i<data.length; i++){
 	                	/* $("tr:first").each(function() {
 		    				idx = $("th:contains("+data[i].week+")").index();
 		    			} );
 	                	 */
+	                	 proerty = data[i].property;
+
+	                	 switch (proerty) {
+	                	   case '전공선택'  	: backColor="success"; break;
+	                	   case '균형교양' 	: backColor="info"; break;
+	                	   case '일반교양'  	: backColor="warning"; break;
+	                	   case '전공필수'   		: backColor="danger"; break;
+	                	 }
+	                	 
 	                	 idx = array.indexOf(data[i].week);
 	                	 var temp = (data[i].end) - (data[i].start);
-	                	$("td:nth-child("+idx+")").filter(":gt("+(data[i].start-1)+"):lt("+temp+")").addClass("info"); //eq 사용해서 첫번째 칸에 텍스트 지정
-	                	$("td:nth-child("+idx+")").filter(":eq("+(data[i].start-1)+")").addClass("info");
+	                	$("td:nth-child("+idx+")").filter(":gt("+(data[i].start-1)+"):lt("+temp+")").addClass(backColor); //eq 사용해서 첫번째 칸에 텍스트 지정
+	                	$("td:nth-child("+idx+")").filter(":eq("+(data[i].start-1)+")").addClass(backColor);
 	                	$("td:nth-child("+idx+")").filter(":eq("+(data[i].start-1)+")").text(data[i].title);
 	                }
 	            },

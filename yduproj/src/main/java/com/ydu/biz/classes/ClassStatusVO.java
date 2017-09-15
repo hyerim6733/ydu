@@ -9,8 +9,15 @@ public class ClassStatusVO {
 	private int classGrade; //援먯닔媛� �븰�깮 �꽦�쟻 �엯�젰
 	private String classTime;
 	private String classTitle;
+	private String property;
 	
 	
+	public String getProperty() {
+		return property;
+	}
+	public void setProperty(String property) {
+		this.property = property;
+	}
 	public String getClassTitle() {
 		return classTitle;
 	}

@@ -5,8 +5,15 @@ public class ClassTimeTransVO {
 	private String start;
 	private String end;
 	private String title;
+	private String property;
 	
 	
+	public String getProperty() {
+		return property;
+	}
+	public void setProperty(String property) {
+		this.property = property;
+	}
 	public String getTitle() {
 		return title;
 	}

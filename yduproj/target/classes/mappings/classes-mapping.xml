@@ -47,7 +47,8 @@
         s.REPEAT as "repeat",
         s.CLASS_GRADE as "classGrade",
         s.CLASS_TIME as "classTime",
-        l.class_title as "classTitle"
+        l.class_title as "classTitle",
+        l.property as "property"
 		FROM CLASS_STATUS s, CLASS_LIST l, new_class n
 		WHERE s.ST_CODE = #{student_code} and
 			s.open_class=n.open_class and

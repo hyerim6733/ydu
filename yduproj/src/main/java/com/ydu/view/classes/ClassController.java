@@ -117,6 +117,7 @@ public class ClassController {
 			//	String temp1 = "월:3~4/수:1~3";
 				String temp1 = currList.getClassTime();
 				String subName = currList.getClassTitle();
+				String subProperty = currList.getProperty();
 				String[] temp2 = temp1.split("/");
 				String[] str_main = null;
 				String[] str_main2 = null;
@@ -138,17 +139,19 @@ public class ClassController {
 						}
 					}
 					strList.add(subName);
+					strList.add(subProperty);
 				}
 			
 				
 				//////////////////////////////////////////////////////
 				// vo save
-				for(int i=0;i<strList.size();i+=4) {
+				for(int i=0;i<strList.size();i+=5) {
 					ClassTimeTransVO ex = new ClassTimeTransVO();
 					ex.setWeek(strList.get(i));
 					ex.setStart(strList.get(i+1));
 					ex.setEnd(strList.get(i+2));
 					ex.setTitle(strList.get(i+3));
+					ex.setProperty(strList.get(i+4));
 					//ex.setTitle(strList.get(cnt++));
 					timeList.add(ex);
 				}
