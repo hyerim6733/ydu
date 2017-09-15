@@ -1,8 +1,13 @@
 package com.ydu.view.board;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,11 +15,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ydu.biz.board.BoardSearchVO;
 import com.ydu.biz.board.BoardService;
 import com.ydu.biz.board.BoardVO;
+
 
 @Controller
 public class BoardController {
@@ -104,6 +113,70 @@ public class BoardController {
 		model.addAttribute("notice1",list2);
 		return "/board/b1/notice";
 	}
+	//공지사항 등록폼
+	@RequestMapping(value="/insertNoticeForm.do",method=RequestMethod.GET) //value={}배열 여러개 입력가능
+	public String insertNoticeForm(){
+		return "/board/b1/noticeInsert";
+	}
+	//공지사항 등록
+	@RequestMapping(value="/noticeInsert.do",method=RequestMethod.POST)
+	public String insertNotice(Model model, BoardVO vo) {
+		System.out.println("공지사항등록==============="+ vo );
+		if (vo.getMandatory()==null){
+			vo.setMandatory("n");
+		}//mandetory 널값일 경우 값넣어주기
+		boardService.insertNotice(vo);
+		
+		return "redirect:/main/index#../detailNotice.do?boardNo="+vo.getBoardNo();
+	}
+		
+	//공지사항 수정
+	@RequestMapping(value="/updateNoticeForm.do",method=RequestMethod.GET)// 핸들러 같을때 GET방식 (생략가능) : jsp파일의 action= 같아야함
+	public String updateNotice(Model model, BoardVO vo){
+		model.addAttribute("board",boardService.detailNotice(vo));
+		return "/board/b1/noticeInsert"; //파일위치파일명 주의!!
+	}
+	//수정처리
+	@RequestMapping(value="/updateNotice.do",method=RequestMethod.POST)
+	public String updateNotice(@ModelAttribute("board") BoardVO vo){
+		System.out.println("=======공지사항=====수정: "+ vo);//수정
+		//수정처리
+		if (vo.getMandatory()==null){
+			vo.setMandatory("n");
+		}//mandetory 널값일 경우 값넣어주기
+		boardService.updateNotice(vo);
+		return "redirect:/detailNotice.do?boardId="+vo.getBoardNo(); //파일위치파일명 주의!!
+	}
+	
+	//상세보기
+	@RequestMapping("/detailNotice.do")
+	public String detailNotice(Model model, BoardVO vo){
+		System.out.println("공지사항 상세보기 controller");
+		model.addAttribute("board",boardService.detailNotice(vo));
+		//상세보기의 조회 한 정보를 세션으로 넣어두면 수정 할때 다시 조회 안해도 됨
+		return "/board/b1/noticeDetail";
+	}
+	
+	
+
+	
+	/*
+	 * //등록처리 등록시는 모델어트리뷰트 사용 하면 안됨(이전 정보 가져오기때문)
+		@RequestMapping(value="/insertNotice.do",method=RequestMethod.POST)
+		public String insertNotice( BoardVO vo,
+				SessionStatus status)throws IOException { //p377~
+			
+			System.out.println("등록==============="+ vo );
+			boardService.insertNotice(vo);
+			status.setComplete();
+			return "redirect:/notice.do?boardNo="+vo.getBoardNo();
+		}
+		*/
+		
+		
+	
+	
+	
 	
 
 //학교일정:캘린더 b2
@@ -162,8 +235,18 @@ public class BoardController {
 //벼룩시장 상세보기
 	
 //벼룩시장 등록폼 
+/*	@RequestMapping(value="/insertFleaMarketForm.do",method=RequestMethod.GET) //value={}배열 여러개 입력가능
+	public String insertFleaMarketForm(Model model){
+		return "/board/b4/fleaMarketInsert";
+	}
+	//벼룩시장 등록
+	@RequestMapping(value="/insertFleaMarket.do",method=RequestMethod.POST)
+	public String insertFleaMarket(Model model, BoardVO vo){
+		boardService.insertFleaMarket(vo);
+		return "/board/b4/fleaMarket";
+	}	
 	
-
+*/
 	
 //자유게시판 b5
 	@RequestMapping("/freeBoard.do")

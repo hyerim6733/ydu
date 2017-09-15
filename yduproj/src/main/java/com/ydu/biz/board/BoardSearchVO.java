@@ -72,6 +72,8 @@ public class BoardSearchVO {
 	public void setLast(Integer last) {
 		this.last = last;
 	}
+	
+	
 /*	public Integer[] getSeqList() {
 		return seqList;
 	}

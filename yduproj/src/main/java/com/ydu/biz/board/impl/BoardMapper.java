@@ -26,11 +26,10 @@ public interface BoardMapper {
 	List<BoardVO> noticeSch(BoardSearchVO vo); 
 	List<BoardVO> noticeVol(BoardSearchVO vo); 
 	List<BoardVO> noticeEve(BoardSearchVO vo); 
-	//공지 상세보기
-	//BoardVO getNotice(BoardVO vo);
-	//공지 등록 만들어야 함 
-	//BoardVO insertNotice(BoardVO vo);
-		
+	
+	BoardVO detailNotice(BoardVO vo); //상세
+	void insertNotice(BoardVO vo); //등록
+	void updateNotice(BoardVO vo); //수정
 		
 //학교일정 academicCalendar
 	BoardVO academicCalendar(BoardVO vo);
@@ -46,20 +45,23 @@ public interface BoardMapper {
 	List<BoardVO> fleaMarket(BoardSearchVO vo);	
 	List<BoardVO> fleaMarketSell(BoardSearchVO vo);
 	List<BoardVO> fleaMarketBuy(BoardSearchVO vo);
-	//벼룩시장 상세보기
-	//BoardVO getFleaMarket(BoardVO vo);
-	//벼룩시장 등록
-	//BoardVO insertFleaMarket(BoardVO vo);
-		
-		
+	
+	//BoardVO detailFleaMarket(BoardVO vo); //상세
+	//void insertFleaMarket(BoardVO vo); //등록
+	//void updateFleaMarket(BoardVO vo); //수정
+	
+	
 
 //자유게시판
 	List<BoardVO> freeBoard(BoardSearchVO vo);
-	//자유게시판 상세보기
-	//BoardVO getFreeBoard(BoardVO vo);
-	//자유게시판 등록
-	//BoardVO insertFreeBoard(BoardVO vo);
-		
+	
+	//BoardVO detailFreeBoard(BoardVO vo); //상세
+	//void insertFreeBoard(BoardVO vo); //등록
+	//void updateFreeBoard(BoardVO vo); //수정
+	
+	
+	
+	
 //FAQ
 	BoardVO faq(BoardVO vo);
 		
