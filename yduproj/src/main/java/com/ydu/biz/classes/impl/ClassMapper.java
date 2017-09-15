@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.ydu.biz.classes.ClassSearchVO;
 import com.ydu.biz.classes.ClassStatusVO;
+import com.ydu.biz.classes.ClassTimeVO;
 import com.ydu.biz.main.StudentVO;
 import com.ydu.biz.classes.ClassListVO;
 
@@ -22,7 +23,7 @@ public interface ClassMapper {
 
 				// 수강 신청 목록 조회
 				List<Map<String, Object>> getClassesList();
-				
+
 				List<Map<String, Object>> getsmallList(String code);
 				
 				List<ClassStatusVO> getSelStuClassesList(StudentVO vo);

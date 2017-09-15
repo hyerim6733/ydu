@@ -3,7 +3,11 @@ package com.ydu.biz.classes;
 
 
 public class ClassListVO {
+	public String classNo;
+	public String week;
+	public String time;
 	
+
 	private String openClass;
 	private String classCode; // 과목 번호
 	private String classTitle; // 과목 명 
@@ -13,21 +17,22 @@ public class ClassListVO {
 	public String getClassCode() {
 		return classCode;
 	}
-	public void setClassCode(String classCode) {
-		this.classCode = classCode;
+	public void setClassNo(String classNo) {
+		this.classNo = classNo;
 	}
-	public String getClassTitle() {
-		return classTitle;
+	public String getWeek() {
+		return week;
 	}
-	public void setClassTitle(String classTitle) {
-		this.classTitle = classTitle;
+	public void setWeek(String week) {
+		this.week = week;
 	}
-	public String getProperty() {
-		return property;
+	public String getTime() {
+		return time;
 	}
-	public void setProperty(String property) {
-		this.property = property;
+	public void setTime(String time) {
+		this.time = time;
 	}
+
 	public int getClassCredit() {
 		return classCredit;
 	}
@@ -46,8 +51,4 @@ public class ClassListVO {
 	public void setOpenClass(String openClass) {
 		this.openClass = openClass;
 	}
-	
-	
-	
-	
 }

@@ -56,7 +56,10 @@ html, body, h1, h2, h3, h4, h5 {
     <a href="#classBody.do" class="w3-bar-item w3-button w3-padding w3-skyblue" onclick="page_reload()"><i class="fa fa-diamond fa-fw"></i> 수강신청 메인화면 </a>
     <a href="#classProgram.do" class="w3-bar-item w3-button w3-padding " onclick="page_reload()"><i class="fa fa-eye fa-fw"></i> 강의계획서 </a>
     <a href="#getClassesList.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-users fa-fw"></i> 수강신청 </a>
+
+    <a href="#classStatus.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-calendar fa-fw"></i> 개인시간표조회</a>
     <a href="#myPage.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-user fa-fw"></i> 마이페이지</a>
+
 
 		</div>
 	</nav>

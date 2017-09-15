@@ -25,7 +25,6 @@
         <typeAlias alias="newClass" type="com.ydu.biz.classes.NewClassVO"/>
         <typeAlias alias="professor" type="com.ydu.biz.main.ProfessorVO"/>
         <typeAlias alias="student" type="com.ydu.biz.main.StudentVO"/>
-        
     </typeAliases>
 
 </configuration>

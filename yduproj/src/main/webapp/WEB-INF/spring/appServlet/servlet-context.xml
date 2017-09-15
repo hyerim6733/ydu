@@ -80,4 +80,9 @@
 </beans:bean>
 
 
+<!-- multipart bean 추가 : 등록 ckeditor 사용시 필요한거 -->
+<beans:bean id="multipartResolver"
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+
 </beans:beans>
