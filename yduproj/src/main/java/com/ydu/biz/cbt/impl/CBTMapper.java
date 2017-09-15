@@ -21,8 +21,10 @@ public interface CBTMapper {
 
 	void insertTest(CBTExampackVO vo);
 
-	List<CBTExampackVO> getTest(int cbt_code);
+	List<Map<String, Object>> getTest(int cbt_code);
 	
 	List<CBTListVO> getCBTInfo(int cbt_code);
+	
+	CBTExampackVO getMarkTest(CBTExampackVO vo);
 
 }

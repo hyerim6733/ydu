@@ -40,6 +40,21 @@
 		c.major = d.small_code
 	</select>
 
+	<select id="getSelStuClassesList" parameterType="classStatus" resultType="classStatus">
+		SELECT 	s.CLASS_NO as "classNo",
+        s.ST_CODE as "stCode",
+        s.OPEN_CLASS as "openClass",
+        s.REPEAT as "repeat",
+        s.CLASS_GRADE as "classGrade",
+        s.CLASS_TIME as "classTime",
+        l.class_title as "classTitle",
+        l.property as "property"
+		FROM CLASS_STATUS s, CLASS_LIST l, new_class n
+		WHERE s.ST_CODE = #{student_code} and
+			s.open_class=n.open_class and
+			n.class_code=l.class_code		
+	</select>
+ 
 <select id="getClasses" resultType="map">
 		SELECT 	n.open_class as "openClass",
         c.class_title as "classTitle",
@@ -77,14 +92,5 @@
 
 
 
-	<select id="getSelStuClassesList" parameterType="classStatus" resultType="map">
-		SELECT 	CLASS_NO as "classNo",
-        ST_CODE as "stCode",
-        OPEN_CLASS as "openClass",
-        REPEAT as "repeat",
-        CLASS_GRADE as "classGrade"
-		FROM CLASS_STATUS
-		WHERE ST_CODE = #{student_code}
-	</select>
 
 </mapper>

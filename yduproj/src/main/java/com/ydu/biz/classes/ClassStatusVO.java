@@ -2,12 +2,34 @@ package com.ydu.biz.classes;
 
 public class ClassStatusVO {
 	
-	private int classNo; //수강신청 번호
-	private String stCode; // 학번
-	private String openClass; // 개설과목
-	private String repeat; // 재수강
-	private int classGrade; //교수가 학생 성적 입력
+	private int classNo; //�닔媛뺤떊泥� 踰덊샇
+	private String stCode; // �븰踰�
+	private String openClass; // 媛쒖꽕怨쇰ぉ
+	private String repeat; // �옱�닔媛�
+	private int classGrade; //援먯닔媛� �븰�깮 �꽦�쟻 �엯�젰
+	private String classTime;
+	private String classTitle;
+	private String property;
 	
+	
+	public String getProperty() {
+		return property;
+	}
+	public void setProperty(String property) {
+		this.property = property;
+	}
+	public String getClassTitle() {
+		return classTitle;
+	}
+	public void setClassTitle(String classTitle) {
+		this.classTitle = classTitle;
+	}
+	public String getClassTime() {
+		return classTime;
+	}
+	public void setClassTime(String classTime) {
+		this.classTime = classTime;
+	}
 	public int getClassNo() {
 		return classNo;
 	}

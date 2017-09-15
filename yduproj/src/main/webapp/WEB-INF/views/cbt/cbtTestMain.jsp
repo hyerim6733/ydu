@@ -4,6 +4,7 @@
 <html>
 <head>
 <title> Yedam Univ. Exam </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <style>
 table {
 	padding-top:20px;
@@ -50,10 +51,15 @@ th {
 
 </table>
 <br/><br/>
-<a href="goTestPage.do?cbtCode=${t.cbtCode }">시험시작</a>
+<form action="goTestPage.do" method="post">
+	<input type="hidden" name="cbtCode" value="${t.cbtCode }">
+	<input type="hidden" name="cnt" value=0>
+	<button class="btn">시험시작</button>
+</form>
 </c:forEach>
 
 </div>
+
 
 </body>
 </html>

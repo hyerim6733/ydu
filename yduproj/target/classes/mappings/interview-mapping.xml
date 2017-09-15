@@ -43,7 +43,15 @@
         c.CLASS_GRADE as "classGrade"
 		FROM CLASS_STATUS c,
 		STUDENT s
-		WHERE c.ST_CODE = s.ST_CODE;
+		WHERE c.ST_CODE = s.ST_CODE
+	</select>
+	
+	
+	<select id="getInterveiwList" resultType="map" >
+		SELECT 	STATUS_ID as "statusId" ,
+				 INTERDATE as "start" ,
+				 PROPERTY as "title" 
+		FROM inter_status
 	</select>
 
 </mapper>

@@ -76,7 +76,7 @@
 			<div class="box">
 				<div class="box-content">
 					<div class="text-center">
-						<h3 class="page-header">DevOOPS Login Page</h3>
+						<h3 class="page-header">YeDam Login Page</h3>
 					</div>
 					<div class="form-group">
 						<label class="control-label">Username</label>

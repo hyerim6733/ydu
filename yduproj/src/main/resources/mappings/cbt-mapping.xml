@@ -127,7 +127,7 @@
 	</insert>
 	
 	<!--  학생 : 시험응시 / 시험목록테스트중-->
-	<select id="getTest" resultType="map" resultMap="getTestResult">
+	<select id="getTest" resultMap="getTestResult">
 		SELECT  CBT_CODE as "cbtCode", 
 				QUESTION as "question" , 
 				RIGHT_ANSWER as "rightAnswer", 
@@ -142,10 +142,10 @@
 	</select>
 	
 	<!-- 채점 -->
-	<select id="" resultType="map" parameterType="cbtExampack">
+	<select id="getMarkTest" resultType="cbtExampack">
 		SELECT mark as "mark"
 		FROM cbt_exampack
-		WHERE exam_id=#{cbtCode}
+		WHERE exam_id=#{examId}
 		AND right_answer=#{rightAnswer}
 	</select>
 	
