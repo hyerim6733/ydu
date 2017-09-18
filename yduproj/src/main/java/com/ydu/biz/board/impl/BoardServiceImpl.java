@@ -26,9 +26,20 @@ public class BoardServiceImpl implements BoardService {
 //공지사항	
 	@Override
 	public List<BoardVO> notice(BoardSearchVO vo) {
+		
 		System.out.println("b1 공지 전체 =====notice");//확인용
 		return boardDAO.notice(vo);
 	}
+	@Override
+	public int total(BoardSearchVO vo) {
+		System.out.println("=====공지사항 페이징 처리");//확인용
+		return boardDAO.total(vo);
+	}
+	
+	
+	
+	
+	
 	@Override
 	public List<BoardVO> noticeGen(BoardSearchVO vo) {
 		System.out.println("b10 일반공지=====noticeGen");//확인용
@@ -154,6 +165,7 @@ public BoardVO faq(BoardVO vo) {
 System.out.println("=====faq");//확인용
 return boardDAO.faq(vo);
 }
+
 
 
 

@@ -30,14 +30,50 @@
 	 -->
 
 
-<!-- 공지사항 전체 보기 -->
-	<select id="notice" resultType="board">
-		SELECT BOARD_NO,BOARD_CODE, CATEGORY,
-		WRITE_DATE ,
-		WRITER, TITLE, CONTENT,MANDATORY
+<!-- 공지사항 전체 보기 페이징처리 -->
+	<select id="notice" resultType="board"
+	parameterType="com.ydu.biz.board.BoardSearchVO">
+		SELECT b.BOARD_NO, BOARD_CODE, CATEGORY, 
+		WRITE_DATE, WRITER, TITLE, CONTENT, MANDATORY 
+		FROM(
+		SELECT ROWNUM rn, 
+		a.BOARD_NO, BOARD_CODE, CATEGORY, 
+		WRITE_DATE, WRITER, TITLE, CONTENT, MANDATORY
+		FROM(
+		
+		SELECT BOARD_NO, BOARD_CODE, CATEGORY, 
+		WRITE_DATE, WRITER, TITLE, CONTENT, MANDATORY
 		FROM BOARD
 		WHERE BOARD_CODE = #{boardCode}
+		
+		<if test = "searchKeyword!=null" >
+    	<if test="searchCondition == 'TITLE'">
+        AND TITLE LIKE '%'||#{searchKeyword}||'%' 
+    	</if>
+    	<if test="searchCondition == 'CONTENT'">
+        AND CONTENT LIKE '%'||#{searchKeyword}||'%' 
+    	</if>
+    	</if>
+    	ORDER BY BOARD_NO DESC
+    	
+    	)a)b WHERE rn BETWEEN #{first} AND #{last}
 	</select>
+<!-- 전체 totalRecord -->
+	<select id="total" resultType="int" parameterType="com.ydu.biz.board.BoardSearchVO">
+	SELECT COUNT(*) FROM BOARD
+	<if test="searchKeyword!=null">
+		<if test="searchCondition == 'TITLE'">
+			AND TITLE LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'CONTENT'">
+			AND CONTENT LIKE '%'||#{searchKeyword}||'%'
+		</if>
+	</if>
+</select>	
+	
+	
+	
+	
 <!-- 공지-일반 보기 -->
  	<select id="noticeGen" resultType="board">
         SELECT BOARD_NO,BOARD_CODE, CATEGORY, 
