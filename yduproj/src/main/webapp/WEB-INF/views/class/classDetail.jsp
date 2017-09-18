@@ -16,14 +16,14 @@ td {
 	<br>
 	<table border="1" width="80%" align="center">
 		<tr>
-			<td>교과목명</td>
-			<td>${detail.classTitle}</td>
-			<td>학수번호</td>
+			<td width="10%">교과목명</td>
+			<td width="40%">${detail.classTitle}</td>
+			<td width="10%">학수번호</td>
 			<td>${detail.openClass}</td>
 			</tr>
 			<tr>
 			<td>이수구분</td>
-			<td>${detail.bicCodename}</td>
+			<td>${detail.propertyNm}</td>
 			<td>학점</td>
 			<td>${detail.classCredit}</td>
 			</tr>
@@ -36,10 +36,14 @@ td {
 	</table>
 	<br><br><br>
 	<table border="1" width="80%" align="center">
+		<tr><td width="10%">강의 개요</td><td>${detail.classCon}</td></tr>
+	</table>
+	<br><br>
+	<table border="1" width="80%" align="center">
 	<tr>
 		<td colspan="2">주차 계획</td>
 	</tr>
-	<tr><td>1</td><td>${detail.planWeek1}</td></tr>
+	<tr><td width="10%">1</td><td>${detail.planWeek1}</td></tr>
 	<tr><td>2</td><td>${detail.planWeek2}</td></tr>
 	<tr><td>3</td><td>${detail.planWeek3}</td></tr>
 	<tr><td>4</td><td>${detail.planWeek4}</td></tr>
