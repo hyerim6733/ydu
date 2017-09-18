@@ -1,10 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-
+ <header class="w3-container" style="padding-top:22px; padding-left:30px; padding-left:30px; padding-bottom:22px">
+ <h2><b>강의 계획서</b></h2>
+ </header>
 <style>
 form {
 text-align : center;
+}
+body { background: #fff; }
+.blueone {
+  border-collapse: collapse;
+}  
+.blueone th {
+  padding: 10px;
+  color: #168;
+  border-bottom: 3px solid #168;
+  text-align: center;
+}
+.blueone td {
+  color: #669;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.blueone tr:hover td {
+  color: #004;
 }
 </style>
 <script>
@@ -15,56 +35,29 @@ function page_reload() {
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
 	<tr>
-	<form>
-			교과과정 <select>
-					<option value=0>-선택하세요-</option>
-					<option value=1>학부</option>
-					<option value=2>대학원</option>
+	<form action="getClassesList.do">
+			<table width="80%" align="center">
+			<td align="right">
+			<select name="searchCondition">
+				<option value="openClass">과목번호</option>
+				<option value="classTitle">과목명</option>
 			</select>
-			교과영역<select>
-					<option value=3>-선택하세요-</option>
-					<option value=4>전공</option>
-					<option value=5>교양</option>
-					<option value=6>교직</option>
-			</select>
-			<th>대학<select name="faculty">
-					<option>-선택하세요-</option>
-					<option value="1000">과학기술대학</option>
-					<option value="2000">인문대학</option>
-					<option value="3000">사범대학</option>
-			</select>
-			학부전공
-			<select name="faculty2">
-				<option>-선택하세요-</option>
-				<c:forEach var="flist" items="${facultyList}">
-				<option></option>
-				</c:forEach>
-			</select>
-			<!-- 수업년도<select>
-			<option value=12>-선택하세요-</option>
-			<option value=13>2015</option>
-			<option value=14>2016</option>
-			<option value=15>2017</option>
-			</select> -->
-			
-			<button>조회하기</button>
-	<br>
-	<br>
+			<input type="text" name="searchKeyword"/>
+			<input type="submit" value="조회"/>
+			</table>
+
 	
-	<table border="1" width="80%" align="center">
+	<table width="80%" align="center" class="blueone">
 		
 		<tr>
-			<td>과목번호</td>
-			<td>과목명</td>
-			<td>담당교수</td>
-			<td>시간</td>
-			<td>강의실</td>
-			<td>분류</td>
-			<td>수강정원</td>
+			<th>과목번호</th>
+			<th>과목명</th>
+			<th>담당교수</th>
+			<th>시간</th>
+			<th>강의실</th>
+			<th>분류</th>
+			<th>수강정원</th>
 		</tr>
 		<c:forEach var="list" items="${classList}"> 
 		<tr>

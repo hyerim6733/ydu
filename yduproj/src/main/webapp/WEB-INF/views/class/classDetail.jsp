@@ -6,6 +6,24 @@
 td {
 	text-align: center;
 }
+body { background: #fff; }
+.blueone {
+  border-collapse: collapse;
+}  
+.blueone th {
+  padding: 10px;
+  color: #168;
+  border-bottom: 3px solid #168;
+  text-align: center;
+}
+.blueone td {
+  color: #669;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.blueone tr:hover td {
+  color: #004;
+}
 </style>
 
 	<br>
@@ -14,34 +32,34 @@ td {
 	<br>
 	<br>
 	<br>
-	<table border="1" width="80%" align="center">
+	<table width="80%" align="center" class="blueone">
 		<tr>
-			<td width="10%">교과목명</td>
+			<th width="15%">교과목명</th>
 			<td width="40%">${detail.classTitle}</td>
-			<td width="10%">학수번호</td>
+			<th width="15%">학수번호</th>
 			<td>${detail.openClass}</td>
 			</tr>
 			<tr>
-			<td>이수구분</td>
+			<th>이수구분</th>
 			<td>${detail.propertyNm}</td>
-			<td>학점</td>
+			<th>학점</th>
 			<td>${detail.classCredit}</td>
 			</tr>
 			<tr>
-			<td>수업시간 / 강의실</td>
+			<th>수업시간 / 강의실</th>
 			<td>${detail.classTime}( ${detail.classRoom} )</td>
-			<td>교수명</td>
+			<th>교수명</th>
 			<td>${detail.name}</td>
 		</tr>
 	</table>
 	<br><br><br>
-	<table border="1" width="80%" align="center">
-		<tr><td width="10%">강의 개요</td><td>${detail.classCon}</td></tr>
+	<table width="80%" align="center" class="blueone">
+		<tr><th width="10%">강의 개요</th><td>${detail.classCon}</td></tr>
 	</table>
-	<br><br>
-	<table border="1" width="80%" align="center">
+	<br><br><br>
+	<table width="80%" align="center" class="blueone"> 
 	<tr>
-		<td colspan="2">주차 계획</td>
+		<th colspan="2" style="text-align:left">주차 계획</th>
 	</tr>
 	<tr><td width="10%">1</td><td>${detail.planWeek1}</td></tr>
 	<tr><td>2</td><td>${detail.planWeek2}</td></tr>
@@ -60,3 +78,9 @@ td {
 	<tr><td>15</td><td>${detail.planWeek15}</td></tr>
 	<tr><td>16</td><td>${detail.planWeek16}</td></tr>
 	</table>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>

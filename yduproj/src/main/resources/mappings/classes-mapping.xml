@@ -24,7 +24,7 @@
 	</delete>
 	
 	<!-- 강의 리스트 조회 -->
-	<select id="getClassesList" resultType="map">
+	<select id="getProgramList" resultType="map">
 		SELECT 	n.open_class as "openClass",
 		        c.class_title as "classTitle",
 		        p.name as "name",
@@ -41,9 +41,15 @@
 		WHERE c.class_code = n.class_code and
 				n.prof_code = p.prof_code and
 				c.major = d.small_code
+		<if test="searchCondition == 'openClass'">
+       		 AND OPEN_CLASS LIKE '%'||#{searchKeyword}||'%' 
+    	</if>
+    	<if test="searchCondition == 'classTitle'">
+        	AND CLASS_TITLE LIKE '%'||#{searchKeyword}||'%' 
+    	</if>
 	</select>
 	
-	<!-- 강의 계획서 -->
+	<!-- 강의 계획서 상세 -->
 	<select id="getClasses" resultType="map">
 		SELECT
 		    n.open_class AS "openClass",
@@ -101,8 +107,6 @@
 		WHERE s.ST_CODE = #{student_code} and
 			s.open_class=n.open_class and
 			n.class_code=l.class_code		
-	</select>
- 
-
+	</select> 
 
 </mapper>
