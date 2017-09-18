@@ -1,17 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-
+ <header class="w3-container" style="padding-top:22px; padding-left:30px; padding-left:30px; padding-bottom:22px">
+ <h2><b>수강 신청</b></h2>
+ </header>
 <style>
 form {
 	text-align: center;
 }
+
+body { background: #fff; }
+.blueone {
+  border-collapse: collapse;
+}  
+.blueone th {
+  padding: 10px;
+  color: #168;
+  border-bottom: 3px solid #168;
+  text-align: center;
+}
+.blueone td {
+  color: #669;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.blueone tr:hover td {
+  color: #004;
+}
 </style>
 
-	<br>
-	<br>
-	<br>
-	<br>
+<br>
 	<br>
 	<br>
 	<script >
@@ -27,6 +45,7 @@ form {
 			}
 		}
 	 </script>
+	 <form action="getClassesList.do">
 	<table align="center" width="80%">
 		<tr><td width="15%">교과과정
 		<select>
@@ -57,22 +76,27 @@ form {
 				<option></option>
 			</c:forEach>
 		</select></td>
-		<td width="30%">　　</td>
-		<td align="center"><button>조회하기</button></td></tr>
+		<td align="right">
+		<select name="searchCondition">
+			<option value="openClass">과목번호</option>
+			<option value="classTitle">과목명</option>
+		</select>
+		<input type="text" name="searchKeyword"/>
+		<input type="submit" value="조회"/></td></tr>
 		</table>
 		
 	
-		<form>
-		<table border="1"  align="center" width="80%">
+		
+		<table width="80%" align="center" class="blueone">
 			<tr>
-				<td>과목번호</td>
-				<td>과목명</td>
-				<td>담당교수</td>
-				<td>시간</td>
-				<td>강의실</td>
-				<td>분류</td>
-				<td>수강정원</td>
-				<td>수강신청</td>
+				<th>과목번호</th>
+				<th>과목명</th>
+				<th>담당교수</th>
+				<th>시간</th>
+				<th>강의실</th>
+				<th>분류</th>
+				<th>수강정원</th>
+				<th>수강신청</th>
 			</tr>
 			<c:forEach var="list" items="${classList}">
 				<tr>

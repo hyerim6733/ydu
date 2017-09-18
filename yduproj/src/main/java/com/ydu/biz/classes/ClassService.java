@@ -31,7 +31,7 @@ public interface ClassService {
 		
 
 		// 수강 신청 목록 조회
-		List<Map<String, Object>> getClassesList(/*ClassListVO vo*/);
+		List<Map<String, Object>> getProgramList(ClassSearchVO vo);
 
 		//code
 		List<Map<String, Object>> getsmallList(String code);
@@ -40,5 +40,7 @@ public interface ClassService {
 
 		
 		List<ClassStatusVO> getSelStuClassesList(StudentVO vo);
+
+		//List<Map<String, Object>> getClassesList(ClassSearchVO vo);
 		
 }

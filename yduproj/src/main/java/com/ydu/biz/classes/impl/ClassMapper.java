@@ -22,10 +22,12 @@ public interface ClassMapper {
 				
 
 				// 수강 신청 목록 조회
-				List<Map<String, Object>> getClassesList();
+				//List<Map<String, Object>> getClassesList(ClassSearchVO vo);
 
 				List<Map<String, Object>> getsmallList(String code);
 				
 				List<ClassStatusVO> getSelStuClassesList(StudentVO vo);
 
+				//강의 계획서 조회
+				List<Map<String, Object>> getProgramList(ClassSearchVO vo);
 }
