@@ -13,6 +13,7 @@
 
 <c:set var="registerFlag" value="${empty board.boardNo ? '등록' : '수정'}"/>
 <script src="../resources/ckeditor/ckeditor.js"></script>
+
 <script>
 	function frmCheck(){
 		//내용을 입력여부 체크
@@ -21,36 +22,31 @@
 			alter("내용을 입력하세요");
 			return false;
 		}
+	  	frm.action = "<c:url value="${registerFlag == '등록' ? '/insertNotice.do' : '/updateNotice.do'}"/>";
+
 		return true;
 	}	
 	
-	/* 글 등록 function */
-	function fn_save() {	
-		frm = document.getElementById("detailForm");	
-	  	frm.action = "<c:url value="${registerFlag == '등록' ? '/insertNotice.do' : '/updateNotice.do'}"/>";
-	    frm.submit();
-	}
+
 	
 </script>
 
 </head>
 <body>
 
-
-
-<hr>
-<h3>공지사항 등록하기 (관리자용)</h3>
-<hr>
+${board }
 <div id="inner-panel">
-<form name="frm" action="../noticeInsert.do" method="post" onsubmit ="return frmCheck()">
-	<%-- 
-	<input type="hidden" name="boardNo" value="${board.boardNo }">
-	 --%>	
+<hr>
+<h3>공지사항  ${registerFlag} 하기 (관리자용)</h3>
+<hr>
 
-	 
+<form name="frm" action="../noticeInsert.do" method="post" onsubmit ="return frmCheck()">
+	<!-- 게시판 번호 공지사항 = b1  hidden으로 값만 넘기기 -->
+	<c:if test="${registerFlag == '수정'}">
+	<input type="hidden" name="boardNo" value="${board.boardNo }">
+	</c:if>
 	<!-- 게시판코드 공지사항 = b1  hidden으로 값만 넘기기 -->
 	<input type="hidden" name="boardCode" value="b1"><br /> 
-	
 	<!-- 작성자 관리자정보 받아와서 값 넘기기 -->
 	<input type="hidden" name="writer" value="test"><br /> 
 	
@@ -91,6 +87,9 @@
 		
 </form>
 </div>
-<script src="../resources/js/common.js"></script>
+<!-- 내부ajax링크 div classs=ajax-link -->
+<script src="<c:url value="/resources/plugins/jquery/jquery-2.1.0.min.js"/>"></script>
+<script src="<c:url value="/resources/js/common.js"/>"></script>		
+
 </body>
 </html>

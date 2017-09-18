@@ -4,58 +4,35 @@
 
 <mapper namespace="com.ydu.biz.board.impl.BoardMapper">
 
-<!-- 
-<resultMap id="boardResult" type="board">
-        <id property="boardId" column="BOARDID" />
-        <result property="title" column="TITLE" />
-        <result property="writeDate" column="WRITEDATE" />
-        <result property="editDate" column="EDITDATE" />
-        <result property="category" column="CATEGORY" />
-        <result property="writer" column="WRITER" />
-        <result property="content" column="CONTENT" />
-</resultMap>
-
- -->
-
-<!-- 공지사항 미리보기 5개 -->
-<!-- 
-	<select id="prevNotice" resultType="board">
-        <![CDATA[
-           
-        SELECT * 
-        FROM BOARD
-    	WHERE BOARD_CODE = #{boardCode}
-        ]]>
-	</select>
-	 -->
 
 
-<!-- 공지사항 전체 보기 페이징처리 -->
+
+<!-- 공지사항 전체 보기( 페이징처리) -->
 	<select id="notice" resultType="board"
 	parameterType="com.ydu.biz.board.BoardSearchVO">
-		SELECT b.BOARD_NO, BOARD_CODE, CATEGORY, 
-		WRITE_DATE, WRITER, TITLE, CONTENT, MANDATORY 
+		SELECT b.*
 		FROM(
-		SELECT ROWNUM rn, 
-		a.BOARD_NO, BOARD_CODE, CATEGORY, 
-		WRITE_DATE, WRITER, TITLE, CONTENT, MANDATORY
-		FROM(
+			SELECT ROWNUM rn, 
+			a.*
+			FROM(
 		
-		SELECT BOARD_NO, BOARD_CODE, CATEGORY, 
-		WRITE_DATE, WRITER, TITLE, CONTENT, MANDATORY
-		FROM BOARD
-		WHERE BOARD_CODE = #{boardCode}
+				SELECT BOARD_NO,BOARD_CODE, 
+						 (SELECT SMALL_CODENAME FROM CODE WHERE SMALL_CODE = BOARD.CATEGORY) CATEGORY, 
+				        WRITE_DATE , 
+				        WRITER, TITLE, CONTENT,MANDATORY 
+				FROM BOARD
+				WHERE BOARD_CODE = #{boardCode}
 		
 		<if test = "searchKeyword!=null" >
-    	<if test="searchCondition == 'TITLE'">
-        AND TITLE LIKE '%'||#{searchKeyword}||'%' 
-    	</if>
-    	<if test="searchCondition == 'CONTENT'">
-        AND CONTENT LIKE '%'||#{searchKeyword}||'%' 
-    	</if>
+    		<if test="searchCondition == 'TITLE'">
+     			AND TITLE LIKE '%'||#{searchKeyword}||'%' 
+    		</if>
+    		<if test="searchCondition == 'CONTENT'">
+       			AND CONTENT LIKE '%'||#{searchKeyword}||'%' 
+    		</if>
     	</if>
     	ORDER BY BOARD_NO DESC
-    	
+    
     	)a)b WHERE rn BETWEEN #{first} AND #{last}
 	</select>
 <!-- 전체 totalRecord -->
@@ -82,6 +59,7 @@
         FROM BOARD
     	WHERE BOARD_CODE = #{boardCode}
     	AND CATEGORY = #{category}
+    	ORDER BY BOARD_NO DESC
 	</select>
 <!-- 공지-학사 보기 -->
  	<select id="noticeLit" resultType="board">
@@ -91,6 +69,7 @@
         FROM BOARD
     	WHERE BOARD_CODE = #{boardCode}
     	AND CATEGORY = #{category}
+    	ORDER BY BOARD_NO DESC
      	</select>	
 <!-- 공지-취업 보기 -->
  	<select id="noticeEmp" resultType="board">
@@ -100,6 +79,7 @@
         FROM BOARD
     	WHERE BOARD_CODE = #{boardCode}
     	AND CATEGORY = #{category}
+    	ORDER BY BOARD_NO DESC
    	</select>	
 <!-- 공지-장학 보기 -->
  	<select id="noticeSch" resultType="board">
@@ -109,6 +89,7 @@
         FROM BOARD
     	WHERE BOARD_CODE = #{boardCode}
     	AND CATEGORY = #{category}
+    	ORDER BY BOARD_NO DESC
   	</select>
 <!-- 공지-봉사 보기 -->
  	<select id="noticeVol" resultType="board">
@@ -118,6 +99,7 @@
         FROM BOARD
     	WHERE BOARD_CODE = #{boardCode}
     	AND CATEGORY = #{category}
+    	ORDER BY BOARD_NO DESC
     </select>		
 <!-- 공지-학술/행사 보기 -->
  	<select id="noticeEve" resultType="board">
@@ -127,6 +109,7 @@
         FROM BOARD
     	WHERE BOARD_CODE = #{boardCode}
     	AND CATEGORY = #{category}
+    	ORDER BY BOARD_NO DESC
 	</select>			
 <!-- 공지사항 등록 -->	
 	<insert id="insertNotice" parameterType="board">
@@ -155,7 +138,8 @@
 	</update>
 <!-- 공지사항 상세 -->
 	<select id="detailNotice" resultType="board">
-		SELECT BOARD_NO,BOARD_CODE, CATEGORY,
+		SELECT BOARD_NO,BOARD_CODE, 
+		 (SELECT SMALL_CODENAME FROM CODE WHERE SMALL_CODE = BOARD.CATEGORY) CATEGORY, 
 		WRITE_DATE ,
 		WRITER, TITLE, CONTENT,MANDATORY
 		FROM BOARD

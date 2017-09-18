@@ -178,7 +178,7 @@ public class BoardController {
 			vo.setMandatory("n");
 		}//mandetory 널값일 경우 값넣어주기
 		boardService.updateNotice(vo);
-		return "redirect:/detailNotice.do?boardId="+vo.getBoardNo(); //파일위치파일명 주의!!
+		return "redirect:/main/index#../detailNotice.do?boardNo="+vo.getBoardNo();//파일위치파일명 주의!!
 	}
 	
 	//상세보기

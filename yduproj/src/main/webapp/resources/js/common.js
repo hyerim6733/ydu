@@ -1,5 +1,5 @@
 
-/*$('#inner-panel').on('click','a', function(e){ 
+$('#inner-panel').on('click','a', function(e){ 
 	if ($(this).hasClass('ajax-link')) {
 		e.preventDefault();
 		if ($(this).hasClass('add-full')) {
@@ -12,7 +12,7 @@
 		window.location.hash = url;
 		LoadAjaxContent(url);
 	}
-});*/
+});
 
 
 

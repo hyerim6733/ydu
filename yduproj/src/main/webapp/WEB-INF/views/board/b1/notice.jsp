@@ -56,6 +56,7 @@
 		<div id="inner-panel"> 	
 		<ul class="nav nav-pills nav-stacked">
 			<li class="active"><a href="../notice.do" class="ajax-link" id="notice">공지사항</a></li>
+			<li><a href="../noticeGen.do" class="ajax-link" id="Lit">일반 공지</a></li>
 			<li><a href="../noticeLit.do" class="ajax-link" id="Lit">학사 공지</a></li>
 			<li><a href="../noticeEmp.do" class="ajax-link" id="Emp">취업 공지</a></li>
 			<li><a href="../noticeSch.do" class="ajax-link" id="Sch">장학 공지</a></li>
