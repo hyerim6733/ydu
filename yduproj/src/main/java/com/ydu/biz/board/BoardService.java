@@ -1,9 +1,8 @@
 package com.ydu.biz.board;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
-import com.ydu.biz.board.BoardVO;
 
 
 
@@ -20,6 +19,8 @@ public interface BoardService {
 
 	//공지사항 //b10//b11//b12//b13//b14//b15=====조회까지 성공
 		List<BoardVO> notice(BoardSearchVO vo);	 //b1
+		int total (BoardSearchVO vo);
+		
 		List<BoardVO> noticeGen(BoardSearchVO vo); 
 		List<BoardVO> noticeLit(BoardSearchVO vo); 
 		List<BoardVO> noticeEmp(BoardSearchVO vo); 

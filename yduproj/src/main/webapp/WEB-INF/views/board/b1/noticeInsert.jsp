@@ -12,7 +12,6 @@
 <head>
 
 <c:set var="registerFlag" value="${empty board.boardNo ? '등록' : '수정'}"/>
-
 <script src="../resources/ckeditor/ckeditor.js"></script>
 <script>
 	function frmCheck(){

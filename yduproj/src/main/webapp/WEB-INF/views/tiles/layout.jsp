@@ -205,6 +205,8 @@ pageEncoding="UTF-8" %>
 					<a href="../notice.do"class="ajax-link dropdown-toggle">
 					<i class="fa fa-table"></i>
 					<span class="hidden-xs">공지사항</span></a>
+				<!-- 공지 작은 메뉴 없애기 -->
+				<!-- 	
 					<ul class="dropdown-menu">
 						<li><a class="ajax-link" href="../noticeGen.do">공지-일반</a></li>
 						<li><a class="ajax-link" href="../noticeLit.do">공지-학사</a></li>
@@ -213,7 +215,9 @@ pageEncoding="UTF-8" %>
 						<li><a class="ajax-link" href="../noticeVol.do">공지-봉사</a></li>
 						<li><a class="ajax-link" href="../noticeEve.do">학술/행사</a></li>
 					</ul>
-				</li>
+				
+				 -->				
+ 				</li>
 <!-- b2 학교일정 -->				
 				 <li>
 					<a class="ajax-link" href="../interview/calendar.do">

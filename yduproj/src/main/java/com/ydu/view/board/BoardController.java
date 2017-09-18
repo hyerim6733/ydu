@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ydu.biz.board.Paging;
 import com.ydu.biz.board.BoardSearchVO;
 import com.ydu.biz.board.BoardService;
 import com.ydu.biz.board.BoardVO;
@@ -46,6 +47,8 @@ public class BoardController {
 	
 	
 //공지사항b1
+	
+	/*
 	@RequestMapping(value="/notice.do")
 	public String notice(Model md,BoardSearchVO vo){
 		vo.setBoardCode("b1");//검색값 b1 넘어감
@@ -54,6 +57,36 @@ public class BoardController {
 		md.addAttribute("notice1",list);
 		return "/board/b1/notice";
 	}
+	*/
+	
+	@RequestMapping(value = "/notice.do")
+	public ModelAndView notice(ModelAndView mv, 
+								BoardSearchVO vo, 
+								Paging paging) {
+		
+		vo.setBoardCode("b1");
+		
+		// 페이지번호 파라미터
+		if (paging.getPage() == null) {
+			paging.setPage(1);
+		}
+
+		// 시작/마지막 레코드 번호
+		vo.setFirst(paging.getFirst());
+		vo.setLast(paging.getLast());
+
+		// 전체 건수
+		int total = boardService.total(vo);//
+		paging.setTotalRecord(total);
+
+		List<BoardVO> list = boardService.notice(vo);
+		mv.addObject("paging", paging);
+		mv.addObject("notice1", list);
+		mv.setViewName("/board/b1/notice");
+		return mv;
+	}
+	
+	
 	@RequestMapping(value="/noticeGen.do")
 	public String noticeGen(Model model,BoardSearchVO vo) {
 		vo.setBoardCode("b1");
