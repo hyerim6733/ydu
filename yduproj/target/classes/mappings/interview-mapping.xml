@@ -50,8 +50,26 @@
 	<select id="getInterveiwList" resultType="map" >
 		SELECT 	STATUS_ID as "statusId" ,
 				 INTERDATE as "start" ,
-				 PROPERTY as "title" 
+				 PROPERTY as "title",
+				 ST_CODE as "st_code",
+				 SEQ as "seq"
 		FROM inter_status
 	</select>
+
+	<insert id="insertInter" parameterType="interStatus">
+		<selectKey keyProperty="statusId" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(status_id),0) + 1 FROM INTER_STATUS
+		</selectKey>
+		<![CDATA[
+			insert into inter_status(status_id, title, interdate, property, inter_id, st_code, seq)
+			VALUES(#{statusId}, #{title}, #{interDate}, #{property}, #{interId}, #{st_code}, #{seq})
+		]]>
+	</insert>
+	<delete id="deleteInter" parameterType="interStatus">
+		<![CDATA[
+			DELETE INTER_STATUS
+			WHERE status_id = #{statusId}
+		]]>
+	</delete>
 
 </mapper>

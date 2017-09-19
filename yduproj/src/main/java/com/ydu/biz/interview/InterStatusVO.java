@@ -1,12 +1,27 @@
 package com.ydu.biz.interview;
 
 public class InterStatusVO {
-	public String statusId;
-	public String title;
-	public String interDate;
-	public String property;
-	public String interId;
+	private String statusId;
+	private String title;
+	private String interDate;
+	private String property;
+	private String interId;
+	private String st_code;
+	private String seq;
 	
+	
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
+	public String getSt_code() {
+		return st_code;
+	}
+	public void setSt_code(String st_code) {
+		this.st_code = st_code;
+	}
 	public String getStatusId() {
 		return statusId;
 	}

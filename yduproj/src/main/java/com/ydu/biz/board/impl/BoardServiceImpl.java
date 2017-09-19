@@ -132,6 +132,13 @@ System.out.println("=====faq");//확인용
 return boardDAO.faq(vo);
 }
 
+//minhak
+@Override
+public List<BoardVO> mainBoard(BoardVO vo) {
+	return boardDAO.mainBoard(vo);
+}
+
+
 ///////////////////////////////////////////////////////////////			
 
 	

@@ -1,11 +1,19 @@
 package com.ydu.biz.interview;
 
 public class InterStatusVO_trans {
-	public String statusId;
-	public String title;
-	public String start;
-	public String end;
+	private String statusId;
+	private String title;
+	private String start;
+	private String end;
+	private String seq;
 	
+	
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
+	}
 	public String getTitle() {
 		return title;
 	}

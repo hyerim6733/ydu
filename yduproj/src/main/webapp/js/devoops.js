@@ -2342,7 +2342,7 @@ $(document).ready(function () {
 			var url = $(this).attr('href');
 			window.location.hash = url;
 			LoadAjaxContent(url);
-		}
+		} 
 		if ($(this).attr('href') == '#') {
 			e.preventDefault();
 		}
@@ -2408,7 +2408,7 @@ $(document).ready(function () {
 			var url = $(this).attr('href');
 			window.location.hash = url;
 			LoadAjaxContent(url);
-		}
+		} 
 	});
 	$('#search').on('keydown', function(e){
 		if (e.keyCode == 13){

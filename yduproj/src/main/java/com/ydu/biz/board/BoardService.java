@@ -31,7 +31,10 @@ public interface BoardService {
 	//BoardVO getNotice(BoardVO vo);
 	//공지 등록 만들어야 함 
 	//BoardVO insertNotice(BoardVO vo);
+
 	
+	// minhak add
+	List<BoardVO> mainBoard(BoardVO vo); 
 	
 //학교일정 academicCalendar
 	BoardVO academicCalendar(BoardVO vo);

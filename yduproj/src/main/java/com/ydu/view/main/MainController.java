@@ -21,12 +21,14 @@ import com.ydu.biz.main.impl.LoginMapper;
 
 @Controller
 public class MainController {
-	@Autowired LoginService
-	userService;
+	@Autowired
+	LoginService userService;
+	
 	
 	// 濡쒓렇�씤 �뤌
 	@RequestMapping("/loginForm.do")
 	public String loginForm(){
+		
 		return "./main/login";
 	}
 	

@@ -198,4 +198,13 @@
 		AND CONTENT LIKE '%'||#{searchKeyword}||'%' </if> ORDER BY BOARD_ID DESC 
 		</select> ) A) B WHERE RN BETWEEN ? AND ? -->
 
+<!-- 메인에서 공지사항 전체  보기 -->
+ 	<select id="mainBoard" resultType="board">
+        <![CDATA[
+        SELECT * 
+        FROM BOARD
+    	WHERE BOARD_CODE = #{boardCode}
+        ]]>
+	</select>
+	
 </mapper>                    

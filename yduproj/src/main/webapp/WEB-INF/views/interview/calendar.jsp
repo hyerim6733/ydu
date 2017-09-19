@@ -1,210 +1,281 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
-<head>
-	<title>Home</title>
-		<meta name="description" content="description"> 
-		<meta name="author" content="DevOOPS">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="../resources/plugins/bootstrap/bootstrap.css" rel="stylesheet">
-		<link href="../resources/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
-		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-		<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
-		<link href="../resources/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
-		<link href="../resources/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
-		<link href="../resources/plugins/xcharts/xcharts.min.css" rel="stylesheet">
-		<link href="../resources/plugins/select2/select2.css" rel="stylesheet">
-		<!-- <link href="../resources/tiles/css/style.css"  rel="stylesheet"> -->
-		<link href="../resources/css/style.css" rel="stylesheet">
-		<link rel='stylesheet' href="../resources/plugins/fullcalendar/fullcalendar.css" />
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-		<script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
-		<script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
-	<![endif]-->
-</head>
-<body>
-<div class="row full-calendar">
-	<div class="col-sm-3">
-		<div id="add-new-event">
-			<h4 class="page-header">Add new event</h4>
-			<div class="form-group">
-				<label>Event title</label>
-				<input type="text" id="new-event-title" class="form-control">
-			</div>
-			<div class="form-group">
-				<label>Event description</label>
-				<textarea class="form-control" id="new-event-desc" rows="3"></textarea>
-			</div>
-			<a href="#" id="new-event-add" class="btn btn-primary pull-right">Add event</a>
-			<div class="clearfix"></div>
-		</div>
-		<div id="external-events">
-			<h4 class="page-header" id="events-templates-header">Draggable Events</h4>
-			<div class="external-event">진로상담</div>
-			<div class="external-event">취업상담</div>
-			<div class="external-event">자소서 클리닉</div>
-			<div class="external-event">면접 클리닉</div>
-			<div class="external-event">Launch</div>
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" id="drop-remove"> remove after drop
-					<i class="fa fa-square-o small"></i>
-				</label>
-			</div>
-		</div>
-		<div>
-			<input type="button" id="Add" value="상담신청" onclick=""/>
-		</div>
-	</div>
-	
-	<div class="col-sm-9" id="cal">
-		<div id="calendar"></div>
-	</div>
-</div>
-
-<!-- All functions for this theme + document.ready processing -->
-
-<script src="../resources/plugins/jquery/jquery-2.1.0.min.js"></script>
-<script src="../resources/plugins/jquery-ui/jquery-ui.min.js"></script>
-<script src="../resources/plugins/bootstrap/bootstrap.min.js"></script>
-<script src="../resources/plugins/justified-gallery/jquery.justifiedgallery.min.js"></script>
-<script src="../resources/plugins/tinymce/tinymce.min.js"></script>
-<script src="../resources/plugins/tinymce/jquery.tinymce.min.js"></script>
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
-<script src="../resources/plugins/fullcalendar/fullcalendar.min.js"></script>
-
-<!-- Include all compiled plugins (below), or include individual files as needed -->
+<head> 
+<meta charset='utf-8' />
+<link href="../resources/plugins/fullcalendar-3.5.1/fullcalendar.min.css" rel='stylesheet' />
+<link href="../resources/plugins/fullcalendar-3.5.1/fullcalendar.print.min.css" rel='stylesheet' media='print' />
+<script src="../resources/plugins/fullcalendar-3.5.1/lib/moment.min.js"></script>
+<script src="../resources/plugins/fullcalendar-3.5.1/lib/jquery.min.js"></script>
+<script src="../resources/plugins/fullcalendar-3.5.1/lib/jquery-ui.min.js"></script>
+<script src="../resources/plugins/fullcalendar-3.5.1/fullcalendar.min.js"></script>
 <script>
-$(document).ready(function() {
-	// Set Block Height
-	SetMinBlockHeight($('#calendar'));
-	// Create Calendar
-	/*
-	var date = new Date();
-	var d = date.getDate();
-	var m = date.getMonth();
-	var y = date.getFullYear();
-	*///링크 걸기..
-	
-	/* interDate -> start
-		property ->title
-		*/
-	
 
-		/*
-		Calendar <check list>
-		 1. dupCheck
-		 2. insert (to session_user)
-		 3. delete (to adim / session_user)
-		 4. session apply
-		 */
-	$('#calendar').fullCalendar({
-		header: {
-			left: 'prev,next today',
-			center: 'title',
-			right: 'month,agendaWeek,agendaDay'
-		},
-		defaultDate: '2017-09-12',
-		defaultView: 'month',
-		editable: true,
-		events: function(start, end, timezone, callback) {
-			$.ajax({
-				url : "../setCalendar.do",
-				method : "post",
-				type : "json",
-				success : function(data) {
-					 callback(data);
-				},
-				error : function(request, status, error) {
-					alert(error);
-				}
+	$(document).ready(function() {
+
+		var selAction = "insert";
+		var cnt = 0;
+		var main = new Array(); // json의 전체를 가리키는 배열
+		
+		var jsonObject; //jsonObject라는 변수에 json형식으로 key이름은 list, value 배열은 이전에 만들었던 main 배열을 넣는다
+
+
+		/* initialize the external events
+		-----------------------------------------------------------------*/
+
+		$('#external-events .fc-event').each(function() {
+
+			// store data so the calendar knows to render an event upon drop
+			$(this).data('event', {
+				title: $.trim($(this).text()), // use the element's text as the event title
+				stick: true // maintain when user navigates (see docs on the renderEvent method)
 			});
-		}
-	});
-	
-/*
-	$('#calendar').fullCalendar({
-		events: [
-		    {
-		        title  : 'event1',
-		        start  : '2017-09-01'
-		    },
-		    {
-		        title  : 'event2',
-		        start  : '2017-09-05',
-		        end    : '2017-09-07'
-		    },
-		    {
-		        title  : 'event3',
-		        start  : '2017-09-09T12:30:00',
-		        allDay : false // will make the time show
-		    }
-		]
-	});*/
-/* 	
-	$('#calendar').fullCalendar({ 
-		events:function() {
-			$.ajax({
-				url:json,
-				dataType: 'json',
-				success : function(data, text, request) {
-					var event = eval(data.jsonTxt);
-					createCalendarDateResult(event);
-				}
+
+			// make the event draggable using jQuery UI
+			$(this).draggable({
+				zIndex: 999,
+				revert: true,      // will cause the event to go back to its
+				revertDuration: 0  //  original position after the drag
 			});
-		}
+
+		});
+
+
+		/* initialize the calendar
+		-----------------------------------------------------------------*/
+
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			defaultView: 'month',
+			editable: true,
+			
+			events: function(start, end, timezone, callback) {
+				$.ajax({
+					url : "../setCalendar.do",
+					method : "post",
+					type : "json",
+					success : function(data) {
+						schedule = data;
+						callback(data);
+					},
+					error : function(request, status, error) {
+						alert(error);
+					}
+				});
+			},
+			dayClick: function(date, jsEvent, view, event) {
+
+		        alert('선택 날짜 : ' + date.format());
+		        // change the day's background color just for fun
+		        $(this).css('background-color', 'red');
+
+		    },
+		    eventClick: function(calEvent, jsEvent, view) {
+
+		        alert('Event: ' + calEvent.title);
+		        
+		        // change the border color just for fun
+		        $(this).css('border-color', 'red');
+		    },
+		    // update
+		    eventDrop: function(event, delta, revertFunc) {
+		        if (!confirm("일정을 수정하시겠습니까?")) {
+
+		        	revertFunc();
+		        	
+		        }
+	        	var person = prompt("상담시간은? (1~5) ", "1");
+	            if (person == null) {
+	                alert("상담시간 미입력");
+	            }else {
+	            	
+	            }
+				selAction = "update";
+				
+				sub = new Object();     // 객체 값 입력후 main배열의 0번 index에 셋팅
+				sub['action'] = selAction; 
+				sub['newDate'] = event.start.format();
+				sub['title'] = event.title;
+				sub['userId'] = 'userId';
+				sub['interId'] = 'value3';
+				main[cnt] = sub;
+
+				console.log("main action : "+main[cnt].action);
+				console.log("main : "+main[cnt]);
+				cnt+=1;
+				
+		    	//statusID select
+		    	var statusID = null;
+	        	for(i=0;i<schedule.length;i++) {
+		    		if(schedule[i].title==event.title) {
+		    			statusID = schedule[i].statusId;
+		    			break;
+		    		}
+		    	}
+	        	var AddSchedule = [{
+		        	"st_code"		:"",
+		        	"start"			:event.start.format(),
+		        	"statusId"		:statusID,
+		        	"title"			:event.title
+		        }];
+
+		        console.log(AddSchedule);
+		        /* 
+		         $.ajax({
+					url : "../dropCalendar.do",
+					method : "post",
+					type : "json",
+					data : {
+		                 json : AddSchedule,
+		                 json : schedule
+		            },
+					success : function(data) {
+						 console.log(data);
+						 alert(data);
+					},
+					error : function(request, status, error) {
+						alert(error);
+					}
+				}); 
+		          */
+		    },
+			droppable: true, // this allows things to be dropped onto the calendar
+			//insert
+			drop: function( date, allDay, jsEvent, ui ) {
+				selAction = "insert";
+				
+				sub = new Object();     // 객체 값 입력후 main배열의 0번 index에 셋팅
+				sub['action'] = selAction; 
+				sub['newDate'] = date.format();
+				sub['title'] = 'value3';
+				sub['userId'] = 'value3';
+				sub['interId'] = 'value3';
+				main[cnt] = sub;
+				 
+				var tmp1 = $('.draggable:selected').title;
+
+				console.log("temp1 : "+(this).title);
+				console.log("temp2 : "+jsEvent.title);
+				console.log("main : "+main[cnt].action);
+				console.log(date._d);
+				console.log(allDay);
+				console.log(jsEvent);
+				console.log(ui);
+				cnt+=1;
+				
+				alert("drop Event");
+				
+				
+			}
+		});
+
+		// 수정 버튼
+		$("#btn_modify").click(function() {
+			var selectAction = $(":input:radio:checked").val();
+			jsonObject = {list:main};
+			$.post ({
+				 url:"../setCalendar.do",
+				 data:jsonObject,
+				 callback:function(data, status) {
+					 alert("Data : "+ data +" status : "+ status );
+				 }
+			});
+			// ajax 한번 더 실행
+			
+			
+		});
+		
+		// 확인 버튼
+		$("#btn_submit").click(function() {
+			var selectAction = $(":input:radio:checked").val();
+			
+			console.log($(":input:radio:checked").val());	
+		});
+		
+		
+		
+		
 	});
- */
- /*
-	function createCalendarDateResult(resp){  //제이슨으로 캘린더 이벤트 등록형식에 맞게 뿌리기
-		  var result = $.parseJSON(resp)  , eventData = [];
-		  if(result.success){
-		    var date = $.parseJSON(result.extra);
-		    alert(result.extra);
-		    for(var i = 0; i < date.length; i++)
-		    {
-		      eventData.push({
-		        title : date[i].title,
-		        start : date[i].start,
-		        end : date[i].end
-		      });
-		    }
-		  }
-		  calendarEvent( eventData );        //캘린더 메소드 호출
-	}*/
-		
-
-	
-	// 상담신청 클릭 (일정추가)
-	/*$("#Add").click(doSomething);
-	function doSomething(){
-		var data = {};
-		
-	 	var b = $(".fc-event-inner").closest("td");
-		console.log(b); 
-		
-		var m = $.fullCalendar.moment.parseZone('2017-09-22');
-	    alert("Result : " + m.hasZone());
-	    
-	    var moment = $('#calendar').fullCalendar('getDate');
-	    alert("The current date of the calendar is " + moment.format());
-	}*/
-	/*
-	// 일정 변경 이벤트
-	$("#calendar").change(function() {
-		// 달력 일정 정보 저장
-		// var param = {userid : $(this).val()}; 
-		var param = [{data:"temp"}]
-		console.log(param.data);
-
-	});*/
-});
-
 
 </script>
+<style>
+
+	body {
+		margin-top: 40px;
+		text-align: center;
+		font-size: 14px;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+	}
+		
+	#wrap {
+		width: 1100px;
+		margin: 0 auto;
+	}
+		
+	#external-events {
+		float: left;
+		width: 150px;
+		padding: 0 10px;
+		border: 1px solid #ccc;
+		background: #eee;
+		text-align: left;
+	}
+		
+	#external-events h4 {
+		font-size: 16px;
+		margin-top: 0;
+		padding-top: 1em;
+	}
+		
+	#external-events .fc-event {
+		margin: 10px 0;
+		cursor: pointer;
+	}
+		
+	#external-events p {
+		margin: 1.5em 0;
+		font-size: 11px;
+		color: #666;
+	}
+		
+	#external-events p input {
+		margin: 0;
+		vertical-align: middle;
+	}
+
+	#calendar {
+		float: right;
+		width: 900px;
+	}
+
+</style>
+</head>
+<body>
+	<div id='wrap'>
+
+		<div id='external-events'>
+			<h4>Draggable Events</h4>
+			<div class='fc-event'>My Event 1</div>
+			<div class='fc-event'>My Event 2</div>
+			<div class='fc-event'>My Event 3</div>
+			<div class='fc-event'>My Event 4</div>
+			<div class='fc-event'>My Event 5</div>
+				<input type="radio" name="gender" value="insert" checked> 추가<br/>
+	  			<input type="radio" name="gender" value="delete"> 삭제<br/>
+	 			<input type="radio" name="gender" value="modify"> 변경 <br/>
+	 			<input type="button" name="submit" id="btn_modify" value="수정">
+	 			<input type="button" name="submit" id="btn_submit" value="확인">
+		</div>
+
+		<div id='calendar'></div>
+
+		<div style='clear:both'></div>
+
+	</div>
 </body>
 </html>

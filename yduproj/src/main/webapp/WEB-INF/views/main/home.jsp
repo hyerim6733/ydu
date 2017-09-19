@@ -33,7 +33,7 @@
 			<div class="col-xs-4">
 				<div class="sparkline-dashboard" id="sparkline-1"></div>
 				<div class="sparkline-dashboard-info">
-					<span class="txt-primary">자신감</span>
+					<span>자신감</span>
 					<i class="fa fa-check-circle"></i> 대학
 				</div>
 			</div>
@@ -47,7 +47,7 @@
 			<div class="col-xs-4">
 				<div class="sparkline-dashboard" id="sparkline-3"></div>
 				<div class="sparkline-dashboard-info">
-					<span>성공</span>
+					<span class="txt-primary">성공</span>
 					<i class="fa fa-check-circle"></i> 교육기관
 				</div>
 			</div>
@@ -56,6 +56,8 @@
 </div>
 <!--End Dashboard 1-->
 <!--Start Dashboard 2-->
+
+<!-- 클릭 시 홈으로 보내면서 테이블 로딩 -->
 <div class="row-fluid">
 	<div id="dashboard_links" class="col-xs-12 col-sm-2 pull-right">
 		<ul class="nav nav-pills nav-stacked">
@@ -83,7 +85,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach begin="1" end="10" var="content" items="">
+						<c:forEach begin="1" end="10" var="content">
 							<tr>
 								<td class="m-ticker"><b>AWS</b><span>Awesome Inc.</span></td>
 								<td class="m-price">64.14</td>
@@ -218,6 +220,8 @@
 var sparkline_arr_1 = SparklineTestData();
 var sparkline_arr_2 = SparklineTestData();
 var sparkline_arr_3 = SparklineTestData();
+
+var selectMenu="공지사항"
 $(document).ready(function() {
 	// Make all JS-activity for dashboard
 	DashboardTabChecker();
@@ -229,5 +233,56 @@ $(document).ready(function() {
 	LoadMorrisScripts(MorrisDashboard);
 	// Make beauty hover in table
 	$("#ticker-table").beautyHover();
+/* 	<li class="active"><a href="#" class="tab-link" id="notice">공지사항</a></li>
+	<li><a href="#" class="tab-link" id="board">자유게시판</a></li>
+	<li><a href="#" class="tab-link" id="market">벼룩시장</a></li>
+	<li><a href="#" class="tab-link" id="guide">학교안내</a></li> */
+	$.ajax({
+		url : "../tabClick.do",
+		method : "post",
+		data : {selectMenu:selectMenu},
+		success : function(data) {
+			$("tbody").html("");
+			// table에 값 보여주기
+			console.log(data);
+			// 링크걸기.
+			for(i=0;i<data.length;i++) {
+				$("tbody").append("<tr><td>"+ data[i].boardNo+"</td> <td><a href='../main/index#../detailNotice.do?boardNo="+data[i].boardNo+"'>"+data[i].title+"</a></td> <td>"+data[i].writeDate+"</td> <td>"+data[i].writer+"</td> </tr> ");
+			}
+		},
+		error : function(request, status, error) {
+			alert(error);
+		}
+	});
+		
+	
+	$(".tab-link").click(function() {
+		selectMenu = (this).text;
+		
+		$.ajax({
+			url : "../tabClick.do",
+			method : "post",
+			data : {selectMenu:selectMenu},
+			success : function(data) {
+				callback(data);
+			},
+			error : function(request, status, error) {
+				alert(error);
+			}
+		});
+		// tab 창에 테이블 추가..
+		function callback(data) {
+			$("tbody").html("");
+			// table에 값 보여주기
+			console.log(data);
+			for(i=0;i<data.length;i++) {
+				$("tbody").append("<tr><td>"+ data[i].boardNo+"</td> <td><a href='../main/index#../detailNotice.do?boardNo="+data[i].boardNo+"'>"+data[i].title+"</a></td> <td>"+data[i].writeDate+"</td> <td>"+data[i].writer+"</td> </tr> ");
+			}
+		}
+		
+		console.log(this);
+		console.log((this).text);
+		alert("click!!");
+	});
 });
 </script>
