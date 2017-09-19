@@ -6,8 +6,9 @@ import java.util.List;
 /*-- 공지사항, 학교행사, 자유게시판, 벼룩시장*/
 public class BoardVO {
 	
+	private String mandatory;
 	private String boardCode; //공지사항, 학교행사, 자유게시판, 벼룩시장
-	private int boardNo; //게시판 글 등록순서
+	private Integer boardNo; //게시판 글 등록순서
 	private String title;// 글 제목
 	private Date writeDate; //최초 등록일
 	private Date editDate;// 수정 날짜 (최신으로 갱신)
@@ -16,8 +17,17 @@ public class BoardVO {
 	private String content; //글 내용
 	//private int cnt; //페이지 보여줄려면 필요할거 같은데 
 	
+	 
+	
+	
 	public String getBoardCode() {
 		return boardCode;
+	}
+	public String getMandatory() {
+		return mandatory;
+	}
+	public void setMandatory(String mandatory) {
+		this.mandatory = mandatory;
 	}
 	public void setBoardCode(String boardCode) {
 		this.boardCode = boardCode;

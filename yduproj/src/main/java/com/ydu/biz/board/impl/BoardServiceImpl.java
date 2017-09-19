@@ -26,9 +26,20 @@ public class BoardServiceImpl implements BoardService {
 //공지사항	
 	@Override
 	public List<BoardVO> notice(BoardSearchVO vo) {
+		
 		System.out.println("b1 공지 전체 =====notice");//확인용
 		return boardDAO.notice(vo);
 	}
+	@Override
+	public int total(BoardSearchVO vo) {
+		System.out.println("=====공지사항 페이징 처리");//확인용
+		return boardDAO.total(vo);
+	}
+	
+	
+	
+	
+	
 	@Override
 	public List<BoardVO> noticeGen(BoardSearchVO vo) {
 		System.out.println("b10 일반공지=====noticeGen");//확인용
@@ -59,8 +70,22 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println("b15 학술/행사=====noticeEve");//확인용
 		return boardDAO.noticeEve(vo);
 	}
-	
-	
+	@Override
+	public void insertNotice(BoardVO vo) {
+		boardDAO.insertNotice(vo);
+		System.out.println("공지등록===Impl===insertNotice========");
+	}
+	@Override
+	public void updateNotice(BoardVO vo) {
+		boardDAO.updateNotice(vo);
+		System.out.println("공지수정");
+	}
+	@Override
+	public BoardVO detailNotice(BoardVO vo) {
+		System.out.println("상세보기==Impl===detailNotice");//확인용
+		return boardDAO.detailNotice(vo);
+	}
+
 ////////////////////////////////////////////////////////////////
 //학교일정b2
 	@Override
@@ -83,11 +108,6 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println("=====academics2");//확인용
 		return boardDAO.academics2(vo);
 	}
-	@Override
-		public BoardVO academics3(BoardVO vo) {
-		System.out.println("=====academics3");//확인용
-		return boardDAO.academics3(vo);
-	}
 	
 ///////////////////////////////////////////////////////////////		
 //벼룩시장 b4
@@ -106,8 +126,17 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println("벼룩시장 삽니다===fleaMarketBuy===");//확인용
 		return boardDAO.fleaMarketBuy(vo);
 	}	
-
-	
+	/*@Override
+	public void insertFleaMarket(BoardVO vo) {
+		boardDAO.insertFleaMarket(vo);
+		System.out.println("벼룩시장등록");
+	}
+	*/
+	/*@Override
+	public void updateFleaMarket(BoardVO vo) {
+		boardDAO.updateNotice(vo);
+		System.out.println("공지수정");
+	}*/
 	
 	
 	
@@ -138,7 +167,6 @@ public List<BoardVO> mainBoard(BoardVO vo) {
 	return boardDAO.mainBoard(vo);
 }
 
-
 ///////////////////////////////////////////////////////////////			
 
 	
@@ -150,6 +178,6 @@ public List<BoardVO> mainBoard(BoardVO vo) {
 
 	
 	
-///////////////////////////////////////////////////////////////			
+	
 
 }

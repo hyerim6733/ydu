@@ -1,17 +1,23 @@
 package com.ydu.view.classes;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ydu.biz.classes.ClassListVO;
+import com.ydu.biz.classes.ClassSearchVO;
 import com.ydu.biz.classes.ClassService;
 import com.ydu.biz.classes.ClassStatusVO;
 import com.ydu.biz.classes.ClassTimeTransVO;
@@ -36,42 +42,55 @@ public class ClassController {
 			System.out.println("�닔媛뺤떊泥� main");
 			return "/class/classMain";
 		}
+		
+		//강의 계획서 조회
 		@RequestMapping(value="/classProgram.do")
-		public String classProgram(Model model, ClassListVO vo) {
+		public String classProgram(Model model, ClassSearchVO vo) {
 			System.out.println("강의계획서조회할거야");
 			if(classService == null){
 				System.out.println("수강 자료가 없네");
 			} 
 			else {
 				System.out.println("조회성공");
-				List<Map<String, Object>> list = classService.getClassesList();
+				List<Map<String, Object>> list = classService.getProgramList(vo);
 				model.addAttribute("classList",list);
 			}
 			return "/class/classProgram";
 		}
 		
+	
+		// 수강신청(조회하기)
 		@RequestMapping(value="/getClassesList.do")
-		public String enrollmentTime(Model model, ClassListVO vo) {
+		public String enrollmentTime(Model model, ClassSearchVO vo) {
 			System.out.println("수강신청조회");
-		if(classService == null){
-			System.out.println("수강 자료 없음");
-		} 
-		else {
-			System.out.println("조회성공");
-			List<Map<String, Object>> list = classService.getClassesList();
-			model.addAttribute("classList",list);
-		}
+			if(classService == null){
+				System.out.println("수강 자료 없음");
+			} 
+			else {
+				System.out.println("조회성공");
+				List<Map<String, Object>> list = classService.getProgramList(vo);
+				model.addAttribute("classList",list);
+				
+			}
 			return "/class/enrollmentTime";
+		}
+		
+		// 코드 리스트 조회
+		@RequestMapping(value="getsmallList.do")
+		@ResponseBody
+		public List<Map<String, Object>> getsmallList(@RequestParam (value = "code") String code){
+			return classService.getsmallList(code);
 		}
 		
 		//강의 계획서 조회
 		@RequestMapping("/getClassDetail.do")
-		public String getClassDetail(Model model, ClassListVO vo) {
-			String code = "17CO1000";
-			model.addAttribute("detail", classService.getClasses(code));
+		public String ClassDetail(Model model, ClassListVO vo) {
+			// Map<String,Object> map= classService.getClasses(vo);
+			model.addAttribute("detail", classService.getClasses(vo));
 			//model.addAttribute("classList", classService.getClasses(vo));
 			return "/class/classDetail";
 		}
+		
 		
 		@RequestMapping(value="/myPage.do")
 		public String myPage() {

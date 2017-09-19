@@ -18,11 +18,16 @@ public interface ClassMapper {
 				void deleteClass(ClassStatusVO vo);
 				
 				// �닔媛뺢낵紐� �긽�꽭 議고쉶
-				Map<String, Object> getClasses(String code);
+				Map<String, Object> getClasses(ClassListVO vo);
 				
 
 				// 수강 신청 목록 조회
-				List<Map<String, Object>> getClassesList();
+				//List<Map<String, Object>> getClassesList(ClassSearchVO vo);
+
+				List<Map<String, Object>> getsmallList(String code);
 				
 				List<ClassStatusVO> getSelStuClassesList(StudentVO vo);
+
+				//강의 계획서 조회
+				List<Map<String, Object>> getProgramList(ClassSearchVO vo);
 }

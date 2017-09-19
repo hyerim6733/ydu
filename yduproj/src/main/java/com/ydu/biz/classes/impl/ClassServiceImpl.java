@@ -38,20 +38,26 @@ public class ClassServiceImpl implements ClassService {
 
 
 	@Override
-	public Map<String, Object> getClasses(String code) {
+	public Map<String, Object> getClasses(ClassListVO vo) {
 		System.out.println("媛뺤쓽怨꾪쉷�꽌");
-		return classDAO.getClasses(code);
+		return classDAO.getClasses(vo);
 		
 	}
 	
 	
-
+/*
 	@Override
-
-	public List<Map<String, Object>> getClassesList() {
+	public List<Map<String, Object>> getClassesList(ClassSearchVO vo) {
 		System.out.println("수강 전체 목록 조회");
-		return classDAO.getClassesList();
+		return classDAO.getClassesList(vo);
+	}*/
+	
+	@Override
+	public List<Map<String, Object>> getsmallList(String code) {
+		System.out.println("코드테이블");
+		return classDAO.getsmallList(code);
 	}
+	
 
 	@Override
 	public List<ClassStatusVO> getSelStuClassesList(StudentVO vo) {
@@ -59,6 +65,14 @@ public class ClassServiceImpl implements ClassService {
 		System.out.println("해당학생의 시간표 목록을 불러왔습니다.");
 		return classDAO.getSelStuClassesList(vo);
 	}
+
+	@Override
+	public List<Map<String, Object>> getProgramList(ClassSearchVO vo) {
+		System.out.println("수강 전체 목록 조회");
+		return classDAO.getProgramList(vo);
+	}
+
+	
 	
 
 	

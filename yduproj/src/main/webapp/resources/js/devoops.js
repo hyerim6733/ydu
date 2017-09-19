@@ -2404,7 +2404,7 @@ $(document).ready(function () {
 		e.preventDefault();
 		CloseModalBox();
 	});
-	$('#top-panel').on('click','a', function(e){
+	$('#top-panel').on('click','a', function(e){ 
 		if ($(this).hasClass('ajax-link')) {
 			e.preventDefault();
 			if ($(this).hasClass('add-full')) {
@@ -2418,6 +2418,7 @@ $(document).ready(function () {
 			LoadAjaxContent(url);
 		}
 	});
+
 	$('#search').on('keydown', function(e){
 		if (e.keyCode == 13){
 			e.preventDefault();
