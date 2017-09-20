@@ -167,14 +167,12 @@ public class BoardController {
 		return "/board/b1/noticeInsert";
 	}
 	//공지사항 등록
-	@RequestMapping(value="/noticeInsert.do",method=RequestMethod.POST)
+	@RequestMapping(value="/insertNotice.do",method=RequestMethod.POST)
 	public String insertNotice(Model model, BoardVO vo) {
-		System.out.println("공지사항등록==============="+ vo );
 		if (vo.getMandatory()==null){
 			vo.setMandatory("n");
 		}//mandetory 널값일 경우 값넣어주기
-		boardService.insertNotice(vo);
-		
+		boardService.insertNotice(vo);	
 		return "redirect:/detailNotice.do?boardNo="+vo.getBoardNo();
 	}
 		

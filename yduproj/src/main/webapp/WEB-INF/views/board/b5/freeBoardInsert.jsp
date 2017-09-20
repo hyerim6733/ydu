@@ -7,7 +7,7 @@
 
 <c:set var="registerFlag" value="${empty board.boardNo ? '등록' : '수정'}"/>
 <script src="../resources/ckeditor/ckeditor.js"></script>
-<script>
+<!-- <script>
 	function frmCheck(){
 		//내용을 입력여부 체크
 		var editor_data = CKEDITOR.instances.contents.getData();
@@ -19,13 +19,13 @@
 
 		return true;
 	}	
-</script>
+</script> -->
 
 <!-- 확인용  지워야 함 -->
 ${board }
 
 <hr>
-<h3>공지사항  ${registerFlag} 하기 (관리자용)</h3>
+<h3>자유게시판  ${registerFlag} 하기 </h3>
 <hr>
 
 <form name="frm" action="../noticeInsert.do" method="post" onsubmit ="return frmCheck()">

@@ -11,29 +11,29 @@
 	function frmCheck(){
 		//내용을 입력여부 체크
 		var editor_data = CKEDITOR.instances.contents.getData();
-		if(document.frm.contents.value == ""){
-			alter("내용을 입력하세요");
+		if(editor_data == ""){
+			alert("내용을 입력하세요");
 			return false;
 		}
+		CKupdate();
+		console.log($("#frm").serialize());
 	  var url = "<c:url value="${registerFlag == '등록' ? '/insertNotice.do' : '/updateNotice.do'}"/>";
-	   	$.ajax({
+	    	$.ajax({
 			mimeType: 'text/html; charset=utf-8', // ! Need set mimeType only when run from local file
 			url: url,
 			data:$("#frm").serialize(),
 			cache: false, //jquery cache
 			type: 'POST',
 			success: function(data) {
-			
 					$("#dashboard_tabs").html(data);
-					
+
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				alert(errorThrown);
 			},
 			dataType: "html",
 			async: false
-		}); 
-		return false;
+		});  
 	}	
 </script>
 
@@ -46,7 +46,7 @@ ${board }
 <h3>공지사항  ${registerFlag} 하기 (관리자용)</h3>
 <hr>
 
-<form name="frm" id="frm" action="../noticeInsert.do" method="post" onsubmit ="return frmCheck()">
+<form name="frm" id="frm" method="post" >
 	<!-- 게시판 번호 공지사항 = b1  hidden으로 값만 넘기기 -->
 	<c:if test="${registerFlag == '수정'}">
 	<input type="hidden" name="boardNo" value="${board.boardNo }">
@@ -83,13 +83,16 @@ ${board }
 		function form_save(form) { 
 		editor.updateElement(); 
 		}
-
+		function CKupdate(){
+		    for ( instance in CKEDITOR.instances )
+		        CKEDITOR.instances[instance].updateElement();
+		}
 		</script>
 	<br>
 	
 
 	
-	<input type="submit" value="저장"  />
+	<input type="button" value="저장" onclick ="frmCheck()" />
 		
 </form>
 
