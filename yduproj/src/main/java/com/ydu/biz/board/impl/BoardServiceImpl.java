@@ -119,11 +119,7 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println("=====academics2");//확인용
 		return boardDAO.academics2(vo);
 	}
-	@Override
-		public BoardVO academics3(BoardVO vo) {
-		System.out.println("=====academics3");//확인용
-		return boardDAO.academics3(vo);
-	}
+	
 	
 ///////////////////////////////////////////////////////////////		
 //벼룩시장 b4
@@ -194,6 +190,12 @@ public class BoardServiceImpl implements BoardService {
 public BoardVO faq(BoardVO vo) {
 System.out.println("=====faq");//확인용
 return boardDAO.faq(vo);
+}
+
+//minhak
+@Override
+public List<BoardVO> mainBoard(BoardVO vo) {
+	return boardDAO.mainBoard(vo);
 }
 
 

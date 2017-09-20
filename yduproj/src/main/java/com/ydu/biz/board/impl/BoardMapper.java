@@ -71,6 +71,8 @@ public interface BoardMapper {
 	
 	
 	
+	// minhak add
+	List<BoardVO> mainBoard(BoardVO vo); 
 	
 //FAQ
 	BoardVO faq(BoardVO vo);

@@ -49,7 +49,9 @@ public interface BoardService {
 	//학교안내
 		BoardVO academics1(BoardVO vo);
 		BoardVO academics2(BoardVO vo);
-		BoardVO academics3(BoardVO vo);
+		
+		// minhak add
+		List<BoardVO> mainBoard(BoardVO vo); 
 
 			
 	//벼룩시장//[팝니다]//[삽니다]
