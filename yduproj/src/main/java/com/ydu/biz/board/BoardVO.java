@@ -13,6 +13,8 @@ public class BoardVO {
 	private Date writeDate; //최초 등록일
 	private Date editDate;// 수정 날짜 (최신으로 갱신)
 	private String category; //게시판 내에서 구분(교내, 교외 , 등록금) 게시판별 (벼룩시장, 공지사항)
+	private String categoryNm; //게시판 내에서 구분(교내, 교외 , 등록금) 게시판별 (벼룩시장, 공지사항)
+	
 	private String writer;  //글쓴이
 	private String content; //글 내용
 	//private int cnt; //페이지 보여줄려면 필요할거 같은데 
@@ -20,9 +22,29 @@ public class BoardVO {
 	 
 	
 	
+	public Integer getBoardNo() {
+		return boardNo;
+	}
+	public void setBoardNo(Integer boardNo) {
+		this.boardNo = boardNo;
+	}
+	public String getCategoryNm() {
+		return categoryNm;
+	}
+	public void setCategoryNm(String categoryNm) {
+		this.categoryNm = categoryNm;
+	}
+	
+	
+	
+	
+	
+	
+	
 	public String getBoardCode() {
 		return boardCode;
 	}
+	
 	public String getMandatory() {
 		return mandatory;
 	}
@@ -32,12 +54,7 @@ public class BoardVO {
 	public void setBoardCode(String boardCode) {
 		this.boardCode = boardCode;
 	}
-	public int getBoardNo() {
-		return boardNo;
-	}
-	public void setBoardNo(int boardNo) {
-		this.boardNo = boardNo;
-	}
+	
 	public String getTitle() {
 		return title;
 	}
