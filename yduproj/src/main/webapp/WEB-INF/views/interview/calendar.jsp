@@ -3,6 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head> 
+<style>
+#droptarget  {
+    float: left;
+    width: 100px;
+    height: 35px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+</style>
 <meta charset='utf-8' />
 <link href="../resources/plugins/fullcalendar-3.5.1/fullcalendar.min.css" rel='stylesheet' />
 <link href="../resources/plugins/fullcalendar-3.5.1/fullcalendar.print.min.css" rel='stylesheet' media='print' />
@@ -17,9 +27,15 @@
 		var selAction = "insert";
 		var cnt = 0;
 		var main = new Array(); // json의 전체를 가리키는 배열
+		var nowDate = today();	// 현재날짜
+		
+		var selDate = null; // 드래그 선택 날짜
+		var selTitle =null; // 드래그 선택 타이틀
+		var statusID = null;
 		
 		var jsonObject; //jsonObject라는 변수에 json형식으로 key이름은 list, value 배열은 이전에 만들었던 main 배열을 넣는다
 
+		
 
 		/* initialize the external events
 		-----------------------------------------------------------------*/
@@ -61,7 +77,7 @@
 					type : "json",
 					success : function(data) {
 						schedule = data;
-						callback(data);
+						callback(schedule);
 					},
 					error : function(request, status, error) {
 						alert(error);
@@ -84,93 +100,102 @@
 		    },
 		    // update
 		    eventDrop: function(event, delta, revertFunc) {
+		    	var scheduleIdx=0;
+		    	
 		        if (!confirm("일정을 수정하시겠습니까?")) {
-
 		        	revertFunc();
-		        	
 		        }
+		        
 	        	var person = prompt("상담시간은? (1~5) ", "1");
 	            if (person == null) {
 	                alert("상담시간 미입력");
 	            }else {
-	            	
+	            	console.log("person : "+person);
 	            }
 				selAction = "update";
 				
-				sub = new Object();     // 객체 값 입력후 main배열의 0번 index에 셋팅
-				sub['action'] = selAction; 
-				sub['newDate'] = event.start.format();
+	        
+	        	sub = new Object();     // 객체 값 입력후 main배열의 0번 index에 셋팅
+						
 				sub['title'] = event.title;
-				sub['userId'] = 'userId';
-				sub['interId'] = 'value3';
+				sub['statusId'] = statusID;
+				sub['interDate'] = selDate;
+				sub['property'] = "";
+				sub['interId'] = ""; // 추가해야되는 일정은 statusID가 없음
+				sub['st_code'] = ""; //user세션 추가
+				sub['seq'] = person;
+				sub['newDate'] = event.start.format();
+				sub['action'] = selAction;
+				
 				main[cnt] = sub;
 
+				console.log("action : "+sub.action +"\n newDate : "+sub.newDate+"\n interDate : "+sub.interDate +"\n title : "+sub.title + "\n seq : "+sub.seq);
 				console.log("main action : "+main[cnt].action);
 				console.log("main : "+main[cnt]);
 				cnt+=1;
-				
-		    	//statusID select
-		    	var statusID = null;
-	        	for(i=0;i<schedule.length;i++) {
-		    		if(schedule[i].title==event.title) {
-		    			statusID = schedule[i].statusId;
-		    			break;
-		    		}
-		    	}
-	        	var AddSchedule = [{
-		        	"st_code"		:"",
-		        	"start"			:event.start.format(),
-		        	"statusId"		:statusID,
-		        	"title"			:event.title
-		        }];
-
-		        console.log(AddSchedule);
-		        /* 
-		         $.ajax({
-					url : "../dropCalendar.do",
-					method : "post",
-					type : "json",
-					data : {
-		                 json : AddSchedule,
-		                 json : schedule
-		            },
-					success : function(data) {
-						 console.log(data);
-						 alert(data);
-					},
-					error : function(request, status, error) {
-						alert(error);
-					}
-				}); 
-		          */
+			
 		    },
+		    eventDragStart:function(event, jsEvent, ui, view ) {
+		    	selDate = event.start.format(); 
+		    	
+		    	console.log("dragTitle : " + event.title);
+		    	console.log("dragStart=========="+ event.start.format());
+		    	
+		    	// update 내용 초기화
+		    	statusID = event.statusId;
+		    	selTitle = event.title;
+		    	selDate = event.start.format();
+		    	
+		    	console.dir(this);
+		    	$(this).attr({ 
+		    		ondragstart: 'dragStart(event)', 
+		    		ondrag: 'dragging(event)', 
+		    		draggable:'true'
+		    	});
+		    	console.log((this).ondragstart);
+		    	console.log((this).ondrag);
+		    	
+		    },
+		    eventReceive: function (event) {
+		        selTitle = event.title;
+		        console.log("receive");
+		        console.dir(event);
+		        
+				sub['title'] = selTitle;
+				main[cnt] = sub;
+				 
+				cnt+=1;
+			},
 			droppable: true, // this allows things to be dropped onto the calendar
 			//insert
 			drop: function( date, allDay, jsEvent, ui ) {
+				if (!confirm("일정을 추가하시겠습니까?")) {
+
+		        	revertFunc();
+		        	
+		        }
+				
+	        	var person = prompt("상담시간은? (1~5) ", "1");
+	            if (person == null) {
+	                alert("상담시간 미입력");
+	            }else {
+	            	console.log("person : "+person);
+	            }
 				selAction = "insert";
 				
 				sub = new Object();     // 객체 값 입력후 main배열의 0번 index에 셋팅
-				sub['action'] = selAction; 
+				
+				console.log("drop에서 출력 selTitle : "+selTitle);
+				
+				sub['statusId'] = "";
+				sub['interDate'] = "";
+				sub['property'] = "";
+				sub['interId'] = ""; // 추가해야되는 일정은 statusID가 없음
+				sub['st_code'] = ""; //user세션 추가
+				sub['seq'] = person;
 				sub['newDate'] = date.format();
-				sub['title'] = 'value3';
-				sub['userId'] = 'value3';
-				sub['interId'] = 'value3';
-				main[cnt] = sub;
-				 
-				var tmp1 = $('.draggable:selected').title;
+				sub['action'] = selAction;
 
-				console.log("temp1 : "+(this).title);
-				console.log("temp2 : "+jsEvent.title);
-				console.log("main : "+main[cnt].action);
-				console.log(date._d);
-				console.log(allDay);
-				console.log(jsEvent);
-				console.log(ui);
-				cnt+=1;
-				
-				alert("drop Event");
-				
-				
 			}
 		});
 
@@ -178,13 +203,22 @@
 		$("#btn_modify").click(function() {
 			var selectAction = $(":input:radio:checked").val();
 			jsonObject = {list:main};
-			$.post ({
-				 url:"../setCalendar.do",
-				 data:jsonObject,
-				 callback:function(data, status) {
-					 alert("Data : "+ data +" status : "+ status );
-				 }
-			});
+			var p = JSON.stringify(main);
+			
+			 $.ajax({
+					url : "../modifiedCalendar.do",
+					method : "post",
+					type : "json",
+					contentType: "application/json",
+					data : p,
+					success : function() {
+						console.log("성공");
+						main = new Array();
+					},
+					error : function(request, status, error) {
+						alert("error : "+error);
+					}
+				});
 			// ajax 한번 더 실행
 			
 			
@@ -197,9 +231,40 @@
 			console.log($(":input:radio:checked").val());	
 		});
 		
-		
-		
-		
+		function today(){
+			   
+	        var date = new Date();
+	   
+	        var year  = date.getFullYear();
+	        var month = date.getMonth() + 1; // 0부터 시작하므로 1더함 더함
+	        var day   = date.getDate();
+	    
+	        if (("" + month).length == 1) { month = "0" + month; }
+	        if (("" + day).length   == 1) { day   = "0" + day;   }
+	       
+			return (year + month + day);  
+	           
+	    }
+		// 이벤트 드래그 기능
+		function dragStart(event) {
+		    event.dataTransfer.setData("Text", event.target.id);
+		}
+
+		function dragging(event) {
+		    document.getElementById("demo").innerHTML = "The p element is being dragged";
+		}
+
+		function allowDrop(event) {
+		    event.preventDefault();
+		}
+
+		function drop(event) {
+		    event.preventDefault();
+		    var data = event.dataTransfer.getData("Text");
+		    event.target.appendChild(document.getElementById(data));
+		    document.getElementById("demo").innerHTML = "The p element was dropped";
+		    console.log("drag실행");
+		}
 	});
 
 </script>
@@ -260,16 +325,17 @@
 
 		<div id='external-events'>
 			<h4>Draggable Events</h4>
-			<div class='fc-event'>My Event 1</div>
-			<div class='fc-event'>My Event 2</div>
-			<div class='fc-event'>My Event 3</div>
-			<div class='fc-event'>My Event 4</div>
-			<div class='fc-event'>My Event 5</div>
+			<div class='fc-event'>상담신청</div>
+			<div class='fc-event'>면접클리닉</div>
+			<div class='fc-event'>취업상담</div>
+			<div class='fc-event'>진로상담</div>
 				<input type="radio" name="gender" value="insert" checked> 추가<br/>
 	  			<input type="radio" name="gender" value="delete"> 삭제<br/>
 	 			<input type="radio" name="gender" value="modify"> 변경 <br/>
 	 			<input type="button" name="submit" id="btn_modify" value="수정">
 	 			<input type="button" name="submit" id="btn_submit" value="확인">
+	 			<div id="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	 			<br/><p id="demo">d</p>
 		</div>
 
 		<div id='calendar'></div>

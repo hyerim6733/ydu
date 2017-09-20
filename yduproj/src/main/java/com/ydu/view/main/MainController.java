@@ -17,6 +17,8 @@ import com.ydu.biz.board.BoardService;
 import com.ydu.biz.board.BoardVO;
 import com.ydu.biz.main.LoginService;
 import com.ydu.biz.main.LoginVO;
+import com.ydu.biz.main.ProfessorVO;
+import com.ydu.biz.main.StudentVO;
 import com.ydu.biz.main.impl.LoginMapper;
 
 @Controller
@@ -36,11 +38,30 @@ public class MainController {
 	@RequestMapping("/login.do")
 	@ResponseBody 
 	public String login(LoginVO vo, HttpSession session) {
-		LoginVO result = userService.getUser(vo);
-		System.out.println("----result媛� : "+result);
+		LoginVO userId = userService.getUser(vo);
+		StudentVO stuResult = new StudentVO();
+		ProfessorVO proResult = new ProfessorVO();
 		
-		if( vo.getUserpw().equals(result.getUserpw()) ) {
-			session.setAttribute("userId", result);
+		/*StudentVO stu_result = userService.getStudentInfo(vo);*/
+		System.out.println("----result媛� : "+userId);
+		
+		if( vo.getUserpw().equals(userId.getUserpw()) ) {
+			session.setAttribute("userId", userId);
+	//		System.out.println("===================== userId : "+userId.getUserid());
+	//		System.out.println("===================== userSaper : "+userId.getSeparation());
+			
+			if(userId.getSeparation().equals("stu"))
+			{
+				stuResult.setId(userId.getUserid());
+				stuResult = userService.getStudentInfo(stuResult);
+				session.setAttribute("stuInfo", stuResult);
+			}
+			else if(userId.getSeparation().equals("pro")) {
+				proResult.setId(userId.getUserid());
+				proResult = userService.getProfessorInfo(proResult);
+				session.setAttribute("proInfo", proResult);
+			}
+			
 			return "success";
 		}else {
 			return null;

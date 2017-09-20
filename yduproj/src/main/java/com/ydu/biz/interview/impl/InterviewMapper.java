@@ -19,6 +19,6 @@ public interface InterviewMapper {
 		void insertInterview(InterStatusVO vo);
 			
 	// DELETE
-		void deleteInterview(StudentVO vo);
+		void deleteInterview(InterStatusVO vo);
 		
 }

@@ -26,13 +26,13 @@ public class InterviewServiceImpl implements InterviewService {
 	@Override
 	public void insertInterview(InterStatusVO vo) {
 		// TODO Auto-generated method stub
-		
+		interviewDAO.insertInterview(vo);
 	}
 
 	@Override
-	public void deleteInterview(StudentVO vo) {
+	public void deleteInterview(InterStatusVO vo) {
 		// TODO Auto-generated method stub
-		
+		interviewDAO.deleteInterview(vo);
 	}
 
 	@Override

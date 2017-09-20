@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -41,11 +42,34 @@ public class InterviewController {
 	}
 	
 	// calendar update / insert Event
-	@RequestMapping("/modifiedCalendar.do")
-	public void modifiedCalendar(Model model, @RequestBody InterStatusVO vo) { // @RequestBody <Map<String, InterStatusVO> vo 이형식으로 받을수 있는 방법은?
-		//왜 호출이 안되지??;;
-		System.out.println("modify============"+vo);
+	@RequestMapping(value="/modifiedCalendar.do", method = RequestMethod.POST)
+	@ResponseBody
+	public void modifiedCalendar(Model model, @RequestBody List<InterStatusVO> list) {
+		// @RequestBody <Map<String, InterStatusVO> vo 이형식으로 받을수 있는 방법은?
+		
+
+		for(InterStatusVO idx: list) {
+			if(idx.getAction().equals("insert")) {
+				// insert
+				interviewService.insertInterview(idx);
+				System.out.println("추가 완료");
+			}
+			
+			// insert status number 설정.. (삭제 후 등록할때는 그 statusid 그대로 사용)
+			else if(idx.getAction().equals("update")) {
+				// 1. delete
+				interviewService.deleteInterview(idx);
+				System.out.println("삭제 완료");
+				// 2. insert
+				interviewService.insertInterview(idx);
+				System.out.println("삭제 후 추가 완료");
+			}
+			System.out.println(idx);
+		}
+		
 		//insert query문.. update랑.. 이어놓기
+		
+		
 	}
 	
 	// calendar drop Event

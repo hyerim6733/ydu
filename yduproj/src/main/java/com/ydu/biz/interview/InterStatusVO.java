@@ -8,8 +8,22 @@ public class InterStatusVO {
 	private String interId;
 	private String st_code;
 	private String seq;
+	private String newDate;
+	private String action;
 	
-	
+
+	public String getAction() {
+		return action;
+	}
+	public void setAction(String action) {
+		this.action = action;
+	}
+	public String getNewDate() {
+		return newDate;
+	}
+	public void setNewDate(String newDate) {
+		this.newDate = newDate;
+	}
 	public String getSeq() {
 		return seq;
 	}
@@ -54,7 +68,9 @@ public class InterStatusVO {
 	}
 	@Override
 	public String toString() {
-		return "InterStatusVO [statusId=" + statusId + ", title=" + title + ", property=" + property + ", interId="
-				+ interId + "]";
+		return "InterStatusVO [statusId=" + statusId + ", title=" + title + ", interDate=" + interDate + ", property="
+				+ property + ", interId=" + interId + ", st_code=" + st_code + ", seq=" + seq + ", newDate=" + newDate
+				+ ", action=" + action + "]";
 	}
+	
 }

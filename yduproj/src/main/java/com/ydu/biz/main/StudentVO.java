@@ -9,7 +9,7 @@ public class StudentVO {
 	public String entrance_date;
 	public String current_credit;
 	public String grade;
-	public String total_credit;
+	public String total_score;
 	public String id;
 	public String getStudent_code() {
 		return student_code;
@@ -59,17 +59,17 @@ public class StudentVO {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-	public String getTotal_credit() {
-		return total_credit;
-	}
-	public void setTotal_credit(String total_credit) {
-		this.total_credit = total_credit;
-	}
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getTotal_score() {
+		return total_score;
+	}
+	public void setTotal_score(String total_score) {
+		this.total_score = total_score;
 	}
 	@Override
 	public String toString() {

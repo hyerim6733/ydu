@@ -13,4 +13,10 @@ public interface LoginService {
 	//중복체크
 	public boolean getUser();
 	
+	//학생정보
+	public StudentVO getStudentInfo(StudentVO vo);
+	
+	//교수정보
+	public ProfessorVO getProfessorInfo(ProfessorVO vo);
+	
 }

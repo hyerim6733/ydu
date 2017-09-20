@@ -21,6 +21,39 @@
         ]]>
 	</select>
 
+
+	<select id="getStudentInfo" parameterType="student" resultType="student" >
+        <![CDATA[  
+        	SELECT
+			 ST_CODE        as  "student_code",                           
+			 NAME           as  "name",                       
+			 MAJOR          as  "major",                      
+			 E_YEAR         as  "entrance_date",                         
+			 CURR_CREDIT    as  "current_credit",                  
+			 GRADE          as  "grade",                      
+			 TOTAL_SCORE    as  "total_score"   
+			FROM STUDENT
+			WHERE ID = #{id}
+        ]]>
+	</select>
+
+
+	<select id="getProfessorInfo" parameterType="professor" resultType="professor">
+        <![CDATA[  
+	        SELECT
+			 PROF_CODE	 as "professor_code",
+			 ID    		 as "id",
+			 EMAIL 		 as "email",
+			 NAME  		 as "name",
+			 BIRTH 		 as "birth",
+			 PHONE 		 as "phone",
+			 E_YEAR 	 as "hire_date",
+			 MAJOR 		 as "major"
+			FROM PROFESSOR
+			WHERE ID = #{id}
+        ]]>
+	</select>
+
 	
 
 

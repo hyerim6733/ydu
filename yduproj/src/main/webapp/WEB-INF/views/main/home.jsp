@@ -279,10 +279,6 @@ $(document).ready(function() {
 				$("tbody").append("<tr><td>"+ data[i].boardNo+"</td> <td><a href='../main/index#../detailNotice.do?boardNo="+data[i].boardNo+"'>"+data[i].title+"</a></td> <td>"+data[i].writeDate+"</td> <td>"+data[i].writer+"</td> </tr> ");
 			}
 		}
-		
-		console.log(this);
-		console.log((this).text);
-		alert("click!!");
 	});
 });
 </script>

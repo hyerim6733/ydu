@@ -7,19 +7,19 @@
 	<!-- 아직 수정전 -->
 
 	<insert id="insertInterview" parameterType="interStatus">
-		<selectKey keyProperty="classNo" resultType="int" order="BEFORE">
-			SELECT NVL(MAX(CLASS_NO),0) + 1 FROM CLASSES
-		</selectKey>
 	<![CDATA[
-		INSERT INTO CLASSS_STATUS( CLASS_NO, STUDENT_CODE, OPEN_CLASS, REPEAT, CLASS_GRADE) 
-		VALUES(#{classNo}, #{studentCode}, #{openClass}, #{repeat}, #{classGrade})
+	
+		INSERT INTO INTER_STATUS (STATUS_ID, TITLE, INTERDATE, PROPERTY,  SEQ)
+		VALUES ((SELECT NVL(MAX(status_id),0) + 1 AS "STATUS_ID" FROM INTER_STATUS),
+				 #{title}, #{newDate}, #{title}, #{seq})
+		
 	]]>
 	</insert>
 	
-	<delete id="deleteClass" parameterType="classStatus">
+	<delete id="deleteInterview" parameterType="classStatus">
 	<![CDATA[
-		DELETE CLASSES
-		WHERE CLASS_NO = #{classNo}
+		DELETE INTER_STATUS
+		WHERE STATUS_ID = #{statusId}
 	]]>
 	</delete>
 	

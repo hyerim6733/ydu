@@ -87,6 +87,7 @@ pageEncoding="UTF-8" %>
 									<span class="badge">7</span>
 								</a>
 							</li>
+							
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle account" data-toggle="dropdown">
 									<div class="avatar">
@@ -101,6 +102,7 @@ pageEncoding="UTF-8" %>
 										<div class="user-mini pull-right">
 											<span class="welcome">Welcome! <br/>${userId.separation}</span>
 											<span>${userId.userid }</span>
+											<span>${stuInfo.name }</span>
 										</div>
 									<% } %>
 									

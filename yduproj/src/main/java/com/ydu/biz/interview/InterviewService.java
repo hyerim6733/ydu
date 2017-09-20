@@ -17,5 +17,6 @@ public interface InterviewService {
 		void insertInterview(InterStatusVO vo);
 			
 	// DELETE
-		void deleteInterview(StudentVO vo);
+		void deleteInterview(InterStatusVO vo);
+		
 }

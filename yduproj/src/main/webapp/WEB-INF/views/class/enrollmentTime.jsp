@@ -107,10 +107,15 @@ body { background: #fff; }
 					<td>${list.classRoom}</td>
 					<td>${list.propertyNm} ( ${list.smallCodename} )</td>
 					<td>${list.studentLimit}</td>
-					<td><button>수강신청</button></td>
+					<td><input type="button" class="btn_submit" value="수강신청" onclick=callback(${list})/></td>
 				</tr>
 			</c:forEach>
-
+			
+			<hr/>
+			<h3>수강신청 하기</h3>
+			<tbody id="tbody2">
+				
+			</tbody>
 	<script>
 		$("select[name='faculty']").change(function() { // 셀렉트 박스가 체인지 될때 이벤트  
 			var valX = $(this).val(); // 현재 선택된 값  
@@ -129,6 +134,13 @@ body { background: #fff; }
 				}
 			});
 		});
+		function callback(para) {
+			console.log(para);
+			console.dir(para);
+			console.dir(this);
+			
+		}
+		
 	</script>
 	<%-- <%
 		Connection con=null;
