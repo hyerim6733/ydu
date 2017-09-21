@@ -20,12 +20,16 @@ import com.ydu.biz.cbt.CBTExampackVO;
 import com.ydu.biz.cbt.CBTListVO;
 import com.ydu.biz.cbt.CBTResultVO;
 import com.ydu.biz.cbt.CBTService;
+import com.ydu.biz.classes.ClassSearchVO;
+import com.ydu.biz.classes.ClassService;
+import com.ydu.biz.main.ProfessorVO;
 
 @Controller
 public class CBTController {
 
 	@Autowired CBTService cbtService;
-
+	@Autowired ClassService classService;
+	
 	//cbt 메인페이지 
 	@RequestMapping(value="/cbtMain.do")
 	public String cbtMain() {
@@ -49,6 +53,16 @@ public class CBTController {
 
 		return "/cbt/cbtList";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//[학생 cbt 조회]학생은 수강신청한 cbt의 목록만 조회가능합니다.
 	@RequestMapping(value= "/getMyCBT.do")
 	public String getMyCBT(Model model, HttpSession session) {
@@ -135,12 +149,26 @@ public class CBTController {
 	public String examForm(Model model) {		
 		return "/cbt/insertExam";
 	}	
+	//[교수:시험지 등록폼(시험목록 등록)]Jung
+	@RequestMapping("/submitExamListForm.do")
+	public String examListForm(Model model,ClassSearchVO vo, HttpSession session) {	
+		vo.setProfCode(((ProfessorVO)session.getAttribute("proInfo")).getProfessorCode());
+		System.out.println(vo.getProfCode()+ "==============");
+		List<Map<String, Object>> list = classService.getProgramList(vo);
+		model.addAttribute("classList",list);
+		return "/cbt/insertListExam";
+	}
 	//[교수:시험 출제]
 	@RequestMapping("/submitExam.do")
 	public String insertExampack(Model model) {
 
 		return "redirect:/cbtMain.do#getAllCBT.do";
 	}
+	//[교수:시험지 등록(시험목록 등록)]Jung
+		@RequestMapping("/submitListExam.do")
+		public String insertListExam(Model model) {
+			return "redirect:/cbtMain.do#getAllCBT.do";
+		}
 
 	//시험 질문게시판
 	@RequestMapping("/boardQnA.do")

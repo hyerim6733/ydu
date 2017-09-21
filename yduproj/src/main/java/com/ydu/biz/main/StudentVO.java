@@ -1,21 +1,21 @@
 package com.ydu.biz.main;
 
 public class StudentVO {
-	public String student_code;
+	public String studentCode;
 	public String birth;
 	public String name;
 	public String major;
 	public String phone;
-	public String entrance_date;
-	public String current_credit;
+	public String entranceDate;
+	public String currentCredit;
 	public String grade;
-	public String total_score;
+	public String totalScore;
 	public String id;
-	public String getStudent_code() {
-		return student_code;
+	public String getStudentCode() {
+		return studentCode;
 	}
-	public void setStudent_code(String student_code) {
-		this.student_code = student_code;
+	public void setStudentCode(String studentCode) {
+		this.studentCode = studentCode;
 	}
 	public String getBirth() {
 		return birth;
@@ -41,17 +41,17 @@ public class StudentVO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getEntrance_date() {
-		return entrance_date;
+	public String getEntranceDate() {
+		return entranceDate;
 	}
-	public void setEntrance_date(String entrance_date) {
-		this.entrance_date = entrance_date;
+	public void setEntranceDate(String entranceDate) {
+		this.entranceDate = entranceDate;
 	}
-	public String getCurrent_credit() {
-		return current_credit;
+	public String getCurrentCredit() {
+		return currentCredit;
 	}
-	public void setCurrent_credit(String current_credit) {
-		this.current_credit = current_credit;
+	public void setCurrentCredit(String currentCredit) {
+		this.currentCredit = currentCredit;
 	}
 	public String getGrade() {
 		return grade;
@@ -59,21 +59,30 @@ public class StudentVO {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
+	public String getTotalScore() {
+		return totalScore;
+	}
+	public void setTotalScore(String totalScore) {
+		this.totalScore = totalScore;
+	}
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getTotal_score() {
-		return total_score;
-	}
-	public void setTotal_score(String total_score) {
-		this.total_score = total_score;
-	}
 	@Override
 	public String toString() {
-		return "StudentVO [student_code=" + student_code + ", name=" + name + ", major=" + major + ", id=" + id + "]";
+		return "StudentVO [studentCode=" + studentCode + ", birth=" + birth + ", name=" + name + ", major=" + major
+				+ ", phone=" + phone + ", entranceDate=" + entranceDate + ", currentCredit=" + currentCredit
+				+ ", grade=" + grade + ", totalScore=" + totalScore + ", id=" + id + ", getStudentCode()="
+				+ getStudentCode() + ", getBirth()=" + getBirth() + ", getName()=" + getName() + ", getMajor()="
+				+ getMajor() + ", getPhone()=" + getPhone() + ", getEntranceDate()=" + getEntranceDate()
+				+ ", getCurrentCredit()=" + getCurrentCredit() + ", getGrade()=" + getGrade() + ", getTotalScore()="
+				+ getTotalScore() + ", getId()=" + getId() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
 	}
+	
+	
 	
 }

@@ -72,16 +72,6 @@ public class ClassServiceImpl implements ClassService {
 		return classDAO.getProgramList(vo);
 	}
 
-	@Override
-	public List<Map<String, Object>> getClassList() {
-		return classDAO.getClassList();
-	}
-
-	@Override
-	public List<Map<String, Object>> getSelCurrClassesList(ClassStatusVO vo) {
-		return classDAO.getSelCurrClassesList(vo);
-	}
-
 	
 	
 

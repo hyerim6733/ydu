@@ -7,7 +7,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,7 +70,7 @@ public class ClassController {
 				System.out.println(idx);
 			}
 		}
-		
+		/*
 		// 수강신청 메인화면에서  개인조회  세션 어떻게 가져옴??
 		@RequestMapping(value="/currClass.do")
 		@ResponseBody
@@ -80,11 +79,11 @@ public class ClassController {
 			ClassStatusVO cs = new ClassStatusVO();
 			cs.setStCode(vo.getId());
 			System.out.println(vo.getId());
-			List<Map<String, Object>> list = classService.getSelCurrClassesList(cs);
+	//		List<Map<String, Object>> list = classService.getSelCurrClassesList(cs);
 			
 			return list;
 		}
-		
+		*/
 	
 		// 수강신청(조회하기)
 		@RequestMapping(value="/getClassesList.do")
@@ -133,17 +132,6 @@ public class ClassController {
 			System.out.println(list);
 			return "/newPage"; // new page setting
 		}		
-		
-		// class set
-		@RequestMapping(value="/setClass.do", method= RequestMethod.POST)
-		@ResponseBody
-		public List<Map<String, Object>> setClass(Model model){
-			List<Map<String, Object>> list = classService.getClassList();
-			System.out.println("================SET CLASS DO===================================");
-			System.out.println(list);
-			return list;
-		}
-		
 		
 		//classStatus
 		@RequestMapping(value="/classStatus.do")
