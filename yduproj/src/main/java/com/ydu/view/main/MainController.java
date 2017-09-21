@@ -47,6 +47,7 @@ public class MainController {
 		
 		if( vo.getUserpw().equals(userId.getUserpw()) ) {
 			session.setAttribute("userId", userId);
+			
 	//		System.out.println("===================== userId : "+userId.getUserid());
 	//		System.out.println("===================== userSaper : "+userId.getSeparation());
 			

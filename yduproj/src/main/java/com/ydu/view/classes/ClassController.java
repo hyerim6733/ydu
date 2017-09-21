@@ -5,10 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,6 +25,7 @@ import com.ydu.biz.classes.ClassService;
 import com.ydu.biz.classes.ClassStatusVO;
 import com.ydu.biz.classes.ClassTimeTransVO;
 import com.ydu.biz.classes.ClassTimeVO;
+import com.ydu.biz.interview.InterStatusVO;
 import com.ydu.biz.main.StudentVO;
 
 @Controller
@@ -58,6 +62,28 @@ public class ClassController {
 			return "/class/classProgram";
 		}
 		
+		//
+		@RequestMapping(value="/insertClass.do", method = RequestMethod.POST)
+		@ResponseBody
+		public void insertClass(Model model, @RequestBody List<ClassStatusVO> list) {
+			for(ClassStatusVO idx:list) {
+				System.out.println(idx);
+			}
+		}
+		/*
+		// 수강신청 메인화면에서  개인조회  세션 어떻게 가져옴??
+		@RequestMapping(value="/currClass.do")
+		@ResponseBody
+		public List<Map<String, Object>> currClass(Model model, HttpSession vo) {
+			System.out.println(vo.getId());
+			ClassStatusVO cs = new ClassStatusVO();
+			cs.setStCode(vo.getId());
+			System.out.println(vo.getId());
+	//		List<Map<String, Object>> list = classService.getSelCurrClassesList(cs);
+			
+			return list;
+		}
+		*/
 	
 		// 수강신청(조회하기)
 		@RequestMapping(value="/getClassesList.do")
