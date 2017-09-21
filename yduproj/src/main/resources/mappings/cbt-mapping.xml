@@ -124,13 +124,7 @@
 	
 	
 	
-	<!-- 교수 : 시험문제 출제 -->
-	<!-- 
-	<insert id="insertTest" parameterType="cbtExampack">
-		INSERT INTO cbt_exampack (CBT_CODE, QUESTION, RIGHT_ANSWER, ex1, ex2, ex3, ex4)
-		VALUES (#{cbtCode}, #{question}, #{rightAnswer}, #{ex1}, #{ex2},#{ex3},#{ex4})
-	</insert>
-	 -->
+	
 	<!--  학생 : 시험응시 / 시험목록테스트중-->
 	<select id="getTest" resultMap="getTestResult">
 		SELECT  CBT_CODE as "cbtCode", 

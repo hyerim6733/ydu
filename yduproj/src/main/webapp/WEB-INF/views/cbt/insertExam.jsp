@@ -33,7 +33,9 @@
 	<th>정답:</th>
 	<th>배점:</th>
 	</tr>
+	<c:set var="sumMark" value="0"></c:set>
 	<c:forEach var="examPack" items="${examList}">
+	<c:set var="sumMark" value="${sumMark+examPack.mark }"></c:set>
 	<tr>
 	<td>${examPack.examId }</td>
 	<td>${examPack.question }</td>
@@ -42,10 +44,12 @@
 	<td>${examPack.ex3 }</td>
 	<td>${examPack.ex4 }</td>
 	<td>${examPack.rightAnswer }</td>
-	<td>${examPack.mark }</td>
+	<td>${examPack.mark }</td>	
 	</tr>
+
 </c:forEach>
 	</table>
+	배점 합: ${sumMark }
 </form>
 </div>
 
