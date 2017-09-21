@@ -41,9 +41,6 @@
 		WHERE c.class_code = n.class_code and
 				n.prof_code = p.prof_code and
 				c.major = d.small_code
-		<if test="profCode != null and profCode != ''">	
-			and n.prof_code= #{profCode}
-		</if>	
 		<if test="searchCondition == 'openClass'">
        		 AND OPEN_CLASS LIKE '%'||#{searchKeyword}||'%' 
     	</if>
