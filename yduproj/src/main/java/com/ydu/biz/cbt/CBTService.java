@@ -45,7 +45,14 @@ public interface CBTService {
 	 * 2. 학생 : 시험응시
 	 */
 	//1. 교수
+	//[교수:문제 등록,수정,상세,삭제]Jung
+	List<CBTExampackVO> getProfQuesList(int cbt_code);//문제조회
 	void insertTest(CBTExampackVO vo);
+	//[교수:시험지 등록,수정,상세,삭제]Jung
+	void insertTestList(CBTListVO vo);//등록
+	
+	
+	
 	
 	//2. 학생
 	List<Map<String, Object>> getTest(int cbt_code);
@@ -59,6 +66,8 @@ public interface CBTService {
 	 * 시험 채점
 	 */
 	CBTExampackVO getMarkTest(CBTExampackVO vo);
+
+	
 	
 	
 }

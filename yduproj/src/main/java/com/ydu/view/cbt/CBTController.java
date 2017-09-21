@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ydu.biz.board.BoardVO;
 import com.ydu.biz.cbt.CBTExampackVO;
 import com.ydu.biz.cbt.CBTListVO;
 import com.ydu.biz.cbt.CBTResultVO;
@@ -143,32 +144,58 @@ public class CBTController {
 
 		return "/cbt/cbtResult";
 	}
-
-	//[교수:시험 출제 폼]
-	@RequestMapping("/submitExamForm.do")
+/*
+	//[교수:시험 출제 폼] 
+	@RequestMapping(value="/submitExamForm.do",method=RequestMethod.GET)
 	public String examForm(Model model) {		
 		return "/cbt/insertExam";
 	}	
+	//[교수:시험 출제]
+	@RequestMapping(value="/submitExam.do",method=RequestMethod.POST)
+	public String insertExampack(Model model) {
+		return "redirect:/cbtMain.do#getAllCBT.do";
+	}
+	*/
+	
+	
 	//[교수:시험지 등록폼(시험목록 등록)]Jung
-	@RequestMapping("/submitExamListForm.do")
+	@RequestMapping(value="/submitExamListForm.do",method=RequestMethod.GET)
 	public String examListForm(Model model,ClassSearchVO vo, HttpSession session) {	
-		vo.setProfCode(((ProfessorVO)session.getAttribute("proInfo")).getProfessorCode());
-		System.out.println(vo.getProfCode()+ "==============");
+		vo.setProfCode(((ProfessorVO)session.getAttribute("proInfo")).getProfessorCode());//교수코드로 정보 넘겨줌
+		System.out.println(vo.getProfCode()+ "======CBT등록폼페이지========");
 		List<Map<String, Object>> list = classService.getProgramList(vo);
 		model.addAttribute("classList",list);
 		return "/cbt/insertListExam";
 	}
-	//[교수:시험 출제]
-	@RequestMapping("/submitExam.do")
-	public String insertExampack(Model model) {
-
+	//[교수:시험지 등록처리(시험목록 등록)]Jung
+	@RequestMapping(value="/submitListExam.do" ,method=RequestMethod.POST)
+	public String insertListExam(Model model ,CBTListVO vo) {
+		cbtService.insertTestList(vo);
+		System.out.println(vo.getCbtCode() + "===========시험지 등록===========");
 		return "redirect:/cbtMain.do#getAllCBT.do";
 	}
-	//[교수:시험지 등록(시험목록 등록)]Jung
-		@RequestMapping("/submitListExam.do")
-		public String insertListExam(Model model) {
-			return "redirect:/cbtMain.do#getAllCBT.do";
-		}
+	//[교수:문제 출제 폼] 
+	@RequestMapping(value="/submitExamForm.do",method=RequestMethod.GET)
+	public String inserTestForm(Model model,CBTExampackVO cbtvo,HttpSession session) {		
+		List<Map<String, Object>> list = cbtService.getTest(cbtvo.getCbtCode());
+		model.addAttribute("examList",list);
+		model.addAttribute("cBTExampackVO",cbtvo);
+		return "/cbt/insertExam";
+	}	
+	//[교수:문제 출제 처리]
+	@RequestMapping(value="/submitExam.do",method=RequestMethod.POST)
+	public String insertTest(Model model,CBTExampackVO cbtvo) {
+		cbtService.insertTest(cbtvo);
+		System.out.println( "===========문제 등록===========");
+		return "redirect:/cbt/insertExam";
+	}
+		
+	
+	
+	
+	
+	
+	
 
 	//시험 질문게시판
 	@RequestMapping("/boardQnA.do")

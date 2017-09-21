@@ -7,16 +7,14 @@
 
 
 
-<!-- 확인용  지워야 함 -->
-${cbtList}
 
 
 <div style="font-size:35px;">교수님 시험 목록 등록하는 페이지</div>
 <br><br>
 <div align="left">
-<form>
+<form  method="post" action="submitListExam.do">
 <!--  코드 시퀀스로 코드 등록시 생성 -->
-<!-- CBT_CODE <input type="text" name="ex1"><br/> -->
+<!-- CBT_CODE <input type="text" name="cbtCode"><br/> -->
 
 <!-- New_CLASS 테이블에서 값 받아옴 -->
 OPEN_CLASS 
@@ -26,13 +24,17 @@ OPEN_CLASS
 </c:forEach>
 </select><br/>
 <!-- 교수님 입력 -->
-CBT_TITLE	<input size="60" type="text" name="cbtTitle" value="${cbtList.cbtTitile}"><br/>
-FINAL_DATE 	<input size="50" type="text" name="finalDate" value="${cbtList.finalDate}"><br/>
-NOTE  		<input size="60" type="text" name="note" value="${cbtList.note}"><br/>
-LIMIT_TIME 	<input size="20" type="text" name="limitTime" value="${cbtList.limitTime}"><br/>
+CBT_TITLE	
+<input size="60" type="text" name="cbtTitle" value="${cbtList.cbtTitile}"><br/>
+FINAL_DATE 	
+<input size="50" type="text" name="finalDate" value="${cbtList.finalDate}"><br/>
+NOTE  		
+<input size="60" type="text" name="note" value="${cbtList.note}" ><br/>
+LIMIT_TIME 	
+<input size="20" type="text" name="limitTime" value="${cbtList.limitTime}" ><br/>
 
 <br/><br/>
-<input type="button" value="등록" onclick ="frmCheck()" />
+<input type="submit" value="등록"  />
 
 </form>
 

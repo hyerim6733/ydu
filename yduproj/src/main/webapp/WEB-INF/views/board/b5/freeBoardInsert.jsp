@@ -20,6 +20,18 @@
 		return true;
 	}	
 </script> -->
+<script>
+	function frmCheck(){
+		//내용을 입력여부 체크
+		var editor_data = CKEDITOR.instances.contents.getData();
+		if(editor_data == ""){
+			alert("내용을 입력하세요");
+			return false;
+		}
+		return true;
+	}
+		
+</script>
 
 <!-- 확인용  지워야 함 -->
 ${board }
@@ -28,7 +40,7 @@ ${board }
 <h3>자유게시판  ${registerFlag} 하기 </h3>
 <hr>
 
-<form name="frm" action="../noticeInsert.do" method="post" onsubmit ="return frmCheck()">
+<form name="frm" action="../insertFreeBoard" method="post" onsubmit ="return frmCheck()">
 	<!-- 글 번호 hidden으로 값만 넘기기 -->
 	<c:if test="${registerFlag == '수정'}">
 	<input type="hidden" name="boardNo" value="${board.boardNo }">

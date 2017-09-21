@@ -40,7 +40,7 @@ th {
 	<td>${list.classTitle } </td>
 	<td>${list.name }</td>
 	<td>${list.finalDate }</td>
-	<td><a href="#submitExamForm.do" onclick="page_reload()"><input type="button" value="문제 등록" ></a></td>
+	<td><a href="#submitExamForm.do?cbtCode=${list.cbtCode}" onclick="page_reload()"><input type="button" value="문제 등록" ></a></td>
 </tr>
 </c:forEach>
 

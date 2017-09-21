@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ydu.biz.board.BoardVO;
 import com.ydu.biz.cbt.CBTExampackVO;
 import com.ydu.biz.cbt.CBTListVO;
 import com.ydu.biz.cbt.CBTResultVO;
@@ -50,6 +51,12 @@ public class CBTServiceImpl implements CBTService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
+	
+	
+	
+	
 
 	@Override
 	public List<CBTResultVO> getAllGrades(String vo) {
@@ -62,12 +69,22 @@ public class CBTServiceImpl implements CBTService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	//[교수:시험지 등록,수정,상세,삭제]Jung
+	@Override
+	public void insertTestList(CBTListVO vo) {
+		cbtDAO.insertTestList(vo);
+	}
+	//[교수:문제 등록,수정,상세,삭제]Jung
 	@Override
 	public void insertTest(CBTExampackVO vo) {
-		// TODO Auto-generated method stub
-		
+		cbtDAO.insertTest(vo);
 	}
+	@Override //[교수:문제 조회]Jung
+	public List<CBTExampackVO> getProfQuesList(int cbt_code) {
+		return cbtDAO.getProfQuesList(cbt_code);
+	}
+
 
 	@Override
 	public List<Map<String, Object>> getTest(int cbt_code) {
@@ -83,5 +100,7 @@ public class CBTServiceImpl implements CBTService {
 	public CBTExampackVO getMarkTest(CBTExampackVO vo) {
 		return cbtDAO.getMarkTest(vo);
 	}
+
+	
 
 }

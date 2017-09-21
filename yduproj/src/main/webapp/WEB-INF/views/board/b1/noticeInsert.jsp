@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 
 
-
+<!-- 공지사항 insert / update 판단  -->
 <c:set var="registerFlag" value="${empty board.boardNo ? '등록' : '수정'}"/>
 <script src="../resources/ckeditor/ckeditor.js"></script>
 <script>
