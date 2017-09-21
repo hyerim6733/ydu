@@ -33,20 +33,121 @@ body { background: #fff; }
 	<br>
 	<br>
 	<script >
-		function disable(dsc) {
-			var result = document.getElementById("menu_sel").value;
-			
-			if(result == '1'){
-				document.getElementById("text_select").disabled = true;
-				document.getElementById("text_select2").disabled = true;
-			}else{
-				document.getElementById("text_select").disabled = false;
-				document.getElementById("text_select2").disabled = false;
+		var classList = null;
+		var insertList = new Array();
+		var main = new Array();
+		var dupChk =  Array.apply(null, new Array(100)).map(Number.prototype.valueOf,0);
+		
+		$(document).ready(function() {
+
+			/* 	
+			$("select[name='faculty']").change(function() { // 셀렉트 박스가 체인지 될때 이벤트  
+				var valX = $(this).val(); // 현재 선택된 값  
+				var url = "./getsmallList.do"; // 데이터를 호출할 URL  
+				$.ajax({
+					url : url,
+					type : "POST",
+					data : {code:valX},
+					dataType : "json",
+					success : function(data) {
+						$("select[name='faculty2']").empty()
+						$("select[name='faculty2']").append('<option> -선택하세요- </option>')
+						$.each(data, function(i, d) {
+							$("select[name='faculty2']").append('<option value="' + d.smallCode + '">' + d.smallCodename + '</option>');
+						});
+					}
+				});
+			});
+			function disable(dsc) {
+				var result = document.getElementById("menu_sel").value;
+				
+				if(result == '1'){
+					document.getElementById("text_select").disabled = true;
+					document.getElementById("text_select2").disabled = true;
+				}else{
+					document.getElementById("text_select").disabled = false;
+					document.getElementById("text_select2").disabled = false;
+				}
 			}
-		}
+			 */
+			$.ajax({
+				url : "./setClass.do",
+				method : "post",
+				type : "json",
+				success : function(data) {
+					classList = data;
+					callback(classList);
+				},
+				error : function(request, status, error) {
+					alert("error : " + error);
+				}
+			});
+			
+			// tab 창에 테이블 추가..
+			function callback(data) {
+			//	$("tbody").html("");
+				
+				for(i=0;i<data.length;i++) {
+					//ID줘서 지정해주기.. 수정해야됨!
+					$("#tbody1").append("<tr><td>"
+							+ data[i].openClass+"</td> <td>"
+							+data[i].classTitle+"</td> <td>"
+							+data[i].name+"</td> <td>"
+							+data[i].classTime+"</td> <td>"
+							+data[i].classRoom+"</td> <td>"
+							+data[i].propertyNm+"("+data[i].smallCodename+")</td> <td>"
+							+data[i].studentLimit+"</td> <td>"
+				//			+"<button>수강신청</button>" + " </tr> ");
+					// 클릭이 왜 안될까?? --------------- 수정중 -----------------------
+							+"<input type='button' class='btn_sub' id='"+i+"' value='수강신청'/>" + " </tr> ");
+		
+		
+				}
+			}
+			 
+			var cnt=0;
+			 $(document).on("click", ".btn_sub", function(){
+					var sub = new Object();
+				    var idx = this.id;
+				    if(dupChk[idx]==0) { 
+					    dupChk[idx]=1;
+					    $("#tbody2").append("<tr><td>"
+								+ classList[idx].openClass+"</td> <td>"
+								+classList[idx].classTitle+"</td> <td>"
+								+classList[idx].name+"</td> <td>"
+								+classList[idx].classTime+"</td> <td>"
+								+classList[idx].classRoom+"</td> <td>" 
+								+classList[idx].propertyNm+"("+classList[idx].smallCodename+")</td> <td>"
+								+classList[idx].studentLimit+"</td> <td>"+ " </tr> ");
+					    
+
+						sub['classNo'] = "";
+						sub['stCode'] = ${sessionScope};
+						sub['openClass'] = classList[idx].openClass; //openClass써서 classNo 구해서 insert 할 것..
+						sub['repeat'] = "N";
+						sub['classGrade'] = ""; 
+						sub['classTime'] = classList[idx].classTime; 
+						sub['classTitle'] = classList[idx].classTitle;
+						sub['property'] = classList[idx].smallCodename;
+						
+						main[cnt++] = sub;
+						console.dir(main);
+				    } else{
+				    	alert("이미 꾸러미에 추가했습니다.");
+				    }
+			});
+			
+			$("#btn_complete").click(function() {
+				
+			});
+			 
+			 
+		});
+																													
+																															
+		
 	 </script>
-	 <form action="getClassesList.do">
-	<table align="center" width="80%">
+	<%-- <table align="center" width="80%">
 		<tr><td width="15%">교과과정
 		<select>
 			<option>-선택하세요-</option>
@@ -83,11 +184,35 @@ body { background: #fff; }
 		</select>
 		<input type="text" name="searchKeyword"/>
 		<input type="submit" value="조회"/></td></tr>
-		</table>
 		
-	
+		</table>
+		 --%>
+	<body>
+		<h3>수강신청 하기</h3>
 		
 		<table width="80%" align="center" class="blueone">
+			<thead>
+				<tr>
+					<th>과목번호</th>
+					<th>과목명</th>
+					<th>담당교수</th>
+					<th>시간</th>
+					<th>강의실</th>
+					<th>분류</th>
+					<th>수강정원</th>
+					<th>수강신청</th>
+				</tr>
+			</thead>
+				<hr/>
+			<tbody id="tbody1">
+						
+			</tbody>		
+		</table>
+	 
+	<br/><br/>
+	<tr><td>수강꾸러미</td><td><input type="button" id="btn_complete" value="신청하기"/></td></tr>
+	<table width="80%" align="center" class="blueone">
+		<thead>
 			<tr>
 				<th>과목번호</th>
 				<th>과목명</th>
@@ -96,70 +221,11 @@ body { background: #fff; }
 				<th>강의실</th>
 				<th>분류</th>
 				<th>수강정원</th>
-				<th>수강신청</th>
 			</tr>
-			<c:forEach var="list" items="${classList}">
-				<tr>
-					<td>${list.openClass}</td>
-					<td>${list.classTitle}</td>
-					<td>${list.name }</td>
-					<td>${list.classTime}</td>
-					<td>${list.classRoom}</td>
-					<td>${list.propertyNm} ( ${list.smallCodename} )</td>
-					<td>${list.studentLimit}</td>
-					<td><input type="button" class="btn_submit" value="수강신청" onclick=callback(${list})/></td>
-				</tr>
-			</c:forEach>
+		</thead>
+		<tbody id="tbody2">
 			
-			<hr/>
-			<h3>수강신청 하기</h3>
-			<tbody id="tbody2">
-				
-			</tbody>
-	<script>
-		$("select[name='faculty']").change(function() { // 셀렉트 박스가 체인지 될때 이벤트  
-			var valX = $(this).val(); // 현재 선택된 값  
-			var url = "./getsmallList.do"; // 데이터를 호출할 URL  
-			$.ajax({
-				url : url,
-				type : "POST",
-				data : {code:valX},
-				dataType : "json",
-				success : function(data) {
-					$("select[name='faculty2']").empty()
-					$("select[name='faculty2']").append('<option> -선택하세요- </option>')
-					$.each(data, function(i, d) {
-						$("select[name='faculty2']").append('<option value="' + d.smallCode + '">' + d.smallCodename + '</option>');
-					});
-				}
-			});
-		});
-		function callback(para) {
-			console.log(para);
-			console.dir(para);
-			console.dir(this);
-			
-		}
-		
-	</script>
-	<%-- <%
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs = null;
-		try{
-			con = DBConnection.getCon();
-			String sql="select * from class_list";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while(rs.next()){
-				String classCode = rs.getString("class_code");
-				String classTitle = rs.getString("class_title");
-				String classCredit = rs.getString("class_credit");
-				String major = rs.getString("major");
-				Timestamp regdate = rs.getTimestamp("regdate");
+		</tbody>
+	</table>
 
-%> --%>
-
-
-</table>
-</form>
+</body>

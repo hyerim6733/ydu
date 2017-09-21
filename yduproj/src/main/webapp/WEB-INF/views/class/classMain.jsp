@@ -79,7 +79,6 @@ html, body, h1, h2, h3, h4, h5 {
 			<div class="preloader"></div>
 			<div id="ajax-content"></div>
 
-			<!-- 위의 코드 ajax 로 메뉴클릭시 보여주도록 함 -->
 
 		</div>
 
