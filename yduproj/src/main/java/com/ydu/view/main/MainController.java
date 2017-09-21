@@ -60,6 +60,7 @@ public class MainController {
 				proResult.setId(userId.getUserid());
 				proResult = userService.getProfessorInfo(proResult);
 				session.setAttribute("proInfo", proResult);
+				System.out.println("============="+proResult);
 			}
 			
 			return "success";

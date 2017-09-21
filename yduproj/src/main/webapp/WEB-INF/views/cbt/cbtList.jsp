@@ -22,14 +22,16 @@ th {
 <header class="w3-container" style="padding-top:22px; padding-left:30px; padding-left:30px; padding-bottom:22px ">
     <h5><b><i class="fa fa-pagelines"></i> &nbsp; &nbsp; &nbsp; 목록 </b></h5>
 </header>
+
 <table>
 
 <tr>
 	<th align="center">고유번호</th>
-	<th>시험명</th>
+	<th>시 험 명</th>
 	<th>전공</th>
 	<th>교수</th>
-	<th>제출기한</th>
+	<th>제출 기한</th>
+	<th>문제 출제</th>
 </tr>
 <c:forEach var="list" items="${cbtList}">
 <tr>
@@ -38,7 +40,20 @@ th {
 	<td>${list.classTitle } </td>
 	<td>${list.name }</td>
 	<td>${list.finalDate }</td>
+	<td><a href="#submitExamForm.do" onclick="page_reload()"><input type="button" value="문제 등록" ></a></td>
 </tr>
 </c:forEach>
 
 </table>
+
+<!-- 시험 등록 수정중 -->
+<br><br>
+<a href="#submitExamListForm.do" onclick="page_reload()">[시험 등록]</a>
+<script>
+function page_reload() {
+	location.reload();
+}
+
+
+}
+</script>

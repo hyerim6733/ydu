@@ -2,6 +2,16 @@ package com.ydu.biz.classes;
 
 public class ClassSearchVO {
 	
+	
+	//교수정보
+	private String profCode;
+	
+	public String getProfCode() {
+		return profCode;
+	}
+	public void setProfCode(String profCode) {
+		this.profCode = profCode;
+	}
 	private String searchCondition;
 	private String searchKeyword;
 	
