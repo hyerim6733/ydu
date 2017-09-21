@@ -120,12 +120,17 @@
 							WHERE student_code = #{code} controller의 session 값이 자동으로 넘어옴.
 							)
 	</select>
-	<!-- 교수 : 시험문제 제출 -->
+	
+	
+	
+	
+	<!-- 교수 : 시험문제 출제 -->
+	<!-- 
 	<insert id="insertTest" parameterType="cbtExampack">
 		INSERT INTO cbt_exampack (CBT_CODE, QUESTION, RIGHT_ANSWER, ex1, ex2, ex3, ex4)
 		VALUES (#{cbtCode}, #{question}, #{rightAnswer}, #{ex1}, #{ex2},#{ex3},#{ex4})
 	</insert>
-	
+	 -->
 	<!--  학생 : 시험응시 / 시험목록테스트중-->
 	<select id="getTest" resultMap="getTestResult">
 		SELECT  CBT_CODE as "cbtCode", 
@@ -151,6 +156,60 @@
 	
 	
 	<!-- 점수저장 -->
+	
+<!-- 여기서 부터 수정 했음 -->	
+	
+	<!-- 교수 : 시험문제지 등록 (강의:시험)jung -->
+	<insert id="insertTestList" parameterType="cbtList">
+		<selectKey keyProperty="cbtCode" resultType="int" order="BEFORE">
+    		SELECT NVL(MAX(CBT_CODE), 0) + 1 FROM CBT_LIST
+   		</selectKey>
+		INSERT INTO CBT_LIST (CBT_CODE, OPEN_CLASS, CBT_TITLE, FINAL_DATE, NOTE, LIMIT_TIME)
+		VALUES (#{cbtCode}, #{openClass}, #{cbtTitle}, #{finalDate}, #{note},#{limitTime})
+	</insert>
+	<!-- 시험문제 리스트 조회 : 교수 : 문제 등록시 참고용 jung -->
+	<select id="getProfQuesList" resultType="cbtExampack">
+		SELECT  CBT_CODE , 
+				QUESTION ,
+				RIGHT_ANSWER ,
+				EX1,
+				EX2 ,
+				EX3 ,
+				EX4 ,
+				MARK ,
+				EXAM_ID 
+		FROM CBT_EXAMPACK
+		WHERE CBT_CODE = #{cbtCode}
+	</select>
+	 <!-- 문제 등록 : 교수 :  jung -->
+	<insert id="insertTest" parameterType="cbtExampack">
+		<selectKey keyProperty="examId" resultType="int" order="BEFORE">
+    		SELECT NVL(MAX(EXAM_ID), 0) + 1 FROM CBT_EXAMPACK
+   		</selectKey>
+	INSERT INTO CBT_EXAMPACK(
+		CBT_CODE ,
+		QUESTION ,
+		RIGHT_ANSWER ,
+		EX1,
+		EX2 ,
+		EX3 ,
+		EX4 ,
+		MARK ,
+		EXAM_ID
+		)
+	VALUES(
+		#{cbtCode}, 
+		#{question}, 
+		#{rightAnswer}, 
+		#{ex1},
+		#{ex2},
+		#{ex3},
+		#{ex4},
+		#{mark},
+		#{examId}
+		)
+	</insert>
+	
 	
 	
 </mapper>
