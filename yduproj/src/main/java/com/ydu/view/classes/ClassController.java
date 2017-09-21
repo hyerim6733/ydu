@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,6 +26,7 @@ import com.ydu.biz.classes.ClassService;
 import com.ydu.biz.classes.ClassStatusVO;
 import com.ydu.biz.classes.ClassTimeTransVO;
 import com.ydu.biz.classes.ClassTimeVO;
+import com.ydu.biz.interview.InterStatusVO;
 import com.ydu.biz.main.StudentVO;
 
 @Controller
@@ -59,6 +61,15 @@ public class ClassController {
 				model.addAttribute("classList",list);
 			}
 			return "/class/classProgram";
+		}
+		
+		//
+		@RequestMapping(value="/insertClass.do", method = RequestMethod.POST)
+		@ResponseBody
+		public void insertClass(Model model, @RequestBody List<ClassStatusVO> list) {
+			for(ClassStatusVO idx:list) {
+				System.out.println(idx);
+			}
 		}
 		
 		// 수강신청 메인화면에서  개인조회  세션 어떻게 가져옴??

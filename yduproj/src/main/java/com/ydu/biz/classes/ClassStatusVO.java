@@ -60,7 +60,10 @@ public class ClassStatusVO {
 	public void setClassGrade(int classGrade) {
 		this.classGrade = classGrade;
 	}
-
-	
-	
+	@Override
+	public String toString() {
+		return "ClassStatusVO [classNo=" + classNo + ", stCode=" + stCode + ", openClass=" + openClass + ", repeat="
+				+ repeat + ", classGrade=" + classGrade + ", classTime=" + classTime + ", classTitle=" + classTitle
+				+ ", property=" + property + "]";
+	}
 }

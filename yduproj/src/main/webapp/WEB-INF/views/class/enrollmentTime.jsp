@@ -73,7 +73,7 @@ body { background: #fff; }
 			$.ajax({
 				url : "./setClass.do",
 				method : "post",
-				type : "json",
+				dataType : "json",
 				success : function(data) {
 					classList = data;
 					callback(classList);
@@ -120,9 +120,9 @@ body { background: #fff; }
 								+classList[idx].propertyNm+"("+classList[idx].smallCodename+")</td> <td>"
 								+classList[idx].studentLimit+"</td> <td>"+ " </tr> ");
 					    
-
+						// VO - 
 						sub['classNo'] = "";
-						sub['stCode'] = ${sessionScope};
+						sub['stCode'] = "${sessionScope.userId.userid}";
 						sub['openClass'] = classList[idx].openClass; //openClass써서 classNo 구해서 insert 할 것..
 						sub['repeat'] = "N";
 						sub['classGrade'] = ""; 
@@ -138,7 +138,22 @@ body { background: #fff; }
 			});
 			
 			$("#btn_complete").click(function() {
+				var p = JSON.stringify(main);
 				
+				$.ajax({
+					url : "./insertClass.do",
+					method : "post",
+					type : "json",
+					contentType: "application/json",
+					data : p,
+					success : function() {
+						console.log("성공");
+						main = new Array();
+					},
+					error : function(request, status, error) {
+						alert("error : "+error);
+					}
+				});
 			});
 			 
 			 
@@ -210,7 +225,7 @@ body { background: #fff; }
 		</table>
 	 
 	<br/><br/>
-	<tr><td>수강꾸러미</td><td><input type="button" id="btn_complete" value="신청하기"/></td></tr>
+	<table><tr><td>수강꾸러미</td><td><input type="button" id="btn_complete" value="신청하기"/></td></tr></table>
 	<table width="80%" align="center" class="blueone">
 		<thead>
 			<tr>
