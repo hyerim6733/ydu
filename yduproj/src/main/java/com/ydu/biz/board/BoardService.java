@@ -15,22 +15,33 @@ public interface BoardService {
 		//메인에서 보여줄 벼룩시장 5개
 		//메인에서 보여줄 자유게시판 5개 
 		//메인에서 보여줄 FAQ 
+		
 
 	//공지사항 //b10//b11//b12//b13//b14//b15=====조회까지 성공
 		List<BoardVO> notice(BoardSearchVO vo);	 //b1
 		int total (BoardSearchVO vo);
+		BoardVO detailNotice(BoardVO vo); //상세
+		void insertNotice(BoardVO vo); //등록
+		void updateNotice(BoardVO vo); //수정
+			
+		
+		
+		
+		
 		
 		List<BoardVO> noticeGen(BoardSearchVO vo); 
 		List<BoardVO> noticeLit(BoardSearchVO vo); 
 		List<BoardVO> noticeEmp(BoardSearchVO vo); 
 		List<BoardVO> noticeSch(BoardSearchVO vo); 
-		List<BoardVO> noticeVol(BoardSearchVO vo); 
-		List<BoardVO> noticeEve(BoardSearchVO vo); 
+		List<BoardVO> noticeVol(BoardSearchVO vo);
 		
-		BoardVO detailNotice(BoardVO vo); //상세
-		void insertNotice(BoardVO vo); //등록
-		void updateNotice(BoardVO vo); //수정
-			
+		List<BoardVO> noticeEve(BoardSearchVO vo); 
+		int totalEve (BoardSearchVO vo);
+		
+		
+		
+		
+	
 	//학교일정 academicCalendar
 		BoardVO academicCalendar(BoardVO vo);
 			
@@ -57,9 +68,13 @@ public interface BoardService {
 	//자유게시판
 		List<BoardVO> freeBoard(BoardSearchVO vo);
 		
-		//BoardVO detailFreeBoard(BoardVO vo); //상세
-		//void insertFreeBoard(BoardVO vo); //등록
-		//void updateFreeBoard(BoardVO vo); //수정
+		BoardVO detailFreeBoard(BoardVO vo); //상세
+		void insertFreeBoard(BoardVO vo); //등록
+		void updateFreeBoard(BoardVO vo); //수정
+		
+		
+		
+				
 		
 		
 		

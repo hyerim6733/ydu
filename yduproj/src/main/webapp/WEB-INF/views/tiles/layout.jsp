@@ -87,7 +87,6 @@ pageEncoding="UTF-8" %>
 									<span class="badge">7</span>
 								</a>
 							</li>
-							
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle account" data-toggle="dropdown">
 									<div class="avatar">
@@ -159,23 +158,19 @@ pageEncoding="UTF-8" %>
 	<div class="row">
 			<div id="sidebar-left" class="col-xs-2 col-sm-2">
 				<ul class="nav main-menu">
-					<li><a class="ajax-link" href="../main/home"> <i
-							class="fa fa-dashboard"></i> <span class="hidden-xs"> 메인화면	</span>
+					<li><a class="ajax-link" href="../main/home"> 
+					<i class="fa fa-dashboard"></i> <span class="hidden-xs"> 메인화면	</span>
 					</a></li>
 					<li><a href="../cbtMain.do#cbtBody.do"> <i
 							class="fa fa-bar-chart-o"></i> <span class="hidden-xs">
 								CBT </span>
 					</a></li>
-					<li><a href="../classMain.do#classBody.do"> <i
-							class="fa fa-bar-chart-o"></i> <span class="hidden-xs">
-								수강신청 </span>
+					<li><a href="../classMain.do#classBody.do"> 
+					<i class="fa fa-bar-chart-o"></i> <span class="hidden-xs"> 수강신청 </span>
 					</a></li>
 
-				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-list"></i>
-						 <span class="hidden-xs">게시판6</span>
+					<li class="dropdown"><a href="#" class="dropdown-toggle">
+					<i class="fa fa-list"></i><span class="hidden-xs">게시판6</span>
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="ajax/page_login.html">Login</a></li>
@@ -201,31 +196,32 @@ pageEncoding="UTF-8" %>
 						<li><a class="ajax-link" href="ajax/map_fullscreen.html">Fullscreen map</a></li>
 					</ul>
 				</li>
+
+
+
+
+
+
 <!-- b1 공지사항 -->				
-				<li class="dropdown">
-					<a href="../notice.do"class="ajax-link dropdown-toggle">
-					<i class="fa fa-table"></i>
-					<span class="hidden-xs">공지사항</span></a>
-				<!-- 공지 작은 메뉴 없애기 -->
-				<!-- 	
-					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="../noticeGen.do">공지-일반</a></li>
-						<li><a class="ajax-link" href="../noticeLit.do">공지-학사</a></li>
-						<li><a class="ajax-link" href="../noticeEmp.do">공지-취업</a></li>
-						<li><a class="ajax-link" href="../noticeSch.do">공지-장학</a></li>
-						<li><a class="ajax-link" href="../noticeVol.do">공지-봉사</a></li>
-						<li><a class="ajax-link" href="../noticeEve.do">학술/행사</a></li>
-					</ul>
-				
-				 -->				
+				<li><a href="../noticeMain.do"class="ajax-link">
+					<i class="fa fa-table"></i><span class="hidden-xs">공지사항</span></a>
  				</li>
-<!-- b2 학교일정 -->				
+
+
+
+
+
+<!-- 상담 달력 -->				
 				 <li>
 					<a class="ajax-link" href="../interview/calendar.do">
 						 <i class="fa fa-calendar"></i>
 						 <span class="hidden-xs">학교일정</span>
 					</a>
 				 </li>
+
+
+
+
 				
 <!-- b3학교안내  -->				
 				<li>
@@ -269,6 +265,7 @@ pageEncoding="UTF-8" %>
 				
 			</ul>
 		</div>
+		
 		<!--Start Content-->
 		<div id="content" class="col-xs-12 col-sm-10">
 	<div class="preloader">

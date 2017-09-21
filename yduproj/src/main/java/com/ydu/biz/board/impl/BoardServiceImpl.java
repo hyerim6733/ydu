@@ -24,15 +24,15 @@ public class BoardServiceImpl implements BoardService {
 	//미리보기 FAQ
 	
 //공지사항	
+	
+
+	
 	@Override
 	public List<BoardVO> notice(BoardSearchVO vo) {
-		
-		System.out.println("b1 공지 전체 =====notice");//확인용
 		return boardDAO.notice(vo);
 	}
 	@Override
 	public int total(BoardSearchVO vo) {
-		System.out.println("=====공지사항 페이징 처리");//확인용
 		return boardDAO.total(vo);
 	}
 	
@@ -65,26 +65,37 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println("b14 봉사공지=====noticeVol");//확인용
 		return boardDAO.noticeVol(vo);
 	}
+	
+//b15 학술/행사	
 	@Override
 	public List<BoardVO> noticeEve(BoardSearchVO vo) {
-		System.out.println("b15 학술/행사=====noticeEve");//확인용
 		return boardDAO.noticeEve(vo);
 	}
 	@Override
+	public int totalEve(BoardSearchVO vo) {
+		return boardDAO.totalEve(vo);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	@Override
 	public void insertNotice(BoardVO vo) {
 		boardDAO.insertNotice(vo);
-		System.out.println("공지등록===Impl===insertNotice========");
-	}
+		}
 	@Override
 	public void updateNotice(BoardVO vo) {
 		boardDAO.updateNotice(vo);
-		System.out.println("공지수정");
-	}
+		}
 	@Override
 	public BoardVO detailNotice(BoardVO vo) {
-		System.out.println("상세보기==Impl===detailNotice");//확인용
 		return boardDAO.detailNotice(vo);
 	}
+	
 
 ////////////////////////////////////////////////////////////////
 //학교일정b2
@@ -108,6 +119,7 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println("=====academics2");//확인용
 		return boardDAO.academics2(vo);
 	}
+	
 	
 ///////////////////////////////////////////////////////////////		
 //벼룩시장 b4
@@ -150,6 +162,25 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.freeBoard(vo);
 	}
 	
+	@Override
+	public void insertFreeBoard(BoardVO vo) {
+		boardDAO.insertFreeBoard(vo);
+		System.out.println("=====자유게시판 등록");
+		
+	}
+	@Override
+	public void updateFreeBoard(BoardVO vo) {
+		boardDAO.updateFreeBoard(vo);
+		System.out.println("=====자유게시판 수정");
+	}
+	@Override
+	public BoardVO detailFreeBoard(BoardVO vo) {
+		System.out.println("=====자유게시판 상세");
+		return boardDAO.detailFreeBoard(vo);
+	}
+	
+	
+	
 	
 ///////////////////////////////////////////////////////////////			
 	
@@ -166,6 +197,8 @@ return boardDAO.faq(vo);
 public List<BoardVO> mainBoard(BoardVO vo) {
 	return boardDAO.mainBoard(vo);
 }
+
+
 
 ///////////////////////////////////////////////////////////////			
 

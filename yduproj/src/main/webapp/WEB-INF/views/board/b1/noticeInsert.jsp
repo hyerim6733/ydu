@@ -5,42 +5,48 @@
 
 
 
-<!DOCTYPE html>
-<html>
-
-
-<head>
-
 <c:set var="registerFlag" value="${empty board.boardNo ? '등록' : '수정'}"/>
 <script src="../resources/ckeditor/ckeditor.js"></script>
-
 <script>
 	function frmCheck(){
 		//내용을 입력여부 체크
 		var editor_data = CKEDITOR.instances.contents.getData();
-		if(document.frm.contents.value == ""){
-			alter("내용을 입력하세요");
+		if(editor_data == ""){
+			alert("내용을 입력하세요");
 			return false;
 		}
-	  	frm.action = "<c:url value="${registerFlag == '등록' ? '/insertNotice.do' : '/updateNotice.do'}"/>";
+		CKupdate();
+		console.log($("#frm").serialize());
+	  var url = "<c:url value="${registerFlag == '등록' ? '/insertNotice.do' : '/updateNotice.do'}"/>";
+	    	$.ajax({
+			mimeType: 'text/html; charset=utf-8', // ! Need set mimeType only when run from local file
+			url: url,
+			data:$("#frm").serialize(),
+			cache: false, //jquery cache
+			type: 'POST',
+			success: function(data) {
+					$("#dashboard_tabs").html(data);
 
-		return true;
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				alert(errorThrown);
+			},
+			dataType: "html",
+			async: false
+		});  
 	}	
-	
-
-	
 </script>
 
-</head>
-<body>
 
+
+<!-- 확인용  지워야 함 -->
 ${board }
-<div id="inner-panel">
+
 <hr>
 <h3>공지사항  ${registerFlag} 하기 (관리자용)</h3>
 <hr>
 
-<form name="frm" action="../noticeInsert.do" method="post" onsubmit ="return frmCheck()">
+<form name="frm" id="frm" method="post" >
 	<!-- 게시판 번호 공지사항 = b1  hidden으로 값만 넘기기 -->
 	<c:if test="${registerFlag == '수정'}">
 	<input type="hidden" name="boardNo" value="${board.boardNo }">
@@ -77,19 +83,20 @@ ${board }
 		function form_save(form) { 
 		editor.updateElement(); 
 		}
-
+		function CKupdate(){
+		    for ( instance in CKEDITOR.instances )
+		        CKEDITOR.instances[instance].updateElement();
+		}
 		</script>
 	<br>
 	
 
 	
-	<input type="submit" value="저장"  />
+	<input type="button" value="저장" onclick ="frmCheck()" />
 		
 </form>
-</div>
+
 <!-- 내부ajax링크 div classs=ajax-link -->
 <script src="<c:url value="/resources/plugins/jquery/jquery-2.1.0.min.js"/>"></script>
 <script src="<c:url value="/resources/js/common.js"/>"></script>		
 
-</body>
-</html>
