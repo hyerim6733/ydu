@@ -1,8 +1,8 @@
 package com.ydu.biz.classes;
 
 public class ClassStatusVO {
-	
-	private int classNo; //�닔媛뺤떊泥� 踰덊샇
+	private String statusId;
+	private int classCode; //�닔媛뺤떊泥� 踰덊샇
 	private String stCode; // �븰踰�
 	private String openClass; // 媛쒖꽕怨쇰ぉ
 	private String repeat; // �옱�닔媛�
@@ -10,31 +10,17 @@ public class ClassStatusVO {
 	private String classTime;
 	private String classTitle;
 	private String property;
-	
-	
-	public String getProperty() {
-		return property;
+	public String getStatusId() {
+		return statusId;
 	}
-	public void setProperty(String property) {
-		this.property = property;
+	public void setStatusId(String statusId) {
+		this.statusId = statusId;
 	}
-	public String getClassTitle() {
-		return classTitle;
+	public int getClassCode() {
+		return classCode;
 	}
-	public void setClassTitle(String classTitle) {
-		this.classTitle = classTitle;
-	}
-	public String getClassTime() {
-		return classTime;
-	}
-	public void setClassTime(String classTime) {
-		this.classTime = classTime;
-	}
-	public int getClassNo() {
-		return classNo;
-	}
-	public void setClassNo(int classNo) {
-		this.classNo = classNo;
+	public void setClassCode(int classCode) {
+		this.classCode = classCode;
 	}
 	public String getStCode() {
 		return stCode;
@@ -60,10 +46,34 @@ public class ClassStatusVO {
 	public void setClassGrade(int classGrade) {
 		this.classGrade = classGrade;
 	}
+	public String getClassTime() {
+		return classTime;
+	}
+	public void setClassTime(String classTime) {
+		this.classTime = classTime;
+	}
+	public String getClassTitle() {
+		return classTitle;
+	}
+	public void setClassTitle(String classTitle) {
+		this.classTitle = classTitle;
+	}
+	public String getProperty() {
+		return property;
+	}
+	public void setProperty(String property) {
+		this.property = property;
+	}
 	@Override
 	public String toString() {
-		return "ClassStatusVO [classNo=" + classNo + ", stCode=" + stCode + ", openClass=" + openClass + ", repeat="
-				+ repeat + ", classGrade=" + classGrade + ", classTime=" + classTime + ", classTitle=" + classTitle
-				+ ", property=" + property + "]";
+		return "ClassStatusVO [statusId=" + statusId + ", classCode=" + classCode + ", stCode=" + stCode
+				+ ", openClass=" + openClass + ", repeat=" + repeat + ", classGrade=" + classGrade + ", classTime="
+				+ classTime + ", classTitle=" + classTitle + ", property=" + property + ", getStatusId()="
+				+ getStatusId() + ", getClassCode()=" + getClassCode() + ", getStCode()=" + getStCode()
+				+ ", getOpenClass()=" + getOpenClass() + ", getRepeat()=" + getRepeat() + ", getClassGrade()="
+				+ getClassGrade() + ", getClassTime()=" + getClassTime() + ", getClassTitle()=" + getClassTitle()
+				+ ", getProperty()=" + getProperty() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
 	}
+	
 }

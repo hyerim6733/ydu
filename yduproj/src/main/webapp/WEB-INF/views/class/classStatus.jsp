@@ -217,7 +217,7 @@ pageEncoding="UTF-8" %>
 	            error : function(request, status, error) {
 					alert(error);
 				}
-	        })
+	        });
 			
 			var json = [
 			    {

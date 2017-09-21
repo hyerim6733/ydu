@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,6 +48,17 @@ public class ClassController {
 			return "/class/classMain";
 		}
 		
+		//수강신청 insert
+		@RequestMapping(value="/insertClass.do")
+		@ResponseBody
+		public List<Map<String, Object>> insertClass(Model model, @RequestBody List<Map<String, Object>> vo) {
+			for(Map<String, Object> idx:vo) {
+				System.out.println(idx);
+			}
+			return vo;
+		}
+		
+		
 		//강의 계획서 조회
 		@RequestMapping(value="/classProgram.do")
 		public String classProgram(Model model, ClassSearchVO vo) {
@@ -62,28 +74,23 @@ public class ClassController {
 			return "/class/classProgram";
 		}
 		
-		//
-		@RequestMapping(value="/insertClass.do", method = RequestMethod.POST)
-		@ResponseBody
-		public void insertClass(Model model, @RequestBody List<ClassStatusVO> list) {
-			for(ClassStatusVO idx:list) {
-				System.out.println(idx);
-			}
-		}
-		/*
 		// 수강신청 메인화면에서  개인조회  세션 어떻게 가져옴??
 		@RequestMapping(value="/currClass.do")
 		@ResponseBody
-		public List<Map<String, Object>> currClass(Model model, HttpSession vo) {
-			System.out.println(vo.getId());
-			ClassStatusVO cs = new ClassStatusVO();
-			cs.setStCode(vo.getId());
-			System.out.println(vo.getId());
-	//		List<Map<String, Object>> list = classService.getSelCurrClassesList(cs);
+		public List<Map<String, Object>>currClass(Model model, HttpSession session) {
 			
+			StudentVO stuInfo = (StudentVO)session.getAttribute("stuInfo");
+			System.out.println("=============stdInfo========================"+stuInfo);
+			ClassStatusVO cs = new ClassStatusVO();
+//이거 에러남	cs.setStCode(stuInfo.getStudentCode());
+			cs.setStCode("5049452");
+			List<Map<String, Object>> list =  classService.getSelCurrClassesList(cs);
+			for(Map<String, Object> idx:list) {
+				System.out.println("idx : "+idx);
+			}
 			return list;
-		}
-		*/
+		}//테스트해보기
+		
 	
 		// 수강신청(조회하기)
 		@RequestMapping(value="/getClassesList.do")
@@ -132,6 +139,17 @@ public class ClassController {
 			System.out.println(list);
 			return "/newPage"; // new page setting
 		}		
+		
+		// class set
+		@RequestMapping(value="/setClass.do", method= RequestMethod.POST)
+		@ResponseBody
+		public List<Map<String, Object>> setClass(Model model){
+			List<Map<String, Object>> list = classService.getClassList();
+			System.out.println("================SET CLASS DO===================================");
+			System.out.println(list);
+			return list;
+		}
+		
 		
 		//classStatus
 		@RequestMapping(value="/classStatus.do")

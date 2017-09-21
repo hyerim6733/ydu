@@ -25,7 +25,7 @@ public class ClassServiceImpl implements ClassService {
 	@Override
 	public void insertClass(ClassStatusVO vo) {
 		classDAO.insertClass(vo);
-		System.out.println("�떊泥� : " +vo.getClassNo());
+		System.out.println("�떊泥� : " +vo.getStatusId());
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class ClassServiceImpl implements ClassService {
 
 	@Override
 	public List<ClassStatusVO> getSelStuClassesList(StudentVO vo) {
-		vo.setStudent_code("5049452");
+		vo.setStudentCode("5049452");
 		System.out.println("해당학생의 시간표 목록을 불러왔습니다.");
 		return classDAO.getSelStuClassesList(vo);
 	}
@@ -70,6 +70,16 @@ public class ClassServiceImpl implements ClassService {
 	public List<Map<String, Object>> getProgramList(ClassSearchVO vo) {
 		System.out.println("수강 전체 목록 조회");
 		return classDAO.getProgramList(vo);
+	}
+
+	@Override
+	public List<Map<String, Object>> getClassList() {
+		return classDAO.getClassList();
+	}
+
+	@Override
+	public List<Map<String, Object>> getSelCurrClassesList(ClassStatusVO vo) {
+		return classDAO.getSelCurrClassesList(vo);
 	}
 
 	

@@ -37,10 +37,14 @@ public interface ClassService {
 		List<Map<String, Object>> getsmallList(String code);
 		
 
-
 		
 		List<ClassStatusVO> getSelStuClassesList(StudentVO vo);
 
 		//List<Map<String, Object>> getClassesList(ClassSearchVO vo);
+		
+		List<Map<String, Object>> getSelCurrClassesList(ClassStatusVO vo);
+		
+		// 수강 신청 목록 가져오기 (민학)
+		List<Map<String, Object>> getClassList();
 		
 }
