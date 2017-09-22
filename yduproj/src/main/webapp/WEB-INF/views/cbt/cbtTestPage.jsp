@@ -50,7 +50,7 @@ th {
 							value="3"> ${list.ex3 }</td>
 						<td><input type="radio" name="rightAnswer"
 							value="4"> ${list.ex4 }</td>
-						<td>${list.mark }</td>
+						<td>[ ${list.mark } ]</td>
 					
 				</tr>
 

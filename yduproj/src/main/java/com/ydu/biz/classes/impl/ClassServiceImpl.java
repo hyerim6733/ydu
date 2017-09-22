@@ -55,7 +55,7 @@ public class ClassServiceImpl implements ClassService {
 		return classDAO.getsmallList(code);
 	}
 	
-
+//setStudent_code -> setStudentCode 로 수정 jung 
 	@Override
 	public List<ClassStatusVO> getSelStuClassesList(StudentVO vo) {
 		vo.setStudentCode("5049452");
