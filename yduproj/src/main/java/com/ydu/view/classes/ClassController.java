@@ -53,7 +53,10 @@ public class ClassController {
 		@ResponseBody
 		public List<Map<String, Object>> insertClass(Model model, @RequestBody List<Map<String, Object>> vo) {
 			for(Map<String, Object> idx:vo) {
-				System.out.println(idx);
+				
+				// 수강신청 항목 넣기
+				classService.insertClass(idx);
+				
 			}
 			return vo;
 		}
@@ -72,6 +75,15 @@ public class ClassController {
 				model.addAttribute("classList",list);
 			}
 			return "/class/classProgram";
+		}
+		
+		// 수강 포기 (단건)
+		@RequestMapping(value="/deleteClass.do", method=RequestMethod.POST)
+		@ResponseBody
+		public String deleteClass(Model model, ClassStatusVO vo) {
+			System.out.println(vo.getStatusId());
+			classService.deleteClass(vo);
+			return "success";
 		}
 		
 		// 수강신청 메인화면에서  개인조회  세션 어떻게 가져옴??

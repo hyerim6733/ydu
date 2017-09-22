@@ -17,7 +17,7 @@ public interface ClassService {
 		
 		// 학생
 		// 수강신청
-		void insertClass(ClassStatusVO vo);
+		void insertClass(Map<String, Object> vo);
 		
 		// 수강 취소(삭제)
 		void deleteClass(ClassStatusVO vo);

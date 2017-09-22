@@ -12,7 +12,7 @@ import com.ydu.biz.classes.ClassListVO;
 public interface ClassMapper {
 
 				// �닔媛뺤떊泥�
-				void insertClass(ClassStatusVO vo);
+				void insertClass(Map<String, Object> vo);
 				 
 				// �닔媛� 痍⑥냼(�궘�젣)
 				void deleteClass(ClassStatusVO vo);

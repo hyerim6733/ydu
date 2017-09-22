@@ -23,16 +23,13 @@ public class ClassServiceImpl implements ClassService {
 
 
 	@Override
-	public void insertClass(ClassStatusVO vo) {
+	public void insertClass(Map<String, Object> vo) {
 		classDAO.insertClass(vo);
-		System.out.println("�떊泥� : " +vo.getStatusId());
 	}
 
 	@Override
 	public void deleteClass(ClassStatusVO vo) {
-		classDAO.deleteClass(vo);
-		System.out.println("�떊泥�痍⑥냼");
-		
+		classDAO.deleteClass(vo);		
 	}
 	
 

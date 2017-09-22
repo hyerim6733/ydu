@@ -2,12 +2,15 @@
  <header class="w3-container" style="padding-top:22px; padding-left:30px; padding-left:30px; padding-bottom:22px">
  <script>
  	$(function() {
+ 	 	var cnt=0;
+ 	 	var classList = new Array();
  		$.ajax({
             type:"POST",
             url:"./currClass.do", //link
             dataType:"json",
             success:function(data){
                 console.dir(data);
+                classList=data;
                 
                 for(i=0;i<data.length;i++) {
 					$("#tbody1").append("<tr><td>"
@@ -18,15 +21,39 @@
 							+data[i].classRoom+"</td> <td>"
 							+data[i].smallCodename+"</td> <td>"
 							+data[i].studentLimit+"</td> <td>"
-							+"<input type='button' class='btn_sub' id='"+i+"' value='수강포기'/>" + " </tr> ");
-		
-		
+							+"<input type='button' class='btn_sub' id='"+i+"' value='수강포기'/>" + " </tr> ");		
 				}
             },
             error : function(request, status, error) {
 				alert(error);
 			}
         });
+ 		
+ 		 $(document).on("click", ".btn_sub", function(){
+				var sub = new Object();
+			    var idx = this.id;
+			    
+				// classStatusVO에 저장
+				var sugang = classList[idx].statusId;
+			  
+				if(confirm("수강을 포기하시겠습니까?")) {
+			    	$.ajax({
+						url : "./deleteClass.do",
+						method : "post",
+						type : "text",
+						data : {"statusId":sugang},
+						success : function() {
+							alert("성공적으로 처리되었습니다.");
+							console.log("성공");
+						},
+						error : function(request, status, error) {
+							alert("error : "+error);
+						}
+					});
+			    } else {
+			    	console.log("수강포기안함");
+			    }
+		});
  	});
  </script>
  
