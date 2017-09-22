@@ -23,16 +23,13 @@ public class ClassServiceImpl implements ClassService {
 
 
 	@Override
-	public void insertClass(ClassStatusVO vo) {
+	public void insertClass(Map<String, Object> vo) {
 		classDAO.insertClass(vo);
-		System.out.println("�떊泥� : " +vo.getClassNo());
 	}
 
 	@Override
 	public void deleteClass(ClassStatusVO vo) {
-		classDAO.deleteClass(vo);
-		System.out.println("�떊泥�痍⑥냼");
-		
+		classDAO.deleteClass(vo);		
 	}
 	
 
@@ -70,6 +67,16 @@ public class ClassServiceImpl implements ClassService {
 	public List<Map<String, Object>> getProgramList(ClassSearchVO vo) {
 		System.out.println("수강 전체 목록 조회");
 		return classDAO.getProgramList(vo);
+	}
+
+	@Override
+	public List<Map<String, Object>> getClassList() {
+		return classDAO.getClassList();
+	}
+
+	@Override
+	public List<Map<String, Object>> getSelCurrClassesList(ClassStatusVO vo) {
+		return classDAO.getSelCurrClassesList(vo);
 	}
 
 	

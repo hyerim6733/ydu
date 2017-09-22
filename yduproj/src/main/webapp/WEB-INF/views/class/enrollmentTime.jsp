@@ -73,7 +73,7 @@ body { background: #fff; }
 			$.ajax({
 				url : "./setClass.do",
 				method : "post",
-				dataType : "json",
+				type : "json",
 				success : function(data) {
 					classList = data;
 					callback(classList);
@@ -82,7 +82,28 @@ body { background: #fff; }
 					alert("error : " + error);
 				}
 			});
-
+			
+			// tab 창에 테이블 추가..
+			function callback(data) {
+			//	$("tbody").html("");
+				
+				for(i=0;i<data.length;i++) {
+					//ID줘서 지정해주기.. 수정해야됨!
+					$("#tbody1").append("<tr><td>"
+							+ data[i].openClass+"</td> <td>"
+							+data[i].classTitle+"</td> <td>"
+							+data[i].name+"</td> <td>"
+							+data[i].classTime+"</td> <td>"
+							+data[i].classRoom+"</td> <td>"
+							+data[i].propertyNm+"("+data[i].smallCodename+")</td> <td>"
+							+data[i].studentLimit+"</td> <td>"
+				//			+"<button>수강신청</button>" + " </tr> ");
+					// 클릭이 왜 안될까?? --------------- 수정중 -----------------------
+							+"<input type='button' class='btn_sub' id='"+i+"' value='수강신청'/>" + " </tr> ");
+		
+		
+				}
+			}
 			 
 			var cnt=0;
 			 $(document).on("click", ".btn_sub", function(){
@@ -99,9 +120,9 @@ body { background: #fff; }
 								+classList[idx].propertyNm+"("+classList[idx].smallCodename+")</td> <td>"
 								+classList[idx].studentLimit+"</td> <td>"+ " </tr> ");
 					    
-						// VO - 
-						sub['classNo'] = "";
-						sub['stCode'] = "${sessionScope.userId.userid}";
+					// classStatusVO에 저장
+						sub['classCode'] = "";
+						sub['stCode'] = '${sessionScope.userId.userid}';
 						sub['openClass'] = classList[idx].openClass; //openClass써서 classNo 구해서 insert 할 것..
 						sub['repeat'] = "N";
 						sub['classGrade'] = ""; 
@@ -118,7 +139,6 @@ body { background: #fff; }
 			
 			$("#btn_complete").click(function() {
 				var p = JSON.stringify(main);
-				
 				$.ajax({
 					url : "./insertClass.do",
 					method : "post",
@@ -138,10 +158,10 @@ body { background: #fff; }
 			 
 		});
 																													
-
+																															
+		
 	 </script>
-	 <form action="getClassesList.do">
-	<table align="center" width="80%">
+	<%-- <table align="center" width="80%">
 		<tr><td width="15%">교과과정
 		<select>
 			<option>-선택하세요-</option>
@@ -178,9 +198,11 @@ body { background: #fff; }
 		</select>
 		<input type="text" name="searchKeyword"/>
 		<input type="submit" value="조회"/></td></tr>
-		</table>
 		
-	
+		</table>
+		 --%>
+	<body>
+		<h3>수강신청 하기</h3>
 		
 		<table width="80%" align="center" class="blueone">
 			<thead>
@@ -202,7 +224,7 @@ body { background: #fff; }
 		</table>
 	 
 	<br/><br/>
-	<table><tr><td>수강꾸러미</td><td><input type="button" id="btn_complete" value="신청하기"/></td></tr></table>
+	<tr><td>수강꾸러미</td><td><input type="button" id="btn_complete" value="신청하기"/></td></tr>
 	<table width="80%" align="center" class="blueone">
 		<thead>
 			<tr>
@@ -213,70 +235,11 @@ body { background: #fff; }
 				<th>강의실</th>
 				<th>분류</th>
 				<th>수강정원</th>
-				<th>수강신청</th>
 			</tr>
-			<c:forEach var="list" items="${classList}">
-				<tr>
-					<td>${list.openClass}</td>
-					<td>${list.classTitle}</td>
-					<td>${list.name }</td>
-					<td>${list.classTime}</td>
-					<td>${list.classRoom}</td>
-					<td>${list.propertyNm} ( ${list.smallCodename} )</td>
-					<td>${list.studentLimit}</td>
-					<td><input type="button" class="btn_submit" value="수강신청" onclick=callback(${list})/></td>
-				</tr>
-			</c:forEach>
+		</thead>
+		<tbody id="tbody2">
 			
-			<hr/>
-			<h3>수강신청 하기</h3>
-			<tbody id="tbody2">
-				
-			</tbody>
-	<script>
-		$("select[name='faculty']").change(function() { // 셀렉트 박스가 체인지 될때 이벤트  
-			var valX = $(this).val(); // 현재 선택된 값  
-			var url = "./getsmallList.do"; // 데이터를 호출할 URL  
-			$.ajax({
-				url : url,
-				type : "POST",
-				data : {code:valX},
-				dataType : "json",
-				success : function(data) {
-					$("select[name='faculty2']").empty()
-					$("select[name='faculty2']").append('<option> -선택하세요- </option>')
-					$.each(data, function(i, d) {
-						$("select[name='faculty2']").append('<option value="' + d.smallCode + '">' + d.smallCodename + '</option>');
-					});
-				}
-			});
-		});
-		function callback(para) {
-			console.log(para);
-			console.dir(para);
-			console.dir(this);
-			
-		}
-		
-	</script>
-	<%-- <%
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs = null;
-		try{
-			con = DBConnection.getCon();
-			String sql="select * from class_list";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while(rs.next()){
-				String classCode = rs.getString("class_code");
-				String classTitle = rs.getString("class_title");
-				String classCredit = rs.getString("class_credit");
-				String major = rs.getString("major");
-				Timestamp regdate = rs.getTimestamp("regdate");
+		</tbody>
+	</table>
 
-%> --%>
-
-
-</table>
-</form>
+</body>

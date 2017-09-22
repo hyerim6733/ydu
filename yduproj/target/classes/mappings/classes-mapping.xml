@@ -5,21 +5,21 @@
 <mapper namespace="com.ydu.biz.classes.impl.ClassMapper">
 
 
-
+<!-- 
 	<insert id="insertClass" parameterType="classStatus">
-		<selectKey keyProperty="classNo" resultType="int" order="BEFORE">
-			SELECT NVL(MAX(CLASS_NO),0) + 1 FROM CLASSES
+		<selectKey keyProperty="statusId" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(STATUS_ID),0) + 1 FROM CLASSES
 		</selectKey>
 	<![CDATA[
-		INSERT INTO CLASSS_STATUS( CLASS_NO, STUDENT_CODE, OPEN_CLASS, REPEAT, CLASS_GRADE) 
-		VALUES(#{classNo}, #{studentCode}, #{openClass}, #{repeat}, #{classGrade})
+		INSERT INTO CLASSS_STATUS( statusId, CLASS_CODE, STUDENT_CODE, OPEN_CLASS, REPEAT, CLASS_GRADE) 
+		VALUES(#{statusId}, #{studentCode}, #{classCode} #{openClass}, #{repeat}, #{classGrade})
 	]]>
 	</insert>
-	
+	 -->
 	<delete id="deleteClass" parameterType="classStatus">
 	<![CDATA[
-		DELETE CLASSES
-		WHERE CLASS_NO = #{classNo}
+		DELETE CLASS_STATUS
+		WHERE STATUS_ID = #{statusId}
 	]]>
 	</delete>
 	
@@ -41,9 +41,6 @@
 		WHERE c.class_code = n.class_code and
 				n.prof_code = p.prof_code and
 				c.major = d.small_code
-		<if test="profCode != null and profCode != ''">	
-			and n.prof_code= #{profCode}
-		</if>	
 		<if test="searchCondition == 'openClass'">
        		 AND OPEN_CLASS LIKE '%'||#{searchKeyword}||'%' 
     	</if>
@@ -116,8 +113,8 @@
 			l.open_class = #{openClass}
 	</select>
 
-	<select id="getSelStuClassesList" parameterType="classStatus" resultType="classStatus">
-		SELECT 	s.CLASS_NO as "classNo",
+	<select id="getSelStuClassesList" parameterType="student" resultType="classStatus">
+		SELECT 	s.class_Code as "classCode",
         s.ST_CODE as "stCode",
         s.OPEN_CLASS as "openClass",
         s.REPEAT as "repeat",
@@ -126,28 +123,75 @@
         l.class_title as "classTitle",
         l.property as "property"
 		FROM CLASS_STATUS s, CLASS_LIST l, new_class n
-		WHERE s.ST_CODE = #{student_code} and
+		WHERE s.ST_CODE = #{studentCode} and
 			s.open_class=n.open_class and
 			n.class_code=l.class_code		
 	</select> 
 	
 	<select id="getSelCurrClassesList" parameterType="classStatus" resultType="map">
-		SELECT 	s.CLASS_NO as "classNo",
-        s.ST_CODE as "stCode",
-        s.OPEN_CLASS as "openClass",
-        s.REPEAT as "repeat",
-        s.CLASS_GRADE as "classGrade",
-        s.CLASS_TIME as "classTime",
-        l.class_title as "classTitle",
-        l.property as "property"
-		FROM CLASS_STATUS s, CLASS_LIST l, new_class n
-		WHERE s.ST_CODE =#{student_code} and
-			s.open_class=n.open_class and
-			n.class_code=l.class_code	
-			and s.class_No = n.class_code
+				SELECT 	n.open_class as "openClass",
+		        c.class_title as "classTitle",
+		        p.name as "name",
+		        n.class_time as "classTime",
+		        n.class_room as "classRoom",
+		        d.small_codename as "smallCodename",
+		        n.student_limit as "studentLimit",
+		        property,
+		        s.status_id as "statusId",
+		        (select small_codename from code where small_code =c.property) as "propertyNm"
+		FROM 
+        CLASS_STATUS s,
+        CLASS_LIST c,
+				NEW_CLASS n,
+				PROFESSOR p,
+				CODE d
+		WHERE c.class_code = n.class_code and
+				n.prof_code = p.prof_code and
+				c.major = d.small_code and
+        s.OPEN_CLASS =n.OPEN_CLASS and
+        s.ST_CODE=#{stCode}
 	</select> 
 	
+<!-- #{result, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=test}, -->
 
-	
-
+	<parameterMap type="classStatus" id="classStatusParam">
+		<parameter property="statusId" 	mode="IN" jdbcType="VARCHAR" javaType="string"/>
+		<parameter property="classCode" mode="IN" jdbcType="VARCHAR" javaType="string"/>
+		<parameter property="stCode"	mode="IN" jdbcType="VARCHAR" javaType="string"/>
+		<parameter property="openClass" mode="IN" jdbcType="VARCHAR" javaType="string"/>
+		<parameter property="repeat" 	mode="IN" jdbcType="VARCHAR" javaType="string"/>
+		<parameter property="classGrade" mode="IN" jdbcType="VARCHAR" javaType="string"/>
+		<parameter property="classTime" mode="IN" jdbcType="VARCHAR" javaType="string"/>
+	</parameterMap>
+    <insert id="insertClass" statementType="CALLABLE" parameterMap="classStatusParam">
+		{
+            CALL Insert_Test(?,?,?,?,?,?,?)
+        }
+    </insert>
+    
+	<!-- 
+	CREATE OR REPLACE PROCEDURE Insert_Test
+	        ( v_STATUS_ID  IN CLASS_STATUS.STATUS_ID%TYPE,
+	          v_CLASS_CODE  IN CLASS_STATUS.CLASS_CODE%TYPE,
+	          v_ST_CODE IN CLASS_STATUS.ST_CODE%TYPE, 
+	          v_OPEN_CLASS  IN CLASS_STATUS.OPEN_CLASS%TYPE,
+	          v_REPEAT IN CLASS_STATUS.REPEAT%TYPE, 
+	          v_CLASS_GRADE  IN CLASS_STATUS.CLASS_GRADE%TYPE,
+	          v_CLASS_TIME IN CLASS_STATUS.CLASS_TIME%TYPE )
+	IS
+	BEGIN
+	         DBMS_OUTPUT.ENABLE;
+	         INSERT INTO CLASS_STATUS(STATUS_ID, CLASS_CODE, ST_CODE, OPEN_CLASS, REPEAT, CLASS_GRADE, CLASS_TIME) 
+	         VALUES( (SELECT (NVL(MAX(STATUS_ID),0) + 1) FROM class_status), v_CLASS_CODE, v_ST_CODE, v_OPEN_CLASS, v_REPEAT, v_CLASS_GRADE, v_CLASS_TIME);
+	COMMIT;
+	          DBMS_OUTPUT.PUT_LINE( '번호 : ' || v_STATUS_ID );
+	          DBMS_OUTPUT.PUT_LINE( '코드: ' || v_CLASS_CODE );
+	          DBMS_OUTPUT.PUT_LINE( '학번 : ' || v_ST_CODE );
+	          DBMS_OUTPUT.PUT_LINE( '열리는 반 : ' || v_OPEN_CLASS );
+	          DBMS_OUTPUT.PUT_LINE( '재수강여부 : ' || v_REPEAT );
+	          DBMS_OUTPUT.PUT_LINE( '학점 : ' || v_CLASS_GRADE );
+	          DBMS_OUTPUT.PUT_LINE( '수강시간 : ' || v_CLASS_TIME );
+	          DBMS_OUTPUT.PUT_LINE( '데이터 입력 성공 ' );
+	END;
+	 -->
 </mapper>

@@ -41,7 +41,17 @@
 		<![endif]-->
 <script>
 	$(function() {
-		$("#signIn").click(function(event) {
+		 $("#username").focus();
+		
+		 $("#password").keypress(function (e) {
+		        if (e.which == 13){
+		        	mainLogin(e); // 실행할 이벤트
+		        }
+		    });
+		 
+		$("#signIn").click(mainLogin);
+				
+		function mainLogin(event) {
 			event.preventDefault();
 			var userId = $("#username").val();
 			var userPw = $("#password").val();
@@ -70,7 +80,7 @@
 					alert(error);
 				}
 			});
-		});
+		}
 	});
 </script>
 </head>

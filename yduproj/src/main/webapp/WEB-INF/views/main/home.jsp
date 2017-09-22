@@ -246,7 +246,7 @@ $(document).ready(function() {
 			// table에 값 보여주기
 			console.log(data);
 			// 링크걸기.
-			for(i=0;i<data.length;i++) {
+			for(i=0;i<5;i++) {
 				$("tbody").append("<tr><td>"+ data[i].boardNo+"</td> <td><a href='../main/index#../detailNotice.do?boardNo="+data[i].boardNo+"'>"+data[i].title+"</a></td> <td>"+data[i].writeDate+"</td> <td>"+data[i].writer+"</td> </tr> ");
 			}
 		},

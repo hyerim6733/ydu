@@ -3,8 +3,8 @@ package com.ydu.biz.classes;
 public class ClassSearchVO {
 	
 	
-	//교수정보
 	private String profCode;
+	
 	
 	public String getProfCode() {
 		return profCode;

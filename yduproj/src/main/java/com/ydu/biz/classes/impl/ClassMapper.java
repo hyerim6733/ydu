@@ -12,7 +12,7 @@ import com.ydu.biz.classes.ClassListVO;
 public interface ClassMapper {
 
 				// �닔媛뺤떊泥�
-				void insertClass(ClassStatusVO vo);
+				void insertClass(Map<String, Object> vo);
 				 
 				// �닔媛� 痍⑥냼(�궘�젣)
 				void deleteClass(ClassStatusVO vo);
@@ -26,8 +26,13 @@ public interface ClassMapper {
 
 				List<Map<String, Object>> getsmallList(String code);
 				
+				// 수강 신청 목록 가져오기 (민학)
+				List<Map<String, Object>> getClassList();
+				
 				List<ClassStatusVO> getSelStuClassesList(StudentVO vo);
 
 				//강의 계획서 조회
 				List<Map<String, Object>> getProgramList(ClassSearchVO vo);
+				
+				List<Map<String, Object>> getSelCurrClassesList(ClassStatusVO vo);
 }

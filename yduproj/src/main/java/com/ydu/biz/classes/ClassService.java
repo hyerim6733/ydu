@@ -17,7 +17,7 @@ public interface ClassService {
 		
 		// 학생
 		// 수강신청
-		void insertClass(ClassStatusVO vo);
+		void insertClass(Map<String, Object> vo);
 		
 		// 수강 취소(삭제)
 		void deleteClass(ClassStatusVO vo);
@@ -37,10 +37,14 @@ public interface ClassService {
 		List<Map<String, Object>> getsmallList(String code);
 		
 
-
 		
 		List<ClassStatusVO> getSelStuClassesList(StudentVO vo);
 
 		//List<Map<String, Object>> getClassesList(ClassSearchVO vo);
+		
+		List<Map<String, Object>> getSelCurrClassesList(ClassStatusVO vo);
+		
+		// 수강 신청 목록 가져오기 (민학)
+		List<Map<String, Object>> getClassList();
 		
 }
