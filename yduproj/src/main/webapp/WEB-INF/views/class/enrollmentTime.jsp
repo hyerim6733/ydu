@@ -147,6 +147,7 @@ body { background: #fff; }
 					data : p,
 					success : function() {
 						console.log("성공");
+						alert("수강신청 되었습니다.");
 						main = new Array();
 					},
 					error : function(request, status, error) {
