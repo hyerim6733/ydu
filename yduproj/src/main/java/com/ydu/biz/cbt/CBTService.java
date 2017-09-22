@@ -31,11 +31,11 @@ public interface CBTService {
 	 * 2.학생 : 개인 점수만 조회가능
 	 *
 	 */
-	//1. 교수
+	//1. 교수:jung
 	List<CBTResultVO> getAllGrades(String prof_code);
 	
-	//2. 학생
-	List<CBTResultVO> getMyGrade(String stu_code);
+	//2. 학생:jung
+	List<Map<String, Object>> getMyGrade(CBTResultVO cbtResultvo);
 	
 	
 	
@@ -52,6 +52,8 @@ public interface CBTService {
 	void insertTestList(CBTListVO vo);//등록
 	
 	
+	
+	void insertMark(CBTResultVO vo); //채점 점수 등록
 	
 	
 	//2. 학생

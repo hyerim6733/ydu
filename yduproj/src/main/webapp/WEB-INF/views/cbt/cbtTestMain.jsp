@@ -24,8 +24,7 @@ th {
     color: white;
 }
 </style>
-<script>
-</script>
+
 </head>
 <body>
  

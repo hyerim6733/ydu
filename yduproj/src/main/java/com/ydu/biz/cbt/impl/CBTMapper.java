@@ -17,7 +17,7 @@ public interface CBTMapper {
 
 	List<CBTResultVO> getAllGrades(String prof_code);
 
-	List<CBTResultVO> getMyGrade(String stu_code);
+
 
 	
 
@@ -28,8 +28,10 @@ public interface CBTMapper {
 	
 	
 	
+	void insertMark(CBTResultVO vo); //채점 점수 등록
+	List<Map<String, Object>> getMyGrade(CBTResultVO cbtResultvo); //시험결과조회
 	
-
+	
 	CBTListVO getCBT(CBTListVO vo);
 	//[교수:시험지 등록,수정,상세,삭제]Jung
 	void insertTestList(CBTListVO vo); //등록

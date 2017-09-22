@@ -23,6 +23,7 @@ th {
 	color: white;
 }
 </style>
+
 <form action="goTestPage.do" method="post">
 	<div align="center">
 		<br> <b>시험</b> <br />
@@ -32,6 +33,7 @@ th {
 
 		<table>
 			<tr>
+				<th>번호</th>
 				<th align="center">문제</th>
 				<th>1</th>
 				<th>2</th>
@@ -41,6 +43,7 @@ th {
 			</tr>
 			
 				<tr>
+						<td></td>
 						<td>${list.question }</td>
 						<td><input type="radio" name="rightAnswer"
 							value="1"> ${list.ex1 }</td>
@@ -61,6 +64,20 @@ th {
 		<input type="hidden" name="cbtCode" value="${list.cbtCode }">
 		<input type="hidden" name="cnt" value=${cnt }>
 		<input type="hidden" name="examId" value="${list.examId }">
+		<c:if test="${cnt<size }">
 		<button class="btn">다음</button>
+		</c:if>
+		
+		<c:if test="${cnt == size}">
+
+		<button onclick="examExit()">시험 종료</button>
+		</c:if>
+		<script>
+		function examExit(){
+			alert("시험이 종료 되었습니다.");
+		}
+		</script>
+		
+	
 	</div>
 </form>
