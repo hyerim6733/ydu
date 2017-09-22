@@ -64,12 +64,10 @@ public class CBTServiceImpl implements CBTService {
 		return null;
 	}
 
-	@Override
-	public List<CBTResultVO> getMyGrade(String vo) {
-		// TODO Auto-generated method stub
-		return null;
+	@Override //[학생:결과 조회]Jung
+	public List<Map<String, Object>> getMyGrade(CBTResultVO cbtResultvo) {
+		return cbtDAO.getMyGrade(cbtResultvo);
 	}
-	
 	//[교수:시험지 등록,수정,상세,삭제]Jung
 	@Override
 	public void insertTestList(CBTListVO vo) {
@@ -99,6 +97,12 @@ public class CBTServiceImpl implements CBTService {
 	@Override
 	public CBTExampackVO getMarkTest(CBTExampackVO vo) {
 		return cbtDAO.getMarkTest(vo);
+	}
+
+	@Override
+	public void insertMark(CBTResultVO vo) {
+		cbtDAO.insertMark(vo);
+		
 	}
 
 	

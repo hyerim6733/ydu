@@ -5,3 +5,7 @@
 
 <div style="font-size:35px;">학생들 점수가 출력되는 페이지</div>
 
+과목명 ${Result[0].classTitle} <br>
+시험명 ${Result[0].cbtTitle} <br>
+점수 ${Result[0].score} <br>
+점수 ${Result[0].testDate} <br>
