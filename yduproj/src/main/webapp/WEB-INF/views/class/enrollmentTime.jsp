@@ -37,6 +37,8 @@ body { background: #fff; }
 		var insertList = new Array();
 		var main = new Array();
 		var dupChk =  Array.apply(null, new Array(100)).map(Number.prototype.valueOf,0);
+		var cnt=0;
+	    var cancelCnt=0;
 		
 		$(document).ready(function() {
 
@@ -95,65 +97,107 @@ body { background: #fff; }
 							+data[i].name+"</td> <td>"
 							+data[i].classTime+"</td> <td>"
 							+data[i].classRoom+"</td> <td>"
-							+data[i].propertyNm+"("+data[i].smallCodename+")</td> <td>"
+							+data[i].PROPERTY+"("+data[i].smallCodename+")</td> <td>"
 							+data[i].studentLimit+"</td> <td>"
 				//			+"<button>수강신청</button>" + " </tr> ");
 					// 클릭이 왜 안될까?? --------------- 수정중 -----------------------
 							+"<input type='button' class='btn_sub' id='"+i+"' value='수강신청'/>" + " </tr> ");
+					console.dir(data[i]);
 		
 		
 				}
 			}
 			 
-			var cnt=0;
-			 $(document).on("click", ".btn_sub", function(){
+			
+			$(document).on("click", ".btn_cancel", function(){
+				var idx = this.id;
+				var trID = "tr"+idx;
+				console.log(idx);
+				console.log(trID);
+			//	dupChk[idx]=0;
+				$("#"+trID).remove();
+				console.log("idx-1 : "+idx-1);
+				dupChk[main[idx-1].check]=0;  
+				main[idx-1]="";
+				console.dir(main); 
+				console.log(dupChk); 
+			});
+			 $(document).on("click", ".btn_sub", function(){ 
 					var sub = new Object();
 				    var idx = this.id;
+
+				    cancelCnt++;
 				    if(dupChk[idx]==0) { 
 					    dupChk[idx]=1;
-					    $("#tbody2").append("<tr><td>"
+					    $("#tbody2").append("<tr id='tr"+cancelCnt+"'><td>"
 								+ classList[idx].openClass+"</td> <td>"
 								+classList[idx].classTitle+"</td> <td>"
 								+classList[idx].name+"</td> <td>"
 								+classList[idx].classTime+"</td> <td>"
 								+classList[idx].classRoom+"</td> <td>" 
-								+classList[idx].propertyNm+"("+classList[idx].smallCodename+")</td> <td>"
-								+classList[idx].studentLimit+"</td> <td>"+ " </tr> ");
+								+classList[idx].PROPERTY+"("+classList[idx].smallCodename+")</td> <td>"
+								+classList[idx].studentLimit+"</td> <td>"
+								+"<input type='button' class='btn_cancel' id='"+cancelCnt+"' value='신청취소'/>"
+								
+								+ "</tr> ");
 					    
 					// classStatusVO에 저장
 						sub['classCode'] = "";
-						sub['stCode'] = '${sessionScope.userId.userid}';
+						sub['stCode'] = '${sessionScope.stuInfo.studentCode}';
 						sub['openClass'] = classList[idx].openClass; //openClass써서 classNo 구해서 insert 할 것..
 						sub['repeat'] = "N";
 						sub['classGrade'] = ""; 
 						sub['classTime'] = classList[idx].classTime; 
 						sub['classTitle'] = classList[idx].classTitle;
 						sub['property'] = classList[idx].smallCodename;
+						sub['check'] = idx;
 						
 						main[cnt++] = sub;
 						console.dir(main);
+						console.log(dupChk); 
 				    } else{
 				    	alert("이미 꾸러미에 추가했습니다.");
 				    }
 			});
 			
-			$("#btn_complete").click(function() {
-				var p = JSON.stringify(main);
-				$.ajax({
-					url : "./insertClass.do",
-					method : "post",
-					type : "json",
-					contentType: "application/json",
-					data : p,
-					success : function() {
-						console.log("성공");
-						alert("수강신청 되었습니다.");
-						main = new Array();
-					},
-					error : function(request, status, error) {
-						alert("error : "+error);
+			$("#btn_complete").click(function() { 
+				for(i=0;i<cnt;i++) {  
+					if(main[i]=="") {
+						console.log(i); 
+						main.splice(i, 1);  
+						console.dir(main); 
+						i=0;
+					} else if(main[0]=="") {
+						main.splice(0,1);
 					}
-				});
+				}  
+				
+				if(main.length==0) { alert("최소한 1개 이상의 과목을 선택해주세요."); }
+				else {
+					var p = JSON.stringify(main); 
+					  
+					$.ajax({
+						url : "./insertClass.do",
+						method : "post",
+						type : "json",
+						contentType: "application/json", 
+						data : p,
+						success : function(data) {
+							console.log("호출 성공");
+							if(data=="success") {
+								alert("수강신청 되었습니다.");
+								main = new Array(); 
+								location.reload(); 
+							}
+							else if(data=="duplication") {
+								alert("중복값이 있습니다.\n확인 후 다시 시도해주세요");
+							} 
+						}, 
+						error : function(request, status, error) {
+							alert("error : "+error);
+						}
+					}); 
+				}
 			});
 			 
 			 
@@ -236,6 +280,7 @@ body { background: #fff; }
 				<th>강의실</th>
 				<th>분류</th>
 				<th>수강정원</th>
+				<th>신청취소</th>
 			</tr>
 		</thead>
 		<tbody id="tbody2">

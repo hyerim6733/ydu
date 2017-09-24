@@ -114,7 +114,7 @@
 	</select>
 
 	<select id="getSelStuClassesList" parameterType="student" resultType="classStatus">
-		SELECT 	s.class_Code as "classCode",
+		SELECT 	s.STATUS_ID as "statusId",
         s.ST_CODE as "stCode",
         s.OPEN_CLASS as "openClass",
         s.REPEAT as "repeat",
@@ -155,7 +155,6 @@
 <!-- #{result, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=test}, -->
 
 	<parameterMap type="classStatus" id="classStatusParam">
-		<parameter property="statusId" 	mode="IN" jdbcType="VARCHAR" javaType="string"/>
 		<parameter property="classCode" mode="IN" jdbcType="VARCHAR" javaType="string"/>
 		<parameter property="stCode"	mode="IN" jdbcType="VARCHAR" javaType="string"/>
 		<parameter property="openClass" mode="IN" jdbcType="VARCHAR" javaType="string"/>
@@ -164,9 +163,8 @@
 		<parameter property="classTime" mode="IN" jdbcType="VARCHAR" javaType="string"/>
 	</parameterMap>
     <insert id="insertClass" statementType="CALLABLE" parameterMap="classStatusParam">
-		{
-            CALL Insert_Test(?,?,?,?,?,?,?)
-        }
+		 INSERT INTO CLASS_STATUS(STATUS_ID, ST_CODE, OPEN_CLASS, REPEAT, CLASS_GRADE, CLASS_TIME) 
+	     VALUES( (SELECT (NVL(MAX(STATUS_ID),0) + 1) FROM class_status), #{stCode}, #{openClass}, #{repeat}, #{classGrade}, #{classTime})
     </insert>
     
 	<!-- 

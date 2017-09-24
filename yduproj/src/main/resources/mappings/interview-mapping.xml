@@ -9,9 +9,9 @@
 	<insert id="insertInterview" parameterType="interStatus">
 	<![CDATA[
 	
-		INSERT INTO INTER_STATUS (STATUS_ID, TITLE, INTERDATE, PROPERTY,  SEQ)
+		INSERT INTO INTER_STATUS (STATUS_ID, TITLE, INTERDATE, PROPERTY,  SEQ, ST_CODE)
 		VALUES ((SELECT NVL(MAX(status_id),0) + 1 AS "STATUS_ID" FROM INTER_STATUS),
-				 #{title}, #{newDate}, #{title}, #{seq})
+				 #{title}, #{newDate}, #{title}, #{seq}, #{st_code})
 		
 	]]>
 	</insert>
@@ -54,6 +54,7 @@
 				 ST_CODE as "st_code",
 				 SEQ as "seq"
 		FROM inter_status
+		ORDER BY INTERDATE, SEQ
 	</select>
 
 	<insert id="insertInter" parameterType="interStatus">

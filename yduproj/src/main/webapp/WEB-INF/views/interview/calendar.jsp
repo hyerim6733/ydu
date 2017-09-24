@@ -85,11 +85,7 @@
 				});
 			},
 			dayClick: function(date, jsEvent, view, event) {
-
 		        alert('선택 날짜 : ' + date.format());
-		        // change the day's background color just for fun
-		        $(this).css('background-color', 'red');
-
 		    },
 		    eventClick: function(calEvent, jsEvent, view) {
 
@@ -104,36 +100,36 @@
 		    	
 		        if (!confirm("일정을 수정하시겠습니까?")) {
 		        	revertFunc();
-		        }
+		        } 
+		        else{
+		        	var person = prompt("상담시간은? (1~5) ", "1");
+		            if (person == null) {
+		                alert("상담시간 미입력");
+		            }else {
+		            	console.log("person : "+person);
+		            }
+					selAction = "update";
+					
 		        
-	        	var person = prompt("상담시간은? (1~5) ", "1");
-	            if (person == null) {
-	                alert("상담시간 미입력");
-	            }else {
-	            	console.log("person : "+person);
-	            }
-				selAction = "update";
-				
-	        
-	        	sub = new Object();     // 객체 값 입력후 main배열의 0번 index에 셋팅
-						
-				sub['title'] = event.title;
-				sub['statusId'] = statusID;
-				sub['interDate'] = selDate;
-				sub['property'] = "";
-				sub['interId'] = ""; // 추가해야되는 일정은 statusID가 없음
-				sub['st_code'] = ""; //user세션 추가
-				sub['seq'] = person;
-				sub['newDate'] = event.start.format();
-				sub['action'] = selAction;
-				
-				main[cnt] = sub;
-
-				console.log("action : "+sub.action +"\n newDate : "+sub.newDate+"\n interDate : "+sub.interDate +"\n title : "+sub.title + "\n seq : "+sub.seq);
-				console.log("main action : "+main[cnt].action);
-				console.log("main : "+main[cnt]);
-				cnt+=1;
-			
+		        	sub = new Object();     // 객체 값 입력후 main배열의 0번 index에 셋팅
+							
+					sub['title'] = event.title;
+					sub['statusId'] = statusID;
+					sub['interDate'] = selDate;
+					sub['property'] = "";
+					sub['interId'] = ""; // 추가해야되는 일정은 statusID가 없음
+					sub['st_code'] = ""; //user세션 추가
+					sub['seq'] = person;
+					sub['newDate'] = event.start.format();
+					sub['action'] = selAction;
+					
+					main[cnt] = sub;
+	
+					console.log("action : "+sub.action +"\n newDate : "+sub.newDate+"\n interDate : "+sub.interDate +"\n title : "+sub.title + "\n seq : "+sub.seq);
+					console.log("main action : "+main[cnt].action);
+					console.log("main : "+main[cnt]);
+					cnt+=1;
+		        }
 		    },
 		    eventDragStart:function(event, jsEvent, ui, view ) {
 		    	selDate = event.start.format(); 
@@ -191,7 +187,7 @@
 				sub['interDate'] = "";
 				sub['property'] = "";
 				sub['interId'] = ""; // 추가해야되는 일정은 statusID가 없음
-				sub['st_code'] = ""; //user세션 추가
+				sub['st_code'] = '${sessionScope.stuInfo.studentCode}'; //user세션 추가
 				sub['seq'] = person;
 				sub['newDate'] = date.format();
 				sub['action'] = selAction;
@@ -201,7 +197,6 @@
 
 		// 수정 버튼
 		$("#btn_modify").click(function() {
-			var selectAction = $(":input:radio:checked").val();
 			jsonObject = {list:main};
 			var p = JSON.stringify(main);
 			
@@ -329,11 +324,7 @@
 			<div class='fc-event'>면접클리닉</div>
 			<div class='fc-event'>취업상담</div>
 			<div class='fc-event'>진로상담</div>
-				<input type="radio" name="gender" value="insert" checked> 추가<br/>
-	  			<input type="radio" name="gender" value="delete"> 삭제<br/>
-	 			<input type="radio" name="gender" value="modify"> 변경 <br/>
 	 			<input type="button" name="submit" id="btn_modify" value="수정">
-	 			<input type="button" name="submit" id="btn_submit" value="확인">
 	 			<div id="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 	 			<br/><p id="demo">d</p>
 		</div>

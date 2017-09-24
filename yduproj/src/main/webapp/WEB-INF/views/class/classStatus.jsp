@@ -91,7 +91,7 @@ pageEncoding="UTF-8" %>
 						warning
 						danger
 				-->
-				<table class="table table-striped table-bordered table-hover table-heading no-border-bottom" id="table1">
+				<table class="table table-striped table-bordered table-heading no-border-bottom" id="table1"> 
 					<thead>
 						<tr>
 							<th>월</th>
@@ -198,9 +198,9 @@ pageEncoding="UTF-8" %>
 		    				idx = $("th:contains("+data[i].week+")").index();
 		    			} );
 	                	 */
-	                	 proerty = data[i].property;
+	                	 property = data[i].property;
 
-	                	 switch (proerty) {
+	                	 switch (property) {
 	                	   case '전공선택'  	: backColor="success"; break;
 	                	   case '균형교양' 	: backColor="info"; break;
 	                	   case '일반교양'  	: backColor="warning"; break;

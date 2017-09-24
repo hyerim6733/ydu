@@ -51,14 +51,160 @@ public class ClassController {
 		//수강신청 insert
 		@RequestMapping(value="/insertClass.do")
 		@ResponseBody
-		public List<Map<String, Object>> insertClass(Model model, @RequestBody List<Map<String, Object>> vo) {
-			for(Map<String, Object> idx:vo) {
+		public String insertClass(Model model, @RequestBody List<Map<String, Object>> vo, HttpSession session) {
+			String errMsg = null;
+			
+			StudentVO stuInfo = (StudentVO)session.getAttribute("stuInfo");
+			System.out.println("=============stdInfo========================"+stuInfo);
+			StudentVO stuVO = new StudentVO();
+			stuVO.setStudentCode(stuInfo.getStudentCode());
+			
+			// 수강신청한 목록 가지고 오기
+			List<ClassStatusVO> myList = classService.getSelStuClassesList(stuVO);
+			List<ClassTimeTransVO> timeList = new ArrayList<ClassTimeTransVO>();
+			List<ClassTimeTransVO> timeList2 = new ArrayList<ClassTimeTransVO>();
+						
+			for(ClassStatusVO currList : myList) {
+				//list.get(cnt++).getClassTime();
 				
-				// 수강신청 항목 넣기
-				classService.insertClass(idx);
 				
+			//	String temp1 = "월:3~4/수:1~3";
+				String temp1 = currList.getClassTime();
+				String subName = currList.getClassTitle();
+				String subProperty = currList.getProperty();
+				String[] temp2 = temp1.split("/");
+				String[] str_main = null;
+				String[] str_main2 = null;
+				ArrayList<String> strList = new ArrayList<String>();
+				
+				
+				// classTime parsing
+				for(String idx:temp2)
+				{
+					str_main = idx.split(":");
+					System.out.println("str_main1");
+					
+					for(String idx2:str_main) {
+						str_main2 = idx2.split("~");
+						
+						for(String idx3:str_main2) {
+							strList.add(idx3);
+							System.out.println(idx3);
+						}
+					}
+					strList.add(subName);
+					strList.add(subProperty);
+				}
+			
+				//////////////////////////////////////////////////////
+				// vo save
+				for(int i=0;i<strList.size();i+=5) {
+					ClassTimeTransVO ex = new ClassTimeTransVO();
+					ex.setWeek(strList.get(i));
+					ex.setStart(strList.get(i+1));
+					ex.setEnd(strList.get(i+2));
+					ex.setTitle(strList.get(i+3));
+					ex.setProperty(strList.get(i+4));
+					//ex.setTitle(strList.get(cnt++));
+					timeList.add(ex);
+				}	
 			}
-			return vo;
+
+			/////////////////////위쪽이 원래 수강신청 목록/////////////////////////////////////////////
+			
+			/////////////////////아래쪽이 수강신청하는 목록/////////////////////////////////////////////
+		
+		
+			// List<Map<String, Object>> 값을 받아옴   ---> vo
+			// vo의 값하나 당 for문 한 사이클 다 돌기
+			for(Map<String, Object> voIdx:vo) {
+				String temp1 = (String) voIdx.get("classTime");
+				String subName = (String) voIdx.get("classTitle");
+				String subProperty = (String) voIdx.get("property"); 
+				String[] temp2 = temp1.split("/");
+				String[] str_main = null;
+				String[] str_main2 = null;
+				ArrayList<String> strList2 = new ArrayList<String>();
+				
+				temp1 = (String) voIdx.get("classTime");
+				// 1. 파싱
+				// classTime parsing
+				for(String idx:temp2)
+				{
+					str_main = idx.split(":");
+					System.out.println("str_main2");
+					
+					for(String idx2:str_main) {
+						str_main2 = idx2.split("~");
+						
+						for(String idx3:str_main2) {
+							strList2.add(idx3);
+							System.out.println(idx3);
+						}
+					}
+					strList2.add(subName);
+					strList2.add(subProperty);
+				}
+				// 2. vo에 값 넣고. for문으로 들어가면 체크할수 있음
+				//////////////////////////////////////////////////////
+				// vo save
+				for(int i=0;i<strList2.size();i+=5) {
+					ClassTimeTransVO ex = new ClassTimeTransVO();
+					ex.setWeek(strList2.get(i));
+					ex.setStart(strList2.get(i+1));
+					ex.setEnd(strList2.get(i+2));
+					ex.setTitle(strList2.get(i+3));
+					ex.setProperty(strList2.get(i+4));
+					//ex.setTitle(strList.get(cnt++));
+					timeList2.add(ex);
+				}
+			}
+		
+			// 비교할 변수 선언
+			Integer currStart, currEnd, wasStart, wasEnd;
+			String currWeek, wasWeek;
+			
+			for(ClassTimeTransVO timeIdx1 : timeList2) {	// 수강신청한 목록
+				currStart = Integer.valueOf(timeIdx1.getStart());
+				currEnd = Integer.valueOf(timeIdx1.getEnd());
+				currWeek = timeIdx1.getWeek();
+				
+				// timList = vo(TransVO)
+				for(ClassTimeTransVO timeIdx2 : timeList) {	// 수강신청 되어있는 목록
+					int s = currStart, e = currEnd;
+					String weekk= currWeek;
+		
+					wasStart = Integer.valueOf(timeIdx2.getStart());
+					wasEnd = Integer.valueOf(timeIdx2.getEnd());
+					wasWeek = timeIdx2.getWeek();
+					
+					System.out.println("======================IF 들어가기전 MSG 삽입 전==============");
+					System.out.println("Currweek : " + currWeek);
+					System.out.println("s : "+s);
+					System.out.println("e : "+e);
+					System.out.println("----------------");
+					System.out.println(wasWeek);
+					System.out.println("wasStart : "+wasStart);
+					System.out.println("wasEnd : "+wasEnd);
+					if(wasWeek.equals(weekk)) {
+						if((s>=wasStart && s<=wasEnd) || (e>=wasStart && e<=wasEnd)) {
+							errMsg = "duplication";
+						}
+					}
+				}
+			}
+		
+			///////////////////////////insert는 정상적으로 되지만 위에서 예외처리중 9.25 ///////////////////////////
+			if(errMsg != null){
+				return errMsg;
+			}
+			else{
+				// 수강신청 항목 넣기
+				for(Map<String, Object> idx:vo) {
+					classService.insertClass(idx);
+				}
+				return "success";
+			}	
 		}
 		
 		
@@ -94,8 +240,8 @@ public class ClassController {
 			StudentVO stuInfo = (StudentVO)session.getAttribute("stuInfo");
 			System.out.println("=============stdInfo========================"+stuInfo);
 			ClassStatusVO cs = new ClassStatusVO();
-//이거 에러남	cs.setStCode(stuInfo.getStudentCode());
-			cs.setStCode("5049452");
+			cs.setStCode(stuInfo.getStudentCode());
+//			cs.setStCode("5049452");
 			List<Map<String, Object>> list =  classService.getSelCurrClassesList(cs);
 			for(Map<String, Object> idx:list) {
 				System.out.println("idx : "+idx);
@@ -184,7 +330,7 @@ public class ClassController {
 			int cnt = 0;
 			System.out.println(list);
 			
-			////////////////////////////////09.14수정중///////////////////////////////////
+			
 			for(ClassStatusVO currList : list) {
 				//list.get(cnt++).getClassTime();
 				

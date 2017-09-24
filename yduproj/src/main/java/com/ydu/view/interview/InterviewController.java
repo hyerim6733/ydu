@@ -47,7 +47,7 @@ public class InterviewController {
 	public void modifiedCalendar(Model model, @RequestBody List<InterStatusVO> list) {
 		// @RequestBody <Map<String, InterStatusVO> vo 이형식으로 받을수 있는 방법은?
 		
-
+		
 		for(InterStatusVO idx: list) {
 			if(idx.getAction().equals("insert")) {
 				// insert
