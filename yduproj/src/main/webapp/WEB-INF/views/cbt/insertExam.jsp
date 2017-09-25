@@ -16,19 +16,17 @@
   float: right;
   width: 50%;
 }
+
 </style>
-<script>
-	$(function() {
-		$("#btn_complete").click(function() {
-			location.href="./cbt/cbtList"; 
-		});
-	});
-</script>
+ 
+ 
+ 
 <div class="left-box" >
-<div style="font-size:35px;">교수님 등록한 문제 보여주는 페이지 </div>
-<form action="" >
-	강의명:${cbtList.openClass}  시험코드: ${cbtList.cbtCode } <br/>
-	<table width="80%" align="center" class="blueone">
+<div style="font-size:35px;">교수님 등록하신 문제를 확인해 주십시요. </div>
+<form action="" method="post">
+	<%-- 강의명:${cbtList.classTitle} --%>  <br/>
+	시험코드: ${cBTExampackVO.cbtCode} <br/>
+<table width="80%" align="center" class="blueone">
 	<tr>
 	<th>번호:</th>
 	<th>문제:</th>
@@ -52,14 +50,14 @@
 	<td>${examPack.rightAnswer }</td>
 	<td>${examPack.mark }</td>	
 	</tr>
+	</c:forEach>
+</table>
+	 배점 합: ${sumMark }<br>
 
-</c:forEach>
-	</table>
-	배점 합: ${sumMark }
+
 </form>
 </div>
 
- 
 <div class='right-box' >
 <div style="font-size:35px;">교수님 문제 출제하는 페이지</div>
 
@@ -75,10 +73,18 @@
 	보기3 <input size="20" type="text" name="ex3" value="${cbtExampack.ex3}"><br/>
 	보기4 <input size="20" type="text" name="ex4" value="${cbtExampack.ex4}"><br/>
 	배점  <input size="20" type="text" name="mark" value="${cbtExampack.mark}"><br/>
-	<input type="submit" value="저장">
-	<input type="button" value="출제완료" id="btn_complete"/>
-	
+	<input type="submit" value="저장"> 
 </form>
 
+<a href="#proSelectCBT.do"><button onclick="quesExit()">출제 완료</button></a>
+		<script>
+		function quesExit(){
+			location.reload();
+			alert("출제가 완료되었습니다.");
+		}
+			
+		</script>
+		
 </div>
+
 

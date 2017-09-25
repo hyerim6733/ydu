@@ -50,12 +50,14 @@ th {
 	<td>
 	<a href="#submitExamForm.do?cbtCode=${list.cbtCode}" onclick="page_reload()"><input type="button" value="문제 등록" ></a></td>
 	</c:if>
-	<c:if test="${userId.separation == 'stu'}">
+<c:if test="${userId.separation == 'stu'}">
 	<td>
-	<c:if test="${list.score == 'y'}">응시불가능</c:if>
+	<c:if test="${list.score == 'y'}">
+	<a href="#resultExam.do?cbtCode=${list.cbtCode}" onclick="page_reload()">응시불가능</a>
+	</c:if>
 	<c:if test="${list.score == 'n'}">응시가능</c:if>
 	</td>
-	</c:if>
+</c:if>
 </tr>
 </c:forEach>
 

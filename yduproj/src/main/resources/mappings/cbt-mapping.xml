@@ -104,6 +104,27 @@
 		SELECT CBT_CODE, OPEN_CLASS, CBT_TITLE, FINAL_DATE, NOTE
 		FROM CBT_LIST
 	</select>
+	
+	
+	
+	<!-- 학생 : 응시한 전체 시험  조회가능: =======================================================jung -->
+	<select id="getAllMyGrade" resultType="map">
+			SELECT r.CBT_CODE as "cbtCode", 
+				r.ST_CODE as "cbtTitle", 
+				to_char(r.SCORE)  as "score", 
+				r.TEST_DATE as "testDate",
+				c.CBT_TITLE as "cbtTitle",  
+				l.CLASS_TITLE as "classTitle"
+		FROM CBT_RESULT r,
+			CBT_LIST c , 
+			CLASS_LIST l, 
+			NEW_CLASS n 
+		WHERE	l.class_code = n.class_code
+			AND n.open_class = c.open_class
+			AND c.cbt_code = r.cbt_code	
+		AND r.ST_CODE  = #{stCode} 
+	</select>
+	
 	<!-- 학생 : 개인 점수만 조회가능: jung -->
 	<select id="getMyGrade" resultType="map">
 			SELECT r.CBT_CODE as "cbtCode", 
