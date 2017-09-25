@@ -73,6 +73,9 @@ public class MainController {
 	//濡쒓렇�븘�썐
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session) {
+		session.removeAttribute("userId");
+		session.removeAttribute("stuInfo");
+		session.removeAttribute("proInfo");
 		session.invalidate(); //�꽭�뀡 臾댄슚�솕
 		System.out.println("logout call!");
 		return "redirect:/main/index"; //硫붿씤�솃

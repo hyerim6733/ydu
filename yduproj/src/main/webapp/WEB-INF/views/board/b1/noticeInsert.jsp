@@ -29,8 +29,8 @@
 
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
-				alert(errorThrown);
-			},
+				alert("카테고리를 선택해주세요."); 
+			}, 
 			dataType: "html",
 			async: false
 		});  

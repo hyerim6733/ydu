@@ -70,14 +70,14 @@
 				//		contentType : "application/json",
 				success : function(data) {
 					if (data == "success") {
-						alert(data);
 						$(location).attr('href', "index");
 					} else {
 						alert("failed");
 					}
 				},
 				error : function(request, status, error) {
-					alert(error);
+					alert("아이디와 패스워드를 확인주세요."); 
+					/* alert(error); */
 				}
 			});
 		}
