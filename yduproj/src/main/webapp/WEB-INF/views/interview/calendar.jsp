@@ -97,39 +97,44 @@
 		    // update
 		    eventDrop: function(event, delta, revertFunc) {
 		    	var scheduleIdx=0;
-		    	
-		        if (!confirm("일정을 수정하시겠습니까?")) {
-		        	revertFunc();
-		        } 
-		        else{
-		        	var person = prompt("상담시간은? (1~5) ", "1");
-		            if (person == null) {
-		                alert("상담시간 미입력");
-		            }else {
-		            	console.log("person : "+person);
-		            }
-					selAction = "update";
-					
-		        
-		        	sub = new Object();     // 객체 값 입력후 main배열의 0번 index에 셋팅
-							
-					sub['title'] = event.title;
-					sub['statusId'] = statusID;
-					sub['interDate'] = selDate;
-					sub['property'] = "";
-					sub['interId'] = ""; // 추가해야되는 일정은 statusID가 없음
-					sub['st_code'] = ""; //user세션 추가
-					sub['seq'] = person;
-					sub['newDate'] = event.start.format();
-					sub['action'] = selAction;
-					
-					main[cnt] = sub;
-	
-					console.log("action : "+sub.action +"\n newDate : "+sub.newDate+"\n interDate : "+sub.interDate +"\n title : "+sub.title + "\n seq : "+sub.seq);
-					console.log("main action : "+main[cnt].action);
-					console.log("main : "+main[cnt]);
-					cnt+=1;
-		        }
+		    	<% if(session.getAttribute("proInfo") == null) { %> 
+		    	 	alert("교수만 일정을 수정할 수 있습니다.");
+		    	 	revertFunc();
+		    	<%} 
+		    	else { %>
+			        if (!confirm("일정을 수정하시겠습니까?")) {
+			        	revertFunc();
+			        } 
+			        else{
+			        	var person = prompt("상담시간은? (1~5) ", "1");
+			            if (person == null) {
+			                alert("상담시간 미입력");
+			            }else {
+			            	console.log("person : "+person);
+			            }
+						selAction = "update";
+						
+			        
+			        	sub = new Object();     // 객체 값 입력후 main배열의 0번 index에 셋팅
+								
+						sub['title'] = event.title;
+						sub['statusId'] = statusID;
+						sub['interDate'] = selDate;
+						sub['property'] = "";
+						sub['interId'] = ""; // 추가해야되는 일정은 statusID가 없음
+						sub['st_code'] = ""; //user세션 추가
+						sub['seq'] = person;
+						sub['newDate'] = event.start.format();
+						sub['action'] = selAction;
+						
+						main[cnt] = sub;
+		
+						console.log("action : "+sub.action +"\n newDate : "+sub.newDate+"\n interDate : "+sub.interDate +"\n title : "+sub.title + "\n seq : "+sub.seq);
+						console.log("main action : "+main[cnt].action);
+						console.log("main : "+main[cnt]);
+						cnt+=1;
+			        }
+		    	<% } %>
 		    },
 		    eventDragStart:function(event, jsEvent, ui, view ) {
 		    	selDate = event.start.format(); 
@@ -209,6 +214,7 @@
 					success : function() {
 						console.log("성공");
 						main = new Array();
+						location.reload(); 
 					},
 					error : function(request, status, error) {
 						alert("error : "+error);
@@ -260,6 +266,9 @@
 		    document.getElementById("demo").innerHTML = "The p element was dropped";
 		    console.log("drag실행");
 		}
+
+		$(document).on("ondrop", ".droptarget", allowDrop(event));
+		$(document).on("ondragover", ".droptarget", allowDrop(event)); 
 	});
 
 </script>
@@ -319,7 +328,7 @@
 	<div id='wrap'>
 
 		<div id='external-events'>
-			<h4>Draggable Events</h4>
+			<h4>일정선택</h4>
 			<div class='fc-event'>상담신청</div>
 			<div class='fc-event'>면접클리닉</div>
 			<div class='fc-event'>취업상담</div>

@@ -8,6 +8,7 @@ import com.ydu.biz.classes.ClassStatusVO;
 import com.ydu.biz.classes.ClassTimeVO;
 import com.ydu.biz.main.StudentVO;
 import com.ydu.biz.classes.ClassListVO;
+import com.ydu.biz.classes.ClassPlanVO;
 
 public interface ClassMapper {
 
@@ -35,4 +36,7 @@ public interface ClassMapper {
 				List<Map<String, Object>> getProgramList(ClassSearchVO vo);
 				
 				List<Map<String, Object>> getSelCurrClassesList(ClassStatusVO vo);
+				
+				//민학 강의계획서 조회
+				Map<String, Object> getClassPlan(ClassPlanVO vo);
 }

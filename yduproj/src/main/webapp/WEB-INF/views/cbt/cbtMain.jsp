@@ -50,7 +50,9 @@ b {
     <a href="#boardQnA.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-users fa-fw"></i> Q&A </a>
     <a href="#getMyCBT.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-diamond fa-fw"></i> 학생목록조회test</a>
     <a href="#goResult.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-bank fa-fw"></i> 결과보기 </a>
+    <% if(session.getAttribute("proInfo") != null) { %> 
  	<a href="#submitExamForm.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-bell fa-fw "></i> 시험문제출제(교수전용) </a>
+ 	<% } %>
  	<!-- 시험목록조회에서 등록되면 시험출제 가능:시험지에 문제만 넣으면 되게 할 예정 -->
   </div>
 </nav>

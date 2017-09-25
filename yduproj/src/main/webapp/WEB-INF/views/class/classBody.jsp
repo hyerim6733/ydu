@@ -45,6 +45,7 @@
 						success : function() {
 							alert("성공적으로 처리되었습니다.");
 							console.log("성공");
+							location.reload(); 
 						},
 						error : function(request, status, error) {
 							alert("error : "+error);

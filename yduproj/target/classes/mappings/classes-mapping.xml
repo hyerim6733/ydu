@@ -113,6 +113,47 @@
 			l.open_class = #{openClass}
 	</select>
 
+
+	<!-- (민학)강의 계획서 상세 -->
+	<select id="getClassPlan" parameterType="classPlan" resultType="map">
+		SELECT 	n.open_class as "openClass",
+		        c.class_title as "classTitle",
+		        p.name as "name",
+		        n.class_time as "classTime",
+		        n.class_room as "classRoom",
+		        d.small_codename as "smallCodename",
+		        n.student_limit as "studentLimit",
+		        property,
+		        (select small_codename from code where small_code =c.property) as "propertyNm",
+              l.plan_week1 AS "planWeek1",
+		    l.plan_week2 AS "planWeek2",
+		    l.plan_week3 AS "planWeek3",
+		    l.plan_week4 AS "planWeek4",
+		    l.plan_week5 AS "planWeek5",
+		    l.plan_week6 AS "planWeek6",
+		    l.plan_week7 AS "planWeek7",
+		    l.plan_week8 AS "planWeek8",
+		    l.plan_week9 AS "planWeek9",
+		    l.plan_week10 AS "planWeek10",
+		    l.plan_week11 AS "planWeek11",
+		    l.plan_week12 AS "planWeek12",
+		    l.plan_week13 AS "planWeek13",
+		    l.plan_week14 AS "planWeek14",
+		    l.plan_week15 AS "planWeek15",
+		    l.plan_week16 AS "planWeek16"
+		FROM CLASS_LIST c,
+				NEW_CLASS n,
+				PROFESSOR p,
+				CODE d,
+        CLASS_PLAN l
+		WHERE c.class_code = n.class_code and
+				n.prof_code = p.prof_code and
+				c.major = d.small_code and
+        n.OPEN_CLASS = l.OPEN_CLASS and
+        l.OPEN_CLASS = #{openClass}
+	</select>
+
+
 	<select id="getSelStuClassesList" parameterType="student" resultType="classStatus">
 		SELECT 	s.STATUS_ID as "statusId",
         s.ST_CODE as "stCode",

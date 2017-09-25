@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ydu.biz.classes.ClassListVO;
+import com.ydu.biz.classes.ClassPlanVO;
 import com.ydu.biz.classes.ClassSearchVO;
 import com.ydu.biz.classes.ClassService;
 import com.ydu.biz.classes.ClassStatusVO;
@@ -272,17 +273,18 @@ public class ClassController {
 		public List<Map<String, Object>> getsmallList(@RequestParam (value = "code") String code){
 			return classService.getsmallList(code);
 		}
-		
-		//강의 계획서 조회
+
+		// 강의 계획서 조회
 		@RequestMapping("/getClassDetail.do")
 		public String ClassDetail(Model model, ClassListVO vo) {
-			// Map<String,Object> map= classService.getClasses(vo);
-			model.addAttribute("detail", classService.getClasses(vo));
-			//model.addAttribute("classList", classService.getClasses(vo));
+			ClassPlanVO cp = new ClassPlanVO();
+			cp.setOpenClass(vo.getOpenClass());
+	
+			Map<String, Object> list = classService.getClassPlan(cp);
+			model.addAttribute("detail", list);
 			return "/class/classDetail";
 		}
-		
-		
+
 		@RequestMapping(value="/myPage.do")
 		public String myPage() {
 			System.out.println("마이페이지");
