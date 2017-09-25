@@ -43,7 +43,7 @@ th {
 			</tr>
 			
 				<tr>
-						<td></td>
+						<td>${cnt }</td>
 						<td>${list.question }</td>
 						<td><input type="radio" name="rightAnswer"
 							value="1"> ${list.ex1 }</td>
