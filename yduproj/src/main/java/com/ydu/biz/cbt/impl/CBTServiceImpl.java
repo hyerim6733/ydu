@@ -68,6 +68,10 @@ public class CBTServiceImpl implements CBTService {
 	public List<Map<String, Object>> getMyGrade(CBTResultVO cbtResultvo) {
 		return cbtDAO.getMyGrade(cbtResultvo);
 	}
+	@Override //[학생:결과 조회]Jung
+	public List<Map<String, Object>> getAllMyGrade(CBTResultVO cbtResultvo) {
+		return cbtDAO.getAllMyGrade(cbtResultvo);
+	}
 	//[교수:시험지 등록,수정,상세,삭제]Jung
 	@Override
 	public void insertTestList(CBTListVO vo) {

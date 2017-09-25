@@ -55,6 +55,14 @@ public class CBTController {
 
 		return "/cbt/cbtList";
 	}
+	////[교수 cbt] 교수는 문제 출제완료후 모든 cbt 목록을 조회할 수 있습니다.
+	@RequestMapping(value= "/proSelectCBT.do")
+	public String proSelectCBT(Model model, CBTListVO vo) {
+		System.out.println("[문제 출제후 리스트 페이지로 ] =========cbt_controller=====");
+		List<Map<String, Object>> list = cbtService.getAllCBT();
+		model.addAttribute("cbtList", list);
+		return "/cbt/cbtList";
+	}
 	
 	
 	//[학생 cbt 조회]학생은 수강신청한 cbt의 목록만 조회가능합니다. 학생목록조회테스트
@@ -149,19 +157,39 @@ public class CBTController {
 			return "redirect:/cbtMain.do#goResult.do";
 		}
 	}
+	
 
+	
 
-	//시험 next & exit & end 처리하는 것 넣기
+	// 시험 next & exit & end 처리하는 것 넣기
 
-	//[학생:시험친 후 시험결과]
-	@RequestMapping(value= "/goResult.do")
-	public String getExamResult( HttpSession session, Model model) {
-		System.out.println("[결과 페이지로넘어갑니다.] by cbt_controller=====");
-		CBTResultVO cbtResultvo = (CBTResultVO)session.getAttribute("cbtResultvo");
+	// [학생:시험친 후 시험결과]시험종료후 보여지는 페이지==============================jung
+	@RequestMapping(value = "/goResult.do")
+	public String getExamResult(HttpSession session, Model model) {
+		System.out.println("[응시한 시험 결과] by cbt_controller=====");
+		CBTResultVO cbtResultvo = (CBTResultVO) session.getAttribute("cbtResultvo");
 		model.addAttribute("Result", cbtService.getMyGrade(cbtResultvo));
 		return "/cbt/cbtResult";
 	}
 
+	// [학생:응시한 시험 전체 결과]결과보기 클릭시 응시한 전체 시험 결과 보여줌
+	// ====================================jung
+	@RequestMapping(value = "/goAllResult.do")
+	public String getAllExamResult(HttpSession session, Model model, CBTResultVO cbtResultvo) {
+		System.out.println("[전체시험 결과] by cbt_controller=====");
+		cbtResultvo.setStCode(((StudentVO) session.getAttribute("stuInfo")).getStudentCode());
+		model.addAttribute("Result", cbtService.getAllMyGrade(cbtResultvo));
+		return "/cbt/cbtResult";
+	}
+
+	// [학생:시험친 후 시험결과] 응시불가능 클릭시 보여지는 =====================jung
+	@RequestMapping(value = "/resultExam.do")
+	public String ExamResult(HttpSession session, Model model, CBTResultVO cbtResultvo) {
+		System.out.println("[응시한 시험 결과] by cbt_controller=====");
+		cbtResultvo.setStCode(((StudentVO) session.getAttribute("stuInfo")).getStudentCode());
+		model.addAttribute("Result", cbtService.getMyGrade(cbtResultvo));
+		return "/cbt/cbtResult";
+	}
 	
 	//[교수:시험지 등록폼(시험목록 등록)]Jung:ok
 	@RequestMapping(value="/submitExamListForm.do",method=RequestMethod.GET)

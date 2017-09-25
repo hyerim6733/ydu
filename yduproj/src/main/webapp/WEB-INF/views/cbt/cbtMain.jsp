@@ -45,12 +45,21 @@ b {
  	 <div class="w3-bar-block" id="left-menu">
     <a href="#" class="ajax-link w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="#cbtBody.do" class="w3-bar-item w3-button w3-padding w3-skyblue" onclick="page_reload()"><i class="fa fa-users fa-fw"></i> CBT 메인화면 </a>
-    <a href="#getAllCBT.do" class="w3-bar-item w3-button w3-padding " onclick="page_reload()"><i class="fa fa-eye fa-fw"></i> 시험목록조회</a>
-    <!-- 시험 목록 조회하고 교수라면 시험지 등록 가능 하게 할 예정 -->
+    
+  	<c:if test="${userId.separation == 'pro'}">
+	<a href="#getAllCBT.do" class="w3-bar-item w3-button w3-padding " onclick="page_reload()"><i class="fa fa-eye fa-fw"></i> 시험목록조회[교수용]</a>
+	</c:if>
+   	<c:if test="${userId.separation == 'stu'}">
+	<a href="#getMyCBT.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-diamond fa-fw"></i> 시험목록조회[학생용]</a>
+	</c:if>
+   
     <a href="#boardQnA.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-users fa-fw"></i> Q&A </a>
-    <a href="#getMyCBT.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-diamond fa-fw"></i> 학생목록조회test</a>
-    <a href="#goResult.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-bank fa-fw"></i> 결과보기 </a>
- 	<a href="#submitExamForm.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-bell fa-fw "></i> 시험문제출제(교수전용) </a>
+    <c:if test="${userId.separation == 'stu'}">
+  	<a href="#goAllResult.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-bank fa-fw"></i> 결과보기 </a>
+ 	</c:if>
+ 	 <!-- 
+  <a href="#submitExamForm.do" class="w3-bar-item w3-button w3-padding" onclick="page_reload()"><i class="fa fa-bell fa-fw "></i> 시험문제출제(교수전용) </a>
+ 	 -->
  	<!-- 시험목록조회에서 등록되면 시험출제 가능:시험지에 문제만 넣으면 되게 할 예정 -->
   </div>
 </nav>

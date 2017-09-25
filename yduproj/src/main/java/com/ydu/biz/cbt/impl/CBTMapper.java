@@ -30,6 +30,7 @@ public interface CBTMapper {
 	
 	void insertMark(CBTResultVO vo); //채점 점수 등록
 	List<Map<String, Object>> getMyGrade(CBTResultVO cbtResultvo); //시험결과조회
+	List<Map<String, Object>> getAllMyGrade(CBTResultVO cbtResultvo);//응시한 시험 전체
 	
 	
 	CBTListVO getCBT(CBTListVO vo);
@@ -48,7 +49,7 @@ public interface CBTMapper {
 	//void updateTest(CBTExampackVO vo); //수정
 	//BoardVO detailTest(CBTExampackVO vo); //상세
 	//void deleteTest(CBCBTExampackVOTListVO vo);//삭제
-	
+
 	
 
 }

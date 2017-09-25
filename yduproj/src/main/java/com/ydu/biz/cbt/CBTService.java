@@ -36,6 +36,7 @@ public interface CBTService {
 	
 	//2. 학생:jung
 	List<Map<String, Object>> getMyGrade(CBTResultVO cbtResultvo);
+	List<Map<String, Object>> getAllMyGrade(CBTResultVO cbtResultvo);//응시한 시험 전체
 	
 	
 	
