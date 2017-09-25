@@ -13,6 +13,7 @@ import com.ydu.biz.classes.ClassTimeVO;
 import com.ydu.biz.main.StudentVO;
 import com.ydu.biz.board.impl.BoardMapper;
 import com.ydu.biz.classes.ClassListVO;
+import com.ydu.biz.classes.ClassPlanVO;
 
 @Service("ClassesService")
 public class ClassServiceImpl implements ClassService {
@@ -78,6 +79,12 @@ public class ClassServiceImpl implements ClassService {
 	public List<Map<String, Object>> getSelCurrClassesList(ClassStatusVO vo) {
 		return classDAO.getSelCurrClassesList(vo);
 	}
+
+	@Override
+	public Map<String, Object> getClassPlan(ClassPlanVO vo) {
+		return classDAO.getClassPlan(vo);
+	}
+
 
 	
 	

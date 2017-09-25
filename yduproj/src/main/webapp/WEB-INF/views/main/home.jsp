@@ -18,7 +18,7 @@
 	</div>
 	<% }else { %>
 	<div class="col-xs-10 col-sm-5">
-		<h3> 환영합니다. <br/> ${userId.userid } 님  </h3>
+		<h3> 환영합니다. <br/> ${stuInfo.name } 님  </h3>
 	</div>
 	<% } %>
 

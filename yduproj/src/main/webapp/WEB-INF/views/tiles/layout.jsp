@@ -133,16 +133,25 @@ pageEncoding="UTF-8" %>
 									</li>
 									<li>
 										<a href="#">
-											<i class="fa fa-cog"></i>
+											<i class="fa fa-cog"></i> 
 											<span class="hidden-sm text">Settings</span>
 										</a>
 									</li>
+									<% if(session.getAttribute("userId") == null) { %>
 									<li>
-										<a href="#">
+										<a href="../loginForm.do" class="ajax-link" >
 											<i class="fa fa-power-off"></i>
-											<span class="hidden-sm text" class="ajax-link" OnClick="location.href='../logout.do'">Logout</span>
+											<span class="hidden-sm text">login</span>
 										</a>
 									</li>
+									<% }else { %>
+									<li>
+										<a href="../logout.do" >
+											<i class="fa fa-power-off"></i>
+											<span class="hidden-sm text">Logout</span>
+										</a>
+									</li>
+									<% } %>
 								</ul>
 							</li>
 						</ul>
@@ -169,34 +178,7 @@ pageEncoding="UTF-8" %>
 					<i class="fa fa-bar-chart-o"></i> <span class="hidden-xs"> 수강신청 </span>
 					</a></li>
 
-					<li class="dropdown"><a href="#" class="dropdown-toggle">
-					<i class="fa fa-list"></i><span class="hidden-xs">게시판6</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="ajax/page_login.html">Login</a></li>
-						<li><a href="ajax/page_register.html">Register</a></li>
-						<li><a id="locked-screen" class="submenu" href="ajax/page_locked.html">Locked Screen</a></li>
-						<li><a class="ajax-link" href="ajax/page_contacts.html">Contacts</a></li>
-						<li><a class="ajax-link" href="ajax/page_feed.html">Feed</a></li>
-						<li><a class="ajax-link add-full" href="ajax/page_messages.html">Messages</a></li>
-						<li><a class="ajax-link" href="ajax/page_pricing.html">Pricing</a></li>
-						<li><a class="ajax-link" href="ajax/page_invoice.html">Invoice</a></li>
-						<li><a class="ajax-link" href="ajax/page_search.html">Search Results</a></li>
-						<li><a class="ajax-link" href="ajax/page_404.html">Error 404</a></li>
-						<li><a href="ajax/page_500.html">Error 500</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-map-marker"></i>
-						<span class="hidden-xs">게시판7</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a class="ajax-link" href="ajax/maps.html">OpenStreetMap</a></li>
-						<li><a class="ajax-link" href="ajax/map_fullscreen.html">Fullscreen map</a></li>
-					</ul>
-				</li>
-
+				
 
 
 
@@ -215,7 +197,7 @@ pageEncoding="UTF-8" %>
 				 <li>
 					<a class="ajax-link" href="../interview/calendar.do">
 						 <i class="fa fa-calendar"></i>
-						 <span class="hidden-xs">학교일정</span>
+						 <span class="hidden-xs">상담일정</span>
 					</a>
 				 </li>
 

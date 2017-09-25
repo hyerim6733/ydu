@@ -47,4 +47,6 @@ public interface ClassService {
 		// 수강 신청 목록 가져오기 (민학)
 		List<Map<String, Object>> getClassList();
 		
+		//민학 강의계획서 조회
+		Map<String, Object> getClassPlan(ClassPlanVO vo);
 }
