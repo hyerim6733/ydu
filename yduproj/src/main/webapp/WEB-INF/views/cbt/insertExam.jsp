@@ -17,7 +17,13 @@
   width: 50%;
 }
 </style>
-
+<script>
+	$(function() {
+		$("#btn_complete").click(function() {
+			location.href="./cbt/cbtList"; 
+		});
+	});
+</script>
 <div class="left-box" >
 <div style="font-size:35px;">교수님 등록한 문제 보여주는 페이지 </div>
 <form action="" >
@@ -59,7 +65,6 @@
 
 <form action="submitExam.do" method="post">
 	cbtCode<input type="text" name="cbtCode" value="${cBTExampackVO.cbtCode}"><br>
-	 ↑이거 교수가 강의하는 거는 선택할 수 있게, 강의명으로 표시할 수 있는 select를 이용해야하는데....<br/>
 	문제 <textarea rows="5" cols="60"  name="question" >${cbtExampack.question}</textarea><br/>
 	정답(보기번호)<input type="radio" name="rightAnswer" value="1"> 1
  			 <input type="radio" name="rightAnswer" value="2"> 2
@@ -71,6 +76,7 @@
 	보기4 <input size="20" type="text" name="ex4" value="${cbtExampack.ex4}"><br/>
 	배점  <input size="20" type="text" name="mark" value="${cbtExampack.mark}"><br/>
 	<input type="submit" value="저장">
+	<input type="button" value="출제완료" id="btn_complete"/>
 	
 </form>
 

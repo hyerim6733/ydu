@@ -324,7 +324,7 @@
 			<div class='fc-event'>면접클리닉</div>
 			<div class='fc-event'>취업상담</div>
 			<div class='fc-event'>진로상담</div>
-	 			<input type="button" name="submit" id="btn_modify" value="수정">
+	 			<input type="button" name="submit" id="btn_modify" value="수정완료">
 	 			<div id="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 	 			<br/><p id="demo">d</p>
 		</div>
