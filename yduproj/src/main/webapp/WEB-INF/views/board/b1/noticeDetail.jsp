@@ -45,8 +45,8 @@
 공지구분 : ${board.categoryNm}
 <!-- 카테고리 값 받아와서 한글 구분 보여주기 -->
 <br/><br/>
-[제목] <br/>
-${board.title} <br/>
+<h3>[제목] <br/>
+${board.title} </h3><br/>
 <br/><br/>
 [내용]
 <br/> ${board.content} <br/>

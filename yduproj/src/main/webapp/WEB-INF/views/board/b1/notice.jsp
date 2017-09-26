@@ -36,7 +36,7 @@
 	<form name="frm" id="frm" method="post">
 	<input type="hidden" name="page" >
 	<input type="hidden" name="boardCode" >
-	<input type="text" name="" value="${boardSearchVO.category }" >
+	
 		<div id="dashboard-notice" class="row"
 			style="visibility: visible; position: relative;">
 			<div id="ow-marketplace" class="col-xs-12">

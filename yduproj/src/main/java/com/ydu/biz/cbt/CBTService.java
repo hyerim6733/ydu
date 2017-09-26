@@ -71,6 +71,12 @@ public interface CBTService {
 	CBTExampackVO getMarkTest(CBTExampackVO vo);
 
 	
+	//4. CBT COMENT (MINHAK)
+	List<Map<String, Object>> getCbtComent();
 	
+	// COMMENT INSERT
+	void insertComent(CBTComentVO vo);
 	
+	// COMMENT RE SELECT
+	List<Map<String, Object>> getCbtComentRe();	
 }

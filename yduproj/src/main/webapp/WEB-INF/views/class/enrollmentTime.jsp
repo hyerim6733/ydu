@@ -117,6 +117,8 @@ body { background: #fff; }
 			//	dupChk[idx]=0;
 				$("#"+trID).remove();
 				console.log("idx-1 : "+idx-1);
+				console.dir("main이다 : "+main);
+				console.log("main[idx] check : "+main[idx-1].check);
 				dupChk[main[idx-1].check]=0;  
 				main[idx-1]="";
 				console.dir(main); 
@@ -184,13 +186,15 @@ body { background: #fff; }
 						data : p,
 						success : function(data) {
 							console.log("호출 성공");
+							console.dir(main);
+							
 							if(data=="success") {
 								alert("수강신청 되었습니다.");
 								main = new Array(); 
 								location.reload(); 
 							}
 							else if(data=="duplication") {
-								alert("중복값이 있습니다.\n확인 후 다시 시도해주세요");
+								alert("중복되는 시간이 있습니다.\n확인 후 다시 시도해주세요");
 							} 
 						}, 
 						error : function(request, status, error) {
