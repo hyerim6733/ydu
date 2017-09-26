@@ -39,11 +39,10 @@
 
 
 
-<!-- 확인용  지워야 함 -->
-${board }
+
 
 <hr>
-<h3>공지사항  ${registerFlag} 하기 (관리자용)</h3>
+<h3>공지사항  ${registerFlag} 하기 </h3>
 <hr>
 
 <form name="frm" id="frm" method="post" >

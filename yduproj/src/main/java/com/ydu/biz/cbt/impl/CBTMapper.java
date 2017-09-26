@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.ydu.biz.board.BoardVO;
+import com.ydu.biz.cbt.CBTComentVO;
 import com.ydu.biz.cbt.CBTExampackVO;
 import com.ydu.biz.cbt.CBTListVO;
 import com.ydu.biz.cbt.CBTResultVO;
@@ -50,6 +51,14 @@ public interface CBTMapper {
 	//BoardVO detailTest(CBTExampackVO vo); //상세
 	//void deleteTest(CBCBTExampackVOTListVO vo);//삭제
 
+
+	// CBT COMENT (MINHAK)
+	List<Map<String, Object>> getCbtComent();
 	
+	// COMMENT INSERT
+	void insertComent(CBTComentVO vo);
+
+	// COMMENT RE SELECT
+	List<Map<String, Object>> getCbtComentRe();	
 
 }

@@ -15,6 +15,7 @@
         <typeAlias alias="cbtExampack" type="com.ydu.biz.cbt.CBTExampackVO"/>
         <typeAlias alias="cbtList" type="com.ydu.biz.cbt.CBTListVO"/>
         <typeAlias alias="cbtResult" type="com.ydu.biz.cbt.CBTResultVO"/>
+        <typeAlias alias="CBTComentVO" type="com.ydu.biz.cbt.CBTComentVO"/>
         <typeAlias alias="classList" type="com.ydu.biz.classes.ClassListVO"/>
         <typeAlias alias="classPlan" type="com.ydu.biz.classes.ClassPlanVO"/>
         <typeAlias alias="classStatus" type="com.ydu.biz.classes.ClassStatusVO"/>

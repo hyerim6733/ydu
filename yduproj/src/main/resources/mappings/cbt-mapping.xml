@@ -231,5 +231,43 @@
 	</insert>
 	
 	
+	<!-- (민학) Coment Select -->
+	<select id="getCbtComent" resultType="map">
+		SELECT 
+			C.COMENT_ID,
+			C.CONTENTS,
+			C.SEPARATION,
+			C.USER_ID,
+     		S.NAME
+			
+		FROM CBT_COMENT C, STUDENT S
+    	WHERE S.ST_CODE = C.USER_ID
+		ORDER BY COMENT_ID DESC
+	</select>
 	
+		<insert id="insertComent" parameterType="CBTComentVO">
+	INSERT INTO CBT_COMENT(
+		COMENT_ID,
+		CONTENTS,
+		SEPARATION,
+		USER_ID
+		)
+	VALUES(
+		(SELECT NVL(MAX(COMENT_ID), 0) + 1 FROM CBT_COMENT), 
+		#{contents}, 
+		#{separation}, 
+		#{userId}
+		)
+	</insert>
+	
+	<!-- getCbtComentRe -->
+		<select id="getCbtComentRe" resultType="map">
+		select r.contents,
+				r.coment_id,
+				r.user_id,
+				r.re_id
+		from cbt_coment_re r, cbt_coment c
+		where c.coment_id in r.coment_id
+		ORDER BY r.re_id
+	</select>
 </mapper>

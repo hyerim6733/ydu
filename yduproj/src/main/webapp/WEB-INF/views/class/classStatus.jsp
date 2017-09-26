@@ -219,24 +219,6 @@ pageEncoding="UTF-8" %>
 				}
 	        });
 			
-			var json = [
-			    {
-			    	title : '컴퓨터개론',
-			        week  : '월',
-			        start  : '1',
-			        end  : '3'
-			    },
-		
-			    {
-			    	title : '소프트웨어공학',
-			        week  : '수',
-			        start  : '3',
-			        end  : '4'
-			    }
-			];
-			
-			
-			
 		});
 		</script>
 <!--End Container-->

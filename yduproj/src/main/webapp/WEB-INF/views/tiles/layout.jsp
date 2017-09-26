@@ -94,9 +94,6 @@ pageEncoding="UTF-8" %>
 									</div>
 									<i class="fa fa-angle-down pull-right"></i>
 									<% if(session.getAttribute("userId") == null) { %>
-										<div class="user-mini pull-right">
-											<span class="welcome"><a class="ajax-link" href="../loginForm.do">login</a></span>
-										</div>
 									<% }else { %>
 										<div class="user-mini pull-right">
 											<span class="welcome">Welcome! <br/>${userId.separation}</span>
@@ -107,36 +104,7 @@ pageEncoding="UTF-8" %>
 									
 								</a>
 								<ul class="dropdown-menu">
-									<li>
-										<a href="#">
-											<i class="fa fa-user"></i>
-											<span class="hidden-sm text">Profile</span>
-										</a>
-									</li>
-									<li>
-										<a href="ajax/page_messages.html" class="ajax-link">
-											<i class="fa fa-envelope"></i>
-											<span class="hidden-sm text">Messages</span>
-										</a>
-									</li>
-									<li>
-										<a href="ajax/gallery_simple.html" class="ajax-link">
-											<i class="fa fa-picture-o"></i>
-											<span class="hidden-sm text">Albums</span>
-										</a>
-									</li>
-									<li>
-										<a href="ajax/calendar.html" class="ajax-link">
-											<i class="fa fa-tasks"></i>
-											<span class="hidden-sm text">Tasks</span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-cog"></i> 
-											<span class="hidden-sm text">Settings</span>
-										</a>
-									</li>
+									
 									<% if(session.getAttribute("userId") == null) { %>
 									<li>
 										<a href="../loginForm.do" class="ajax-link" >

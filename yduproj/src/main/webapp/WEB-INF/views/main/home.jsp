@@ -16,9 +16,14 @@
 	<div class="col-xs-10 col-sm-5">
 		<h3> 환영합니다.<br/> 예담대학교입니다.</h3>
 	</div>
-	<% }else { %>
+	<% }else if(session.getAttribute("stuInfo") != null) { %>
 	<div class="col-xs-10 col-sm-5">
-		<h3> 환영합니다. <br/> ${stuInfo.name } 님  </h3>
+		<h3> 환영합니다. <br/> ${stuInfo.name } 학생  </h3>
+	</div>
+	<% } 
+		else if(session.getAttribute("proInfo") != null) { %>
+	<div class="col-xs-10 col-sm-5">
+		<h3> 환영합니다. <br/> ${proInfo.name } 교수님  </h3>
 	</div>
 	<% } %>
 

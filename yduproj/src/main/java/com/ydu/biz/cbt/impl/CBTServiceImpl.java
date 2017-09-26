@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ydu.biz.board.BoardVO;
+import com.ydu.biz.cbt.CBTComentVO;
 import com.ydu.biz.cbt.CBTExampackVO;
 import com.ydu.biz.cbt.CBTListVO;
 import com.ydu.biz.cbt.CBTResultVO;
@@ -107,6 +108,21 @@ public class CBTServiceImpl implements CBTService {
 	public void insertMark(CBTResultVO vo) {
 		cbtDAO.insertMark(vo);
 		
+	}
+
+	@Override
+	public List<Map<String, Object>> getCbtComent() {
+		return cbtDAO.getCbtComent();
+	}
+
+	@Override
+	public void insertComent(CBTComentVO vo) {
+		cbtDAO.insertComent(vo);
+	}
+
+	@Override
+	public List<Map<String, Object>> getCbtComentRe() {
+		return cbtDAO.getCbtComentRe();
 	}
 
 	

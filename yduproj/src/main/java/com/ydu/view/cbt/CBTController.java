@@ -13,10 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ydu.biz.board.BoardVO;
+import com.ydu.biz.cbt.CBTComentVO;
 import com.ydu.biz.cbt.CBTExampackVO;
 import com.ydu.biz.cbt.CBTListVO;
 import com.ydu.biz.cbt.CBTResultVO;
@@ -44,6 +46,25 @@ public class CBTController {
 		return "/cbt/cbtBody";
 	}
 
+	// cbt Coment 
+		@RequestMapping(value="/getCbtComent.do", method=RequestMethod.POST)
+		@ResponseBody
+		public List<Map<String, Object>> getCbtComent(Model model){
+			//List<Map<String, Object>> list = interviewService.getInterveiwList();
+			List<Map<String, Object>> list = cbtService.getCbtComent();
+			List<Map<String, Object>> reList = cbtService.getCbtComentRe();
+			System.out.println(reList);
+			model.addAttribute("reply", reList);
+		//	model.addAttribute("list", "dd");
+			return list;
+		}
+		// cbt Coment insert
+		@RequestMapping(value="/insertCbtComent.do", method=RequestMethod.POST)
+		public void insertCbtComent(Model model,CBTComentVO vo){
+			cbtService.insertComent(vo);
+		}
+		
+			
 	//[교수 cbt 조회 ] 교수는 모든 cbt 목록을 조회할 수 있습니다.
 	@RequestMapping(value= "/getAllCBT.do")
 	public String getAllCBT(Model model, CBTListVO vo) {
